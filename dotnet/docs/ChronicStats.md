@@ -1,0 +1,12 @@
+# Genie.Api.Model.ChronicStats
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Label** | **string** |  | 
+**Data** | **Dictionary&lt;string, Object&gt;** |  | 
+**Total** | **int** |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
