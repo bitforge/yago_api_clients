@@ -1,2 +1,4 @@
 .DS_Store
 openapitools.json
+git_push.sh
+.idea

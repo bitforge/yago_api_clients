@@ -1,0 +1,16 @@
+# GlobalStatistics
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**report_format** | [**ReportFormatEnum**](ReportFormatEnum.md) |  | 
+**time_range** | [**TimeRangeEnum**](TimeRangeEnum.md) |  | 
+**filter_events** | [**FilterEventsEnum**](FilterEventsEnum.md) |  | 
+**group_by** | [**GlobalStatisticsGroupByEnum**](GlobalStatisticsGroupByEnum.md) |  | 
+**filter_project** | **str** |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
