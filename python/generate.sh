@@ -7,9 +7,8 @@
 #     --additional-properties=packageName="genie"
 
 # Replace git user and repo name in README
-sed -i -e 's/GIT_USER_ID/bitforge/g' README.md
-sed -i -e 's/GIT_REPO_ID/genie-api-clients/g' README.md
-rm -f README.md-e
+sed -i '' -e 's/GIT_USER_ID/bitforge/g' README.md
+sed -i '' -e 's/GIT_REPO_ID/genie-api-clients/g' README.md
 
 CLR='\033[0;32m'
 EOC='\033[0m'
