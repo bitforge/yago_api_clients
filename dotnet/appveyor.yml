@@ -6,4 +6,4 @@ build_script:
 - dotnet build -c Release
 - dotnet test -c Release
 after_build:
-- dotnet pack .\src\Genie.Api\Genie.Api.csproj -o ../../output -c Release --no-build
+- dotnet pack .\src\Genie\Genie.csproj -o ../../output -c Release --no-build

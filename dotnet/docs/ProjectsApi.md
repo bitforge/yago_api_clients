@@ -1,4 +1,4 @@
-# Genie.Api.Api.ProjectsApi
+# Genie.Api.ProjectsApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -26,9 +26,9 @@ Add a new project. Change details later via PUT or PATCH.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -107,9 +107,9 @@ Remove a project. Only members with role OWNER can do this.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -187,9 +187,9 @@ Delete an image.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -267,9 +267,9 @@ Upload an image. Max size 30MB. Filename is required!
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -352,9 +352,9 @@ Lists all projects the user is a member of.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -429,9 +429,9 @@ Change as subset of project details.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -512,9 +512,9 @@ Details of a single project.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -593,9 +593,9 @@ Change project and settings.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

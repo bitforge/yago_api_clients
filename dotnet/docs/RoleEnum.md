@@ -1,4 +1,4 @@
-# Genie.Api.Model.RoleEnum
+# Genie.Model.RoleEnum
 
 ## Properties
 

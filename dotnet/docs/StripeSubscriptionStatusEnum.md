@@ -1,4 +1,4 @@
-# Genie.Api.Model.StripeSubscriptionStatusEnum
+# Genie.Model.StripeSubscriptionStatusEnum
 
 ## Properties
 

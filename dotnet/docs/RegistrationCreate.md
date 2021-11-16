@@ -1,4 +1,4 @@
-# Genie.Api.Model.RegistrationCreate
+# Genie.Model.RegistrationCreate
 
 ## Properties
 

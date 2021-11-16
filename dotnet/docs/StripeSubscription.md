@@ -1,4 +1,4 @@
-# Genie.Api.Model.StripeSubscription
+# Genie.Model.StripeSubscription
 
 ## Properties
 

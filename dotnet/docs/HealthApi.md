@@ -1,4 +1,4 @@
-# Genie.Api.Api.HealthApi
+# Genie.Api.HealthApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -19,9 +19,9 @@ Check health status of required subsystems.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

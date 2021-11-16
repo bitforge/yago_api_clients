@@ -1,4 +1,4 @@
-# Genie.Api.Api.AuthApi
+# Genie.Api.AuthApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -24,9 +24,9 @@ Takes a set of user credentials and returns an access and refresh JSON web token
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -94,9 +94,9 @@ Takes a Google ID token and returns an access and refresh token for this API. If
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -164,9 +164,9 @@ Password reset e-mail link is confirmed, reset the user's password.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -234,9 +234,9 @@ Request password reset. Send an email to the user first.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -304,9 +304,9 @@ Takes a refresh type JSON web token and returns an access type JSON web token if
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -374,9 +374,9 @@ Takes a token and indicates if it is valid.  This view provides no information a
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

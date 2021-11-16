@@ -1,4 +1,4 @@
-# Genie.Api.Model.CountryEnum
+# Genie.Model.CountryEnum
 
 ## Properties
 

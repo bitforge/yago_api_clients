@@ -1,4 +1,4 @@
-# Genie.Api.Model.Model
+# Genie.Model.Model
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Genie.Api.Model.TokenRefreshRequest
+# Genie.Model.TokenRefreshRequest
 
 ## Properties
 

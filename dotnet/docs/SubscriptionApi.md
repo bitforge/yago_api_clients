@@ -1,4 +1,4 @@
-# Genie.Api.Api.SubscriptionApi
+# Genie.Api.SubscriptionApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -21,9 +21,9 @@ Create a new stripe Subscription for a Genie pricing plan in state incomplete. U
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -102,9 +102,9 @@ Cancel current subscription. Subscription will be valid until current payment sc
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -178,9 +178,9 @@ Get details of active subscription i customer is signed up.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

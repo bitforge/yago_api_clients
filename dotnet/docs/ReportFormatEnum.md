@@ -1,4 +1,4 @@
-# Genie.Api.Model.ReportFormatEnum
+# Genie.Model.ReportFormatEnum
 
 ## Properties
 

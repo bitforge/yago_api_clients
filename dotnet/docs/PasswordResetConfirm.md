@@ -1,4 +1,4 @@
-# Genie.Api.Model.PasswordResetConfirm
+# Genie.Model.PasswordResetConfirm
 Serializer for confirming a password reset attempt.
 
 ## Properties

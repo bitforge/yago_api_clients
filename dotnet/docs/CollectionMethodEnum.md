@@ -1,4 +1,4 @@
-# Genie.Api.Model.CollectionMethodEnum
+# Genie.Model.CollectionMethodEnum
 
 ## Properties
 

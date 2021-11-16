@@ -1,4 +1,4 @@
-# Genie.Api.Model.TokenVerify
+# Genie.Model.TokenVerify
 
 ## Properties
 

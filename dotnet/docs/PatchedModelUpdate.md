@@ -1,4 +1,4 @@
-# Genie.Api.Model.PatchedModelUpdate
+# Genie.Model.PatchedModelUpdate
 
 ## Properties
 

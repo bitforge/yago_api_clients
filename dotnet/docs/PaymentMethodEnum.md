@@ -1,4 +1,4 @@
-# Genie.Api.Model.PaymentMethodEnum
+# Genie.Model.PaymentMethodEnum
 
 ## Properties
 

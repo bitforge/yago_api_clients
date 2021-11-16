@@ -1,4 +1,4 @@
-# Genie.Api.Api.ModelsApi
+# Genie.Api.ModelsApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -30,9 +30,9 @@ Add a new model. Change details and translations later via PUT or PATCH.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -111,9 +111,9 @@ Remove a model. Be cautious, this is permanent!
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -191,9 +191,9 @@ Delete a file.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -271,9 +271,9 @@ Upload a file. Max size 30MB. Filename is required!
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -356,9 +356,9 @@ Delete an image.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -436,9 +436,9 @@ Upload an image. Max size 30MB. Filename is required!
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -521,9 +521,9 @@ Lists all models for all projects the user is a member of. Can be filtered by `p
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -604,9 +604,9 @@ Change as subset of model details.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -687,9 +687,9 @@ Details of a single model.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -768,9 +768,9 @@ Change model details. Translated field are all optional expcet for `name_de`.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -851,9 +851,9 @@ Delete a file.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -931,9 +931,9 @@ Upload a file. Max size 30MB. Filename is required!
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

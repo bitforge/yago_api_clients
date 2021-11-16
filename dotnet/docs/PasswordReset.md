@@ -1,4 +1,4 @@
-# Genie.Api.Model.PasswordReset
+# Genie.Model.PasswordReset
 Serializer for requesting a password reset e-mail.
 
 ## Properties

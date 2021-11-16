@@ -1,4 +1,4 @@
-# Genie.Api.Api.StatsApi
+# Genie.Api.StatsApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -20,9 +20,9 @@ Traffic analytics over all projects and models.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -102,9 +102,9 @@ Traffic for single project and all models of that project. Raises 404 if the use
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

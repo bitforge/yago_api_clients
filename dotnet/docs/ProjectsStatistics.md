@@ -1,4 +1,4 @@
-# Genie.Api.Model.ProjectsStatistics
+# Genie.Model.ProjectsStatistics
 
 ## Properties
 

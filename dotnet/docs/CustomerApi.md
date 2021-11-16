@@ -1,4 +1,4 @@
-# Genie.Api.Api.CustomerApi
+# Genie.Api.CustomerApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -22,9 +22,9 @@ Update customer billing address. Required prior to subscribing to Genie AR servi
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -103,9 +103,9 @@ Update customer billing address. Required prior to subscribing to Genie AR servi
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -180,9 +180,9 @@ Update customer billing address. Required prior to subscribing to Genie AR servi
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -261,9 +261,9 @@ Returns the customer associated with the current user account
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

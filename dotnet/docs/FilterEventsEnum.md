@@ -1,4 +1,4 @@
-# Genie.Api.Model.FilterEventsEnum
+# Genie.Model.FilterEventsEnum
 
 ## Properties
 

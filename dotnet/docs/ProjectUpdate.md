@@ -1,4 +1,4 @@
-# Genie.Api.Model.ProjectUpdate
+# Genie.Model.ProjectUpdate
 
 ## Properties
 

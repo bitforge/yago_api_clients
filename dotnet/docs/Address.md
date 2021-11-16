@@ -1,4 +1,4 @@
-# Genie.Api.Model.Address
+# Genie.Model.Address
 
 ## Properties
 

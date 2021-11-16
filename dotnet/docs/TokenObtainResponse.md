@@ -1,4 +1,4 @@
-# Genie.Api.Model.TokenObtainResponse
+# Genie.Model.TokenObtainResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Genie.Api.Model.PatchedAddress
+# Genie.Model.PatchedAddress
 
 ## Properties
 

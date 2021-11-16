@@ -1,4 +1,4 @@
-# Genie.Api.Model.ProjectCreate
+# Genie.Model.ProjectCreate
 
 ## Properties
 

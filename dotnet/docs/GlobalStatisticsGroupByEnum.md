@@ -1,4 +1,4 @@
-# Genie.Api.Model.GlobalStatisticsGroupByEnum
+# Genie.Model.GlobalStatisticsGroupByEnum
 
 ## Properties
 

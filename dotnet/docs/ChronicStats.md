@@ -1,4 +1,4 @@
-# Genie.Api.Model.ChronicStats
+# Genie.Model.ChronicStats
 
 ## Properties
 

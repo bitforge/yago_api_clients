@@ -1,4 +1,4 @@
-# Genie.Api.Model.Nested
+# Genie.Model.Nested
 
 ## Properties
 

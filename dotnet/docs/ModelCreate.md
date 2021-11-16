@@ -1,4 +1,4 @@
-# Genie.Api.Model.ModelCreate
+# Genie.Model.ModelCreate
 
 ## Properties
 

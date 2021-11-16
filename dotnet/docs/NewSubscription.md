@@ -1,4 +1,4 @@
-# Genie.Api.Model.NewSubscription
+# Genie.Model.NewSubscription
 
 ## Properties
 

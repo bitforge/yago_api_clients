@@ -1,4 +1,4 @@
-# Genie.Api.Api.RegistrationApi
+# Genie.Api.RegistrationApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -20,9 +20,9 @@ Create a new registeration and sends out an activation email.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -90,9 +90,9 @@ Verifiy registration email, create user and return login token
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

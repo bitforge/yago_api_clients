@@ -1,4 +1,4 @@
-# Genie.Api.Model.GlobalStatistics
+# Genie.Model.GlobalStatistics
 
 ## Properties
 

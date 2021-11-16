@@ -1,4 +1,4 @@
-# Genie.Api.Model.PlanEnum
+# Genie.Model.PlanEnum
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Genie.Api.Model.GoogleIdToken
+# Genie.Model.GoogleIdToken
 Verify Google ID Token and ensure email is verified
 
 ## Properties

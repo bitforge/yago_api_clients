@@ -1,4 +1,4 @@
-# Genie.Api.Model.ModelStatus
+# Genie.Model.ModelStatus
 
 ## Properties
 

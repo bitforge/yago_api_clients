@@ -1,4 +1,4 @@
-# Genie.Api.Model.Membership
+# Genie.Model.Membership
 
 ## Properties
 

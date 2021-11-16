@@ -1,4 +1,4 @@
-# Genie.Api.Model.ProjectsStatisticsGroupByEnum
+# Genie.Model.ProjectsStatisticsGroupByEnum
 
 ## Properties
 

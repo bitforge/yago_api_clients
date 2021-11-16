@@ -1,4 +1,4 @@
-# Genie.Api.Model.PricingPlan
+# Genie.Model.PricingPlan
 
 ## Properties
 

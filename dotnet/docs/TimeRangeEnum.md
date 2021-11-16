@@ -1,4 +1,4 @@
-# Genie.Api.Model.TimeRangeEnum
+# Genie.Model.TimeRangeEnum
 
 ## Properties
 

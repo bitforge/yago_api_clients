@@ -1,4 +1,4 @@
-# Genie.Api.Model.HealthStatus
+# Genie.Model.HealthStatus
 
 ## Properties
 

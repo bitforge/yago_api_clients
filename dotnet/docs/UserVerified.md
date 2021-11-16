@@ -1,4 +1,4 @@
-# Genie.Api.Model.UserVerified
+# Genie.Model.UserVerified
 
 ## Properties
 

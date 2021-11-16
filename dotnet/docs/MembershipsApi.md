@@ -1,4 +1,4 @@
-# Genie.Api.Api.MembershipsApi
+# Genie.Api.MembershipsApi
 
 All URIs are relative to *https://genie-ar.ch*
 
@@ -21,9 +21,9 @@ Add a new project membership.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -102,9 +102,9 @@ Remove a project member. Only OWNERS can do this.
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {
@@ -182,9 +182,9 @@ All project memberships of projects the user is also a member of. Can be filtere
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Genie.Api.Api;
-using Genie.Api.Client;
-using Genie.Api.Model;
+using Genie.Api;
+using Genie.Client;
+using Genie.Model;
 
 namespace Example
 {

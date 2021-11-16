@@ -1,4 +1,4 @@
-# Genie.Api.Model.SummaryStats
+# Genie.Model.SummaryStats
 
 ## Properties
 

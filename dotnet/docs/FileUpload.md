@@ -1,4 +1,4 @@
-# Genie.Api.Model.FileUpload
+# Genie.Model.FileUpload
 
 ## Properties
 
