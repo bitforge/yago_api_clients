@@ -1,45 +1,36 @@
-## genie-api-client@1.0.0
+## genie-api-client
 
-This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
+Client library to access [Genie REST API](https://genie-ar.ch/api/doc/).
 
-Environment
-* Node.js
-* Webpack
-* Browserify
+Generated with `openapi-generator` using the [Fetch API](https://fetch.spec.whatwg.org/).
 
-Language level
-* ES5 - you must have a Promises/A+ library installed
-* ES6
+##  Installation
 
-Module system
-* CommonJS
-* ES6 module system
+Use your favorite package manager:
 
-It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
+`npm install @bitforgehq/genie-api-client`
 
-### Building
+*OR*
 
-To build and compile the typescript sources to javascript use:
-```
-npm install
-npm run build
-```
+`yarn add @bitforgehq/genie-api-client`
 
-### Publishing
+# Usage
 
-First build the package then run ```npm publish```
+```typescript
 
-### Consuming
+// Create auth token. Can be saved in local storage
+const token = await new AuthApi().authCreate({
+    tokenObtainRequest: {
+        email: 'your@email.com',
+        password: 'yourPa$$w0Rd',
+    },
+});
 
-navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
+// Fetch projects and models
+const apiConfig = new Configuration({ accessToken: token.access });
+const projects = await new ProjectsApi(apiConfig).projectsList();
+const models = await new ModelsApi(apiConfig).modelsList({ project: projects[0].id });
 
 ```
-npm install genie-api-client@1.0.0 --save
-```
 
-_unPublished (not recommended):_
-
-```
-npm install PATH_TO_GENERATED_PACKAGE --save
+See [API Docs](https://genie-ar.ch/api/doc/) for a full list of all available endpoints.
