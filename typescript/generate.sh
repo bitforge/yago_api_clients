@@ -7,9 +7,13 @@ npx @openapitools/openapi-generator-cli generate \
     --additional-properties=typescriptThreePlus=true \
     --additional-properties=npmName=genie-api-client
 
-
 # Fix annoying typescript error in generated source
-sed -i '' -e 's/this\.configuration\.fetchApi/this\.configuration\.fetchApi\!/g' src/runtime.ts
+sed -i -e 's/this\.configuration\.fetchApi/this\.configuration\.fetchApi\!/g' src/runtime.ts
+
+# Remove backup file from sed on macOS
+if [[ -f "src/runtime.ts-e" ]]; then
+    rm -f src/runtime.ts-e
+fi
 
 CLR='\033[0;32m'
 EOC='\033[0m'

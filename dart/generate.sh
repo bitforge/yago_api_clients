@@ -9,8 +9,13 @@ npx @openapitools/openapi-generator-cli generate \
 rm -rf test
 
 # Replace git user and repo name in README
-sed -i '' -e 's/GIT_USER_ID/bitforge/g' README.md
-sed -i '' -e 's/GIT_REPO_ID/genie-api-clients/g' README.md
+sed -i -e 's/GIT_USER_ID/bitforge/g' README.md
+sed -i -e 's/GIT_REPO_ID/genie-api-clients/g' README.md
+
+# Remove backup file from sed on macOS
+if [[ -f "README.md-e" ]]; then
+    rm -f README.md-e
+fi
 
 CLR='\033[0;32m'
 EOC='\033[0m'

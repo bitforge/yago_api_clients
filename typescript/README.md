@@ -26,8 +26,13 @@ const token = await new AuthApi().authCreate({
     },
 });
 
+// Initialize API configuration with token
+const apiConfig = new Configuration({
+    basePath = "https://genie-ar.ch",
+    accessToken: token.access
+});
+
 // Fetch projects and models
-const apiConfig = new Configuration({ accessToken: token.access });
 const projects = await new ProjectsApi(apiConfig).projectsList();
 const models = await new ModelsApi(apiConfig).modelsList({ project: projects[0].id });
 
