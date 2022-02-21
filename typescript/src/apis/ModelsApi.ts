@@ -24,6 +24,9 @@ import {
     ModelCreate,
     ModelCreateFromJSON,
     ModelCreateToJSON,
+    ModelInfo,
+    ModelInfoFromJSON,
+    ModelInfoToJSON,
     ModelUpdate,
     ModelUpdateFromJSON,
     ModelUpdateToJSON,
@@ -38,6 +41,10 @@ export interface ModelsCreateRequest {
 
 export interface ModelsDestroyRequest {
     id: string;
+}
+
+export interface ModelsEmbedOptionsRetrieveRequest {
+    slug: string;
 }
 
 export interface ModelsGlbDestroyRequest {
@@ -72,6 +79,26 @@ export interface ModelsPartialUpdateRequest {
 
 export interface ModelsRetrieveRequest {
     id: string;
+}
+
+export interface ModelsUnityAndroidDestroyRequest {
+    id: string;
+}
+
+export interface ModelsUnityAndroidUpdateRequest {
+    contentDisposition: string;
+    id: string;
+    body?: Blob;
+}
+
+export interface ModelsUnityIosDestroyRequest {
+    id: string;
+}
+
+export interface ModelsUnityIosUpdateRequest {
+    contentDisposition: string;
+    id: string;
+    body?: Blob;
 }
 
 export interface ModelsUpdateRequest {
@@ -178,6 +205,36 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsDestroy(requestParameters: ModelsDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.modelsDestroyRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Model infos for embedding. Loaded by <ar-button> web component.
+     */
+    async modelsEmbedOptionsRetrieveRaw(requestParameters: ModelsEmbedOptionsRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ModelInfo>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
+            throw new runtime.RequiredError('slug','Required parameter requestParameters.slug was null or undefined when calling modelsEmbedOptionsRetrieve.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/api/models/{slug}/embed/options/`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ModelInfoFromJSON(jsonValue));
+    }
+
+    /**
+     * Model infos for embedding. Loaded by <ar-button> web component.
+     */
+    async modelsEmbedOptionsRetrieve(requestParameters: ModelsEmbedOptionsRetrieveRequest, initOverrides?: RequestInit): Promise<ModelInfo> {
+        const response = await this.modelsEmbedOptionsRetrieveRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
@@ -498,6 +555,194 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsRetrieve(requestParameters: ModelsRetrieveRequest, initOverrides?: RequestInit): Promise<Model> {
         const response = await this.modelsRetrieveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete a file.
+     */
+    async modelsUnityAndroidDestroyRaw(requestParameters: ModelsUnityAndroidDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling modelsUnityAndroidDestroy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/models/{id}/unity_android/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Delete a file.
+     */
+    async modelsUnityAndroidDestroy(requestParameters: ModelsUnityAndroidDestroyRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.modelsUnityAndroidDestroyRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Upload a file. Max size 30MB. Filename is required!
+     */
+    async modelsUnityAndroidUpdateRaw(requestParameters: ModelsUnityAndroidUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUpload>> {
+        if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
+            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling modelsUnityAndroidUpdate.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling modelsUnityAndroidUpdate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/octet-stream';
+
+        if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
+            headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/models/{id}/unity_android/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.body as any,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadFromJSON(jsonValue));
+    }
+
+    /**
+     * Upload a file. Max size 30MB. Filename is required!
+     */
+    async modelsUnityAndroidUpdate(requestParameters: ModelsUnityAndroidUpdateRequest, initOverrides?: RequestInit): Promise<FileUpload> {
+        const response = await this.modelsUnityAndroidUpdateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete a file.
+     */
+    async modelsUnityIosDestroyRaw(requestParameters: ModelsUnityIosDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling modelsUnityIosDestroy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/models/{id}/unity_ios/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Delete a file.
+     */
+    async modelsUnityIosDestroy(requestParameters: ModelsUnityIosDestroyRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.modelsUnityIosDestroyRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Upload a file. Max size 30MB. Filename is required!
+     */
+    async modelsUnityIosUpdateRaw(requestParameters: ModelsUnityIosUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUpload>> {
+        if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
+            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling modelsUnityIosUpdate.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling modelsUnityIosUpdate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/octet-stream';
+
+        if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
+            headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/models/{id}/unity_ios/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.body as any,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadFromJSON(jsonValue));
+    }
+
+    /**
+     * Upload a file. Max size 30MB. Filename is required!
+     */
+    async modelsUnityIosUpdate(requestParameters: ModelsUnityIosUpdateRequest, initOverrides?: RequestInit): Promise<FileUpload> {
+        const response = await this.modelsUnityIosUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

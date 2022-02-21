@@ -41,12 +41,12 @@ import {
     TokenVerifyToJSON,
 } from '../models';
 
-export interface AuthCreateRequest {
-    tokenObtainRequest: TokenObtainRequest;
-}
-
 export interface AuthGoogleCreateRequest {
     googleIdToken: GoogleIdToken;
+}
+
+export interface AuthLoginCreateRequest {
+    tokenObtainRequest: TokenObtainRequest;
 }
 
 export interface AuthPasswordResetConfirmCreateRequest {
@@ -69,39 +69,6 @@ export interface AuthVerifyCreateRequest {
  * 
  */
 export class AuthApi extends runtime.BaseAPI {
-
-    /**
-     * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
-     */
-    async authCreateRaw(requestParameters: AuthCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TokenObtainResponse>> {
-        if (requestParameters.tokenObtainRequest === null || requestParameters.tokenObtainRequest === undefined) {
-            throw new runtime.RequiredError('tokenObtainRequest','Required parameter requestParameters.tokenObtainRequest was null or undefined when calling authCreate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/api/auth/`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: TokenObtainRequestToJSON(requestParameters.tokenObtainRequest),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TokenObtainResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
-     */
-    async authCreate(requestParameters: AuthCreateRequest, initOverrides?: RequestInit): Promise<TokenObtainResponse> {
-        const response = await this.authCreateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 
     /**
      * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
@@ -133,6 +100,39 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authGoogleCreate(requestParameters: AuthGoogleCreateRequest, initOverrides?: RequestInit): Promise<TokenObtainResponse> {
         const response = await this.authGoogleCreateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
+     */
+    async authLoginCreateRaw(requestParameters: AuthLoginCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TokenObtainResponse>> {
+        if (requestParameters.tokenObtainRequest === null || requestParameters.tokenObtainRequest === undefined) {
+            throw new runtime.RequiredError('tokenObtainRequest','Required parameter requestParameters.tokenObtainRequest was null or undefined when calling authLoginCreate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/api/auth/login/`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TokenObtainRequestToJSON(requestParameters.tokenObtainRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TokenObtainResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
+     */
+    async authLoginCreate(requestParameters: AuthLoginCreateRequest, initOverrides?: RequestInit): Promise<TokenObtainResponse> {
+        const response = await this.authLoginCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

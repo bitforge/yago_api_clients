@@ -25,6 +25,7 @@ src/models/HealthStatus.ts
 src/models/Membership.ts
 src/models/Model.ts
 src/models/ModelCreate.ts
+src/models/ModelInfo.ts
 src/models/ModelStatus.ts
 src/models/ModelUpdate.ts
 src/models/Nested.ts

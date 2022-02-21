@@ -14,6 +14,7 @@ export * from './HealthStatus';
 export * from './Membership';
 export * from './Model';
 export * from './ModelCreate';
+export * from './ModelInfo';
 export * from './ModelStatus';
 export * from './ModelUpdate';
 export * from './Nested';

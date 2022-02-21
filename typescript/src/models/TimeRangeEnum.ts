@@ -25,7 +25,9 @@ export enum TimeRangeEnum {
     _1m = '1m',
     _2m = '2m',
     _3m = '3m',
-    _6m = '6m'
+    _6m = '6m',
+    _1y = '1y',
+    _2y = '2y'
 }
 
 export function TimeRangeEnumFromJSON(json: any): TimeRangeEnum {

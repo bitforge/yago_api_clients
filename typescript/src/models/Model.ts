@@ -201,6 +201,18 @@ export interface Model {
      */
     usdz?: string | null;
     /**
+     * Unity Asset Bundle for Android
+     * @type {string}
+     * @memberof Model
+     */
+    unityIos?: string | null;
+    /**
+     * Unity Asset Bundle for iOS
+     * @type {string}
+     * @memberof Model
+     */
+    unityAndroid?: string | null;
+    /**
      * 
      * @type {Date}
      * @memberof Model
@@ -253,6 +265,8 @@ export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Mod
         'scaleable': !exists(json, 'scaleable') ? undefined : json['scaleable'],
         'glb': !exists(json, 'glb') ? undefined : json['glb'],
         'usdz': !exists(json, 'usdz') ? undefined : json['usdz'],
+        'unityIos': !exists(json, 'unity_ios') ? undefined : json['unity_ios'],
+        'unityAndroid': !exists(json, 'unity_android') ? undefined : json['unity_android'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
     };
@@ -289,6 +303,8 @@ export function ModelToJSON(value?: Model | null): any {
         'scaleable': value.scaleable,
         'glb': value.glb,
         'usdz': value.usdz,
+        'unity_ios': value.unityIos,
+        'unity_android': value.unityAndroid,
     };
 }
 

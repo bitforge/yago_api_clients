@@ -231,6 +231,12 @@ export interface StripeSubscription {
      * @type {Nested}
      * @memberof StripeSubscription
      */
+    readonly latestInvoice: Nested | null;
+    /**
+     * 
+     * @type {Nested}
+     * @memberof StripeSubscription
+     */
     readonly pendingSetupIntent: Nested | null;
     /**
      * 
@@ -294,6 +300,7 @@ export function StripeSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: 
         'customer': NestedFromJSON(json['customer']),
         'defaultPaymentMethod': NestedFromJSON(json['default_payment_method']),
         'defaultSource': NestedFromJSON(json['default_source']),
+        'latestInvoice': NestedFromJSON(json['latest_invoice']),
         'pendingSetupIntent': NestedFromJSON(json['pending_setup_intent']),
         'plan': NestedFromJSON(json['plan']),
         'schedule': NestedFromJSON(json['schedule']),

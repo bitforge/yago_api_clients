@@ -1,8 +1,11 @@
 #!/bin/bash -e
 
+# Remove old generated source files
+rm -rf src
+
 # Fetch OpenAPI Schema an generate api client
 npx @openapitools/openapi-generator-cli generate \
-    -i http://genie-ar.ch/api/schema/ \
+    -i http://dev.yago.cloud/api/schema/ \
     -g typescript-fetch \
     --additional-properties=typescriptThreePlus=true \
     --additional-properties=npmName=genie-api-client
