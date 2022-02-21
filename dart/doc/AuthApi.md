@@ -5,60 +5,17 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *https://genie-ar.ch*
+All URIs are relative to *https://dev.yago.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authCreate**](AuthApi.md#authcreate) | **POST** /api/auth/ | 
 [**authGoogleCreate**](AuthApi.md#authgooglecreate) | **POST** /api/auth/google/ | 
+[**authLoginCreate**](AuthApi.md#authlogincreate) | **POST** /api/auth/login/ | 
 [**authPasswordResetConfirmCreate**](AuthApi.md#authpasswordresetconfirmcreate) | **POST** /api/auth/password/reset/confirm/ | 
 [**authPasswordResetCreate**](AuthApi.md#authpasswordresetcreate) | **POST** /api/auth/password/reset/ | 
 [**authRefreshCreate**](AuthApi.md#authrefreshcreate) | **POST** /api/auth/refresh/ | 
 [**authVerifyCreate**](AuthApi.md#authverifycreate) | **POST** /api/auth/verify/ | 
 
-
-# **authCreate**
-> TokenObtainResponse authCreate(tokenObtainRequest)
-
-
-
-Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-
-final api_instance = AuthApi();
-final tokenObtainRequest = TokenObtainRequest(); // TokenObtainRequest | 
-
-try {
-    final result = api_instance.authCreate(tokenObtainRequest);
-    print(result);
-} catch (e) {
-    print('Exception when calling AuthApi->authCreate: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tokenObtainRequest** | [**TokenObtainRequest**](TokenObtainRequest.md)|  | 
-
-### Return type
-
-[**TokenObtainResponse**](TokenObtainResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **authGoogleCreate**
 > TokenObtainResponse authGoogleCreate(googleIdToken)
@@ -87,6 +44,49 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **googleIdToken** | [**GoogleIdToken**](GoogleIdToken.md)|  | 
+
+### Return type
+
+[**TokenObtainResponse**](TokenObtainResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authLoginCreate**
+> TokenObtainResponse authLoginCreate(tokenObtainRequest)
+
+
+
+Takes a set of user credentials and returns an access and refresh JSON web token pair to prove the authentication of those credentials.
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api_instance = AuthApi();
+final tokenObtainRequest = TokenObtainRequest(); // TokenObtainRequest | 
+
+try {
+    final result = api_instance.authLoginCreate(tokenObtainRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->authLoginCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenObtainRequest** | [**TokenObtainRequest**](TokenObtainRequest.md)|  | 
 
 ### Return type
 

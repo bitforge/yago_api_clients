@@ -41,25 +41,25 @@ import 'package:openapi/api.dart';
 
 
 final api_instance = AuthApi();
-final tokenObtainRequest = TokenObtainRequest(); // TokenObtainRequest | 
+final googleIdToken = GoogleIdToken(); // GoogleIdToken | 
 
 try {
-    final result = api_instance.authCreate(tokenObtainRequest);
+    final result = api_instance.authGoogleCreate(googleIdToken);
     print(result);
 } catch (e) {
-    print('Exception when calling AuthApi->authCreate: $e\n');
+    print('Exception when calling AuthApi->authGoogleCreate: $e\n');
 }
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://genie-ar.ch*
+All URIs are relative to *https://dev.yago.cloud*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuthApi* | [**authCreate**](doc//AuthApi.md#authcreate) | **POST** /api/auth/ | 
 *AuthApi* | [**authGoogleCreate**](doc//AuthApi.md#authgooglecreate) | **POST** /api/auth/google/ | 
+*AuthApi* | [**authLoginCreate**](doc//AuthApi.md#authlogincreate) | **POST** /api/auth/login/ | 
 *AuthApi* | [**authPasswordResetConfirmCreate**](doc//AuthApi.md#authpasswordresetconfirmcreate) | **POST** /api/auth/password/reset/confirm/ | 
 *AuthApi* | [**authPasswordResetCreate**](doc//AuthApi.md#authpasswordresetcreate) | **POST** /api/auth/password/reset/ | 
 *AuthApi* | [**authRefreshCreate**](doc//AuthApi.md#authrefreshcreate) | **POST** /api/auth/refresh/ | 
@@ -74,6 +74,7 @@ Class | Method | HTTP request | Description
 *MembershipsApi* | [**membershipsList**](doc//MembershipsApi.md#membershipslist) | **GET** /api/memberships/ | 
 *ModelsApi* | [**modelsCreate**](doc//ModelsApi.md#modelscreate) | **POST** /api/models/ | 
 *ModelsApi* | [**modelsDestroy**](doc//ModelsApi.md#modelsdestroy) | **DELETE** /api/models/{id}/ | 
+*ModelsApi* | [**modelsEmbedOptionsRetrieve**](doc//ModelsApi.md#modelsembedoptionsretrieve) | **GET** /api/models/{slug}/embed/options/ | 
 *ModelsApi* | [**modelsGlbDestroy**](doc//ModelsApi.md#modelsglbdestroy) | **DELETE** /api/models/{id}/glb/ | 
 *ModelsApi* | [**modelsGlbUpdate**](doc//ModelsApi.md#modelsglbupdate) | **PUT** /api/models/{id}/glb/ | 
 *ModelsApi* | [**modelsImageDestroy**](doc//ModelsApi.md#modelsimagedestroy) | **DELETE** /api/models/{id}/image/ | 
@@ -81,6 +82,10 @@ Class | Method | HTTP request | Description
 *ModelsApi* | [**modelsList**](doc//ModelsApi.md#modelslist) | **GET** /api/models/ | 
 *ModelsApi* | [**modelsPartialUpdate**](doc//ModelsApi.md#modelspartialupdate) | **PATCH** /api/models/{id}/ | 
 *ModelsApi* | [**modelsRetrieve**](doc//ModelsApi.md#modelsretrieve) | **GET** /api/models/{id}/ | 
+*ModelsApi* | [**modelsUnityAndroidDestroy**](doc//ModelsApi.md#modelsunityandroiddestroy) | **DELETE** /api/models/{id}/unity_android/ | 
+*ModelsApi* | [**modelsUnityAndroidUpdate**](doc//ModelsApi.md#modelsunityandroidupdate) | **PUT** /api/models/{id}/unity_android/ | 
+*ModelsApi* | [**modelsUnityIosDestroy**](doc//ModelsApi.md#modelsunityiosdestroy) | **DELETE** /api/models/{id}/unity_ios/ | 
+*ModelsApi* | [**modelsUnityIosUpdate**](doc//ModelsApi.md#modelsunityiosupdate) | **PUT** /api/models/{id}/unity_ios/ | 
 *ModelsApi* | [**modelsUpdate**](doc//ModelsApi.md#modelsupdate) | **PUT** /api/models/{id}/ | 
 *ModelsApi* | [**modelsUsdzDestroy**](doc//ModelsApi.md#modelsusdzdestroy) | **DELETE** /api/models/{id}/usdz/ | 
 *ModelsApi* | [**modelsUsdzUpdate**](doc//ModelsApi.md#modelsusdzupdate) | **PUT** /api/models/{id}/usdz/ | 
@@ -121,6 +126,7 @@ Class | Method | HTTP request | Description
  - [Membership](doc//Membership.md)
  - [Model](doc//Model.md)
  - [ModelCreate](doc//ModelCreate.md)
+ - [ModelInfo](doc//ModelInfo.md)
  - [ModelStatus](doc//ModelStatus.md)
  - [ModelUpdate](doc//ModelUpdate.md)
  - [Nested](doc//Nested.md)

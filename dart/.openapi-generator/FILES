@@ -20,6 +20,7 @@ doc/Membership.md
 doc/MembershipsApi.md
 doc/Model.md
 doc/ModelCreate.md
+doc/ModelInfo.md
 doc/ModelStatus.md
 doc/ModelUpdate.md
 doc/ModelsApi.md
@@ -95,6 +96,7 @@ lib/model/health_status.dart
 lib/model/membership.dart
 lib/model/model.dart
 lib/model/model_create.dart
+lib/model/model_info.dart
 lib/model/model_status.dart
 lib/model/model_update.dart
 lib/model/nested.dart
@@ -145,6 +147,7 @@ test/health_status_test.dart
 test/membership_test.dart
 test/memberships_api_test.dart
 test/model_create_test.dart
+test/model_info_test.dart
 test/model_status_test.dart
 test/model_test.dart
 test/model_update_test.dart

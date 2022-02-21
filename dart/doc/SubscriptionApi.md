@@ -5,7 +5,7 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *https://genie-ar.ch*
+All URIs are relative to *https://dev.yago.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

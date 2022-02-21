@@ -40,6 +40,7 @@ Name | Type | Description | Notes
 **customer** | [**Nested**](Nested.md) |  | [readonly] 
 **defaultPaymentMethod** | [**Nested**](Nested.md) |  | [readonly] 
 **defaultSource** | [**Nested**](Nested.md) |  | [readonly] 
+**latestInvoice** | [**Nested**](Nested.md) |  | [readonly] 
 **pendingSetupIntent** | [**Nested**](Nested.md) |  | [readonly] 
 **plan** | [**Nested**](Nested.md) |  | [readonly] 
 **schedule** | [**Nested**](Nested.md) |  | [readonly] 

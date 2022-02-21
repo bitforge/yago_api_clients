@@ -37,6 +37,8 @@ Name | Type | Description | Notes
 **scaleable** | **bool** | Let's the user scale the model in AR when enabled. | [optional] 
 **glb** | **String** | Must be a binary glTF file according to the Khronos Group standard. | [optional] 
 **usdz** | **String** | Must be a USDZ or Reality Composer file. | [optional] 
+**unityIos** | **String** | Unity Asset Bundle for Android | [optional] 
+**unityAndroid** | **String** | Unity Asset Bundle for iOS | [optional] 
 **created** | [**DateTime**](DateTime.md) |  | [readonly] 
 **modified** | [**DateTime**](DateTime.md) |  | [readonly] 
 
