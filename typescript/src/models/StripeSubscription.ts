@@ -18,15 +18,13 @@ import {
     CollectionMethodEnumFromJSON,
     CollectionMethodEnumFromJSONTyped,
     CollectionMethodEnumToJSON,
-    Nested,
-    NestedFromJSON,
-    NestedFromJSONTyped,
-    NestedToJSON,
+} from './CollectionMethodEnum';
+import {
     StripeSubscriptionStatusEnum,
     StripeSubscriptionStatusEnumFromJSON,
     StripeSubscriptionStatusEnumFromJSONTyped,
     StripeSubscriptionStatusEnumToJSON,
-} from './';
+} from './StripeSubscriptionStatusEnum';
 
 /**
  * 
@@ -203,59 +201,59 @@ export interface StripeSubscription {
      */
     trialStart?: Date | null;
     /**
-     * 
-     * @type {Nested}
+     * The Stripe Account this object belongs to.
+     * @type {string}
      * @memberof StripeSubscription
      */
-    readonly djstripeOwnerAccount: Nested | null;
+    djstripeOwnerAccount?: string | null;
     /**
-     * 
-     * @type {Nested}
+     * The customer associated with this subscription.
+     * @type {string}
      * @memberof StripeSubscription
      */
-    readonly customer: Nested | null;
+    customer: string;
     /**
-     * 
-     * @type {Nested}
+     * The default payment method for the subscription. It must belong to the customer associated with the subscription. If not set, invoices will use the default payment method in the customer's invoice settings.
+     * @type {string}
      * @memberof StripeSubscription
      */
-    readonly defaultPaymentMethod: Nested | null;
+    defaultPaymentMethod?: string | null;
     /**
-     * 
-     * @type {Nested}
+     * The default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If not set, defaults to the customer's default source.
+     * @type {string}
      * @memberof StripeSubscription
      */
-    readonly defaultSource: Nested | null;
+    defaultSource?: string | null;
     /**
-     * 
-     * @type {Nested}
+     * The most recent invoice this subscription has generated.
+     * @type {string}
      * @memberof StripeSubscription
      */
-    readonly latestInvoice: Nested | null;
+    latestInvoice?: string | null;
     /**
-     * 
-     * @type {Nested}
+     * We can use this SetupIntent to collect user authentication when creating a subscription without immediate payment or updating a subscription's payment method, allowing you to optimize for off-session payments.
+     * @type {string}
      * @memberof StripeSubscription
      */
-    readonly pendingSetupIntent: Nested | null;
+    pendingSetupIntent?: string | null;
     /**
-     * 
-     * @type {Nested}
+     * The plan associated with this subscription. This value will be `null` for multi-plan subscriptions
+     * @type {number}
      * @memberof StripeSubscription
      */
-    readonly plan: Nested | null;
+    plan?: number | null;
     /**
-     * 
-     * @type {Nested}
+     * The schedule associated with this subscription.
+     * @type {number}
      * @memberof StripeSubscription
      */
-    readonly schedule: Nested | null;
+    schedule?: number | null;
     /**
-     * 
-     * @type {Array<Nested>}
+     * The tax rates that will apply to any subscription item that does not have tax_rates set. Invoices created will have their default_tax_rates populated from the subscription.
+     * @type {Array<number>}
      * @memberof StripeSubscription
      */
-    readonly defaultTaxRates: Array<Nested>;
+    defaultTaxRates?: Array<number>;
 }
 
 export function StripeSubscriptionFromJSON(json: any): StripeSubscription {
@@ -296,15 +294,15 @@ export function StripeSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: 
         'status': StripeSubscriptionStatusEnumFromJSON(json['status']),
         'trialEnd': !exists(json, 'trial_end') ? undefined : (json['trial_end'] === null ? null : new Date(json['trial_end'])),
         'trialStart': !exists(json, 'trial_start') ? undefined : (json['trial_start'] === null ? null : new Date(json['trial_start'])),
-        'djstripeOwnerAccount': NestedFromJSON(json['djstripe_owner_account']),
-        'customer': NestedFromJSON(json['customer']),
-        'defaultPaymentMethod': NestedFromJSON(json['default_payment_method']),
-        'defaultSource': NestedFromJSON(json['default_source']),
-        'latestInvoice': NestedFromJSON(json['latest_invoice']),
-        'pendingSetupIntent': NestedFromJSON(json['pending_setup_intent']),
-        'plan': NestedFromJSON(json['plan']),
-        'schedule': NestedFromJSON(json['schedule']),
-        'defaultTaxRates': ((json['default_tax_rates'] as Array<any>).map(NestedFromJSON)),
+        'djstripeOwnerAccount': !exists(json, 'djstripe_owner_account') ? undefined : json['djstripe_owner_account'],
+        'customer': json['customer'],
+        'defaultPaymentMethod': !exists(json, 'default_payment_method') ? undefined : json['default_payment_method'],
+        'defaultSource': !exists(json, 'default_source') ? undefined : json['default_source'],
+        'latestInvoice': !exists(json, 'latest_invoice') ? undefined : json['latest_invoice'],
+        'pendingSetupIntent': !exists(json, 'pending_setup_intent') ? undefined : json['pending_setup_intent'],
+        'plan': !exists(json, 'plan') ? undefined : json['plan'],
+        'schedule': !exists(json, 'schedule') ? undefined : json['schedule'],
+        'defaultTaxRates': !exists(json, 'default_tax_rates') ? undefined : json['default_tax_rates'],
     };
 }
 
@@ -342,6 +340,15 @@ export function StripeSubscriptionToJSON(value?: StripeSubscription | null): any
         'status': StripeSubscriptionStatusEnumToJSON(value.status),
         'trial_end': value.trialEnd === undefined ? undefined : (value.trialEnd === null ? null : value.trialEnd.toISOString()),
         'trial_start': value.trialStart === undefined ? undefined : (value.trialStart === null ? null : value.trialStart.toISOString()),
+        'djstripe_owner_account': value.djstripeOwnerAccount,
+        'customer': value.customer,
+        'default_payment_method': value.defaultPaymentMethod,
+        'default_source': value.defaultSource,
+        'latest_invoice': value.latestInvoice,
+        'pending_setup_intent': value.pendingSetupIntent,
+        'plan': value.plan,
+        'schedule': value.schedule,
+        'default_tax_rates': value.defaultTaxRates,
     };
 }
 

@@ -18,19 +18,25 @@ import {
     FilterEventsEnumFromJSON,
     FilterEventsEnumFromJSONTyped,
     FilterEventsEnumToJSON,
+} from './FilterEventsEnum';
+import {
     GlobalStatisticsGroupByEnum,
     GlobalStatisticsGroupByEnumFromJSON,
     GlobalStatisticsGroupByEnumFromJSONTyped,
     GlobalStatisticsGroupByEnumToJSON,
+} from './GlobalStatisticsGroupByEnum';
+import {
     ReportFormatEnum,
     ReportFormatEnumFromJSON,
     ReportFormatEnumFromJSONTyped,
     ReportFormatEnumToJSON,
+} from './ReportFormatEnum';
+import {
     TimeRangeEnum,
     TimeRangeEnumFromJSON,
     TimeRangeEnumFromJSONTyped,
     TimeRangeEnumToJSON,
-} from './';
+} from './TimeRangeEnum';
 
 /**
  * 

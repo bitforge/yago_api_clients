@@ -165,7 +165,7 @@ export class MembershipsApi extends runtime.BaseAPI {
     /**
      * All project memberships of projects the user is also a member of. Can be filtered by `project` and `user`.
      */
-    async membershipsList(requestParameters: MembershipsListRequest, initOverrides?: RequestInit): Promise<Array<Membership>> {
+    async membershipsList(requestParameters: MembershipsListRequest = {}, initOverrides?: RequestInit): Promise<Array<Membership>> {
         const response = await this.membershipsListRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -14,19 +14,17 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Nested,
-    NestedFromJSON,
-    NestedFromJSONTyped,
-    NestedToJSON,
     PaymentMethodEnum,
     PaymentMethodEnumFromJSON,
     PaymentMethodEnumFromJSONTyped,
     PaymentMethodEnumToJSON,
+} from './PaymentMethodEnum';
+import {
     StripeSubscription,
     StripeSubscriptionFromJSON,
     StripeSubscriptionFromJSONTyped,
     StripeSubscriptionToJSON,
-} from './';
+} from './StripeSubscription';
 
 /**
  * 
@@ -41,17 +39,17 @@ export interface Subscription {
      */
     paymentMethod?: PaymentMethodEnum;
     /**
-     * 
-     * @type {Nested}
+     * Defines the number of available models and AR views. <a href="mailto:info@bitforge.ch">Contact us</a> to upgrade your plan.
+     * @type {string}
      * @memberof Subscription
      */
-    readonly plan: Nested | null;
+    plan?: string | null;
     /**
      * 
-     * @type {Nested}
+     * @type {string}
      * @memberof Subscription
      */
-    readonly billingAddress: Nested | null;
+    billingAddress?: string | null;
     /**
      * 
      * @type {StripeSubscription}
@@ -71,8 +69,8 @@ export function SubscriptionFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'paymentMethod': !exists(json, 'payment_method') ? undefined : PaymentMethodEnumFromJSON(json['payment_method']),
-        'plan': NestedFromJSON(json['plan']),
-        'billingAddress': NestedFromJSON(json['billing_address']),
+        'plan': !exists(json, 'plan') ? undefined : json['plan'],
+        'billingAddress': !exists(json, 'billing_address') ? undefined : json['billing_address'],
         'stripeSubscription': StripeSubscriptionFromJSON(json['stripe_subscription']),
     };
 }
@@ -87,6 +85,8 @@ export function SubscriptionToJSON(value?: Subscription | null): any {
     return {
         
         'payment_method': PaymentMethodEnumToJSON(value.paymentMethod),
+        'plan': value.plan,
+        'billing_address': value.billingAddress,
         'stripe_subscription': StripeSubscriptionToJSON(value.stripeSubscription),
     };
 }

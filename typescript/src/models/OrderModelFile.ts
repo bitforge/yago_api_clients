@@ -13,70 +13,56 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    RoleEnum,
-    RoleEnumFromJSON,
-    RoleEnumFromJSONTyped,
-    RoleEnumToJSON,
-} from './RoleEnum';
-
 /**
  * 
  * @export
- * @interface Membership
+ * @interface OrderModelFile
  */
-export interface Membership {
+export interface OrderModelFile {
     /**
      * 
      * @type {string}
-     * @memberof Membership
+     * @memberof OrderModelFile
      */
     readonly id: string;
     /**
      * 
      * @type {string}
-     * @memberof Membership
+     * @memberof OrderModelFile
      */
-    project: string;
+    readonly name: string;
     /**
      * 
      * @type {string}
-     * @memberof Membership
+     * @memberof OrderModelFile
      */
-    user: string;
-    /**
-     * 
-     * @type {RoleEnum}
-     * @memberof Membership
-     */
-    role?: RoleEnum;
+    file: string;
     /**
      * 
      * @type {Date}
-     * @memberof Membership
+     * @memberof OrderModelFile
      */
     readonly created: Date;
 }
 
-export function MembershipFromJSON(json: any): Membership {
-    return MembershipFromJSONTyped(json, false);
+export function OrderModelFileFromJSON(json: any): OrderModelFile {
+    return OrderModelFileFromJSONTyped(json, false);
 }
 
-export function MembershipFromJSONTyped(json: any, ignoreDiscriminator: boolean): Membership {
+export function OrderModelFileFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModelFile {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'id': json['id'],
-        'project': json['project'],
-        'user': json['user'],
-        'role': !exists(json, 'role') ? undefined : RoleEnumFromJSON(json['role']),
+        'name': json['name'],
+        'file': json['file'],
         'created': (new Date(json['created'])),
     };
 }
 
-export function MembershipToJSON(value?: Membership | null): any {
+export function OrderModelFileToJSON(value?: OrderModelFile | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -85,9 +71,7 @@ export function MembershipToJSON(value?: Membership | null): any {
     }
     return {
         
-        'project': value.project,
-        'user': value.user,
-        'role': RoleEnumToJSON(value.role),
+        'file': value.file,
     };
 }
 

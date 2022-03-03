@@ -67,6 +67,12 @@ export interface User {
      * @memberof User
      */
     isSuperuser?: boolean;
+    /**
+     * User can manage model orders. For designers & customer project managers.
+     * @type {boolean}
+     * @memberof User
+     */
+    isContractor?: boolean;
 }
 
 export function UserFromJSON(json: any): User {
@@ -87,6 +93,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'isActive': !exists(json, 'is_active') ? undefined : json['is_active'],
         'isStaff': !exists(json, 'is_staff') ? undefined : json['is_staff'],
         'isSuperuser': !exists(json, 'is_superuser') ? undefined : json['is_superuser'],
+        'isContractor': !exists(json, 'is_contractor') ? undefined : json['is_contractor'],
     };
 }
 
@@ -106,6 +113,7 @@ export function UserToJSON(value?: User | null): any {
         'is_active': value.isActive,
         'is_staff': value.isStaff,
         'is_superuser': value.isSuperuser,
+        'is_contractor': value.isContractor,
     };
 }
 

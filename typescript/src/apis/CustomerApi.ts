@@ -75,7 +75,7 @@ export class CustomerApi extends runtime.BaseAPI {
     /**
      * Update customer billing address. Required prior to subscribing to Genie AR services
      */
-    async customerBillingAddressPartialUpdate(requestParameters: CustomerBillingAddressPartialUpdateRequest, initOverrides?: RequestInit): Promise<Address> {
+    async customerBillingAddressPartialUpdate(requestParameters: CustomerBillingAddressPartialUpdateRequest = {}, initOverrides?: RequestInit): Promise<Address> {
         const response = await this.customerBillingAddressPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }

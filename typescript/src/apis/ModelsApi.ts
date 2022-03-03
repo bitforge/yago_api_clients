@@ -466,7 +466,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Lists all models for all projects the user is a member of. Can be filtered by `project`.
      */
-    async modelsList(requestParameters: ModelsListRequest, initOverrides?: RequestInit): Promise<Array<Model>> {
+    async modelsList(requestParameters: ModelsListRequest = {}, initOverrides?: RequestInit): Promise<Array<Model>> {
         const response = await this.modelsListRaw(requestParameters, initOverrides);
         return await response.value();
     }

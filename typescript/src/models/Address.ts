@@ -18,7 +18,7 @@ import {
     CountryEnumFromJSON,
     CountryEnumFromJSONTyped,
     CountryEnumToJSON,
-} from './';
+} from './CountryEnum';
 
 /**
  * 

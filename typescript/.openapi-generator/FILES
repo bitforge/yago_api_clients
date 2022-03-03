@@ -3,6 +3,7 @@ src/apis/CustomerApi.ts
 src/apis/HealthApi.ts
 src/apis/MembershipsApi.ts
 src/apis/ModelsApi.ts
+src/apis/OrdersApi.ts
 src/apis/PlansApi.ts
 src/apis/ProjectsApi.ts
 src/apis/RegistrationApi.ts
@@ -16,7 +17,9 @@ src/models/ChronicStats.ts
 src/models/CollectionMethodEnum.ts
 src/models/CountryEnum.ts
 src/models/Customer.ts
+src/models/ErrorDescription.ts
 src/models/FileUpload.ts
+src/models/FileUploaded.ts
 src/models/FilterEventsEnum.ts
 src/models/GlobalStatistics.ts
 src/models/GlobalStatisticsGroupByEnum.ts
@@ -28,8 +31,13 @@ src/models/ModelCreate.ts
 src/models/ModelInfo.ts
 src/models/ModelStatus.ts
 src/models/ModelUpdate.ts
-src/models/Nested.ts
 src/models/NewSubscription.ts
+src/models/Order.ts
+src/models/OrderModel.ts
+src/models/OrderModelFile.ts
+src/models/OrderModelStateEnum.ts
+src/models/OrderState.ts
+src/models/OrderStateEnum.ts
 src/models/PasswordReset.ts
 src/models/PasswordResetConfirm.ts
 src/models/PatchedAddress.ts

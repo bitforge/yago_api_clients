@@ -18,7 +18,7 @@ import {
     ModelStatusFromJSON,
     ModelStatusFromJSONTyped,
     ModelStatusToJSON,
-} from './';
+} from './ModelStatus';
 
 /**
  * 

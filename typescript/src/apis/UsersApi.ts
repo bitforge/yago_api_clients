@@ -70,7 +70,7 @@ export class UsersApi extends runtime.BaseAPI {
     /**
      * Lists all users that are members in the same projects.
      */
-    async usersList(requestParameters: UsersListRequest, initOverrides?: RequestInit): Promise<Array<User>> {
+    async usersList(requestParameters: UsersListRequest = {}, initOverrides?: RequestInit): Promise<Array<User>> {
         const response = await this.usersListRaw(requestParameters, initOverrides);
         return await response.value();
     }

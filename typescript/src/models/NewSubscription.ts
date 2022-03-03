@@ -18,11 +18,13 @@ import {
     PaymentMethodEnumFromJSON,
     PaymentMethodEnumFromJSONTyped,
     PaymentMethodEnumToJSON,
+} from './PaymentMethodEnum';
+import {
     PlanEnum,
     PlanEnumFromJSON,
     PlanEnumFromJSONTyped,
     PlanEnumToJSON,
-} from './';
+} from './PlanEnum';
 
 /**
  * 
