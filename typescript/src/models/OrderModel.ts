@@ -75,30 +75,6 @@ export interface OrderModel {
      */
     depthMm?: number | null;
     /**
-     * Preview image of the model (iOS, gallery, sharing, SEO).
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly image: string | null;
-    /**
-     * Must be a binary glTF file according to the Khronos Group standard.
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly glb: string | null;
-    /**
-     * Must be a USDZ or Reality Composer file.
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly usdz: string | null;
-    /**
-     * Source 3D Model, e.g. a ZIP-File with all meshes, materials and textures.
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly source: string | null;
-    /**
      * Resulting model after order is finished.
      * @type {string}
      * @memberof OrderModel
@@ -136,10 +112,6 @@ export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
         'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
-        'image': json['image'],
-        'glb': json['glb'],
-        'usdz': json['usdz'],
-        'source': json['source'],
         'model': json['model'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),

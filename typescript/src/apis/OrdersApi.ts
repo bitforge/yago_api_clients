@@ -81,20 +81,6 @@ export interface OrdersModelsFilesUploadUpdateRequest {
     body?: Blob;
 }
 
-export interface OrdersModelsGlbUpdateRequest {
-    orderId: number;
-    contentDisposition: string;
-    id: number;
-    body?: Blob;
-}
-
-export interface OrdersModelsImageUpdateRequest {
-    orderId: number;
-    contentDisposition: string;
-    id: number;
-    body?: Blob;
-}
-
 export interface OrdersModelsListRequest {
     orderId: number;
 }
@@ -102,13 +88,6 @@ export interface OrdersModelsListRequest {
 export interface OrdersModelsRetrieveRequest {
     orderId: number;
     id: number;
-}
-
-export interface OrdersModelsSourceUpdateRequest {
-    orderId: number;
-    contentDisposition: string;
-    id: number;
-    body?: Blob;
 }
 
 export interface OrdersModelsSubmitToProjectPartialUpdateRequest {
@@ -130,13 +109,6 @@ export interface OrdersModelsUpdateRequest {
     orderId: number;
     id: number;
     orderModel: OrderModel;
-}
-
-export interface OrdersModelsUsdzUpdateRequest {
-    orderId: number;
-    contentDisposition: string;
-    id: number;
-    body?: Blob;
 }
 
 export interface OrdersRetrieveRequest {
@@ -543,120 +515,6 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Upload a file. Max size 30MB. Filename is required!
-     */
-    async ordersModelsGlbUpdateRaw(requestParameters: OrdersModelsGlbUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUploaded>> {
-        if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsGlbUpdate.');
-        }
-
-        if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
-            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling ordersModelsGlbUpdate.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsGlbUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/octet-stream';
-
-        if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
-            headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
-        }
-
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/glb/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: requestParameters.body as any,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadedFromJSON(jsonValue));
-    }
-
-    /**
-     * Upload a file. Max size 30MB. Filename is required!
-     */
-    async ordersModelsGlbUpdate(requestParameters: OrdersModelsGlbUpdateRequest, initOverrides?: RequestInit): Promise<FileUploaded> {
-        const response = await this.ordersModelsGlbUpdateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Upload an image. Max size 30MB. Filename is required!
-     */
-    async ordersModelsImageUpdateRaw(requestParameters: OrdersModelsImageUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUploaded>> {
-        if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsImageUpdate.');
-        }
-
-        if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
-            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling ordersModelsImageUpdate.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsImageUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'image/_*';
-
-        if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
-            headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
-        }
-
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/image/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: requestParameters.body as any,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadedFromJSON(jsonValue));
-    }
-
-    /**
-     * Upload an image. Max size 30MB. Filename is required!
-     */
-    async ordersModelsImageUpdate(requestParameters: OrdersModelsImageUpdateRequest, initOverrides?: RequestInit): Promise<FileUploaded> {
-        const response = await this.ordersModelsImageUpdateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Lists all models of order.
      */
     async ordersModelsListRaw(requestParameters: OrdersModelsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<OrderModel>>> {
@@ -739,63 +597,6 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsRetrieve(requestParameters: OrdersModelsRetrieveRequest, initOverrides?: RequestInit): Promise<OrderModel> {
         const response = await this.ordersModelsRetrieveRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Upload a file. Max size 30MB. Filename is required!
-     */
-    async ordersModelsSourceUpdateRaw(requestParameters: OrdersModelsSourceUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUploaded>> {
-        if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSourceUpdate.');
-        }
-
-        if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
-            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling ordersModelsSourceUpdate.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsSourceUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/octet-stream';
-
-        if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
-            headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
-        }
-
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/source/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: requestParameters.body as any,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadedFromJSON(jsonValue));
-    }
-
-    /**
-     * Upload a file. Max size 30MB. Filename is required!
-     */
-    async ordersModelsSourceUpdate(requestParameters: OrdersModelsSourceUpdateRequest, initOverrides?: RequestInit): Promise<FileUploaded> {
-        const response = await this.ordersModelsSourceUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -987,63 +788,6 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsUpdate(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<OrderModel> {
         const response = await this.ordersModelsUpdateRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Upload a file. Max size 30MB. Filename is required!
-     */
-    async ordersModelsUsdzUpdateRaw(requestParameters: OrdersModelsUsdzUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUploaded>> {
-        if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsUsdzUpdate.');
-        }
-
-        if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
-            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling ordersModelsUsdzUpdate.');
-        }
-
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsUsdzUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/octet-stream';
-
-        if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
-            headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
-        }
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
-        }
-
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/usdz/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: requestParameters.body as any,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadedFromJSON(jsonValue));
-    }
-
-    /**
-     * Upload a file. Max size 30MB. Filename is required!
-     */
-    async ordersModelsUsdzUpdate(requestParameters: OrdersModelsUsdzUpdateRequest, initOverrides?: RequestInit): Promise<FileUploaded> {
-        const response = await this.ordersModelsUsdzUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
