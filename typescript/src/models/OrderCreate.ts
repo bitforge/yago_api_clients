@@ -23,58 +23,46 @@ import {
 /**
  * 
  * @export
- * @interface Order
+ * @interface OrderCreate
  */
-export interface Order {
+export interface OrderCreate {
     /**
      * 
      * @type {number}
-     * @memberof Order
+     * @memberof OrderCreate
      */
     readonly id: number;
     /**
      * 
      * @type {string}
-     * @memberof Order
+     * @memberof OrderCreate
      */
     project: string;
     /**
      * 
      * @type {State95cEnum}
-     * @memberof Order
+     * @memberof OrderCreate
      */
     readonly state: State95cEnum | null;
     /**
-     * Estimation of order in CHF including taxes. Payment price for User before starting production.
-     * @type {string}
-     * @memberof Order
-     */
-    price?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Order
-     */
-    readonly priceCurrency: string;
-    /**
      * 
      * @type {Date}
-     * @memberof Order
+     * @memberof OrderCreate
      */
     readonly created: Date;
     /**
      * 
      * @type {Date}
-     * @memberof Order
+     * @memberof OrderCreate
      */
     readonly modified: Date;
 }
 
-export function OrderFromJSON(json: any): Order {
-    return OrderFromJSONTyped(json, false);
+export function OrderCreateFromJSON(json: any): OrderCreate {
+    return OrderCreateFromJSONTyped(json, false);
 }
 
-export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Order {
+export function OrderCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderCreate {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -83,14 +71,12 @@ export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ord
         'id': json['id'],
         'project': json['project'],
         'state': State95cEnumFromJSON(json['state']),
-        'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
     };
 }
 
-export function OrderToJSON(value?: Order | null): any {
+export function OrderCreateToJSON(value?: OrderCreate | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -100,7 +86,6 @@ export function OrderToJSON(value?: Order | null): any {
     return {
         
         'project': value.project,
-        'price': value.price,
     };
 }
 

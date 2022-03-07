@@ -23,106 +23,76 @@ import {
 /**
  * 
  * @export
- * @interface OrderModel
+ * @interface OrderModelCreate
  */
-export interface OrderModel {
+export interface OrderModelCreate {
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     readonly id: number;
     /**
      * 
      * @type {string}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     name: string;
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
-    readonly order: number;
+    order: number;
     /**
      * 
      * @type {State800Enum}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     readonly state: State800Enum | null;
     /**
      * 
      * @type {string}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     website?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     widthMm?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     heightMm?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     depthMm?: number | null;
     /**
-     * Preview image of the model (iOS, gallery, sharing, SEO).
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly image: string | null;
-    /**
-     * Must be a binary glTF file according to the Khronos Group standard.
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly glb: string | null;
-    /**
-     * Must be a USDZ or Reality Composer file.
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly usdz: string | null;
-    /**
-     * Source 3D Model, e.g. a ZIP-File with all meshes, materials and textures.
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly source: string | null;
-    /**
-     * Resulting model after order is finished.
-     * @type {string}
-     * @memberof OrderModel
-     */
-    readonly model: string | null;
-    /**
      * 
      * @type {Date}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     readonly created: Date;
     /**
      * 
      * @type {Date}
-     * @memberof OrderModel
+     * @memberof OrderModelCreate
      */
     readonly modified: Date;
 }
 
-export function OrderModelFromJSON(json: any): OrderModel {
-    return OrderModelFromJSONTyped(json, false);
+export function OrderModelCreateFromJSON(json: any): OrderModelCreate {
+    return OrderModelCreateFromJSONTyped(json, false);
 }
 
-export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModel {
+export function OrderModelCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModelCreate {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -136,17 +106,12 @@ export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
         'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
-        'image': json['image'],
-        'glb': json['glb'],
-        'usdz': json['usdz'],
-        'source': json['source'],
-        'model': json['model'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
     };
 }
 
-export function OrderModelToJSON(value?: OrderModel | null): any {
+export function OrderModelCreateToJSON(value?: OrderModelCreate | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -156,6 +121,7 @@ export function OrderModelToJSON(value?: OrderModel | null): any {
     return {
         
         'name': value.name,
+        'order': value.order,
         'website': value.website,
         'width_mm': value.widthMm,
         'height_mm': value.heightMm,
