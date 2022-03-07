@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    State95cEnum,
-    State95cEnumFromJSON,
-    State95cEnumFromJSONTyped,
-    State95cEnumToJSON,
-} from './State95cEnum';
+    OrderStateEnum,
+    OrderStateEnumFromJSON,
+    OrderStateEnumFromJSONTyped,
+    OrderStateEnumToJSON,
+} from './OrderStateEnum';
 
 /**
  * 
@@ -40,10 +40,10 @@ export interface Order {
     project: string;
     /**
      * 
-     * @type {State95cEnum}
+     * @type {OrderStateEnum}
      * @memberof Order
      */
-    readonly state: State95cEnum | null;
+    readonly state: OrderStateEnum | null;
     /**
      * Estimation of order in CHF including taxes. Payment price for User before starting production.
      * @type {string}
@@ -82,7 +82,7 @@ export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ord
         
         'id': json['id'],
         'project': json['project'],
-        'state': State95cEnumFromJSON(json['state']),
+        'state': OrderStateEnumFromJSON(json['state']),
         'price': !exists(json, 'price') ? undefined : json['price'],
         'priceCurrency': json['price_currency'],
         'created': (new Date(json['created'])),

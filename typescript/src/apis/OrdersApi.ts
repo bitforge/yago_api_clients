@@ -171,7 +171,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new order.
      */
-    async ordersCreateRaw(requestParameters: OrdersCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderCreate>> {
+    async ordersCreateRaw(requestParameters: OrdersCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Order>> {
         if (requestParameters.orderCreate === null || requestParameters.orderCreate === undefined) {
             throw new runtime.RequiredError('orderCreate','Required parameter requestParameters.orderCreate was null or undefined when calling ordersCreate.');
         }
@@ -202,13 +202,13 @@ export class OrdersApi extends runtime.BaseAPI {
             body: OrderCreateToJSON(requestParameters.orderCreate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderCreateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OrderFromJSON(jsonValue));
     }
 
     /**
      * Add a new order.
      */
-    async ordersCreate(requestParameters: OrdersCreateRequest, initOverrides?: RequestInit): Promise<OrderCreate> {
+    async ordersCreate(requestParameters: OrdersCreateRequest, initOverrides?: RequestInit): Promise<Order> {
         const response = await this.ordersCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -299,7 +299,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new model.
      */
-    async ordersModelsCreateRaw(requestParameters: OrdersModelsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelCreate>> {
+    async ordersModelsCreateRaw(requestParameters: OrdersModelsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModel>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCreate.');
         }
@@ -334,13 +334,13 @@ export class OrdersApi extends runtime.BaseAPI {
             body: OrderModelCreateToJSON(requestParameters.orderModelCreate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelCreateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelFromJSON(jsonValue));
     }
 
     /**
      * Add a new model.
      */
-    async ordersModelsCreate(requestParameters: OrdersModelsCreateRequest, initOverrides?: RequestInit): Promise<OrderModelCreate> {
+    async ordersModelsCreate(requestParameters: OrdersModelsCreateRequest, initOverrides?: RequestInit): Promise<OrderModel> {
         const response = await this.ordersModelsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }

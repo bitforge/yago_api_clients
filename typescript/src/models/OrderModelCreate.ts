@@ -13,25 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    State800Enum,
-    State800EnumFromJSON,
-    State800EnumFromJSONTyped,
-    State800EnumToJSON,
-} from './State800Enum';
-
 /**
  * 
  * @export
  * @interface OrderModelCreate
  */
 export interface OrderModelCreate {
-    /**
-     * 
-     * @type {number}
-     * @memberof OrderModelCreate
-     */
-    readonly id: number;
     /**
      * 
      * @type {string}
@@ -44,12 +31,6 @@ export interface OrderModelCreate {
      * @memberof OrderModelCreate
      */
     order: number;
-    /**
-     * 
-     * @type {State800Enum}
-     * @memberof OrderModelCreate
-     */
-    readonly state: State800Enum | null;
     /**
      * 
      * @type {string}
@@ -74,18 +55,6 @@ export interface OrderModelCreate {
      * @memberof OrderModelCreate
      */
     depthMm?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderModelCreate
-     */
-    readonly created: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderModelCreate
-     */
-    readonly modified: Date;
 }
 
 export function OrderModelCreateFromJSON(json: any): OrderModelCreate {
@@ -98,16 +67,12 @@ export function OrderModelCreateFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'id': json['id'],
         'name': json['name'],
         'order': json['order'],
-        'state': State800EnumFromJSON(json['state']),
         'website': !exists(json, 'website') ? undefined : json['website'],
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
         'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
     };
 }
 

@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    State95cEnum,
-    State95cEnumFromJSON,
-    State95cEnumFromJSONTyped,
-    State95cEnumToJSON,
-} from './State95cEnum';
-
 /**
  * 
  * @export
@@ -28,34 +21,10 @@ import {
 export interface OrderCreate {
     /**
      * 
-     * @type {number}
-     * @memberof OrderCreate
-     */
-    readonly id: number;
-    /**
-     * 
      * @type {string}
      * @memberof OrderCreate
      */
     project: string;
-    /**
-     * 
-     * @type {State95cEnum}
-     * @memberof OrderCreate
-     */
-    readonly state: State95cEnum | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderCreate
-     */
-    readonly created: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderCreate
-     */
-    readonly modified: Date;
 }
 
 export function OrderCreateFromJSON(json: any): OrderCreate {
@@ -68,11 +37,7 @@ export function OrderCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'id': json['id'],
         'project': json['project'],
-        'state': State95cEnumFromJSON(json['state']),
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
     };
 }
 
