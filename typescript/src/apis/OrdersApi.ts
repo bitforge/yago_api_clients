@@ -27,12 +27,18 @@ import {
     OrderCreate,
     OrderCreateFromJSON,
     OrderCreateToJSON,
+    OrderDetail,
+    OrderDetailFromJSON,
+    OrderDetailToJSON,
     OrderModel,
     OrderModelFromJSON,
     OrderModelToJSON,
     OrderModelCreate,
     OrderModelCreateFromJSON,
     OrderModelCreateToJSON,
+    OrderModelDetail,
+    OrderModelDetailFromJSON,
+    OrderModelDetailToJSON,
     OrderModelFile,
     OrderModelFileFromJSON,
     OrderModelFileToJSON,
@@ -558,7 +564,7 @@ export class OrdersApi extends runtime.BaseAPI {
 
     /**
      */
-    async ordersModelsRetrieveRaw(requestParameters: OrdersModelsRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModel>> {
+    async ordersModelsRetrieveRaw(requestParameters: OrdersModelsRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelDetail>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsRetrieve.');
         }
@@ -590,12 +596,12 @@ export class OrdersApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelDetailFromJSON(jsonValue));
     }
 
     /**
      */
-    async ordersModelsRetrieve(requestParameters: OrdersModelsRetrieveRequest, initOverrides?: RequestInit): Promise<OrderModel> {
+    async ordersModelsRetrieve(requestParameters: OrdersModelsRetrieveRequest, initOverrides?: RequestInit): Promise<OrderModelDetail> {
         const response = await this.ordersModelsRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -794,7 +800,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Details of a single order.
      */
-    async ordersRetrieveRaw(requestParameters: OrdersRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Order>> {
+    async ordersRetrieveRaw(requestParameters: OrdersRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderDetail>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersRetrieve.');
         }
@@ -822,13 +828,13 @@ export class OrdersApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OrderDetailFromJSON(jsonValue));
     }
 
     /**
      * Details of a single order.
      */
-    async ordersRetrieve(requestParameters: OrdersRetrieveRequest, initOverrides?: RequestInit): Promise<Order> {
+    async ordersRetrieve(requestParameters: OrdersRetrieveRequest, initOverrides?: RequestInit): Promise<OrderDetail> {
         const response = await this.ordersRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }

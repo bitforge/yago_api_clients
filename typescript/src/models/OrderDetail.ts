@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    OrderModel,
+    OrderModelFromJSON,
+    OrderModelFromJSONTyped,
+    OrderModelToJSON,
+} from './OrderModel';
+import {
     State95cEnum,
     State95cEnumFromJSON,
     State95cEnumFromJSONTyped,
@@ -23,58 +29,64 @@ import {
 /**
  * 
  * @export
- * @interface Order
+ * @interface OrderDetail
  */
-export interface Order {
+export interface OrderDetail {
     /**
      * 
      * @type {number}
-     * @memberof Order
+     * @memberof OrderDetail
      */
     readonly id: number;
     /**
      * 
      * @type {string}
-     * @memberof Order
+     * @memberof OrderDetail
      */
     project: string;
     /**
      * 
      * @type {State95cEnum}
-     * @memberof Order
+     * @memberof OrderDetail
      */
     readonly state: State95cEnum | null;
     /**
      * Estimation of order in CHF including taxes. Payment price for User before starting production.
      * @type {string}
-     * @memberof Order
+     * @memberof OrderDetail
      */
     price?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof Order
+     * @memberof OrderDetail
      */
     readonly priceCurrency: string;
     /**
      * 
      * @type {Date}
-     * @memberof Order
+     * @memberof OrderDetail
      */
     readonly created: Date;
     /**
      * 
      * @type {Date}
-     * @memberof Order
+     * @memberof OrderDetail
      */
     readonly modified: Date;
+    /**
+     * 
+     * @type {Array<OrderModel>}
+     * @memberof OrderDetail
+     */
+    models: Array<OrderModel>;
 }
 
-export function OrderFromJSON(json: any): Order {
-    return OrderFromJSONTyped(json, false);
+export function OrderDetailFromJSON(json: any): OrderDetail {
+    return OrderDetailFromJSONTyped(json, false);
 }
 
-export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Order {
+export function OrderDetailFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderDetail {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -87,10 +99,11 @@ export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ord
         'priceCurrency': json['price_currency'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
+        'models': ((json['models'] as Array<any>).map(OrderModelFromJSON)),
     };
 }
 
-export function OrderToJSON(value?: Order | null): any {
+export function OrderDetailToJSON(value?: OrderDetail | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -101,6 +114,7 @@ export function OrderToJSON(value?: Order | null): any {
         
         'project': value.project,
         'price': value.price,
+        'models': ((value.models as Array<any>).map(OrderModelToJSON)),
     };
 }
 

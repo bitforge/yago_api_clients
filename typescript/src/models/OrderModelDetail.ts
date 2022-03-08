@@ -14,6 +14,12 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    OrderModelFile,
+    OrderModelFileFromJSON,
+    OrderModelFileFromJSONTyped,
+    OrderModelFileToJSON,
+} from './OrderModelFile';
+import {
     State800Enum,
     State800EnumFromJSON,
     State800EnumFromJSONTyped,
@@ -23,82 +29,82 @@ import {
 /**
  * 
  * @export
- * @interface OrderModel
+ * @interface OrderModelDetail
  */
-export interface OrderModel {
+export interface OrderModelDetail {
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     readonly id: number;
     /**
      * 
      * @type {string}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     name: string;
     /**
      * 
-     * @type {number}
-     * @memberof OrderModel
-     */
-    readonly order: number;
-    /**
-     * 
      * @type {State800Enum}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     readonly state: State800Enum | null;
     /**
      * 
      * @type {string}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     website?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     widthMm?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     heightMm?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     depthMm?: number | null;
     /**
      * Resulting model after order is finished. Available when state is IN_PROGRESS.
      * @type {string}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     readonly model: string | null;
     /**
      * 
      * @type {Date}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     readonly created: Date;
     /**
      * 
      * @type {Date}
-     * @memberof OrderModel
+     * @memberof OrderModelDetail
      */
     readonly modified: Date;
+    /**
+     * 
+     * @type {Array<OrderModelFile>}
+     * @memberof OrderModelDetail
+     */
+    files: Array<OrderModelFile>;
 }
 
-export function OrderModelFromJSON(json: any): OrderModel {
-    return OrderModelFromJSONTyped(json, false);
+export function OrderModelDetailFromJSON(json: any): OrderModelDetail {
+    return OrderModelDetailFromJSONTyped(json, false);
 }
 
-export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModel {
+export function OrderModelDetailFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModelDetail {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -106,7 +112,6 @@ export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         
         'id': json['id'],
         'name': json['name'],
-        'order': json['order'],
         'state': State800EnumFromJSON(json['state']),
         'website': !exists(json, 'website') ? undefined : json['website'],
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
@@ -115,10 +120,11 @@ export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'model': json['model'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
+        'files': ((json['files'] as Array<any>).map(OrderModelFileFromJSON)),
     };
 }
 
-export function OrderModelToJSON(value?: OrderModel | null): any {
+export function OrderModelDetailToJSON(value?: OrderModelDetail | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -132,6 +138,7 @@ export function OrderModelToJSON(value?: OrderModel | null): any {
         'width_mm': value.widthMm,
         'height_mm': value.heightMm,
         'depth_mm': value.depthMm,
+        'files': ((value.files as Array<any>).map(OrderModelFileToJSON)),
     };
 }
 

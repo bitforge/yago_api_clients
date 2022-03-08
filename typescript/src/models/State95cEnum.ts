@@ -17,7 +17,7 @@
  * @export
  * @enum {string}
  */
-export enum OrderStateEnum {
+export enum State95cEnum {
     Preparing = 'PREPARING',
     Estimating = 'ESTIMATING',
     ReadyToPay = 'READY_TO_PAY',
@@ -27,15 +27,15 @@ export enum OrderStateEnum {
     RageQuit = 'RAGE_QUIT'
 }
 
-export function OrderStateEnumFromJSON(json: any): OrderStateEnum {
-    return OrderStateEnumFromJSONTyped(json, false);
+export function State95cEnumFromJSON(json: any): State95cEnum {
+    return State95cEnumFromJSONTyped(json, false);
 }
 
-export function OrderStateEnumFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderStateEnum {
-    return json as OrderStateEnum;
+export function State95cEnumFromJSONTyped(json: any, ignoreDiscriminator: boolean): State95cEnum {
+    return json as State95cEnum;
 }
 
-export function OrderStateEnumToJSON(value?: OrderStateEnum | null): any {
+export function State95cEnumToJSON(value?: State95cEnum | null): any {
     return value as any;
 }
 
