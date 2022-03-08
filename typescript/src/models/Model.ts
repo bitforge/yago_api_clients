@@ -201,6 +201,12 @@ export interface Model {
      */
     usdz?: string | null;
     /**
+     * Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files.
+     * @type {string}
+     * @memberof Model
+     */
+    model?: string | null;
+    /**
      * Unity Asset Bundle for Android
      * @type {string}
      * @memberof Model
@@ -265,6 +271,7 @@ export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Mod
         'scaleable': !exists(json, 'scaleable') ? undefined : json['scaleable'],
         'glb': !exists(json, 'glb') ? undefined : json['glb'],
         'usdz': !exists(json, 'usdz') ? undefined : json['usdz'],
+        'model': !exists(json, 'model') ? undefined : json['model'],
         'unityIos': !exists(json, 'unity_ios') ? undefined : json['unity_ios'],
         'unityAndroid': !exists(json, 'unity_android') ? undefined : json['unity_android'],
         'created': (new Date(json['created'])),
@@ -303,6 +310,7 @@ export function ModelToJSON(value?: Model | null): any {
         'scaleable': value.scaleable,
         'glb': value.glb,
         'usdz': value.usdz,
+        'model': value.model,
         'unity_ios': value.unityIos,
         'unity_android': value.unityAndroid,
     };

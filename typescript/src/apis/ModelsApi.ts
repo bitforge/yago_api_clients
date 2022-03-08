@@ -72,6 +72,16 @@ export interface ModelsListRequest {
     status?: ModelsListStatusEnum;
 }
 
+export interface ModelsModelDestroyRequest {
+    id: string;
+}
+
+export interface ModelsModelUpdateRequest {
+    contentDisposition: string;
+    id: string;
+    body?: Blob;
+}
+
 export interface ModelsPartialUpdateRequest {
     id: string;
     patchedModelUpdate?: PatchedModelUpdate;
@@ -468,6 +478,100 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsList(requestParameters: ModelsListRequest = {}, initOverrides?: RequestInit): Promise<Array<Model>> {
         const response = await this.modelsListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete a file.
+     */
+    async modelsModelDestroyRaw(requestParameters: ModelsModelDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling modelsModelDestroy.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/models/{id}/model/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Delete a file.
+     */
+    async modelsModelDestroy(requestParameters: ModelsModelDestroyRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.modelsModelDestroyRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Upload a file. Max size 30MB. Filename is required!
+     */
+    async modelsModelUpdateRaw(requestParameters: ModelsModelUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUpload>> {
+        if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
+            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling modelsModelUpdate.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling modelsModelUpdate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/octet-stream';
+
+        if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
+            headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/models/{id}/model/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.body as any,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadFromJSON(jsonValue));
+    }
+
+    /**
+     * Upload a file. Max size 30MB. Filename is required!
+     */
+    async modelsModelUpdate(requestParameters: ModelsModelUpdateRequest, initOverrides?: RequestInit): Promise<FileUpload> {
+        const response = await this.modelsModelUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

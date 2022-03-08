@@ -75,7 +75,7 @@ export interface OrderModel {
      */
     depthMm?: number | null;
     /**
-     * Resulting model after order is finished.
+     * Resulting model after order is finished. Available when state is IN_PROGRESS.
      * @type {string}
      * @memberof OrderModel
      */

@@ -90,7 +90,7 @@ export interface OrdersModelsRetrieveRequest {
     id: number;
 }
 
-export interface OrdersModelsSubmitToProjectPartialUpdateRequest {
+export interface OrdersModelsSubmitToFinishedPartialUpdateRequest {
     orderId: number;
     id: number;
 }
@@ -603,13 +603,13 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Model was accepted by customer and can be added to project.
      */
-    async ordersModelsSubmitToProjectPartialUpdateRaw(requestParameters: OrdersModelsSubmitToProjectPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderState>> {
+    async ordersModelsSubmitToFinishedPartialUpdateRaw(requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderState>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToProjectPartialUpdate.');
+            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToFinishedPartialUpdate.');
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToProjectPartialUpdate.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToFinishedPartialUpdate.');
         }
 
         const queryParameters: any = {};
@@ -629,7 +629,7 @@ export class OrdersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/submit_to_project/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/orders/{order_id}/models/{id}/submit_to_finished/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -641,8 +641,8 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Model was accepted by customer and can be added to project.
      */
-    async ordersModelsSubmitToProjectPartialUpdate(requestParameters: OrdersModelsSubmitToProjectPartialUpdateRequest, initOverrides?: RequestInit): Promise<OrderState> {
-        const response = await this.ordersModelsSubmitToProjectPartialUpdateRaw(requestParameters, initOverrides);
+    async ordersModelsSubmitToFinishedPartialUpdate(requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest, initOverrides?: RequestInit): Promise<OrderState> {
+        const response = await this.ordersModelsSubmitToFinishedPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
