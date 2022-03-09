@@ -3,6 +3,9 @@
 # Remove old generated source files
 rm -rf src
 
+# Pin openapi-generator version to avoid unintended changes
+npx @openapitools/openapi-generator-cli version-manager set 5.4.0
+
 # Fetch OpenAPI Schema an generate api client
 npx @openapitools/openapi-generator-cli generate \
     -i http://dev.yago.cloud/api/schema/ \
