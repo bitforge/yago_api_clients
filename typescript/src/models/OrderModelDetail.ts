@@ -14,17 +14,23 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    OrderModelComment,
+    OrderModelCommentFromJSON,
+    OrderModelCommentFromJSONTyped,
+    OrderModelCommentToJSON,
+} from './OrderModelComment';
+import {
     OrderModelFile,
     OrderModelFileFromJSON,
     OrderModelFileFromJSONTyped,
     OrderModelFileToJSON,
 } from './OrderModelFile';
 import {
-    State800Enum,
-    State800EnumFromJSON,
-    State800EnumFromJSONTyped,
-    State800EnumToJSON,
-} from './State800Enum';
+    OrderModelState,
+    OrderModelStateFromJSON,
+    OrderModelStateFromJSONTyped,
+    OrderModelStateToJSON,
+} from './OrderModelState';
 
 /**
  * 
@@ -46,10 +52,10 @@ export interface OrderModelDetail {
     name: string;
     /**
      * 
-     * @type {State800Enum}
+     * @type {OrderModelState}
      * @memberof OrderModelDetail
      */
-    readonly state: State800Enum | null;
+    readonly state: OrderModelState | null;
     /**
      * 
      * @type {string}
@@ -98,6 +104,12 @@ export interface OrderModelDetail {
      * @memberof OrderModelDetail
      */
     files: Array<OrderModelFile>;
+    /**
+     * 
+     * @type {Array<OrderModelComment>}
+     * @memberof OrderModelDetail
+     */
+    comments: Array<OrderModelComment>;
 }
 
 export function OrderModelDetailFromJSON(json: any): OrderModelDetail {
@@ -112,7 +124,7 @@ export function OrderModelDetailFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'id': json['id'],
         'name': json['name'],
-        'state': State800EnumFromJSON(json['state']),
+        'state': OrderModelStateFromJSON(json['state']),
         'website': !exists(json, 'website') ? undefined : json['website'],
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
@@ -121,6 +133,7 @@ export function OrderModelDetailFromJSONTyped(json: any, ignoreDiscriminator: bo
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
         'files': ((json['files'] as Array<any>).map(OrderModelFileFromJSON)),
+        'comments': ((json['comments'] as Array<any>).map(OrderModelCommentFromJSON)),
     };
 }
 
@@ -139,6 +152,7 @@ export function OrderModelDetailToJSON(value?: OrderModelDetail | null): any {
         'height_mm': value.heightMm,
         'depth_mm': value.depthMm,
         'files': ((value.files as Array<any>).map(OrderModelFileToJSON)),
+        'comments': ((value.comments as Array<any>).map(OrderModelCommentToJSON)),
     };
 }
 

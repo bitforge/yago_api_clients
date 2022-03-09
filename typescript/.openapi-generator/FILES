@@ -33,12 +33,15 @@ src/models/ModelStatus.ts
 src/models/ModelUpdate.ts
 src/models/NewSubscription.ts
 src/models/Order.ts
+src/models/OrderComment.ts
 src/models/OrderCreate.ts
 src/models/OrderDetail.ts
 src/models/OrderModel.ts
+src/models/OrderModelComment.ts
 src/models/OrderModelCreate.ts
 src/models/OrderModelDetail.ts
 src/models/OrderModelFile.ts
+src/models/OrderModelState.ts
 src/models/OrderState.ts
 src/models/PasswordReset.ts
 src/models/PasswordResetConfirm.ts
@@ -57,8 +60,7 @@ src/models/Registration.ts
 src/models/RegistrationCreate.ts
 src/models/ReportFormatEnum.ts
 src/models/RoleEnum.ts
-src/models/State800Enum.ts
-src/models/State95cEnum.ts
+src/models/StateChanged.ts
 src/models/StripeSubscription.ts
 src/models/StripeSubscriptionStatusEnum.ts
 src/models/Subscription.ts

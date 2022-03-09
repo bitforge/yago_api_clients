@@ -14,17 +14,23 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    OrderComment,
+    OrderCommentFromJSON,
+    OrderCommentFromJSONTyped,
+    OrderCommentToJSON,
+} from './OrderComment';
+import {
     OrderModel,
     OrderModelFromJSON,
     OrderModelFromJSONTyped,
     OrderModelToJSON,
 } from './OrderModel';
 import {
-    State95cEnum,
-    State95cEnumFromJSON,
-    State95cEnumFromJSONTyped,
-    State95cEnumToJSON,
-} from './State95cEnum';
+    OrderState,
+    OrderStateFromJSON,
+    OrderStateFromJSONTyped,
+    OrderStateToJSON,
+} from './OrderState';
 
 /**
  * 
@@ -46,10 +52,10 @@ export interface OrderDetail {
     project: string;
     /**
      * 
-     * @type {State95cEnum}
+     * @type {OrderState}
      * @memberof OrderDetail
      */
-    readonly state: State95cEnum | null;
+    readonly state: OrderState | null;
     /**
      * Estimation of order in CHF including taxes. Payment price for User before starting production.
      * @type {string}
@@ -80,6 +86,12 @@ export interface OrderDetail {
      * @memberof OrderDetail
      */
     models: Array<OrderModel>;
+    /**
+     * 
+     * @type {Array<OrderComment>}
+     * @memberof OrderDetail
+     */
+    comments: Array<OrderComment>;
 }
 
 export function OrderDetailFromJSON(json: any): OrderDetail {
@@ -94,12 +106,13 @@ export function OrderDetailFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'id': json['id'],
         'project': json['project'],
-        'state': State95cEnumFromJSON(json['state']),
+        'state': OrderStateFromJSON(json['state']),
         'price': !exists(json, 'price') ? undefined : json['price'],
         'priceCurrency': json['price_currency'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
         'models': ((json['models'] as Array<any>).map(OrderModelFromJSON)),
+        'comments': ((json['comments'] as Array<any>).map(OrderCommentFromJSON)),
     };
 }
 
@@ -115,6 +128,7 @@ export function OrderDetailToJSON(value?: OrderDetail | null): any {
         'project': value.project,
         'price': value.price,
         'models': ((value.models as Array<any>).map(OrderModelToJSON)),
+        'comments': ((value.comments as Array<any>).map(OrderCommentToJSON)),
     };
 }
 

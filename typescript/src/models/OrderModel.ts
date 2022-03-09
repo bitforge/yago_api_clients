@@ -14,11 +14,11 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    State800Enum,
-    State800EnumFromJSON,
-    State800EnumFromJSONTyped,
-    State800EnumToJSON,
-} from './State800Enum';
+    OrderModelState,
+    OrderModelStateFromJSON,
+    OrderModelStateFromJSONTyped,
+    OrderModelStateToJSON,
+} from './OrderModelState';
 
 /**
  * 
@@ -46,10 +46,10 @@ export interface OrderModel {
     readonly order: number;
     /**
      * 
-     * @type {State800Enum}
+     * @type {OrderModelState}
      * @memberof OrderModel
      */
-    readonly state: State800Enum | null;
+    readonly state: OrderModelState | null;
     /**
      * 
      * @type {string}
@@ -107,7 +107,7 @@ export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'id': json['id'],
         'name': json['name'],
         'order': json['order'],
-        'state': State800EnumFromJSON(json['state']),
+        'state': OrderModelStateFromJSON(json['state']),
         'website': !exists(json, 'website') ? undefined : json['website'],
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],

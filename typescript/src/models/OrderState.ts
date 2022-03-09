@@ -12,31 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface OrderState
+ * @enum {string}
  */
-export interface OrderState {
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderState
-     */
-    readonly oldState: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderState
-     */
-    readonly newState: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderState
-     */
-    readonly modified: Date;
+export enum OrderState {
+    Preparing = 'PREPARING',
+    Estimating = 'ESTIMATING',
+    ReadyToPay = 'READY_TO_PAY',
+    InProgress = 'IN_PROGRESS',
+    InReview = 'IN_REVIEW',
+    Finished = 'FINISHED',
+    RageQuit = 'RAGE_QUIT'
 }
 
 export function OrderStateFromJSON(json: any): OrderState {
@@ -44,26 +32,10 @@ export function OrderStateFromJSON(json: any): OrderState {
 }
 
 export function OrderStateFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderState {
-    if ((json === undefined) || (json === null)) {
-        return json;
-    }
-    return {
-        
-        'oldState': json['old_state'],
-        'newState': json['new_state'],
-        'modified': (new Date(json['modified'])),
-    };
+    return json as OrderState;
 }
 
 export function OrderStateToJSON(value?: OrderState | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
-    }
-    return {
-        
-    };
+    return value as any;
 }
 
