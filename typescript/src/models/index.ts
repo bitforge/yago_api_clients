@@ -27,6 +27,7 @@ export * from './OrderDetail';
 export * from './OrderModel';
 export * from './OrderModelComment';
 export * from './OrderModelCreate';
+export * from './OrderModelDetail';
 export * from './OrderModelFile';
 export * from './OrderModelState';
 export * from './OrderState';
