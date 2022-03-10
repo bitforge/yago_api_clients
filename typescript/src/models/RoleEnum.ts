@@ -19,7 +19,9 @@
  */
 export enum RoleEnum {
     Owner = 'OWNER',
-    Member = 'MEMBER'
+    Member = 'MEMBER',
+    Manager = 'MANAGER',
+    Designer = 'DESIGNER'
 }
 
 export function RoleEnumFromJSON(json: any): RoleEnum {

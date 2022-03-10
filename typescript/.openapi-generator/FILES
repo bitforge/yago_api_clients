@@ -39,10 +39,10 @@ src/models/OrderDetail.ts
 src/models/OrderModel.ts
 src/models/OrderModelComment.ts
 src/models/OrderModelCreate.ts
-src/models/OrderModelDetail.ts
 src/models/OrderModelFile.ts
 src/models/OrderModelState.ts
 src/models/OrderState.ts
+src/models/OrderUpdate.ts
 src/models/PasswordReset.ts
 src/models/PasswordResetConfirm.ts
 src/models/PatchedAddress.ts
@@ -50,6 +50,7 @@ src/models/PatchedModelUpdate.ts
 src/models/PatchedProjectUpdate.ts
 src/models/PaymentMethodEnum.ts
 src/models/PlanEnum.ts
+src/models/PriceCurrencyEnum.ts
 src/models/PricingPlan.ts
 src/models/Project.ts
 src/models/ProjectCreate.ts
