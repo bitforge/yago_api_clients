@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    AvailableState,
+    AvailableStateFromJSON,
+    AvailableStateToJSON,
     ErrorDescription,
     ErrorDescriptionFromJSON,
     ErrorDescriptionToJSON,
@@ -140,6 +143,11 @@ export interface OrdersModelsSubmitToReworkPartialUpdateRequest {
     id: number;
 }
 
+export interface OrdersModelsTransitionsListRequest {
+    orderId: number;
+    id: number;
+}
+
 export interface OrdersModelsUpdateRequest {
     orderId: number;
     id: number;
@@ -167,6 +175,10 @@ export interface OrdersSubmitToProgressPartialUpdateRequest {
 }
 
 export interface OrdersSubmitToReviewPartialUpdateRequest {
+    orderId: number;
+}
+
+export interface OrdersTransitionsListRequest {
     orderId: number;
 }
 
@@ -400,7 +412,7 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Add a new comment to model.
+     * Add a new comment to order.
      */
     async ordersModelsCommentsCreateRaw(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelComment>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
@@ -445,7 +457,7 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Add a new comment to model.
+     * Add a new comment to order.
      */
     async ordersModelsCommentsCreate(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<OrderModelComment> {
         const response = await this.ordersModelsCommentsCreateRaw(requestParameters, initOverrides);
@@ -971,6 +983,52 @@ export class OrdersApi extends runtime.BaseAPI {
     }
 
     /**
+     * Lists available transitions of order model for current user.
+     */
+    async ordersModelsTransitionsListRaw(requestParameters: OrdersModelsTransitionsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<AvailableState>>> {
+        if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
+            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsTransitionsList.');
+        }
+
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsTransitionsList.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/orders/{order_id}/models/{id}/transitions/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AvailableStateFromJSON));
+    }
+
+    /**
+     * Lists available transitions of order model for current user.
+     */
+    async ordersModelsTransitionsList(requestParameters: OrdersModelsTransitionsListRequest, initOverrides?: RequestInit): Promise<Array<AvailableState>> {
+        const response = await this.ordersModelsTransitionsListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Change model.
      */
     async ordersModelsUpdateRaw(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModel>> {
@@ -1272,6 +1330,48 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToReviewPartialUpdate(requestParameters: OrdersSubmitToReviewPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
         const response = await this.ordersSubmitToReviewPartialUpdateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Lists available transitions of order for current user.
+     */
+    async ordersTransitionsListRaw(requestParameters: OrdersTransitionsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<AvailableState>>> {
+        if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
+            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersTransitionsList.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/orders/{order_id}/transitions/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AvailableStateFromJSON));
+    }
+
+    /**
+     * Lists available transitions of order for current user.
+     */
+    async ordersTransitionsList(requestParameters: OrdersTransitionsListRequest, initOverrides?: RequestInit): Promise<Array<AvailableState>> {
+        const response = await this.ordersTransitionsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

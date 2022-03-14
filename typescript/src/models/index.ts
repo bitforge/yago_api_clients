@@ -1,6 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './Address';
+export * from './AvailableState';
 export * from './ChronicStats';
 export * from './CollectionMethodEnum';
 export * from './CountryEnum';

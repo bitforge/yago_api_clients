@@ -13,6 +13,7 @@ src/apis/UsersApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/Address.ts
+src/models/AvailableState.ts
 src/models/ChronicStats.ts
 src/models/CollectionMethodEnum.ts
 src/models/CountryEnum.ts
