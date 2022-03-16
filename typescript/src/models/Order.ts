@@ -68,6 +68,12 @@ export interface Order {
      * @memberof Order
      */
     readonly modified: Date;
+    /**
+     * 
+     * @type {number}
+     * @memberof Order
+     */
+    readonly modelCount: number;
 }
 
 export function OrderFromJSON(json: any): Order {
@@ -87,6 +93,7 @@ export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ord
         'priceCurrency': json['price_currency'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
+        'modelCount': json['model_count'],
     };
 }
 
