@@ -24,6 +24,10 @@ export interface UsersListRequest {
     projects?: Array<string>;
 }
 
+export interface UsersMeUpdateRequest {
+    user?: User;
+}
+
 export interface UsersRetrieveRequest {
     id: string;
 }
@@ -76,7 +80,7 @@ export class UsersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Show details of the user currently logged in.
+     * Get or update current user details.
      */
     async usersMeRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<User>> {
         const queryParameters: any = {};
@@ -106,10 +110,51 @@ export class UsersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Show details of the user currently logged in.
+     * Get or update current user details.
      */
     async usersMeRetrieve(initOverrides?: RequestInit): Promise<User> {
         const response = await this.usersMeRetrieveRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get or update current user details.
+     */
+    async usersMeUpdateRaw(requestParameters: UsersMeUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<User>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/users/me/`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UserToJSON(requestParameters.user),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserFromJSON(jsonValue));
+    }
+
+    /**
+     * Get or update current user details.
+     */
+    async usersMeUpdate(requestParameters: UsersMeUpdateRequest = {}, initOverrides?: RequestInit): Promise<User> {
+        const response = await this.usersMeUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

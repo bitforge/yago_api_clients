@@ -30,7 +30,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    email: string;
+    readonly email: string;
     /**
      * 
      * @type {string}
@@ -48,31 +48,31 @@ export interface User {
      * @type {Date}
      * @memberof User
      */
-    dateJoined?: Date;
+    readonly dateJoined: Date;
     /**
      * Deactivated users cannot login.
      * @type {boolean}
      * @memberof User
      */
-    isActive?: boolean;
+    readonly isActive: boolean;
     /**
      * Allow login to Genie AR CMS. Can be disabled for API users.
      * @type {boolean}
      * @memberof User
      */
-    isStaff?: boolean;
+    readonly isStaff: boolean;
     /**
      * User can see and change anything. Only for Bitforge employees.
      * @type {boolean}
      * @memberof User
      */
-    isSuperuser?: boolean;
+    readonly isSuperuser: boolean;
     /**
      * User can manage model orders. For designers & customer project managers.
      * @type {boolean}
      * @memberof User
      */
-    isContractor?: boolean;
+    readonly isContractor: boolean;
 }
 
 export function UserFromJSON(json: any): User {
@@ -89,11 +89,11 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'email': json['email'],
         'firstName': !exists(json, 'first_name') ? undefined : json['first_name'],
         'lastName': !exists(json, 'last_name') ? undefined : json['last_name'],
-        'dateJoined': !exists(json, 'date_joined') ? undefined : (new Date(json['date_joined'])),
-        'isActive': !exists(json, 'is_active') ? undefined : json['is_active'],
-        'isStaff': !exists(json, 'is_staff') ? undefined : json['is_staff'],
-        'isSuperuser': !exists(json, 'is_superuser') ? undefined : json['is_superuser'],
-        'isContractor': !exists(json, 'is_contractor') ? undefined : json['is_contractor'],
+        'dateJoined': (new Date(json['date_joined'])),
+        'isActive': json['is_active'],
+        'isStaff': json['is_staff'],
+        'isSuperuser': json['is_superuser'],
+        'isContractor': json['is_contractor'],
     };
 }
 
@@ -106,14 +106,8 @@ export function UserToJSON(value?: User | null): any {
     }
     return {
         
-        'email': value.email,
         'first_name': value.firstName,
         'last_name': value.lastName,
-        'date_joined': value.dateJoined === undefined ? undefined : (value.dateJoined.toISOString()),
-        'is_active': value.isActive,
-        'is_staff': value.isStaff,
-        'is_superuser': value.isSuperuser,
-        'is_contractor': value.isContractor,
     };
 }
 
