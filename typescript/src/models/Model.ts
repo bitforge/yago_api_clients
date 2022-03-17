@@ -31,7 +31,7 @@ export interface Model {
      * @type {string}
      * @memberof Model
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * The project this model belongs to. Cannot be changed once created.
      * @type {string}
@@ -43,7 +43,7 @@ export interface Model {
      * @type {string}
      * @memberof Model
      */
-    readonly name: string;
+    readonly name?: string;
     /**
      * Name will be visible in Android as title.
      * @type {string}
@@ -85,13 +85,13 @@ export interface Model {
      * @type {string}
      * @memberof Model
      */
-    readonly imageThumb: string;
+    readonly imageThumb?: string;
     /**
      * 
      * @type {string}
      * @memberof Model
      */
-    readonly imagePreview: string;
+    readonly imagePreview?: string;
     /**
      * DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
      * @type {ModelStatus}
@@ -103,7 +103,7 @@ export interface Model {
      * @type {string}
      * @memberof Model
      */
-    readonly description: string;
+    readonly description?: string;
     /**
      * Used when shared as link and for SEO.
      * @type {string}
@@ -139,7 +139,7 @@ export interface Model {
      * @type {string}
      * @memberof Model
      */
-    readonly siteUrl: string;
+    readonly siteUrl?: string;
     /**
      * Link to the product on your site. Required when using standalone QR codes (e.g. Print).
      * @type {string}
@@ -181,7 +181,7 @@ export interface Model {
      * @type {string}
      * @memberof Model
      */
-    readonly priceCurrency: string;
+    readonly priceCurrency?: string;
     /**
      * Let's the user scale the model in AR when enabled.
      * @type {boolean}
@@ -223,13 +223,13 @@ export interface Model {
      * @type {Date}
      * @memberof Model
      */
-    readonly created: Date;
+    readonly created?: Date;
     /**
      * 
      * @type {Date}
      * @memberof Model
      */
-    readonly modified: Date;
+    readonly modified?: Date;
 }
 
 export function ModelFromJSON(json: any): Model {
@@ -242,40 +242,40 @@ export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Mod
     }
     return {
         
-        'id': json['id'],
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'project': json['project'],
-        'name': json['name'],
+        'name': !exists(json, 'name') ? undefined : json['name'],
         'nameDe': !exists(json, 'name_de') ? undefined : json['name_de'],
         'nameEn': !exists(json, 'name_en') ? undefined : json['name_en'],
         'nameFr': !exists(json, 'name_fr') ? undefined : json['name_fr'],
         'nameIt': !exists(json, 'name_it') ? undefined : json['name_it'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'image': !exists(json, 'image') ? undefined : json['image'],
-        'imageThumb': json['image_thumb'],
-        'imagePreview': json['image_preview'],
+        'imageThumb': !exists(json, 'image_thumb') ? undefined : json['image_thumb'],
+        'imagePreview': !exists(json, 'image_preview') ? undefined : json['image_preview'],
         'status': !exists(json, 'status') ? undefined : ModelStatusFromJSON(json['status']),
-        'description': json['description'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
         'descriptionDe': !exists(json, 'description_de') ? undefined : json['description_de'],
         'descriptionEn': !exists(json, 'description_en') ? undefined : json['description_en'],
         'descriptionFr': !exists(json, 'description_fr') ? undefined : json['description_fr'],
         'descriptionIt': !exists(json, 'description_it') ? undefined : json['description_it'],
         'number': !exists(json, 'number') ? undefined : json['number'],
-        'siteUrl': json['site_url'],
+        'siteUrl': !exists(json, 'site_url') ? undefined : json['site_url'],
         'siteUrlDe': !exists(json, 'site_url_de') ? undefined : json['site_url_de'],
         'siteUrlEn': !exists(json, 'site_url_en') ? undefined : json['site_url_en'],
         'siteUrlFr': !exists(json, 'site_url_fr') ? undefined : json['site_url_fr'],
         'siteUrlIt': !exists(json, 'site_url_it') ? undefined : json['site_url_it'],
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
+        'priceCurrency': !exists(json, 'price_currency') ? undefined : json['price_currency'],
         'scaleable': !exists(json, 'scaleable') ? undefined : json['scaleable'],
         'glb': !exists(json, 'glb') ? undefined : json['glb'],
         'usdz': !exists(json, 'usdz') ? undefined : json['usdz'],
         'model': !exists(json, 'model') ? undefined : json['model'],
         'unityIos': !exists(json, 'unity_ios') ? undefined : json['unity_ios'],
         'unityAndroid': !exists(json, 'unity_android') ? undefined : json['unity_android'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
+        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
+        'modified': !exists(json, 'modified') ? undefined : (new Date(json['modified'])),
     };
 }
 

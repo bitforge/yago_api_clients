@@ -24,7 +24,7 @@ export interface Customer {
      * @type {string}
      * @memberof Customer
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * Name will be visible as title in gallery.
      * @type {string}
@@ -54,13 +54,13 @@ export interface Customer {
      * @type {string}
      * @memberof Customer
      */
-    readonly imageThumb: string;
+    readonly imageThumb?: string;
     /**
      * 
      * @type {string}
      * @memberof Customer
      */
-    readonly imagePreview: string;
+    readonly imagePreview?: string;
     /**
      * 
      * @type {string}
@@ -97,13 +97,13 @@ export function CustomerFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     }
     return {
         
-        'id': json['id'],
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'name': json['name'],
         'plan': !exists(json, 'plan') ? undefined : json['plan'],
         'slug': json['slug'],
         'image': !exists(json, 'image') ? undefined : json['image'],
-        'imageThumb': json['image_thumb'],
-        'imagePreview': json['image_preview'],
+        'imageThumb': !exists(json, 'image_thumb') ? undefined : json['image_thumb'],
+        'imagePreview': !exists(json, 'image_preview') ? undefined : json['image_preview'],
         'website': !exists(json, 'website') ? undefined : json['website'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'contactAddress': !exists(json, 'contact_address') ? undefined : json['contact_address'],

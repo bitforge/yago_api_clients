@@ -61,7 +61,7 @@ export interface ModelUpdate {
      * @type {string}
      * @memberof ModelUpdate
      */
-    readonly description: string;
+    readonly description?: string;
     /**
      * Used when shared as link and for SEO.
      * @type {string}
@@ -139,7 +139,7 @@ export interface ModelUpdate {
      * @type {string}
      * @memberof ModelUpdate
      */
-    readonly priceCurrency: string;
+    readonly priceCurrency?: string;
 }
 
 export function ModelUpdateFromJSON(json: any): ModelUpdate {
@@ -157,7 +157,7 @@ export function ModelUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'nameFr': !exists(json, 'name_fr') ? undefined : json['name_fr'],
         'nameIt': !exists(json, 'name_it') ? undefined : json['name_it'],
         'status': !exists(json, 'status') ? undefined : ModelStatusFromJSON(json['status']),
-        'description': json['description'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
         'descriptionDe': !exists(json, 'description_de') ? undefined : json['description_de'],
         'descriptionEn': !exists(json, 'description_en') ? undefined : json['description_en'],
         'descriptionFr': !exists(json, 'description_fr') ? undefined : json['description_fr'],
@@ -170,7 +170,7 @@ export function ModelUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'scaleable': !exists(json, 'scaleable') ? undefined : json['scaleable'],
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
+        'priceCurrency': !exists(json, 'price_currency') ? undefined : json['price_currency'],
     };
 }
 

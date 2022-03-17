@@ -24,19 +24,19 @@ export interface OrderComment {
      * @type {boolean}
      * @memberof OrderComment
      */
-    readonly yagoTeam: boolean;
+    readonly yagoTeam?: boolean;
     /**
      * 
      * @type {string}
      * @memberof OrderComment
      */
-    readonly userName: string;
+    readonly userName?: string;
     /**
      * 
      * @type {Date}
      * @memberof OrderComment
      */
-    readonly date: Date;
+    readonly date?: Date;
     /**
      * 
      * @type {string}
@@ -55,9 +55,9 @@ export function OrderCommentFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'yagoTeam': json['yago_team'],
-        'userName': json['user_name'],
-        'date': (new Date(json['date'])),
+        'yagoTeam': !exists(json, 'yago_team') ? undefined : json['yago_team'],
+        'userName': !exists(json, 'user_name') ? undefined : json['user_name'],
+        'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
         'comment': json['comment'],
     };
 }

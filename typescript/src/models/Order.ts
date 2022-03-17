@@ -31,7 +31,7 @@ export interface Order {
      * @type {number}
      * @memberof Order
      */
-    readonly id: number;
+    readonly id?: number;
     /**
      * 
      * @type {string}
@@ -43,7 +43,7 @@ export interface Order {
      * @type {OrderState}
      * @memberof Order
      */
-    readonly state: OrderState | null;
+    readonly state?: OrderState | null;
     /**
      * Estimation of order in CHF including taxes. Payment price for User before starting production.
      * @type {string}
@@ -55,25 +55,25 @@ export interface Order {
      * @type {string}
      * @memberof Order
      */
-    readonly priceCurrency: string;
+    readonly priceCurrency?: string;
     /**
      * 
      * @type {Date}
      * @memberof Order
      */
-    readonly created: Date;
+    readonly created?: Date;
     /**
      * 
      * @type {Date}
      * @memberof Order
      */
-    readonly modified: Date;
+    readonly modified?: Date;
     /**
      * 
      * @type {number}
      * @memberof Order
      */
-    readonly modelCount: number;
+    readonly modelCount?: number;
 }
 
 export function OrderFromJSON(json: any): Order {
@@ -86,14 +86,14 @@ export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ord
     }
     return {
         
-        'id': json['id'],
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'project': json['project'],
-        'state': OrderStateFromJSON(json['state']),
+        'state': !exists(json, 'state') ? undefined : OrderStateFromJSON(json['state']),
         'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
-        'modelCount': json['model_count'],
+        'priceCurrency': !exists(json, 'price_currency') ? undefined : json['price_currency'],
+        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
+        'modified': !exists(json, 'modified') ? undefined : (new Date(json['modified'])),
+        'modelCount': !exists(json, 'model_count') ? undefined : json['model_count'],
     };
 }
 

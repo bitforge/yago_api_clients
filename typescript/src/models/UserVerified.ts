@@ -24,7 +24,7 @@ export interface UserVerified {
      * @type {string}
      * @memberof UserVerified
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * 
      * @type {string}
@@ -54,13 +54,13 @@ export interface UserVerified {
      * @type {string}
      * @memberof UserVerified
      */
-    readonly access: string;
+    readonly access?: string;
     /**
      * 
      * @type {string}
      * @memberof UserVerified
      */
-    readonly refresh: string;
+    readonly refresh?: string;
 }
 
 export function UserVerifiedFromJSON(json: any): UserVerified {
@@ -73,13 +73,13 @@ export function UserVerifiedFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'id': json['id'],
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'email': json['email'],
         'firstName': !exists(json, 'first_name') ? undefined : json['first_name'],
         'lastName': !exists(json, 'last_name') ? undefined : json['last_name'],
         'dateJoined': !exists(json, 'date_joined') ? undefined : (new Date(json['date_joined'])),
-        'access': json['access'],
-        'refresh': json['refresh'],
+        'access': !exists(json, 'access') ? undefined : json['access'],
+        'refresh': !exists(json, 'refresh') ? undefined : json['refresh'],
     };
 }
 

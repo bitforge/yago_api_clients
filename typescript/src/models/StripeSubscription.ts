@@ -37,19 +37,19 @@ export interface StripeSubscription {
      * @type {number}
      * @memberof StripeSubscription
      */
-    readonly djstripeId: number;
+    readonly djstripeId?: number;
     /**
      * 
      * @type {Date}
      * @memberof StripeSubscription
      */
-    readonly djstripeCreated: Date;
+    readonly djstripeCreated?: Date;
     /**
      * 
      * @type {Date}
      * @memberof StripeSubscription
      */
-    readonly djstripeUpdated: Date;
+    readonly djstripeUpdated?: Date;
     /**
      * 
      * @type {string}
@@ -266,9 +266,9 @@ export function StripeSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
-        'djstripeId': json['djstripe_id'],
-        'djstripeCreated': (new Date(json['djstripe_created'])),
-        'djstripeUpdated': (new Date(json['djstripe_updated'])),
+        'djstripeId': !exists(json, 'djstripe_id') ? undefined : json['djstripe_id'],
+        'djstripeCreated': !exists(json, 'djstripe_created') ? undefined : (new Date(json['djstripe_created'])),
+        'djstripeUpdated': !exists(json, 'djstripe_updated') ? undefined : (new Date(json['djstripe_updated'])),
         'id': json['id'],
         'livemode': !exists(json, 'livemode') ? undefined : json['livemode'],
         'created': !exists(json, 'created') ? undefined : (json['created'] === null ? null : new Date(json['created'])),

@@ -24,19 +24,19 @@ export interface StateChanged {
      * @type {string}
      * @memberof StateChanged
      */
-    readonly oldState: string;
+    readonly oldState?: string;
     /**
      * 
      * @type {string}
      * @memberof StateChanged
      */
-    readonly newState: string;
+    readonly newState?: string;
     /**
      * 
      * @type {Date}
      * @memberof StateChanged
      */
-    readonly modified: Date;
+    readonly modified?: Date;
 }
 
 export function StateChangedFromJSON(json: any): StateChanged {
@@ -49,9 +49,9 @@ export function StateChangedFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'oldState': json['old_state'],
-        'newState': json['new_state'],
-        'modified': (new Date(json['modified'])),
+        'oldState': !exists(json, 'old_state') ? undefined : json['old_state'],
+        'newState': !exists(json, 'new_state') ? undefined : json['new_state'],
+        'modified': !exists(json, 'modified') ? undefined : (new Date(json['modified'])),
     };
 }
 

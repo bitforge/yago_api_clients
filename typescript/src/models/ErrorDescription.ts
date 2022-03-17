@@ -24,19 +24,19 @@ export interface ErrorDescription {
      * @type {string}
      * @memberof ErrorDescription
      */
-    readonly title: string;
+    readonly title?: string;
     /**
      * 
      * @type {number}
      * @memberof ErrorDescription
      */
-    readonly status: number;
+    readonly status?: number;
     /**
      * 
      * @type {{ [key: string]: any; }}
      * @memberof ErrorDescription
      */
-    readonly errors: { [key: string]: any; };
+    readonly errors?: { [key: string]: any; };
 }
 
 export function ErrorDescriptionFromJSON(json: any): ErrorDescription {
@@ -49,9 +49,9 @@ export function ErrorDescriptionFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'title': json['title'],
-        'status': json['status'],
-        'errors': json['errors'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
+        'status': !exists(json, 'status') ? undefined : json['status'],
+        'errors': !exists(json, 'errors') ? undefined : json['errors'],
     };
 }
 

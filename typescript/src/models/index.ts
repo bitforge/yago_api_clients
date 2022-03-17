@@ -30,7 +30,6 @@ export * from './OrderModelComment';
 export * from './OrderModelCreate';
 export * from './OrderModelDetail';
 export * from './OrderModelFile';
-export * from './OrderModelState';
 export * from './OrderState';
 export * from './OrderUpdate';
 export * from './PasswordReset';

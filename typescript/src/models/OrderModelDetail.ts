@@ -26,11 +26,11 @@ import {
     OrderModelFileToJSON,
 } from './OrderModelFile';
 import {
-    OrderModelState,
-    OrderModelStateFromJSON,
-    OrderModelStateFromJSONTyped,
-    OrderModelStateToJSON,
-} from './OrderModelState';
+    OrderState,
+    OrderStateFromJSON,
+    OrderStateFromJSONTyped,
+    OrderStateToJSON,
+} from './OrderState';
 
 /**
  * 
@@ -43,7 +43,7 @@ export interface OrderModelDetail {
      * @type {number}
      * @memberof OrderModelDetail
      */
-    readonly id: number;
+    readonly id?: number;
     /**
      * 
      * @type {string}
@@ -52,10 +52,10 @@ export interface OrderModelDetail {
     name: string;
     /**
      * 
-     * @type {OrderModelState}
+     * @type {OrderState}
      * @memberof OrderModelDetail
      */
-    readonly state: OrderModelState | null;
+    readonly state?: OrderState | null;
     /**
      * 
      * @type {string}
@@ -85,19 +85,19 @@ export interface OrderModelDetail {
      * @type {string}
      * @memberof OrderModelDetail
      */
-    readonly model: string | null;
+    readonly model?: string | null;
     /**
      * 
      * @type {Date}
      * @memberof OrderModelDetail
      */
-    readonly created: Date;
+    readonly created?: Date;
     /**
      * 
      * @type {Date}
      * @memberof OrderModelDetail
      */
-    readonly modified: Date;
+    readonly modified?: Date;
     /**
      * 
      * @type {Array<OrderModelFile>}
@@ -122,16 +122,16 @@ export function OrderModelDetailFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'id': json['id'],
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'name': json['name'],
-        'state': OrderModelStateFromJSON(json['state']),
+        'state': !exists(json, 'state') ? undefined : OrderStateFromJSON(json['state']),
         'website': !exists(json, 'website') ? undefined : json['website'],
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
         'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
-        'model': json['model'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
+        'model': !exists(json, 'model') ? undefined : json['model'],
+        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
+        'modified': !exists(json, 'modified') ? undefined : (new Date(json['modified'])),
         'files': ((json['files'] as Array<any>).map(OrderModelFileFromJSON)),
         'comments': ((json['comments'] as Array<any>).map(OrderModelCommentFromJSON)),
     };
