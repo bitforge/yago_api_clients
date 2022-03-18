@@ -45,6 +45,12 @@ export interface User {
     lastName?: string;
     /**
      * 
+     * @type {string}
+     * @memberof User
+     */
+    readonly customerName?: string;
+    /**
+     * 
      * @type {Date}
      * @memberof User
      */
@@ -89,6 +95,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'email': !exists(json, 'email') ? undefined : json['email'],
         'firstName': !exists(json, 'first_name') ? undefined : json['first_name'],
         'lastName': !exists(json, 'last_name') ? undefined : json['last_name'],
+        'customerName': !exists(json, 'customer_name') ? undefined : json['customer_name'],
         'dateJoined': !exists(json, 'date_joined') ? undefined : (new Date(json['date_joined'])),
         'isActive': !exists(json, 'is_active') ? undefined : json['is_active'],
         'isStaff': !exists(json, 'is_staff') ? undefined : json['is_staff'],
