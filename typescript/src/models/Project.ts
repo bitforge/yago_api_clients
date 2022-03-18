@@ -24,7 +24,7 @@ export interface Project {
      * @type {string}
      * @memberof Project
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * Name will be visible as title in gallery.
      * @type {string}
@@ -48,13 +48,13 @@ export interface Project {
      * @type {string}
      * @memberof Project
      */
-    readonly imageThumb?: string;
+    readonly imageThumb: string;
     /**
      * 
      * @type {string}
      * @memberof Project
      */
-    readonly imagePreview?: string;
+    readonly imagePreview: string;
     /**
      * 
      * @type {string}
@@ -114,13 +114,13 @@ export interface Project {
      * @type {Date}
      * @memberof Project
      */
-    readonly created?: Date;
+    readonly created: Date;
     /**
      * 
      * @type {Date}
      * @memberof Project
      */
-    readonly modified?: Date;
+    readonly modified: Date;
 }
 
 export function ProjectFromJSON(json: any): Project {
@@ -133,12 +133,12 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'name': json['name'],
         'slug': json['slug'],
         'image': !exists(json, 'image') ? undefined : json['image'],
-        'imageThumb': !exists(json, 'image_thumb') ? undefined : json['image_thumb'],
-        'imagePreview': !exists(json, 'image_preview') ? undefined : json['image_preview'],
+        'imageThumb': json['image_thumb'],
+        'imagePreview': json['image_preview'],
         'website': !exists(json, 'website') ? undefined : json['website'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'gallery': !exists(json, 'gallery') ? undefined : json['gallery'],
@@ -148,8 +148,8 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'translationsIt': !exists(json, 'translations_it') ? undefined : json['translations_it'],
         'backlinkUrls': !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
         'ordersInReview': json['orders_in_review'],
-        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
-        'modified': !exists(json, 'modified') ? undefined : (new Date(json['modified'])),
+        'created': (new Date(json['created'])),
+        'modified': (new Date(json['modified'])),
     };
 }
 

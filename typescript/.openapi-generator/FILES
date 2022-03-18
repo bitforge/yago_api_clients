@@ -35,10 +35,12 @@ src/models/ModelUpdate.ts
 src/models/NewSubscription.ts
 src/models/Order.ts
 src/models/OrderComment.ts
+src/models/OrderCommentCreate.ts
 src/models/OrderCreate.ts
 src/models/OrderDetail.ts
 src/models/OrderModel.ts
 src/models/OrderModelComment.ts
+src/models/OrderModelCommentCreate.ts
 src/models/OrderModelCreate.ts
 src/models/OrderModelDetail.ts
 src/models/OrderModelFile.ts

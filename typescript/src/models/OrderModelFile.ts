@@ -24,13 +24,13 @@ export interface OrderModelFile {
      * @type {string}
      * @memberof OrderModelFile
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * 
      * @type {string}
      * @memberof OrderModelFile
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * 
      * @type {string}
@@ -42,7 +42,7 @@ export interface OrderModelFile {
      * @type {Date}
      * @memberof OrderModelFile
      */
-    readonly created?: Date;
+    readonly created: Date;
 }
 
 export function OrderModelFileFromJSON(json: any): OrderModelFile {
@@ -55,10 +55,10 @@ export function OrderModelFileFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
+        'id': json['id'],
+        'name': json['name'],
         'file': json['file'],
-        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
+        'created': (new Date(json['created'])),
     };
 }
 

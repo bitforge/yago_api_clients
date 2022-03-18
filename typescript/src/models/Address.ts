@@ -31,7 +31,7 @@ export interface Address {
      * @type {string}
      * @memberof Address
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * Full person name.
      * @type {string}
@@ -98,7 +98,7 @@ export function AddressFromJSONTyped(json: any, ignoreDiscriminator: boolean): A
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'name': json['name'],
         'email': !exists(json, 'email') ? undefined : json['email'],
         'phone': !exists(json, 'phone') ? undefined : json['phone'],

@@ -24,13 +24,13 @@ export interface AvailableState {
      * @type {string}
      * @memberof AvailableState
      */
-    readonly action?: string;
+    readonly action: string;
     /**
      * 
      * @type {string}
      * @memberof AvailableState
      */
-    readonly target?: string;
+    readonly target: string;
 }
 
 export function AvailableStateFromJSON(json: any): AvailableState {
@@ -43,8 +43,8 @@ export function AvailableStateFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'action': !exists(json, 'action') ? undefined : json['action'],
-        'target': !exists(json, 'target') ? undefined : json['target'],
+        'action': json['action'],
+        'target': json['target'],
     };
 }
 

@@ -30,6 +30,9 @@ import {
     OrderComment,
     OrderCommentFromJSON,
     OrderCommentToJSON,
+    OrderCommentCreate,
+    OrderCommentCreateFromJSON,
+    OrderCommentCreateToJSON,
     OrderCreate,
     OrderCreateFromJSON,
     OrderCreateToJSON,
@@ -42,6 +45,9 @@ import {
     OrderModelComment,
     OrderModelCommentFromJSON,
     OrderModelCommentToJSON,
+    OrderModelCommentCreate,
+    OrderModelCommentCreateFromJSON,
+    OrderModelCommentCreateToJSON,
     OrderModelCreate,
     OrderModelCreateFromJSON,
     OrderModelCreateToJSON,
@@ -61,7 +67,7 @@ import {
 
 export interface OrdersCommentsCreateRequest {
     orderId: number;
-    orderComment: OrderComment;
+    orderCommentCreate: OrderCommentCreate;
 }
 
 export interface OrdersCommentsListRequest {
@@ -83,7 +89,7 @@ export interface OrdersListRequest {
 export interface OrdersModelsCommentsCreateRequest {
     orderId: number;
     id: number;
-    orderModelComment: OrderModelComment;
+    orderModelCommentCreate: OrderModelCommentCreate;
 }
 
 export interface OrdersModelsCommentsListRequest {
@@ -195,13 +201,13 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new comment to order.
      */
-    async ordersCommentsCreateRaw(requestParameters: OrdersCommentsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderComment>> {
+    async ordersCommentsCreateRaw(requestParameters: OrdersCommentsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderCommentCreate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersCommentsCreate.');
         }
 
-        if (requestParameters.orderComment === null || requestParameters.orderComment === undefined) {
-            throw new runtime.RequiredError('orderComment','Required parameter requestParameters.orderComment was null or undefined when calling ordersCommentsCreate.');
+        if (requestParameters.orderCommentCreate === null || requestParameters.orderCommentCreate === undefined) {
+            throw new runtime.RequiredError('orderCommentCreate','Required parameter requestParameters.orderCommentCreate was null or undefined when calling ordersCommentsCreate.');
         }
 
         const queryParameters: any = {};
@@ -227,16 +233,16 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: OrderCommentToJSON(requestParameters.orderComment),
+            body: OrderCommentCreateToJSON(requestParameters.orderCommentCreate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderCommentFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OrderCommentCreateFromJSON(jsonValue));
     }
 
     /**
      * Add a new comment to order.
      */
-    async ordersCommentsCreate(requestParameters: OrdersCommentsCreateRequest, initOverrides?: RequestInit): Promise<OrderComment> {
+    async ordersCommentsCreate(requestParameters: OrdersCommentsCreateRequest, initOverrides?: RequestInit): Promise<OrderCommentCreate> {
         const response = await this.ordersCommentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -414,7 +420,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new comment to order.
      */
-    async ordersModelsCommentsCreateRaw(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelComment>> {
+    async ordersModelsCommentsCreateRaw(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelCommentCreate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCommentsCreate.');
         }
@@ -423,8 +429,8 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsCommentsCreate.');
         }
 
-        if (requestParameters.orderModelComment === null || requestParameters.orderModelComment === undefined) {
-            throw new runtime.RequiredError('orderModelComment','Required parameter requestParameters.orderModelComment was null or undefined when calling ordersModelsCommentsCreate.');
+        if (requestParameters.orderModelCommentCreate === null || requestParameters.orderModelCommentCreate === undefined) {
+            throw new runtime.RequiredError('orderModelCommentCreate','Required parameter requestParameters.orderModelCommentCreate was null or undefined when calling ordersModelsCommentsCreate.');
         }
 
         const queryParameters: any = {};
@@ -450,16 +456,16 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: OrderModelCommentToJSON(requestParameters.orderModelComment),
+            body: OrderModelCommentCreateToJSON(requestParameters.orderModelCommentCreate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelCommentFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelCommentCreateFromJSON(jsonValue));
     }
 
     /**
      * Add a new comment to order.
      */
-    async ordersModelsCommentsCreate(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<OrderModelComment> {
+    async ordersModelsCommentsCreate(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<OrderModelCommentCreate> {
         const response = await this.ordersModelsCommentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }

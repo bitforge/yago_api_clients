@@ -31,7 +31,7 @@ export interface Membership {
      * @type {string}
      * @memberof Membership
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * 
      * @type {string}
@@ -55,7 +55,7 @@ export interface Membership {
      * @type {Date}
      * @memberof Membership
      */
-    readonly created?: Date;
+    readonly created: Date;
 }
 
 export function MembershipFromJSON(json: any): Membership {
@@ -68,11 +68,11 @@ export function MembershipFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'project': json['project'],
         'user': json['user'],
         'role': !exists(json, 'role') ? undefined : RoleEnumFromJSON(json['role']),
-        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
+        'created': (new Date(json['created'])),
     };
 }
 

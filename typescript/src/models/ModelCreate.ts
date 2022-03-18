@@ -24,7 +24,7 @@ export interface ModelCreate {
      * @type {string}
      * @memberof ModelCreate
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * The project this model belongs to. Cannot be changed once created.
      * @type {string}
@@ -60,7 +60,7 @@ export interface ModelCreate {
      * @type {string}
      * @memberof ModelCreate
      */
-    readonly slug?: string;
+    readonly slug: string;
 }
 
 export function ModelCreateFromJSON(json: any): ModelCreate {
@@ -73,13 +73,13 @@ export function ModelCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'project': json['project'],
         'nameDe': !exists(json, 'name_de') ? undefined : json['name_de'],
         'nameEn': !exists(json, 'name_en') ? undefined : json['name_en'],
         'nameFr': !exists(json, 'name_fr') ? undefined : json['name_fr'],
         'nameIt': !exists(json, 'name_it') ? undefined : json['name_it'],
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'slug': json['slug'],
     };
 }
 

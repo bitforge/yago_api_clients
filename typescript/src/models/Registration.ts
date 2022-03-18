@@ -24,7 +24,7 @@ export interface Registration {
      * @type {string}
      * @memberof Registration
      */
-    readonly id?: string;
+    readonly id: string;
     /**
      * 
      * @type {string}
@@ -55,7 +55,7 @@ export function RegistrationFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'email': json['email'],
         'firstName': !exists(json, 'first_name') ? undefined : json['first_name'],
         'lastName': !exists(json, 'last_name') ? undefined : json['last_name'],

@@ -43,7 +43,7 @@ export interface OrderDetail {
      * @type {number}
      * @memberof OrderDetail
      */
-    readonly id?: number;
+    readonly id: number;
     /**
      * 
      * @type {string}
@@ -55,7 +55,7 @@ export interface OrderDetail {
      * @type {OrderState}
      * @memberof OrderDetail
      */
-    readonly state?: OrderState | null;
+    readonly state: OrderState | null;
     /**
      * Estimation of order in CHF including taxes. Payment price for User before starting production.
      * @type {string}
@@ -67,19 +67,19 @@ export interface OrderDetail {
      * @type {string}
      * @memberof OrderDetail
      */
-    readonly priceCurrency?: string;
+    readonly priceCurrency: string;
     /**
      * 
      * @type {Date}
      * @memberof OrderDetail
      */
-    readonly created?: Date;
+    readonly created: Date;
     /**
      * 
      * @type {Date}
      * @memberof OrderDetail
      */
-    readonly modified?: Date;
+    readonly modified: Date;
     /**
      * 
      * @type {Array<OrderModel>}
@@ -104,13 +104,13 @@ export function OrderDetailFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'project': json['project'],
-        'state': !exists(json, 'state') ? undefined : OrderStateFromJSON(json['state']),
+        'state': OrderStateFromJSON(json['state']),
         'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': !exists(json, 'price_currency') ? undefined : json['price_currency'],
-        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
-        'modified': !exists(json, 'modified') ? undefined : (new Date(json['modified'])),
+        'priceCurrency': json['price_currency'],
+        'created': (new Date(json['created'])),
+        'modified': (new Date(json['modified'])),
         'models': ((json['models'] as Array<any>).map(OrderModelFromJSON)),
         'comments': ((json['comments'] as Array<any>).map(OrderCommentFromJSON)),
     };

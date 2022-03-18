@@ -55,19 +55,19 @@ export interface NewSubscription {
      * @type {string}
      * @memberof NewSubscription
      */
-    readonly customerId?: string;
+    readonly customerId: string;
     /**
      * 
      * @type {string}
      * @memberof NewSubscription
      */
-    readonly subscriptionId?: string;
+    readonly subscriptionId: string;
     /**
      * 
      * @type {string}
      * @memberof NewSubscription
      */
-    readonly clientSecret?: string;
+    readonly clientSecret: string;
 }
 
 export function NewSubscriptionFromJSON(json: any): NewSubscription {
@@ -83,9 +83,9 @@ export function NewSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
         'plan': PlanEnumFromJSON(json['plan']),
         'paymentMethod': PaymentMethodEnumFromJSON(json['payment_method']),
         'tosAccepted': json['tos_accepted'],
-        'customerId': !exists(json, 'customer_id') ? undefined : json['customer_id'],
-        'subscriptionId': !exists(json, 'subscription_id') ? undefined : json['subscription_id'],
-        'clientSecret': !exists(json, 'client_secret') ? undefined : json['client_secret'],
+        'customerId': json['customer_id'],
+        'subscriptionId': json['subscription_id'],
+        'clientSecret': json['client_secret'],
     };
 }
 

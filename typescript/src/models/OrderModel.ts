@@ -31,7 +31,7 @@ export interface OrderModel {
      * @type {number}
      * @memberof OrderModel
      */
-    readonly id?: number;
+    readonly id: number;
     /**
      * 
      * @type {string}
@@ -43,13 +43,13 @@ export interface OrderModel {
      * @type {number}
      * @memberof OrderModel
      */
-    readonly order?: number;
+    readonly order: number;
     /**
      * 
      * @type {OrderState}
      * @memberof OrderModel
      */
-    readonly state?: OrderState | null;
+    readonly state: OrderState | null;
     /**
      * 
      * @type {string}
@@ -79,19 +79,19 @@ export interface OrderModel {
      * @type {string}
      * @memberof OrderModel
      */
-    readonly model?: string | null;
+    readonly model: string | null;
     /**
      * 
      * @type {Date}
      * @memberof OrderModel
      */
-    readonly created?: Date;
+    readonly created: Date;
     /**
      * 
      * @type {Date}
      * @memberof OrderModel
      */
-    readonly modified?: Date;
+    readonly modified: Date;
 }
 
 export function OrderModelFromJSON(json: any): OrderModel {
@@ -104,17 +104,17 @@ export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'name': json['name'],
-        'order': !exists(json, 'order') ? undefined : json['order'],
-        'state': !exists(json, 'state') ? undefined : OrderStateFromJSON(json['state']),
+        'order': json['order'],
+        'state': OrderStateFromJSON(json['state']),
         'website': !exists(json, 'website') ? undefined : json['website'],
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
         'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
-        'model': !exists(json, 'model') ? undefined : json['model'],
-        'created': !exists(json, 'created') ? undefined : (new Date(json['created'])),
-        'modified': !exists(json, 'modified') ? undefined : (new Date(json['modified'])),
+        'model': json['model'],
+        'created': (new Date(json['created'])),
+        'modified': (new Date(json['modified'])),
     };
 }
 

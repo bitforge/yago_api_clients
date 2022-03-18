@@ -16,53 +16,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface OrderComment
+ * @interface OrderCommentCreate
  */
-export interface OrderComment {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OrderComment
-     */
-    readonly yagoTeam: boolean;
+export interface OrderCommentCreate {
     /**
      * 
      * @type {string}
-     * @memberof OrderComment
-     */
-    readonly userName: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OrderComment
-     */
-    readonly date: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderComment
+     * @memberof OrderCommentCreate
      */
     comment: string;
 }
 
-export function OrderCommentFromJSON(json: any): OrderComment {
-    return OrderCommentFromJSONTyped(json, false);
+export function OrderCommentCreateFromJSON(json: any): OrderCommentCreate {
+    return OrderCommentCreateFromJSONTyped(json, false);
 }
 
-export function OrderCommentFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderComment {
+export function OrderCommentCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderCommentCreate {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'yagoTeam': json['yago_team'],
-        'userName': json['user_name'],
-        'date': (new Date(json['date'])),
         'comment': json['comment'],
     };
 }
 
-export function OrderCommentToJSON(value?: OrderComment | null): any {
+export function OrderCommentCreateToJSON(value?: OrderCommentCreate | null): any {
     if (value === undefined) {
         return undefined;
     }
