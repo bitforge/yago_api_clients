@@ -46,6 +46,7 @@ src/models/OrderModelDetail.ts
 src/models/OrderModelFile.ts
 src/models/OrderState.ts
 src/models/OrderUpdate.ts
+src/models/PasswordChange.ts
 src/models/PasswordReset.ts
 src/models/PasswordResetConfirm.ts
 src/models/PatchedAddress.ts

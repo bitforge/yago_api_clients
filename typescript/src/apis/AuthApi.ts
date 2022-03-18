@@ -18,6 +18,9 @@ import {
     GoogleIdToken,
     GoogleIdTokenFromJSON,
     GoogleIdTokenToJSON,
+    PasswordChange,
+    PasswordChangeFromJSON,
+    PasswordChangeToJSON,
     PasswordReset,
     PasswordResetFromJSON,
     PasswordResetToJSON,
@@ -47,6 +50,10 @@ export interface AuthGoogleCreateRequest {
 
 export interface AuthLoginCreateRequest {
     tokenObtainRequest: TokenObtainRequest;
+}
+
+export interface AuthPasswordChangeCreateRequest {
+    passwordChange: PasswordChange;
 }
 
 export interface AuthPasswordResetConfirmCreateRequest {
@@ -133,6 +140,51 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authLoginCreate(requestParameters: AuthLoginCreateRequest, initOverrides?: RequestInit): Promise<TokenObtainResponse> {
         const response = await this.authLoginCreateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Change password of current user.
+     */
+    async authPasswordChangeCreateRaw(requestParameters: AuthPasswordChangeCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PasswordChange>> {
+        if (requestParameters.passwordChange === null || requestParameters.passwordChange === undefined) {
+            throw new runtime.RequiredError('passwordChange','Required parameter requestParameters.passwordChange was null or undefined when calling authPasswordChangeCreate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/auth/password/change/`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PasswordChangeToJSON(requestParameters.passwordChange),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PasswordChangeFromJSON(jsonValue));
+    }
+
+    /**
+     * Change password of current user.
+     */
+    async authPasswordChangeCreate(requestParameters: AuthPasswordChangeCreateRequest, initOverrides?: RequestInit): Promise<PasswordChange> {
+        const response = await this.authPasswordChangeCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

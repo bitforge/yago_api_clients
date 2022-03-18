@@ -34,6 +34,7 @@ export * from './OrderModelDetail';
 export * from './OrderModelFile';
 export * from './OrderState';
 export * from './OrderUpdate';
+export * from './PasswordChange';
 export * from './PasswordReset';
 export * from './PasswordResetConfirm';
 export * from './PatchedAddress';

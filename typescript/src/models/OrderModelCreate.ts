@@ -27,12 +27,6 @@ export interface OrderModelCreate {
     name: string;
     /**
      * 
-     * @type {number}
-     * @memberof OrderModelCreate
-     */
-    order: number;
-    /**
-     * 
      * @type {string}
      * @memberof OrderModelCreate
      */
@@ -68,7 +62,6 @@ export function OrderModelCreateFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'name': json['name'],
-        'order': json['order'],
         'website': !exists(json, 'website') ? undefined : json['website'],
         'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
         'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
@@ -86,7 +79,6 @@ export function OrderModelCreateToJSON(value?: OrderModelCreate | null): any {
     return {
         
         'name': value.name,
-        'order': value.order,
         'website': value.website,
         'width_mm': value.widthMm,
         'height_mm': value.heightMm,
