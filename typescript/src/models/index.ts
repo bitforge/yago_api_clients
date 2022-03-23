@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './ActiveOrder';
 export * from './Address';
 export * from './AvailableState';
 export * from './ChronicStats';

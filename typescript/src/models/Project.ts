@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    ActiveOrder,
+    ActiveOrderFromJSON,
+    ActiveOrderFromJSONTyped,
+    ActiveOrderToJSON,
+} from './ActiveOrder';
+
 /**
  * 
  * @export
@@ -105,10 +112,10 @@ export interface Project {
     backlinkUrls?: boolean;
     /**
      * 
-     * @type {Array<number>}
+     * @type {Array<ActiveOrder>}
      * @memberof Project
      */
-    ordersInReview: Array<number>;
+    readonly orders: Array<ActiveOrder>;
     /**
      * 
      * @type {Date}
@@ -147,7 +154,7 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'translationsFr': !exists(json, 'translations_fr') ? undefined : json['translations_fr'],
         'translationsIt': !exists(json, 'translations_it') ? undefined : json['translations_it'],
         'backlinkUrls': !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
-        'ordersInReview': json['orders_in_review'],
+        'orders': ((json['orders'] as Array<any>).map(ActiveOrderFromJSON)),
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
     };
@@ -173,7 +180,6 @@ export function ProjectToJSON(value?: Project | null): any {
         'translations_fr': value.translationsFr,
         'translations_it': value.translationsIt,
         'backlink_urls': value.backlinkUrls,
-        'orders_in_review': value.ordersInReview,
     };
 }
 
