@@ -42,6 +42,9 @@ class Model {
     this.scaleable,
     this.glb,
     this.usdz,
+    this.model,
+    this.unityIos,
+    this.unityAndroid,
     @required this.created,
     @required this.modified,
   });
@@ -128,6 +131,15 @@ class Model {
   /// Must be a USDZ or Reality Composer file.
   String usdz;
 
+  /// Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files.
+  String model;
+
+  /// Unity Asset Bundle for Android
+  String unityIos;
+
+  /// Unity Asset Bundle for iOS
+  String unityAndroid;
+
   DateTime created;
 
   DateTime modified;
@@ -163,6 +175,9 @@ class Model {
      other.scaleable == scaleable &&
      other.glb == glb &&
      other.usdz == usdz &&
+     other.model == model &&
+     other.unityIos == unityIos &&
+     other.unityAndroid == unityAndroid &&
      other.created == created &&
      other.modified == modified;
 
@@ -198,11 +213,14 @@ class Model {
     (scaleable == null ? 0 : scaleable.hashCode) +
     (glb == null ? 0 : glb.hashCode) +
     (usdz == null ? 0 : usdz.hashCode) +
+    (model == null ? 0 : model.hashCode) +
+    (unityIos == null ? 0 : unityIos.hashCode) +
+    (unityAndroid == null ? 0 : unityAndroid.hashCode) +
     (created == null ? 0 : created.hashCode) +
     (modified == null ? 0 : modified.hashCode);
 
   @override
-  String toString() => 'Model[id=$id, project=$project, name=$name, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrl=$siteUrl, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, sku=$sku, price=$price, priceCurrency=$priceCurrency, scaleable=$scaleable, glb=$glb, usdz=$usdz, created=$created, modified=$modified]';
+  String toString() => 'Model[id=$id, project=$project, name=$name, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrl=$siteUrl, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, sku=$sku, price=$price, priceCurrency=$priceCurrency, scaleable=$scaleable, glb=$glb, usdz=$usdz, model=$model, unityIos=$unityIos, unityAndroid=$unityAndroid, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -277,6 +295,15 @@ class Model {
     if (usdz != null) {
       json[r'usdz'] = usdz;
     }
+    if (model != null) {
+      json[r'model'] = model;
+    }
+    if (unityIos != null) {
+      json[r'unity_ios'] = unityIos;
+    }
+    if (unityAndroid != null) {
+      json[r'unity_android'] = unityAndroid;
+    }
       json[r'created'] = created.toUtc().toIso8601String();
       json[r'modified'] = modified.toUtc().toIso8601String();
     return json;
@@ -318,6 +345,9 @@ class Model {
         scaleable: mapValueOfType<bool>(json, r'scaleable'),
         glb: mapValueOfType<String>(json, r'glb'),
         usdz: mapValueOfType<String>(json, r'usdz'),
+        model: mapValueOfType<String>(json, r'model'),
+        unityIos: mapValueOfType<String>(json, r'unity_ios'),
+        unityAndroid: mapValueOfType<String>(json, r'unity_android'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
       );

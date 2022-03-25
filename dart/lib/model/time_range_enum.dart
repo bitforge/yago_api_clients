@@ -31,6 +31,8 @@ class TimeRangeEnum {
   static const n2m = TimeRangeEnum._(r'2m');
   static const n3m = TimeRangeEnum._(r'3m');
   static const n6m = TimeRangeEnum._(r'6m');
+  static const n1y = TimeRangeEnum._(r'1y');
+  static const n2y = TimeRangeEnum._(r'2y');
 
   /// List of all possible values in this [enum][TimeRangeEnum].
   static const values = <TimeRangeEnum>[
@@ -42,6 +44,8 @@ class TimeRangeEnum {
     n2m,
     n3m,
     n6m,
+    n1y,
+    n2y,
   ];
 
   static TimeRangeEnum fromJson(dynamic value) =>
@@ -81,6 +85,8 @@ class TimeRangeEnumTypeTransformer {
         case r'2m': return TimeRangeEnum.n2m;
         case r'3m': return TimeRangeEnum.n3m;
         case r'6m': return TimeRangeEnum.n6m;
+        case r'1y': return TimeRangeEnum.n1y;
+        case r'2y': return TimeRangeEnum.n2y;
         default:
           if (allowNull == false) {
             throw ArgumentError('Unknown enum value to decode: $data');

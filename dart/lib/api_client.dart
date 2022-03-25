@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://genie-ar.ch'}) {
+  ApiClient({this.basePath = 'https://dev.yago.cloud'}) {
     // Setup authentications (key: authentication name, value: authentication).
     _authentications[r'cookieAuth'] = ApiKeyAuth('cookie', 'sessionid');
     _authentications[r'jwtAuth'] = HttpBearerAuth();
@@ -195,8 +195,12 @@ class ApiClient {
           }
           final valueString = '$value'.toLowerCase();
           return valueString == 'true' || valueString == '1';
+        case 'ActiveOrder':
+          return ActiveOrder.fromJson(value);
         case 'Address':
           return Address.fromJson(value);
+        case 'AvailableState':
+          return AvailableState.fromJson(value);
         case 'ChronicStats':
           return ChronicStats.fromJson(value);
         case 'CollectionMethodEnum':
@@ -205,8 +209,12 @@ class ApiClient {
           return CountryEnumTypeTransformer().decode(value);
         case 'Customer':
           return Customer.fromJson(value);
+        case 'ErrorDescription':
+          return ErrorDescription.fromJson(value);
         case 'FileUpload':
           return FileUpload.fromJson(value);
+        case 'FileUploaded':
+          return FileUploaded.fromJson(value);
         case 'FilterEventsEnum':
           return FilterEventsEnumTypeTransformer().decode(value);
         case 'GlobalStatistics':
@@ -223,14 +231,42 @@ class ApiClient {
           return Model.fromJson(value);
         case 'ModelCreate':
           return ModelCreate.fromJson(value);
+        case 'ModelInfo':
+          return ModelInfo.fromJson(value);
         case 'ModelStatus':
           return ModelStatusTypeTransformer().decode(value);
         case 'ModelUpdate':
           return ModelUpdate.fromJson(value);
-        case 'Nested':
-          return Nested.fromJson(value);
         case 'NewSubscription':
           return NewSubscription.fromJson(value);
+        case 'Order':
+          return Order.fromJson(value);
+        case 'OrderComment':
+          return OrderComment.fromJson(value);
+        case 'OrderCommentCreate':
+          return OrderCommentCreate.fromJson(value);
+        case 'OrderCreate':
+          return OrderCreate.fromJson(value);
+        case 'OrderDetail':
+          return OrderDetail.fromJson(value);
+        case 'OrderModel':
+          return OrderModel.fromJson(value);
+        case 'OrderModelComment':
+          return OrderModelComment.fromJson(value);
+        case 'OrderModelCommentCreate':
+          return OrderModelCommentCreate.fromJson(value);
+        case 'OrderModelCreate':
+          return OrderModelCreate.fromJson(value);
+        case 'OrderModelDetail':
+          return OrderModelDetail.fromJson(value);
+        case 'OrderModelFile':
+          return OrderModelFile.fromJson(value);
+        case 'OrderState':
+          return OrderStateTypeTransformer().decode(value);
+        case 'OrderUpdate':
+          return OrderUpdate.fromJson(value);
+        case 'PasswordChange':
+          return PasswordChange.fromJson(value);
         case 'PasswordReset':
           return PasswordReset.fromJson(value);
         case 'PasswordResetConfirm':
@@ -245,6 +281,8 @@ class ApiClient {
           return PaymentMethodEnumTypeTransformer().decode(value);
         case 'PlanEnum':
           return PlanEnumTypeTransformer().decode(value);
+        case 'PriceCurrencyEnum':
+          return PriceCurrencyEnumTypeTransformer().decode(value);
         case 'PricingPlan':
           return PricingPlan.fromJson(value);
         case 'Project':
@@ -265,6 +303,8 @@ class ApiClient {
           return ReportFormatEnumTypeTransformer().decode(value);
         case 'RoleEnum':
           return RoleEnumTypeTransformer().decode(value);
+        case 'StateChanged':
+          return StateChanged.fromJson(value);
         case 'StripeSubscription':
           return StripeSubscription.fromJson(value);
         case 'StripeSubscriptionStatusEnum':

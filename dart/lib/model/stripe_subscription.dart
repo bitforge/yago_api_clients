@@ -42,9 +42,10 @@ class StripeSubscription {
     this.trialEnd,
     this.trialStart,
     this.djstripeOwnerAccount,
-    this.customer,
+    @required this.customer,
     this.defaultPaymentMethod,
     this.defaultSource,
+    this.latestInvoice,
     this.pendingSetupIntent,
     this.plan,
     this.schedule,
@@ -134,21 +135,32 @@ class StripeSubscription {
   /// If the subscription has a trial, the beginning of that trial.
   DateTime trialStart;
 
-  Nested djstripeOwnerAccount;
+  /// The Stripe Account this object belongs to.
+  String djstripeOwnerAccount;
 
-  Nested customer;
+  /// The customer associated with this subscription.
+  String customer;
 
-  Nested defaultPaymentMethod;
+  /// The default payment method for the subscription. It must belong to the customer associated with the subscription. If not set, invoices will use the default payment method in the customer's invoice settings.
+  String defaultPaymentMethod;
 
-  Nested defaultSource;
+  /// The default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If not set, defaults to the customer's default source.
+  String defaultSource;
 
-  Nested pendingSetupIntent;
+  /// The most recent invoice this subscription has generated.
+  String latestInvoice;
 
-  Nested plan;
+  /// We can use this SetupIntent to collect user authentication when creating a subscription without immediate payment or updating a subscription's payment method, allowing you to optimize for off-session payments.
+  String pendingSetupIntent;
 
-  Nested schedule;
+  /// The plan associated with this subscription. This value will be `null` for multi-plan subscriptions
+  int plan;
 
-  List<Nested> defaultTaxRates;
+  /// The schedule associated with this subscription.
+  int schedule;
+
+  /// The tax rates that will apply to any subscription item that does not have tax_rates set. Invoices created will have their default_tax_rates populated from the subscription.
+  List<int> defaultTaxRates;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is StripeSubscription &&
@@ -184,6 +196,7 @@ class StripeSubscription {
      other.customer == customer &&
      other.defaultPaymentMethod == defaultPaymentMethod &&
      other.defaultSource == defaultSource &&
+     other.latestInvoice == latestInvoice &&
      other.pendingSetupIntent == pendingSetupIntent &&
      other.plan == plan &&
      other.schedule == schedule &&
@@ -224,13 +237,14 @@ class StripeSubscription {
     (customer == null ? 0 : customer.hashCode) +
     (defaultPaymentMethod == null ? 0 : defaultPaymentMethod.hashCode) +
     (defaultSource == null ? 0 : defaultSource.hashCode) +
+    (latestInvoice == null ? 0 : latestInvoice.hashCode) +
     (pendingSetupIntent == null ? 0 : pendingSetupIntent.hashCode) +
     (plan == null ? 0 : plan.hashCode) +
     (schedule == null ? 0 : schedule.hashCode) +
     (defaultTaxRates == null ? 0 : defaultTaxRates.hashCode);
 
   @override
-  String toString() => 'StripeSubscription[djstripeId=$djstripeId, djstripeCreated=$djstripeCreated, djstripeUpdated=$djstripeUpdated, id=$id, livemode=$livemode, created=$created, metadata=$metadata, description=$description, applicationFeePercent=$applicationFeePercent, billingCycleAnchor=$billingCycleAnchor, billingThresholds=$billingThresholds, cancelAt=$cancelAt, cancelAtPeriodEnd=$cancelAtPeriodEnd, canceledAt=$canceledAt, collectionMethod=$collectionMethod, currentPeriodEnd=$currentPeriodEnd, currentPeriodStart=$currentPeriodStart, daysUntilDue=$daysUntilDue, discount=$discount, endedAt=$endedAt, nextPendingInvoiceItemInvoice=$nextPendingInvoiceItemInvoice, pendingInvoiceItemInterval=$pendingInvoiceItemInterval, pendingUpdate=$pendingUpdate, quantity=$quantity, startDate=$startDate, status=$status, trialEnd=$trialEnd, trialStart=$trialStart, djstripeOwnerAccount=$djstripeOwnerAccount, customer=$customer, defaultPaymentMethod=$defaultPaymentMethod, defaultSource=$defaultSource, pendingSetupIntent=$pendingSetupIntent, plan=$plan, schedule=$schedule, defaultTaxRates=$defaultTaxRates]';
+  String toString() => 'StripeSubscription[djstripeId=$djstripeId, djstripeCreated=$djstripeCreated, djstripeUpdated=$djstripeUpdated, id=$id, livemode=$livemode, created=$created, metadata=$metadata, description=$description, applicationFeePercent=$applicationFeePercent, billingCycleAnchor=$billingCycleAnchor, billingThresholds=$billingThresholds, cancelAt=$cancelAt, cancelAtPeriodEnd=$cancelAtPeriodEnd, canceledAt=$canceledAt, collectionMethod=$collectionMethod, currentPeriodEnd=$currentPeriodEnd, currentPeriodStart=$currentPeriodStart, daysUntilDue=$daysUntilDue, discount=$discount, endedAt=$endedAt, nextPendingInvoiceItemInvoice=$nextPendingInvoiceItemInvoice, pendingInvoiceItemInterval=$pendingInvoiceItemInterval, pendingUpdate=$pendingUpdate, quantity=$quantity, startDate=$startDate, status=$status, trialEnd=$trialEnd, trialStart=$trialStart, djstripeOwnerAccount=$djstripeOwnerAccount, customer=$customer, defaultPaymentMethod=$defaultPaymentMethod, defaultSource=$defaultSource, latestInvoice=$latestInvoice, pendingSetupIntent=$pendingSetupIntent, plan=$plan, schedule=$schedule, defaultTaxRates=$defaultTaxRates]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -302,14 +316,31 @@ class StripeSubscription {
     if (trialStart != null) {
       json[r'trial_start'] = trialStart.toUtc().toIso8601String();
     }
-      json[r'djstripe_owner_account'] = djstripeOwnerAccount == null ? null : djstripeOwnerAccount;
-      json[r'customer'] = customer == null ? null : customer;
-      json[r'default_payment_method'] = defaultPaymentMethod == null ? null : defaultPaymentMethod;
-      json[r'default_source'] = defaultSource == null ? null : defaultSource;
-      json[r'pending_setup_intent'] = pendingSetupIntent == null ? null : pendingSetupIntent;
-      json[r'plan'] = plan == null ? null : plan;
-      json[r'schedule'] = schedule == null ? null : schedule;
+    if (djstripeOwnerAccount != null) {
+      json[r'djstripe_owner_account'] = djstripeOwnerAccount;
+    }
+      json[r'customer'] = customer;
+    if (defaultPaymentMethod != null) {
+      json[r'default_payment_method'] = defaultPaymentMethod;
+    }
+    if (defaultSource != null) {
+      json[r'default_source'] = defaultSource;
+    }
+    if (latestInvoice != null) {
+      json[r'latest_invoice'] = latestInvoice;
+    }
+    if (pendingSetupIntent != null) {
+      json[r'pending_setup_intent'] = pendingSetupIntent;
+    }
+    if (plan != null) {
+      json[r'plan'] = plan;
+    }
+    if (schedule != null) {
+      json[r'schedule'] = schedule;
+    }
+    if (defaultTaxRates != null) {
       json[r'default_tax_rates'] = defaultTaxRates;
+    }
     return json;
   }
 
@@ -348,14 +379,17 @@ class StripeSubscription {
         status: StripeSubscriptionStatusEnum.fromJson(json[r'status']),
         trialEnd: mapDateTime(json, r'trial_end', ''),
         trialStart: mapDateTime(json, r'trial_start', ''),
-        djstripeOwnerAccount: Nested.fromJson(json[r'djstripe_owner_account']),
-        customer: Nested.fromJson(json[r'customer']),
-        defaultPaymentMethod: Nested.fromJson(json[r'default_payment_method']),
-        defaultSource: Nested.fromJson(json[r'default_source']),
-        pendingSetupIntent: Nested.fromJson(json[r'pending_setup_intent']),
-        plan: Nested.fromJson(json[r'plan']),
-        schedule: Nested.fromJson(json[r'schedule']),
-        defaultTaxRates: Nested.listFromJson(json[r'default_tax_rates']),
+        djstripeOwnerAccount: mapValueOfType<String>(json, r'djstripe_owner_account'),
+        customer: mapValueOfType<String>(json, r'customer'),
+        defaultPaymentMethod: mapValueOfType<String>(json, r'default_payment_method'),
+        defaultSource: mapValueOfType<String>(json, r'default_source'),
+        latestInvoice: mapValueOfType<String>(json, r'latest_invoice'),
+        pendingSetupIntent: mapValueOfType<String>(json, r'pending_setup_intent'),
+        plan: mapValueOfType<int>(json, r'plan'),
+        schedule: mapValueOfType<int>(json, r'schedule'),
+        defaultTaxRates: json[r'default_tax_rates'] is List
+          ? (json[r'default_tax_rates'] as List).cast<int>()
+          : null,
       );
     }
     return null;

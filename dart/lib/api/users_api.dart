@@ -79,7 +79,7 @@ class UsersApi {
     return Future<List<User>>.value();
   }
 
-  /// Show details of the user currently logged in.
+  /// Get or update current user details.
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> usersMeRetrieveWithHttpInfo() async {
@@ -109,9 +109,65 @@ class UsersApi {
     );
   }
 
-  /// Show details of the user currently logged in.
+  /// Get or update current user details.
   Future<User> usersMeRetrieve() async {
     final response = await usersMeRetrieveWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
+    
+    }
+    return Future<User>.value();
+  }
+
+  /// Get or update current user details.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [User] user:
+  Future<Response> usersMeUpdateWithHttpInfo({ User user, }) async {
+    // Verify required params are set.
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/users/me/';
+
+    // ignore: prefer_final_locals
+    Object postBody = user;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Get or update current user details.
+  ///
+  /// Parameters:
+  ///
+  /// * [User] user:
+  Future<User> usersMeUpdate({ User user, }) async {
+    final response = await usersMeUpdateWithHttpInfo( user: user, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

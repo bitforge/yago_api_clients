@@ -17,10 +17,12 @@ class User {
     @required this.email,
     this.firstName,
     this.lastName,
-    this.dateJoined,
-    this.isActive,
-    this.isStaff,
-    this.isSuperuser,
+    @required this.customerName,
+    @required this.dateJoined,
+    @required this.isActive,
+    @required this.isStaff,
+    @required this.isSuperuser,
+    @required this.isContractor,
   });
 
   String id;
@@ -31,16 +33,21 @@ class User {
 
   String lastName;
 
+  String customerName;
+
   DateTime dateJoined;
 
   /// Deactivated users cannot login.
   bool isActive;
 
-  /// Allow login to Genie AR CMS. Can be disabled for API users.
+  /// Allow login to Yago Admin. For Admins only.
   bool isStaff;
 
   /// User can see and change anything. Only for Bitforge employees.
   bool isSuperuser;
+
+  /// User can manage model orders. For designers & customer project managers.
+  bool isContractor;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
@@ -48,10 +55,12 @@ class User {
      other.email == email &&
      other.firstName == firstName &&
      other.lastName == lastName &&
+     other.customerName == customerName &&
      other.dateJoined == dateJoined &&
      other.isActive == isActive &&
      other.isStaff == isStaff &&
-     other.isSuperuser == isSuperuser;
+     other.isSuperuser == isSuperuser &&
+     other.isContractor == isContractor;
 
   @override
   int get hashCode =>
@@ -60,13 +69,15 @@ class User {
     (email == null ? 0 : email.hashCode) +
     (firstName == null ? 0 : firstName.hashCode) +
     (lastName == null ? 0 : lastName.hashCode) +
+    (customerName == null ? 0 : customerName.hashCode) +
     (dateJoined == null ? 0 : dateJoined.hashCode) +
     (isActive == null ? 0 : isActive.hashCode) +
     (isStaff == null ? 0 : isStaff.hashCode) +
-    (isSuperuser == null ? 0 : isSuperuser.hashCode);
+    (isSuperuser == null ? 0 : isSuperuser.hashCode) +
+    (isContractor == null ? 0 : isContractor.hashCode);
 
   @override
-  String toString() => 'User[id=$id, email=$email, firstName=$firstName, lastName=$lastName, dateJoined=$dateJoined, isActive=$isActive, isStaff=$isStaff, isSuperuser=$isSuperuser]';
+  String toString() => 'User[id=$id, email=$email, firstName=$firstName, lastName=$lastName, customerName=$customerName, dateJoined=$dateJoined, isActive=$isActive, isStaff=$isStaff, isSuperuser=$isSuperuser, isContractor=$isContractor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -78,18 +89,12 @@ class User {
     if (lastName != null) {
       json[r'last_name'] = lastName;
     }
-    if (dateJoined != null) {
+      json[r'customer_name'] = customerName;
       json[r'date_joined'] = dateJoined.toUtc().toIso8601String();
-    }
-    if (isActive != null) {
       json[r'is_active'] = isActive;
-    }
-    if (isStaff != null) {
       json[r'is_staff'] = isStaff;
-    }
-    if (isSuperuser != null) {
       json[r'is_superuser'] = isSuperuser;
-    }
+      json[r'is_contractor'] = isContractor;
     return json;
   }
 
@@ -104,10 +109,12 @@ class User {
         email: mapValueOfType<String>(json, r'email'),
         firstName: mapValueOfType<String>(json, r'first_name'),
         lastName: mapValueOfType<String>(json, r'last_name'),
+        customerName: mapValueOfType<String>(json, r'customer_name'),
         dateJoined: mapDateTime(json, r'date_joined', ''),
         isActive: mapValueOfType<bool>(json, r'is_active'),
         isStaff: mapValueOfType<bool>(json, r'is_staff'),
         isSuperuser: mapValueOfType<bool>(json, r'is_superuser'),
+        isContractor: mapValueOfType<bool>(json, r'is_contractor'),
       );
     }
     return null;

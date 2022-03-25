@@ -27,6 +27,7 @@ class Project {
     this.translationsFr,
     this.translationsIt,
     this.backlinkUrls,
+    this.orders = const [],
     @required this.created,
     @required this.modified,
   });
@@ -64,6 +65,8 @@ class Project {
   /// Enable urls to the product on your site. Required when using standalone QR codes (e.g. Print).
   bool backlinkUrls;
 
+  List<ActiveOrder> orders;
+
   DateTime created;
 
   DateTime modified;
@@ -84,6 +87,7 @@ class Project {
      other.translationsFr == translationsFr &&
      other.translationsIt == translationsIt &&
      other.backlinkUrls == backlinkUrls &&
+     other.orders == orders &&
      other.created == created &&
      other.modified == modified;
 
@@ -104,11 +108,12 @@ class Project {
     (translationsFr == null ? 0 : translationsFr.hashCode) +
     (translationsIt == null ? 0 : translationsIt.hashCode) +
     (backlinkUrls == null ? 0 : backlinkUrls.hashCode) +
+    (orders == null ? 0 : orders.hashCode) +
     (created == null ? 0 : created.hashCode) +
     (modified == null ? 0 : modified.hashCode);
 
   @override
-  String toString() => 'Project[id=$id, name=$name, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, created=$created, modified=$modified]';
+  String toString() => 'Project[id=$id, name=$name, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, orders=$orders, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -144,6 +149,7 @@ class Project {
     if (backlinkUrls != null) {
       json[r'backlink_urls'] = backlinkUrls;
     }
+      json[r'orders'] = orders;
       json[r'created'] = created.toUtc().toIso8601String();
       json[r'modified'] = modified.toUtc().toIso8601String();
     return json;
@@ -170,6 +176,7 @@ class Project {
         translationsFr: mapValueOfType<bool>(json, r'translations_fr'),
         translationsIt: mapValueOfType<bool>(json, r'translations_it'),
         backlinkUrls: mapValueOfType<bool>(json, r'backlink_urls'),
+        orders: ActiveOrder.listFromJson(json[r'orders']),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
       );

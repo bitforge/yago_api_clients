@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**usersList**](UsersApi.md#userslist) | **GET** /api/users/ | 
 [**usersMeRetrieve**](UsersApi.md#usersmeretrieve) | **GET** /api/users/me/ | 
+[**usersMeUpdate**](UsersApi.md#usersmeupdate) | **PUT** /api/users/me/ | 
 [**usersRetrieve**](UsersApi.md#usersretrieve) | **GET** /api/users/{id}/ | 
 
 
@@ -76,7 +77,7 @@ Name | Type | Description  | Notes
 
 
 
-Show details of the user currently logged in.
+Get or update current user details.
 
 ### Example
 ```dart
@@ -120,6 +121,63 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersMeUpdate**
+> User usersMeUpdate(user)
+
+
+
+Get or update current user details.
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: cookieAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure HTTP Bearer authorization: jwtAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: tokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = UsersApi();
+final user = User(); // User | 
+
+try {
+    final result = api_instance.usersMeUpdate(user);
+    print(result);
+} catch (e) {
+    print('Exception when calling UsersApi->usersMeUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)|  | [optional] 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

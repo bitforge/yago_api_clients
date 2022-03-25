@@ -60,6 +60,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthApi* | [**authGoogleCreate**](doc//AuthApi.md#authgooglecreate) | **POST** /api/auth/google/ | 
 *AuthApi* | [**authLoginCreate**](doc//AuthApi.md#authlogincreate) | **POST** /api/auth/login/ | 
+*AuthApi* | [**authPasswordChangeCreate**](doc//AuthApi.md#authpasswordchangecreate) | **POST** /api/auth/password/change/ | 
 *AuthApi* | [**authPasswordResetConfirmCreate**](doc//AuthApi.md#authpasswordresetconfirmcreate) | **POST** /api/auth/password/reset/confirm/ | 
 *AuthApi* | [**authPasswordResetCreate**](doc//AuthApi.md#authpasswordresetcreate) | **POST** /api/auth/password/reset/ | 
 *AuthApi* | [**authRefreshCreate**](doc//AuthApi.md#authrefreshcreate) | **POST** /api/auth/refresh/ | 
@@ -80,6 +81,8 @@ Class | Method | HTTP request | Description
 *ModelsApi* | [**modelsImageDestroy**](doc//ModelsApi.md#modelsimagedestroy) | **DELETE** /api/models/{id}/image/ | 
 *ModelsApi* | [**modelsImageUpdate**](doc//ModelsApi.md#modelsimageupdate) | **PUT** /api/models/{id}/image/ | 
 *ModelsApi* | [**modelsList**](doc//ModelsApi.md#modelslist) | **GET** /api/models/ | 
+*ModelsApi* | [**modelsModelDestroy**](doc//ModelsApi.md#modelsmodeldestroy) | **DELETE** /api/models/{id}/model/ | 
+*ModelsApi* | [**modelsModelUpdate**](doc//ModelsApi.md#modelsmodelupdate) | **PUT** /api/models/{id}/model/ | 
 *ModelsApi* | [**modelsPartialUpdate**](doc//ModelsApi.md#modelspartialupdate) | **PATCH** /api/models/{id}/ | 
 *ModelsApi* | [**modelsRetrieve**](doc//ModelsApi.md#modelsretrieve) | **GET** /api/models/{id}/ | 
 *ModelsApi* | [**modelsUnityAndroidDestroy**](doc//ModelsApi.md#modelsunityandroiddestroy) | **DELETE** /api/models/{id}/unity_android/ | 
@@ -89,6 +92,33 @@ Class | Method | HTTP request | Description
 *ModelsApi* | [**modelsUpdate**](doc//ModelsApi.md#modelsupdate) | **PUT** /api/models/{id}/ | 
 *ModelsApi* | [**modelsUsdzDestroy**](doc//ModelsApi.md#modelsusdzdestroy) | **DELETE** /api/models/{id}/usdz/ | 
 *ModelsApi* | [**modelsUsdzUpdate**](doc//ModelsApi.md#modelsusdzupdate) | **PUT** /api/models/{id}/usdz/ | 
+*OrdersApi* | [**ordersCommentsCreate**](doc//OrdersApi.md#orderscommentscreate) | **POST** /api/orders/{order_id}/comments/ | 
+*OrdersApi* | [**ordersCommentsList**](doc//OrdersApi.md#orderscommentslist) | **GET** /api/orders/{order_id}/comments/ | 
+*OrdersApi* | [**ordersCreate**](doc//OrdersApi.md#orderscreate) | **POST** /api/orders/ | 
+*OrdersApi* | [**ordersDestroy**](doc//OrdersApi.md#ordersdestroy) | **DELETE** /api/orders/{id}/ | 
+*OrdersApi* | [**ordersList**](doc//OrdersApi.md#orderslist) | **GET** /api/orders/ | 
+*OrdersApi* | [**ordersModelsCommentsCreate**](doc//OrdersApi.md#ordersmodelscommentscreate) | **POST** /api/orders/{order_id}/models/{id}/comments/ | 
+*OrdersApi* | [**ordersModelsCommentsList**](doc//OrdersApi.md#ordersmodelscommentslist) | **GET** /api/orders/{order_id}/models/{id}/comments/ | 
+*OrdersApi* | [**ordersModelsCreate**](doc//OrdersApi.md#ordersmodelscreate) | **POST** /api/orders/{order_id}/models/ | 
+*OrdersApi* | [**ordersModelsDestroy**](doc//OrdersApi.md#ordersmodelsdestroy) | **DELETE** /api/orders/{order_id}/models/{id}/ | 
+*OrdersApi* | [**ordersModelsFilesDestroy**](doc//OrdersApi.md#ordersmodelsfilesdestroy) | **DELETE** /api/orders/{order_id}/models/{id}/files/{file_id}/ | 
+*OrdersApi* | [**ordersModelsFilesList**](doc//OrdersApi.md#ordersmodelsfileslist) | **GET** /api/orders/{order_id}/models/{id}/files/ | 
+*OrdersApi* | [**ordersModelsFilesUpdate**](doc//OrdersApi.md#ordersmodelsfilesupdate) | **PUT** /api/orders/{order_id}/models/{id}/files/ | 
+*OrdersApi* | [**ordersModelsList**](doc//OrdersApi.md#ordersmodelslist) | **GET** /api/orders/{order_id}/models/ | 
+*OrdersApi* | [**ordersModelsRetrieve**](doc//OrdersApi.md#ordersmodelsretrieve) | **GET** /api/orders/{order_id}/models/{id}/ | 
+*OrdersApi* | [**ordersModelsSubmitToFinishedPartialUpdate**](doc//OrdersApi.md#ordersmodelssubmittofinishedpartialupdate) | **PATCH** /api/orders/{order_id}/models/{id}/submit_to_finished/ | 
+*OrdersApi* | [**ordersModelsSubmitToReviewPartialUpdate**](doc//OrdersApi.md#ordersmodelssubmittoreviewpartialupdate) | **PATCH** /api/orders/{order_id}/models/{id}/submit_to_review/ | 
+*OrdersApi* | [**ordersModelsSubmitToReworkPartialUpdate**](doc//OrdersApi.md#ordersmodelssubmittoreworkpartialupdate) | **PATCH** /api/orders/{order_id}/models/{id}/submit_to_rework/ | 
+*OrdersApi* | [**ordersModelsTransitionsList**](doc//OrdersApi.md#ordersmodelstransitionslist) | **GET** /api/orders/{order_id}/models/{id}/transitions/ | 
+*OrdersApi* | [**ordersModelsUpdate**](doc//OrdersApi.md#ordersmodelsupdate) | **PUT** /api/orders/{order_id}/models/{id}/ | 
+*OrdersApi* | [**ordersRetrieve**](doc//OrdersApi.md#ordersretrieve) | **GET** /api/orders/{id}/ | 
+*OrdersApi* | [**ordersSubmitToEstimationPartialUpdate**](doc//OrdersApi.md#orderssubmittoestimationpartialupdate) | **PATCH** /api/orders/{order_id}/submit_to_estimation/ | 
+*OrdersApi* | [**ordersSubmitToFinishedPartialUpdate**](doc//OrdersApi.md#orderssubmittofinishedpartialupdate) | **PATCH** /api/orders/{order_id}/submit_to_finished/ | 
+*OrdersApi* | [**ordersSubmitToPaymentPartialUpdate**](doc//OrdersApi.md#orderssubmittopaymentpartialupdate) | **PATCH** /api/orders/{order_id}/submit_to_payment/ | 
+*OrdersApi* | [**ordersSubmitToProgressPartialUpdate**](doc//OrdersApi.md#orderssubmittoprogresspartialupdate) | **PATCH** /api/orders/{order_id}/submit_to_progress/ | 
+*OrdersApi* | [**ordersSubmitToReviewPartialUpdate**](doc//OrdersApi.md#orderssubmittoreviewpartialupdate) | **PATCH** /api/orders/{order_id}/submit_to_review/ | 
+*OrdersApi* | [**ordersTransitionsList**](doc//OrdersApi.md#orderstransitionslist) | **GET** /api/orders/{order_id}/transitions/ | 
+*OrdersApi* | [**ordersUpdate**](doc//OrdersApi.md#ordersupdate) | **PUT** /api/orders/{id}/ | 
 *PlansApi* | [**plansList**](doc//PlansApi.md#planslist) | **GET** /api/plans/ | 
 *ProjectsApi* | [**projectsCreate**](doc//ProjectsApi.md#projectscreate) | **POST** /api/projects/ | 
 *ProjectsApi* | [**projectsDestroy**](doc//ProjectsApi.md#projectsdestroy) | **DELETE** /api/projects/{id}/ | 
@@ -107,17 +137,22 @@ Class | Method | HTTP request | Description
 *SubscriptionApi* | [**subscriptionRetrieve**](doc//SubscriptionApi.md#subscriptionretrieve) | **GET** /api/subscription/ | 
 *UsersApi* | [**usersList**](doc//UsersApi.md#userslist) | **GET** /api/users/ | 
 *UsersApi* | [**usersMeRetrieve**](doc//UsersApi.md#usersmeretrieve) | **GET** /api/users/me/ | 
+*UsersApi* | [**usersMeUpdate**](doc//UsersApi.md#usersmeupdate) | **PUT** /api/users/me/ | 
 *UsersApi* | [**usersRetrieve**](doc//UsersApi.md#usersretrieve) | **GET** /api/users/{id}/ | 
 
 
 ## Documentation For Models
 
+ - [ActiveOrder](doc//ActiveOrder.md)
  - [Address](doc//Address.md)
+ - [AvailableState](doc//AvailableState.md)
  - [ChronicStats](doc//ChronicStats.md)
  - [CollectionMethodEnum](doc//CollectionMethodEnum.md)
  - [CountryEnum](doc//CountryEnum.md)
  - [Customer](doc//Customer.md)
+ - [ErrorDescription](doc//ErrorDescription.md)
  - [FileUpload](doc//FileUpload.md)
+ - [FileUploaded](doc//FileUploaded.md)
  - [FilterEventsEnum](doc//FilterEventsEnum.md)
  - [GlobalStatistics](doc//GlobalStatistics.md)
  - [GlobalStatisticsGroupByEnum](doc//GlobalStatisticsGroupByEnum.md)
@@ -129,8 +164,21 @@ Class | Method | HTTP request | Description
  - [ModelInfo](doc//ModelInfo.md)
  - [ModelStatus](doc//ModelStatus.md)
  - [ModelUpdate](doc//ModelUpdate.md)
- - [Nested](doc//Nested.md)
  - [NewSubscription](doc//NewSubscription.md)
+ - [Order](doc//Order.md)
+ - [OrderComment](doc//OrderComment.md)
+ - [OrderCommentCreate](doc//OrderCommentCreate.md)
+ - [OrderCreate](doc//OrderCreate.md)
+ - [OrderDetail](doc//OrderDetail.md)
+ - [OrderModel](doc//OrderModel.md)
+ - [OrderModelComment](doc//OrderModelComment.md)
+ - [OrderModelCommentCreate](doc//OrderModelCommentCreate.md)
+ - [OrderModelCreate](doc//OrderModelCreate.md)
+ - [OrderModelDetail](doc//OrderModelDetail.md)
+ - [OrderModelFile](doc//OrderModelFile.md)
+ - [OrderState](doc//OrderState.md)
+ - [OrderUpdate](doc//OrderUpdate.md)
+ - [PasswordChange](doc//PasswordChange.md)
  - [PasswordReset](doc//PasswordReset.md)
  - [PasswordResetConfirm](doc//PasswordResetConfirm.md)
  - [PatchedAddress](doc//PatchedAddress.md)
@@ -138,6 +186,7 @@ Class | Method | HTTP request | Description
  - [PatchedProjectUpdate](doc//PatchedProjectUpdate.md)
  - [PaymentMethodEnum](doc//PaymentMethodEnum.md)
  - [PlanEnum](doc//PlanEnum.md)
+ - [PriceCurrencyEnum](doc//PriceCurrencyEnum.md)
  - [PricingPlan](doc//PricingPlan.md)
  - [Project](doc//Project.md)
  - [ProjectCreate](doc//ProjectCreate.md)
@@ -148,6 +197,7 @@ Class | Method | HTTP request | Description
  - [RegistrationCreate](doc//RegistrationCreate.md)
  - [ReportFormatEnum](doc//ReportFormatEnum.md)
  - [RoleEnum](doc//RoleEnum.md)
+ - [StateChanged](doc//StateChanged.md)
  - [StripeSubscription](doc//StripeSubscription.md)
  - [StripeSubscriptionStatusEnum](doc//StripeSubscriptionStatusEnum.md)
  - [Subscription](doc//Subscription.md)

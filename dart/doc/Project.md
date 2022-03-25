@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **translationsFr** | **bool** |  | [optional] 
 **translationsIt** | **bool** |  | [optional] 
 **backlinkUrls** | **bool** | Enable urls to the product on your site. Required when using standalone QR codes (e.g. Print). | [optional] 
+**orders** | [**List<ActiveOrder>**](ActiveOrder.md) |  | [readonly] [default to const []]
 **created** | [**DateTime**](DateTime.md) |  | [readonly] 
 **modified** | [**DateTime**](DateTime.md) |  | [readonly] 
 

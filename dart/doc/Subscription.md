@@ -9,8 +9,8 @@ import 'package:openapi/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **paymentMethod** | [**PaymentMethodEnum**](PaymentMethodEnum.md) |  | [optional] 
-**plan** | [**Nested**](Nested.md) |  | [readonly] 
-**billingAddress** | [**Nested**](Nested.md) |  | [readonly] 
+**plan** | **String** | Defines the number of available models and AR views. <a href=\"mailto:info@bitforge.ch\">Contact us</a> to upgrade your plan. | [optional] 
+**billingAddress** | **String** |  | [optional] 
 **stripeSubscription** | [**StripeSubscription**](StripeSubscription.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

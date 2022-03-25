@@ -21,9 +21,10 @@ class Subscription {
 
   PaymentMethodEnum paymentMethod;
 
-  Nested plan;
+  /// Defines the number of available models and AR views. <a href=\"mailto:info@bitforge.ch\">Contact us</a> to upgrade your plan.
+  String plan;
 
-  Nested billingAddress;
+  String billingAddress;
 
   StripeSubscription stripeSubscription;
 
@@ -50,8 +51,12 @@ class Subscription {
     if (paymentMethod != null) {
       json[r'payment_method'] = paymentMethod;
     }
-      json[r'plan'] = plan == null ? null : plan;
-      json[r'billing_address'] = billingAddress == null ? null : billingAddress;
+    if (plan != null) {
+      json[r'plan'] = plan;
+    }
+    if (billingAddress != null) {
+      json[r'billing_address'] = billingAddress;
+    }
       json[r'stripe_subscription'] = stripeSubscription;
     return json;
   }
@@ -64,8 +69,8 @@ class Subscription {
       final json = value.cast<String, dynamic>();
       return Subscription(
         paymentMethod: PaymentMethodEnum.fromJson(json[r'payment_method']),
-        plan: Nested.fromJson(json[r'plan']),
-        billingAddress: Nested.fromJson(json[r'billing_address']),
+        plan: mapValueOfType<String>(json, r'plan'),
+        billingAddress: mapValueOfType<String>(json, r'billing_address'),
         stripeSubscription: StripeSubscription.fromJson(json[r'stripe_subscription']),
       );
     }

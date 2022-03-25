@@ -16,7 +16,7 @@ class SubscriptionApi {
 
   final ApiClient apiClient;
 
-  /// Create a new stripe Subscription for a Genie pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
+  /// Create a new stripe Subscription for a Yago pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -55,7 +55,7 @@ class SubscriptionApi {
     );
   }
 
-  /// Create a new stripe Subscription for a Genie pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
+  /// Create a new stripe Subscription for a Yago pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
   ///
   /// Parameters:
   ///

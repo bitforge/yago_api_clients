@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**modelsImageDestroy**](ModelsApi.md#modelsimagedestroy) | **DELETE** /api/models/{id}/image/ | 
 [**modelsImageUpdate**](ModelsApi.md#modelsimageupdate) | **PUT** /api/models/{id}/image/ | 
 [**modelsList**](ModelsApi.md#modelslist) | **GET** /api/models/ | 
+[**modelsModelDestroy**](ModelsApi.md#modelsmodeldestroy) | **DELETE** /api/models/{id}/model/ | 
+[**modelsModelUpdate**](ModelsApi.md#modelsmodelupdate) | **PUT** /api/models/{id}/model/ | 
 [**modelsPartialUpdate**](ModelsApi.md#modelspartialupdate) | **PATCH** /api/models/{id}/ | 
 [**modelsRetrieve**](ModelsApi.md#modelsretrieve) | **GET** /api/models/{id}/ | 
 [**modelsUnityAndroidDestroy**](ModelsApi.md#modelsunityandroiddestroy) | **DELETE** /api/models/{id}/unity_android/ | 
@@ -473,6 +475,123 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **modelsModelDestroy**
+> modelsModelDestroy(id)
+
+
+
+Delete a file.
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: cookieAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure HTTP Bearer authorization: jwtAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: tokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = ModelsApi();
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+
+try {
+    api_instance.modelsModelDestroy(id);
+} catch (e) {
+    print('Exception when calling ModelsApi->modelsModelDestroy: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **modelsModelUpdate**
+> FileUpload modelsModelUpdate(contentDisposition, id, body)
+
+
+
+Upload a file. Max size 30MB. Filename is required!
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: cookieAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure HTTP Bearer authorization: jwtAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: tokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = ModelsApi();
+final contentDisposition = contentDisposition_example; // String | The original filename.
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
+final body = MultipartFile(); // MultipartFile | 
+
+try {
+    final result = api_instance.modelsModelUpdate(contentDisposition, id, body);
+    print(result);
+} catch (e) {
+    print('Exception when calling ModelsApi->modelsModelUpdate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentDisposition** | **String**| The original filename. | [default to 'attachment; filename=name.ext']
+ **id** | **String**| A UUID identifying this object. | 
+ **body** | **MultipartFile**|  | [optional] 
+
+### Return type
+
+[**FileUpload**](FileUpload.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/octet-stream
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

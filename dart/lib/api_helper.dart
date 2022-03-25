@@ -75,11 +75,17 @@ String parameterToString(dynamic value) {
   if (value is ModelStatus) {
     return ModelStatusTypeTransformer().encode(value).toString();
   }
+  if (value is OrderState) {
+    return OrderStateTypeTransformer().encode(value).toString();
+  }
   if (value is PaymentMethodEnum) {
     return PaymentMethodEnumTypeTransformer().encode(value).toString();
   }
   if (value is PlanEnum) {
     return PlanEnumTypeTransformer().encode(value).toString();
+  }
+  if (value is PriceCurrencyEnum) {
+    return PriceCurrencyEnumTypeTransformer().encode(value).toString();
   }
   if (value is ProjectsStatisticsGroupByEnum) {
     return ProjectsStatisticsGroupByEnumTypeTransformer().encode(value).toString();

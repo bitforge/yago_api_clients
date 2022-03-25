@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**authGoogleCreate**](AuthApi.md#authgooglecreate) | **POST** /api/auth/google/ | 
 [**authLoginCreate**](AuthApi.md#authlogincreate) | **POST** /api/auth/login/ | 
+[**authPasswordChangeCreate**](AuthApi.md#authpasswordchangecreate) | **POST** /api/auth/password/change/ | 
 [**authPasswordResetConfirmCreate**](AuthApi.md#authpasswordresetconfirmcreate) | **POST** /api/auth/password/reset/confirm/ | 
 [**authPasswordResetCreate**](AuthApi.md#authpasswordresetcreate) | **POST** /api/auth/password/reset/ | 
 [**authRefreshCreate**](AuthApi.md#authrefreshcreate) | **POST** /api/auth/refresh/ | 
@@ -22,7 +23,7 @@ Method | HTTP request | Description
 
 
 
-Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
 
 ### Example
 ```dart
@@ -95,6 +96,63 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authPasswordChangeCreate**
+> PasswordChange authPasswordChangeCreate(passwordChange)
+
+
+
+Change password of current user.
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: cookieAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure HTTP Bearer authorization: jwtAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: tokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = AuthApi();
+final passwordChange = PasswordChange(); // PasswordChange | 
+
+try {
+    final result = api_instance.authPasswordChangeCreate(passwordChange);
+    print(result);
+} catch (e) {
+    print('Exception when calling AuthApi->authPasswordChangeCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **passwordChange** | [**PasswordChange**](PasswordChange.md)|  | 
+
+### Return type
+
+[**PasswordChange**](PasswordChange.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

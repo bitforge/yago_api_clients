@@ -129,6 +129,66 @@ class ModelsApi {
     }
   }
 
+  /// Model infos for embedding. Loaded by <ar-button> web component.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] slug (required):
+  Future<Response> modelsEmbedOptionsRetrieveWithHttpInfo(String slug,) async {
+    // Verify required params are set.
+    if (slug == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: slug');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/models/{slug}/embed/options/'
+      .replaceAll('{slug}', slug);
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Model infos for embedding. Loaded by <ar-button> web component.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] slug (required):
+  Future<ModelInfo> modelsEmbedOptionsRetrieve(String slug,) async {
+    final response = await modelsEmbedOptionsRetrieveWithHttpInfo(slug,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelInfo',) as ModelInfo;
+    
+    }
+    return Future<ModelInfo>.value();
+  }
+
   /// Delete a file.
   ///
   /// Note: This method returns the HTTP [Response].
@@ -459,6 +519,135 @@ class ModelsApi {
     return Future<List<Model>>.value();
   }
 
+  /// Delete a file.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> modelsModelDestroyWithHttpInfo(String id,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/models/{id}/model/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Delete a file.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<void> modelsModelDestroy(String id,) async {
+    final response = await modelsModelDestroyWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Upload a file. Max size 30MB. Filename is required!
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] contentDisposition (required):
+  ///   The original filename.
+  ///
+  /// * [String] id (required):
+  ///   A UUID identifying this object.
+  ///
+  /// * [MultipartFile] body:
+  Future<Response> modelsModelUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
+    // Verify required params are set.
+    if (contentDisposition == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/models/{id}/model/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody = body;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>['application/octet-stream'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Upload a file. Max size 30MB. Filename is required!
+  ///
+  /// Parameters:
+  ///
+  /// * [String] contentDisposition (required):
+  ///   The original filename.
+  ///
+  /// * [String] id (required):
+  ///   A UUID identifying this object.
+  ///
+  /// * [MultipartFile] body:
+  Future<FileUpload> modelsModelUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+    final response = await modelsModelUpdateWithHttpInfo(contentDisposition, id,  body: body, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
+    
+    }
+    return Future<FileUpload>.value();
+  }
+
   /// Change as subset of model details.
   ///
   /// Note: This method returns the HTTP [Response].
@@ -585,6 +774,264 @@ class ModelsApi {
     
     }
     return Future<Model>.value();
+  }
+
+  /// Delete a file.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> modelsUnityAndroidDestroyWithHttpInfo(String id,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/models/{id}/unity_android/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Delete a file.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<void> modelsUnityAndroidDestroy(String id,) async {
+    final response = await modelsUnityAndroidDestroyWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Upload a file. Max size 30MB. Filename is required!
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] contentDisposition (required):
+  ///   The original filename.
+  ///
+  /// * [String] id (required):
+  ///   A UUID identifying this object.
+  ///
+  /// * [MultipartFile] body:
+  Future<Response> modelsUnityAndroidUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
+    // Verify required params are set.
+    if (contentDisposition == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/models/{id}/unity_android/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody = body;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>['application/octet-stream'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Upload a file. Max size 30MB. Filename is required!
+  ///
+  /// Parameters:
+  ///
+  /// * [String] contentDisposition (required):
+  ///   The original filename.
+  ///
+  /// * [String] id (required):
+  ///   A UUID identifying this object.
+  ///
+  /// * [MultipartFile] body:
+  Future<FileUpload> modelsUnityAndroidUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+    final response = await modelsUnityAndroidUpdateWithHttpInfo(contentDisposition, id,  body: body, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
+    
+    }
+    return Future<FileUpload>.value();
+  }
+
+  /// Delete a file.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<Response> modelsUnityIosDestroyWithHttpInfo(String id,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/models/{id}/unity_ios/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Delete a file.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  Future<void> modelsUnityIosDestroy(String id,) async {
+    final response = await modelsUnityIosDestroyWithHttpInfo(id,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Upload a file. Max size 30MB. Filename is required!
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] contentDisposition (required):
+  ///   The original filename.
+  ///
+  /// * [String] id (required):
+  ///   A UUID identifying this object.
+  ///
+  /// * [MultipartFile] body:
+  Future<Response> modelsUnityIosUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
+    // Verify required params are set.
+    if (contentDisposition == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
+    }
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/models/{id}/unity_ios/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody = body;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>['application/octet-stream'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PUT',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Upload a file. Max size 30MB. Filename is required!
+  ///
+  /// Parameters:
+  ///
+  /// * [String] contentDisposition (required):
+  ///   The original filename.
+  ///
+  /// * [String] id (required):
+  ///   A UUID identifying this object.
+  ///
+  /// * [MultipartFile] body:
+  Future<FileUpload> modelsUnityIosUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+    final response = await modelsUnityIosUpdateWithHttpInfo(contentDisposition, id,  body: body, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
+    
+    }
+    return Future<FileUpload>.value();
   }
 
   /// Change model details. Translated field are all optional expcet for `name_de`.

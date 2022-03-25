@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 
-Update customer billing address. Required prior to subscribing to Genie AR services
+Update customer billing address. Required prior to subscribing to Yago services
 
 ### Example
 ```dart
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 
 
-Update customer billing address. Required prior to subscribing to Genie AR services
+Update customer billing address. Required prior to subscribing to Yago services
 
 ### Example
 ```dart
@@ -130,7 +130,7 @@ This endpoint does not need any parameter.
 
 
 
-Update customer billing address. Required prior to subscribing to Genie AR services
+Update customer billing address. Required prior to subscribing to Yago services
 
 ### Example
 ```dart

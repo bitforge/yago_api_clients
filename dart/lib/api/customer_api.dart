@@ -16,7 +16,7 @@ class CustomerApi {
 
   final ApiClient apiClient;
 
-  /// Update customer billing address. Required prior to subscribing to Genie AR services
+  /// Update customer billing address. Required prior to subscribing to Yago services
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -52,7 +52,7 @@ class CustomerApi {
     );
   }
 
-  /// Update customer billing address. Required prior to subscribing to Genie AR services
+  /// Update customer billing address. Required prior to subscribing to Yago services
   ///
   /// Parameters:
   ///
@@ -72,7 +72,7 @@ class CustomerApi {
     return Future<Address>.value();
   }
 
-  /// Update customer billing address. Required prior to subscribing to Genie AR services
+  /// Update customer billing address. Required prior to subscribing to Yago services
   ///
   /// Note: This method returns the HTTP [Response].
   Future<Response> customerBillingAddressRetrieveWithHttpInfo() async {
@@ -102,7 +102,7 @@ class CustomerApi {
     );
   }
 
-  /// Update customer billing address. Required prior to subscribing to Genie AR services
+  /// Update customer billing address. Required prior to subscribing to Yago services
   Future<Address> customerBillingAddressRetrieve() async {
     final response = await customerBillingAddressRetrieveWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -118,7 +118,7 @@ class CustomerApi {
     return Future<Address>.value();
   }
 
-  /// Update customer billing address. Required prior to subscribing to Genie AR services
+  /// Update customer billing address. Required prior to subscribing to Yago services
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -157,7 +157,7 @@ class CustomerApi {
     );
   }
 
-  /// Update customer billing address. Required prior to subscribing to Genie AR services
+  /// Update customer billing address. Required prior to subscribing to Yago services
   ///
   /// Parameters:
   ///

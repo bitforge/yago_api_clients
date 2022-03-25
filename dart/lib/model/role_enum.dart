@@ -25,11 +25,15 @@ class RoleEnum {
 
   static const OWNER = RoleEnum._(r'OWNER');
   static const MEMBER = RoleEnum._(r'MEMBER');
+  static const MANAGER = RoleEnum._(r'MANAGER');
+  static const DESIGNER = RoleEnum._(r'DESIGNER');
 
   /// List of all possible values in this [enum][RoleEnum].
   static const values = <RoleEnum>[
     OWNER,
     MEMBER,
+    MANAGER,
+    DESIGNER,
   ];
 
   static RoleEnum fromJson(dynamic value) =>
@@ -63,6 +67,8 @@ class RoleEnumTypeTransformer {
       switch (data.toString()) {
         case r'OWNER': return RoleEnum.OWNER;
         case r'MEMBER': return RoleEnum.MEMBER;
+        case r'MANAGER': return RoleEnum.MANAGER;
+        case r'DESIGNER': return RoleEnum.DESIGNER;
         default:
           if (allowNull == false) {
             throw ArgumentError('Unknown enum value to decode: $data');
