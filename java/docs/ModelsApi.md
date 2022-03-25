@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**modelsImageDestroy**](ModelsApi.md#modelsImageDestroy) | **DELETE** /api/models/{id}/image/ | 
 [**modelsImageUpdate**](ModelsApi.md#modelsImageUpdate) | **PUT** /api/models/{id}/image/ | 
 [**modelsList**](ModelsApi.md#modelsList) | **GET** /api/models/ | 
+[**modelsModelDestroy**](ModelsApi.md#modelsModelDestroy) | **DELETE** /api/models/{id}/model/ | 
+[**modelsModelUpdate**](ModelsApi.md#modelsModelUpdate) | **PUT** /api/models/{id}/model/ | 
 [**modelsPartialUpdate**](ModelsApi.md#modelsPartialUpdate) | **PATCH** /api/models/{id}/ | 
 [**modelsRetrieve**](ModelsApi.md#modelsRetrieve) | **GET** /api/models/{id}/ | 
 [**modelsUnityAndroidDestroy**](ModelsApi.md#modelsUnityAndroidDestroy) | **DELETE** /api/models/{id}/unity_android/ | 
@@ -644,6 +646,167 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** |  |  -  |
+
+<a name="modelsModelDestroy"></a>
+# **modelsModelDestroy**
+> modelsModelDestroy(id)
+
+
+
+Delete a file.
+
+### Example
+```java
+// Import classes:
+import yago.client.ApiClient;
+import yago.client.ApiException;
+import yago.client.Configuration;
+import yago.client.auth.*;
+import yago.client.models.*;
+import yago.client.apis.ModelsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://dev.yago.cloud");
+    
+    // Configure API key authorization: cookieAuth
+    ApiKeyAuth cookieAuth = (ApiKeyAuth) defaultClient.getAuthentication("cookieAuth");
+    cookieAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //cookieAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: jwtAuth
+    HttpBearerAuth jwtAuth = (HttpBearerAuth) defaultClient.getAuthentication("jwtAuth");
+    jwtAuth.setBearerToken("BEARER TOKEN");
+
+    // Configure API key authorization: tokenAuth
+    ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("tokenAuth");
+    tokenAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //tokenAuth.setApiKeyPrefix("Token");
+
+    ModelsApi apiInstance = new ModelsApi(defaultClient);
+    UUID id = UUID.randomUUID(); // UUID | 
+    try {
+      apiInstance.modelsModelDestroy(id);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ModelsApi#modelsModelDestroy");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID**|  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No response body |  -  |
+
+<a name="modelsModelUpdate"></a>
+# **modelsModelUpdate**
+> FileUpload modelsModelUpdate(contentDisposition, id, body)
+
+
+
+Upload a file. Max size 30MB. Filename is required!
+
+### Example
+```java
+// Import classes:
+import yago.client.ApiClient;
+import yago.client.ApiException;
+import yago.client.Configuration;
+import yago.client.auth.*;
+import yago.client.models.*;
+import yago.client.apis.ModelsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://dev.yago.cloud");
+    
+    // Configure API key authorization: cookieAuth
+    ApiKeyAuth cookieAuth = (ApiKeyAuth) defaultClient.getAuthentication("cookieAuth");
+    cookieAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //cookieAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: jwtAuth
+    HttpBearerAuth jwtAuth = (HttpBearerAuth) defaultClient.getAuthentication("jwtAuth");
+    jwtAuth.setBearerToken("BEARER TOKEN");
+
+    // Configure API key authorization: tokenAuth
+    ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("tokenAuth");
+    tokenAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //tokenAuth.setApiKeyPrefix("Token");
+
+    ModelsApi apiInstance = new ModelsApi(defaultClient);
+    String contentDisposition = "attachment; filename=name.ext"; // String | The original filename.
+    UUID id = UUID.randomUUID(); // UUID | A UUID identifying this object.
+    File body = new File("/path/to/file"); // File | 
+    try {
+      FileUpload result = apiInstance.modelsModelUpdate(contentDisposition, id, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ModelsApi#modelsModelUpdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentDisposition** | **String**| The original filename. | [default to attachment; filename&#x3D;name.ext]
+ **id** | **UUID**| A UUID identifying this object. |
+ **body** | **File**|  | [optional]
+
+### Return type
+
+[**FileUpload**](FileUpload.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/octet-stream
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
 
 <a name="modelsPartialUpdate"></a>
 # **modelsPartialUpdate**

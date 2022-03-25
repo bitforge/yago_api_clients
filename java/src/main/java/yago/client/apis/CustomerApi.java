@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -143,7 +143,7 @@ public class CustomerApi {
 
     /**
      * 
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @param patchedAddress  (optional)
      * @return Address
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -160,7 +160,7 @@ public class CustomerApi {
 
     /**
      * 
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @param patchedAddress  (optional)
      * @return ApiResponse&lt;Address&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -178,7 +178,7 @@ public class CustomerApi {
 
     /**
      *  (asynchronously)
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @param patchedAddress  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -264,7 +264,7 @@ public class CustomerApi {
 
     /**
      * 
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @return Address
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -280,7 +280,7 @@ public class CustomerApi {
 
     /**
      * 
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @return ApiResponse&lt;Address&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -297,7 +297,7 @@ public class CustomerApi {
 
     /**
      *  (asynchronously)
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -388,7 +388,7 @@ public class CustomerApi {
 
     /**
      * 
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @param address  (required)
      * @return Address
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -405,7 +405,7 @@ public class CustomerApi {
 
     /**
      * 
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @param address  (required)
      * @return ApiResponse&lt;Address&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -423,7 +423,7 @@ public class CustomerApi {
 
     /**
      *  (asynchronously)
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      * @param address  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -8,13 +8,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  |  [readonly]
-**email** | **String** |  | 
+**email** | **String** |  |  [readonly]
 **firstName** | **String** |  |  [optional]
 **lastName** | **String** |  |  [optional]
-**dateJoined** | **OffsetDateTime** |  |  [optional]
-**isActive** | **Boolean** | Deactivated users cannot login. |  [optional]
-**isStaff** | **Boolean** | Allow login to Genie AR CMS. Can be disabled for API users. |  [optional]
-**isSuperuser** | **Boolean** | User can see and change anything. Only for Bitforge employees. |  [optional]
+**customerName** | **String** |  |  [readonly]
+**dateJoined** | **OffsetDateTime** |  |  [readonly]
+**isActive** | **Boolean** | Deactivated users cannot login. |  [readonly]
+**isStaff** | **Boolean** | Allow login to Yago Admin. For Admins only. |  [readonly]
+**isSuperuser** | **Boolean** | User can see and change anything. Only for Bitforge employees. |  [readonly]
+**isContractor** | **Boolean** | User can manage model orders. For designers &amp; customer project managers. |  [readonly]
 
 
 

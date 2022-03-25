@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -15,6 +15,7 @@ package yago.client.apis;
 
 import yago.client.ApiException;
 import yago.client.models.GoogleIdToken;
+import yago.client.models.PasswordChange;
 import yago.client.models.PasswordReset;
 import yago.client.models.PasswordResetConfirm;
 import yago.client.models.TokenObtainRequest;
@@ -42,7 +43,7 @@ public class AuthApiTest {
     /**
      * 
      *
-     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -66,6 +67,21 @@ public class AuthApiTest {
     public void authLoginCreateTest() throws ApiException {
         TokenObtainRequest tokenObtainRequest = null;
                 TokenObtainResponse response = api.authLoginCreate(tokenObtainRequest);
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Change password of current user.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void authPasswordChangeCreateTest() throws ApiException {
+        PasswordChange passwordChange = null;
+                PasswordChange response = api.authPasswordChangeCreate(passwordChange);
         // TODO: test validations
     }
     

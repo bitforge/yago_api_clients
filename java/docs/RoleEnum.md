@@ -9,5 +9,9 @@
 
 * `MEMBER` (value: `"MEMBER"`)
 
+* `MANAGER` (value: `"MANAGER"`)
+
+* `DESIGNER` (value: `"DESIGNER"`)
+
 
 

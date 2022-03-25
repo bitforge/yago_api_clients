@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -36,7 +36,7 @@ public class SubscriptionApiTest {
     /**
      * 
      *
-     * Create a new stripe Subscription for a Genie pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
+     * Create a new stripe Subscription for a Yago pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
      *
      * @throws ApiException
      *          if the Api call fails

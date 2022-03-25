@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -75,6 +75,14 @@ public class UserTest {
     }
 
     /**
+     * Test the property 'customerName'
+     */
+    @Test
+    public void customerNameTest() {
+        // TODO: test customerName
+    }
+
+    /**
      * Test the property 'dateJoined'
      */
     @Test
@@ -104,6 +112,14 @@ public class UserTest {
     @Test
     public void isSuperuserTest() {
         // TODO: test isSuperuser
+    }
+
+    /**
+     * Test the property 'isContractor'
+     */
+    @Test
+    public void isContractorTest() {
+        // TODO: test isContractor
     }
 
 }

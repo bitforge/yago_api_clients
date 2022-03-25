@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -37,7 +37,7 @@ public class CustomerApiTest {
     /**
      * 
      *
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      *
      * @throws ApiException
      *          if the Api call fails
@@ -52,7 +52,7 @@ public class CustomerApiTest {
     /**
      * 
      *
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      *
      * @throws ApiException
      *          if the Api call fails
@@ -66,7 +66,7 @@ public class CustomerApiTest {
     /**
      * 
      *
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      *
      * @throws ApiException
      *          if the Api call fails

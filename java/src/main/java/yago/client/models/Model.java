@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -33,7 +33,7 @@ import yago.client.models.ModelStatus;
 /**
  * Model
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-02-21T17:02:29.236455048+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-03-25T09:56:53.475406+01:00[Europe/Zurich]")
 public class Model {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -150,6 +150,10 @@ public class Model {
   public static final String SERIALIZED_NAME_USDZ = "usdz";
   @SerializedName(SERIALIZED_NAME_USDZ)
   private URI usdz;
+
+  public static final String SERIALIZED_NAME_MODEL = "model";
+  @SerializedName(SERIALIZED_NAME_MODEL)
+  private URI model;
 
   public static final String SERIALIZED_NAME_UNITY_IOS = "unity_ios";
   @SerializedName(SERIALIZED_NAME_UNITY_IOS)
@@ -800,6 +804,29 @@ public class Model {
   }
 
 
+  public Model model(URI model) {
+    
+    this.model = model;
+    return this;
+  }
+
+   /**
+   * Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files.
+   * @return model
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files.")
+
+  public URI getModel() {
+    return model;
+  }
+
+
+  public void setModel(URI model) {
+    this.model = model;
+  }
+
+
   public Model unityIos(URI unityIos) {
     
     this.unityIos = unityIos;
@@ -912,6 +939,7 @@ public class Model {
         Objects.equals(this.scaleable, model.scaleable) &&
         Objects.equals(this.glb, model.glb) &&
         Objects.equals(this.usdz, model.usdz) &&
+        Objects.equals(this.model, model.model) &&
         Objects.equals(this.unityIos, model.unityIos) &&
         Objects.equals(this.unityAndroid, model.unityAndroid) &&
         Objects.equals(this.created, model.created) &&
@@ -924,7 +952,7 @@ public class Model {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, project, name, nameDe, nameEn, nameFr, nameIt, slug, image, imageThumb, imagePreview, status, description, descriptionDe, descriptionEn, descriptionFr, descriptionIt, number, siteUrl, siteUrlDe, siteUrlEn, siteUrlFr, siteUrlIt, sku, price, priceCurrency, scaleable, glb, usdz, unityIos, unityAndroid, created, modified);
+    return Objects.hash(id, project, name, nameDe, nameEn, nameFr, nameIt, slug, image, imageThumb, imagePreview, status, description, descriptionDe, descriptionEn, descriptionFr, descriptionIt, number, siteUrl, siteUrlDe, siteUrlEn, siteUrlFr, siteUrlIt, sku, price, priceCurrency, scaleable, glb, usdz, model, unityIos, unityAndroid, created, modified);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -967,6 +995,7 @@ public class Model {
     sb.append("    scaleable: ").append(toIndentedString(scaleable)).append("\n");
     sb.append("    glb: ").append(toIndentedString(glb)).append("\n");
     sb.append("    usdz: ").append(toIndentedString(usdz)).append("\n");
+    sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    unityIos: ").append(toIndentedString(unityIos)).append("\n");
     sb.append("    unityAndroid: ").append(toIndentedString(unityAndroid)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");

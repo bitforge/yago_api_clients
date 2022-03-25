@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -1127,6 +1127,275 @@ public class ModelsApi {
 
         okhttp3.Call localVarCall = modelsListValidateBeforeCall(project, status, _callback);
         Type localVarReturnType = new TypeToken<List<Model>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for modelsModelDestroy
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No response body </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call modelsModelDestroyCall(UUID id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/models/{id}/model/"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "cookieAuth", "jwtAuth", "tokenAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call modelsModelDestroyValidateBeforeCall(UUID id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling modelsModelDestroy(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = modelsModelDestroyCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Delete a file.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No response body </td><td>  -  </td></tr>
+     </table>
+     */
+    public void modelsModelDestroy(UUID id) throws ApiException {
+        modelsModelDestroyWithHttpInfo(id);
+    }
+
+    /**
+     * 
+     * Delete a file.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No response body </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> modelsModelDestroyWithHttpInfo(UUID id) throws ApiException {
+        okhttp3.Call localVarCall = modelsModelDestroyValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     *  (asynchronously)
+     * Delete a file.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No response body </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call modelsModelDestroyAsync(UUID id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = modelsModelDestroyValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for modelsModelUpdate
+     * @param contentDisposition The original filename. (required)
+     * @param id A UUID identifying this object. (required)
+     * @param body  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call modelsModelUpdateCall(String contentDisposition, UUID id, File body, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/api/models/{id}/model/"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (contentDisposition != null) {
+            localVarHeaderParams.put("Content-Disposition", localVarApiClient.parameterToString(contentDisposition));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/octet-stream"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "cookieAuth", "jwtAuth", "tokenAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call modelsModelUpdateValidateBeforeCall(String contentDisposition, UUID id, File body, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'contentDisposition' is set
+        if (contentDisposition == null) {
+            throw new ApiException("Missing the required parameter 'contentDisposition' when calling modelsModelUpdate(Async)");
+        }
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling modelsModelUpdate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = modelsModelUpdateCall(contentDisposition, id, body, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Upload a file. Max size 30MB. Filename is required!
+     * @param contentDisposition The original filename. (required)
+     * @param id A UUID identifying this object. (required)
+     * @param body  (optional)
+     * @return FileUpload
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public FileUpload modelsModelUpdate(String contentDisposition, UUID id, File body) throws ApiException {
+        ApiResponse<FileUpload> localVarResp = modelsModelUpdateWithHttpInfo(contentDisposition, id, body);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Upload a file. Max size 30MB. Filename is required!
+     * @param contentDisposition The original filename. (required)
+     * @param id A UUID identifying this object. (required)
+     * @param body  (optional)
+     * @return ApiResponse&lt;FileUpload&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<FileUpload> modelsModelUpdateWithHttpInfo(String contentDisposition, UUID id, File body) throws ApiException {
+        okhttp3.Call localVarCall = modelsModelUpdateValidateBeforeCall(contentDisposition, id, body, null);
+        Type localVarReturnType = new TypeToken<FileUpload>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Upload a file. Max size 30MB. Filename is required!
+     * @param contentDisposition The original filename. (required)
+     * @param id A UUID identifying this object. (required)
+     * @param body  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call modelsModelUpdateAsync(String contentDisposition, UUID id, File body, final ApiCallback<FileUpload> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = modelsModelUpdateValidateBeforeCall(contentDisposition, id, body, _callback);
+        Type localVarReturnType = new TypeToken<FileUpload>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

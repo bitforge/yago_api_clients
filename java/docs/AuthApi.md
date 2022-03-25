@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**authGoogleCreate**](AuthApi.md#authGoogleCreate) | **POST** /api/auth/google/ | 
 [**authLoginCreate**](AuthApi.md#authLoginCreate) | **POST** /api/auth/login/ | 
+[**authPasswordChangeCreate**](AuthApi.md#authPasswordChangeCreate) | **POST** /api/auth/password/change/ | 
 [**authPasswordResetConfirmCreate**](AuthApi.md#authPasswordResetConfirmCreate) | **POST** /api/auth/password/reset/confirm/ | 
 [**authPasswordResetCreate**](AuthApi.md#authPasswordResetCreate) | **POST** /api/auth/password/reset/ | 
 [**authRefreshCreate**](AuthApi.md#authRefreshCreate) | **POST** /api/auth/refresh/ | 
@@ -18,7 +19,7 @@ Method | HTTP request | Description
 
 
 
-Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
 
 ### Example
 ```java
@@ -125,6 +126,85 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+<a name="authPasswordChangeCreate"></a>
+# **authPasswordChangeCreate**
+> PasswordChange authPasswordChangeCreate(passwordChange)
+
+
+
+Change password of current user.
+
+### Example
+```java
+// Import classes:
+import yago.client.ApiClient;
+import yago.client.ApiException;
+import yago.client.Configuration;
+import yago.client.auth.*;
+import yago.client.models.*;
+import yago.client.apis.AuthApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://dev.yago.cloud");
+    
+    // Configure API key authorization: cookieAuth
+    ApiKeyAuth cookieAuth = (ApiKeyAuth) defaultClient.getAuthentication("cookieAuth");
+    cookieAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //cookieAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: jwtAuth
+    HttpBearerAuth jwtAuth = (HttpBearerAuth) defaultClient.getAuthentication("jwtAuth");
+    jwtAuth.setBearerToken("BEARER TOKEN");
+
+    // Configure API key authorization: tokenAuth
+    ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("tokenAuth");
+    tokenAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //tokenAuth.setApiKeyPrefix("Token");
+
+    AuthApi apiInstance = new AuthApi(defaultClient);
+    PasswordChange passwordChange = new PasswordChange(); // PasswordChange | 
+    try {
+      PasswordChange result = apiInstance.authPasswordChangeCreate(passwordChange);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AuthApi#authPasswordChangeCreate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **passwordChange** | [**PasswordChange**](PasswordChange.md)|  |
+
+### Return type
+
+[**PasswordChange**](PasswordChange.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
 
 ### HTTP request headers
 

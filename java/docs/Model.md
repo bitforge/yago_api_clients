@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **scaleable** | **Boolean** | Let&#39;s the user scale the model in AR when enabled. |  [optional]
 **glb** | **URI** | Must be a binary glTF file according to the Khronos Group standard. |  [optional]
 **usdz** | **URI** | Must be a USDZ or Reality Composer file. |  [optional]
+**model** | **URI** | Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files. |  [optional]
 **unityIos** | **URI** | Unity Asset Bundle for Android |  [optional]
 **unityAndroid** | **URI** | Unity Asset Bundle for iOS |  [optional]
 **created** | **OffsetDateTime** |  |  [readonly]

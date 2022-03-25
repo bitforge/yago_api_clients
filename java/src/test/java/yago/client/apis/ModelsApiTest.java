@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -161,6 +161,38 @@ public class ModelsApiTest {
         UUID project = null;
         String status = null;
                 List<Model> response = api.modelsList(project, status);
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Delete a file.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void modelsModelDestroyTest() throws ApiException {
+        UUID id = null;
+                api.modelsModelDestroy(id);
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Upload a file. Max size 30MB. Filename is required!
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void modelsModelUpdateTest() throws ApiException {
+        String contentDisposition = null;
+        UUID id = null;
+        File body = null;
+                FileUpload response = api.modelsModelUpdate(contentDisposition, id, body);
         // TODO: test validations
     }
     

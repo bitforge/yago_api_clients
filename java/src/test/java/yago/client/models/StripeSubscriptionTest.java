@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -29,7 +29,6 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 import yago.client.models.CollectionMethodEnum;
-import yago.client.models.Nested;
 import yago.client.models.StripeSubscriptionStatusEnum;
 import org.junit.Assert;
 import org.junit.Ignore;

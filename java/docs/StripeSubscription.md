@@ -35,15 +35,15 @@ Name | Type | Description | Notes
 **status** | [**StripeSubscriptionStatusEnum**](StripeSubscriptionStatusEnum.md) | The status of this subscription. | 
 **trialEnd** | **OffsetDateTime** | If the subscription has a trial, the end of that trial. |  [optional]
 **trialStart** | **OffsetDateTime** | If the subscription has a trial, the beginning of that trial. |  [optional]
-**djstripeOwnerAccount** | [**Nested**](Nested.md) |  |  [readonly]
-**customer** | [**Nested**](Nested.md) |  |  [readonly]
-**defaultPaymentMethod** | [**Nested**](Nested.md) |  |  [readonly]
-**defaultSource** | [**Nested**](Nested.md) |  |  [readonly]
-**latestInvoice** | [**Nested**](Nested.md) |  |  [readonly]
-**pendingSetupIntent** | [**Nested**](Nested.md) |  |  [readonly]
-**plan** | [**Nested**](Nested.md) |  |  [readonly]
-**schedule** | [**Nested**](Nested.md) |  |  [readonly]
-**defaultTaxRates** | [**List&lt;Nested&gt;**](Nested.md) |  |  [readonly]
+**djstripeOwnerAccount** | **String** | The Stripe Account this object belongs to. |  [optional]
+**customer** | **String** | The customer associated with this subscription. | 
+**defaultPaymentMethod** | **String** | The default payment method for the subscription. It must belong to the customer associated with the subscription. If not set, invoices will use the default payment method in the customer&#39;s invoice settings. |  [optional]
+**defaultSource** | **String** | The default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If not set, defaults to the customer&#39;s default source. |  [optional]
+**latestInvoice** | **String** | The most recent invoice this subscription has generated. |  [optional]
+**pendingSetupIntent** | **String** | We can use this SetupIntent to collect user authentication when creating a subscription without immediate payment or updating a subscription&#39;s payment method, allowing you to optimize for off-session payments. |  [optional]
+**plan** | **Integer** | The plan associated with this subscription. This value will be &#x60;null&#x60; for multi-plan subscriptions |  [optional]
+**schedule** | **Integer** | The schedule associated with this subscription. |  [optional]
+**defaultTaxRates** | **List&lt;Integer&gt;** | The tax rates that will apply to any subscription item that does not have tax_rates set. Invoices created will have their default_tax_rates populated from the subscription. |  [optional]
 
 
 

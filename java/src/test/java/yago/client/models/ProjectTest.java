@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -22,9 +22,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
+import yago.client.models.ActiveOrder;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -154,6 +157,14 @@ public class ProjectTest {
     @Test
     public void backlinkUrlsTest() {
         // TODO: test backlinkUrls
+    }
+
+    /**
+     * Test the property 'orders'
+     */
+    @Test
+    public void ordersTest() {
+        // TODO: test orders
     }
 
     /**

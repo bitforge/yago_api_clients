@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -21,7 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import yago.client.models.Nested;
+import java.util.UUID;
+import org.openapitools.jackson.nullable.JsonNullable;
 import yago.client.models.PaymentMethodEnum;
 import yago.client.models.StripeSubscription;
 import org.junit.Assert;

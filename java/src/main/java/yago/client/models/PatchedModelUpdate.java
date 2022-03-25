@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -31,7 +31,7 @@ import yago.client.models.ModelStatus;
 /**
  * PatchedModelUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-02-21T17:02:29.236455048+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-03-25T09:56:53.475406+01:00[Europe/Zurich]")
 public class PatchedModelUpdate {
   public static final String SERIALIZED_NAME_NAME_DE = "name_de";
   @SerializedName(SERIALIZED_NAME_NAME_DE)

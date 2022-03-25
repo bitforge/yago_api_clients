@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -51,7 +51,7 @@ public class UsersApiTest {
     /**
      * 
      *
-     * Show details of the user currently logged in.
+     * Get or update current user details.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -59,6 +59,21 @@ public class UsersApiTest {
     @Test
     public void usersMeRetrieveTest() throws ApiException {
                 User response = api.usersMeRetrieve();
+        // TODO: test validations
+    }
+    
+    /**
+     * 
+     *
+     * Get or update current user details.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void usersMeUpdateTest() throws ApiException {
+        User user = null;
+                User response = api.usersMeUpdate(user);
         // TODO: test validations
     }
     

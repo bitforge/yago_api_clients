@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-02-21T17:02:29.236455048+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-03-25T09:56:53.475406+01:00[Europe/Zurich]")
 public class User {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -47,6 +47,10 @@ public class User {
   @SerializedName(SERIALIZED_NAME_LAST_NAME)
   private String lastName;
 
+  public static final String SERIALIZED_NAME_CUSTOMER_NAME = "customer_name";
+  @SerializedName(SERIALIZED_NAME_CUSTOMER_NAME)
+  private String customerName;
+
   public static final String SERIALIZED_NAME_DATE_JOINED = "date_joined";
   @SerializedName(SERIALIZED_NAME_DATE_JOINED)
   private OffsetDateTime dateJoined;
@@ -63,15 +67,33 @@ public class User {
   @SerializedName(SERIALIZED_NAME_IS_SUPERUSER)
   private Boolean isSuperuser;
 
+  public static final String SERIALIZED_NAME_IS_CONTRACTOR = "is_contractor";
+  @SerializedName(SERIALIZED_NAME_IS_CONTRACTOR)
+  private Boolean isContractor;
+
   public User() { 
   }
 
   
   public User(
-     UUID id
+     UUID id, 
+     String email, 
+     String customerName, 
+     OffsetDateTime dateJoined, 
+     Boolean isActive, 
+     Boolean isStaff, 
+     Boolean isSuperuser, 
+     Boolean isContractor
   ) {
     this();
     this.id = id;
+    this.email = email;
+    this.customerName = customerName;
+    this.dateJoined = dateJoined;
+    this.isActive = isActive;
+    this.isStaff = isStaff;
+    this.isSuperuser = isSuperuser;
+    this.isContractor = isContractor;
   }
 
    /**
@@ -88,12 +110,6 @@ public class User {
 
 
 
-  public User email(String email) {
-    
-    this.email = email;
-    return this;
-  }
-
    /**
    * Get email
    * @return email
@@ -106,9 +122,6 @@ public class User {
   }
 
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
 
 
   public User firstName(String firstName) {
@@ -157,96 +170,88 @@ public class User {
   }
 
 
-  public User dateJoined(OffsetDateTime dateJoined) {
-    
-    this.dateJoined = dateJoined;
-    return this;
+   /**
+   * Get customerName
+   * @return customerName
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public String getCustomerName() {
+    return customerName;
   }
+
+
+
 
    /**
    * Get dateJoined
    * @return dateJoined
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
 
   public OffsetDateTime getDateJoined() {
     return dateJoined;
   }
 
 
-  public void setDateJoined(OffsetDateTime dateJoined) {
-    this.dateJoined = dateJoined;
-  }
 
-
-  public User isActive(Boolean isActive) {
-    
-    this.isActive = isActive;
-    return this;
-  }
 
    /**
    * Deactivated users cannot login.
    * @return isActive
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Deactivated users cannot login.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Deactivated users cannot login.")
 
   public Boolean getIsActive() {
     return isActive;
   }
 
 
-  public void setIsActive(Boolean isActive) {
-    this.isActive = isActive;
-  }
 
-
-  public User isStaff(Boolean isStaff) {
-    
-    this.isStaff = isStaff;
-    return this;
-  }
 
    /**
-   * Allow login to Genie AR CMS. Can be disabled for API users.
+   * Allow login to Yago Admin. For Admins only.
    * @return isStaff
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Allow login to Genie AR CMS. Can be disabled for API users.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Allow login to Yago Admin. For Admins only.")
 
   public Boolean getIsStaff() {
     return isStaff;
   }
 
 
-  public void setIsStaff(Boolean isStaff) {
-    this.isStaff = isStaff;
-  }
 
-
-  public User isSuperuser(Boolean isSuperuser) {
-    
-    this.isSuperuser = isSuperuser;
-    return this;
-  }
 
    /**
    * User can see and change anything. Only for Bitforge employees.
    * @return isSuperuser
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "User can see and change anything. Only for Bitforge employees.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "User can see and change anything. Only for Bitforge employees.")
 
   public Boolean getIsSuperuser() {
     return isSuperuser;
   }
 
 
-  public void setIsSuperuser(Boolean isSuperuser) {
-    this.isSuperuser = isSuperuser;
+
+
+   /**
+   * User can manage model orders. For designers &amp; customer project managers.
+   * @return isContractor
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "User can manage model orders. For designers & customer project managers.")
+
+  public Boolean getIsContractor() {
+    return isContractor;
   }
+
+
 
 
   @Override
@@ -262,15 +267,17 @@ public class User {
         Objects.equals(this.email, user.email) &&
         Objects.equals(this.firstName, user.firstName) &&
         Objects.equals(this.lastName, user.lastName) &&
+        Objects.equals(this.customerName, user.customerName) &&
         Objects.equals(this.dateJoined, user.dateJoined) &&
         Objects.equals(this.isActive, user.isActive) &&
         Objects.equals(this.isStaff, user.isStaff) &&
-        Objects.equals(this.isSuperuser, user.isSuperuser);
+        Objects.equals(this.isSuperuser, user.isSuperuser) &&
+        Objects.equals(this.isContractor, user.isContractor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, email, firstName, lastName, dateJoined, isActive, isStaff, isSuperuser);
+    return Objects.hash(id, email, firstName, lastName, customerName, dateJoined, isActive, isStaff, isSuperuser, isContractor);
   }
 
   @Override
@@ -281,10 +288,12 @@ public class User {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    customerName: ").append(toIndentedString(customerName)).append("\n");
     sb.append("    dateJoined: ").append(toIndentedString(dateJoined)).append("\n");
     sb.append("    isActive: ").append(toIndentedString(isActive)).append("\n");
     sb.append("    isStaff: ").append(toIndentedString(isStaff)).append("\n");
     sb.append("    isSuperuser: ").append(toIndentedString(isSuperuser)).append("\n");
+    sb.append("    isContractor: ").append(toIndentedString(isContractor)).append("\n");
     sb.append("}");
     return sb.toString();
   }

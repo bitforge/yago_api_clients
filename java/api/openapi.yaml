@@ -5,7 +5,7 @@ info:
     name: Team at Bitforge AG
   description: Augemented Reality Made Easy.
   termsOfService: https://ar-webshop.com/agb/
-  title: Genie API
+  title: Yago API
   version: 1.0.0
 externalDocs:
   description: Product Page
@@ -17,7 +17,7 @@ paths:
     post:
       description: |-
         Takes a Google ID token and returns an access and refresh token for this API.
-        If token is valid and user does not already exist, a new Genie user will be created.
+        If token is valid and user does not already exist, a new Yago user will be created.
       operationId: auth_google_create
       requestBody:
         content:
@@ -53,6 +53,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenObtainResponse'
+      tags:
+      - auth
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/auth/password/change/:
+    post:
+      description: Change password of current user.
+      operationId: auth_password_change_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordChange'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
       tags:
       - auth
       x-contentType: application/json
@@ -158,7 +182,7 @@ paths:
   /api/customer/billing_address/:
     get:
       description: Update customer billing address. Required prior to subscribing
-        to Genie AR services
+        to Yago services
       operationId: customer_billing_address_retrieve
       responses:
         "200":
@@ -175,7 +199,7 @@ paths:
       x-accepts: application/json
     patch:
       description: Update customer billing address. Required prior to subscribing
-        to Genie AR services
+        to Yago services
       operationId: customer_billing_address_partial_update
       requestBody:
         content:
@@ -198,7 +222,7 @@ paths:
       x-accepts: application/json
     put:
       description: Update customer billing address. Required prior to subscribing
-        to Genie AR services
+        to Yago services
       operationId: customer_billing_address_update
       requestBody:
         content:
@@ -629,6 +653,71 @@ paths:
       - models
       x-contentType: image/*
       x-accepts: application/json
+  /api/models/{id}/model/:
+    delete:
+      description: Delete a file.
+      operationId: models_model_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - models
+      x-accepts: application/json
+    put:
+      description: Upload a file. Max size 30MB. Filename is required!
+      operationId: models_model_update
+      parameters:
+      - description: The original filename.
+        explode: false
+        in: header
+        name: Content-Disposition
+        required: true
+        schema:
+          default: attachment; filename=name.ext
+          type: string
+        style: simple
+      - description: A UUID identifying this object.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileUpload'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - models
+      x-contentType: application/octet-stream
+      x-accepts: application/json
   /api/models/{id}/unity_android/:
     delete:
       description: Delete a file.
@@ -844,6 +933,868 @@ paths:
                 $ref: '#/components/schemas/ModelInfo'
       tags:
       - models
+      x-accepts: application/json
+  /api/orders/:
+    get:
+      description: Lists all orders of customer.
+      operationId: orders_list
+      parameters:
+      - explode: true
+        in: query
+        name: project
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Order'
+                type: array
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    post:
+      description: Add a new order.
+      operationId: orders_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/orders/{id}/:
+    delete:
+      description: Delete order.
+      operationId: orders_destroy
+      parameters:
+      - description: A unique integer value identifying this Order.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    get:
+      description: Details of a single order.
+      operationId: orders_retrieve
+      parameters:
+      - description: A unique integer value identifying this Order.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetail'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    put:
+      description: Update order price estimation.
+      operationId: orders_update
+      parameters:
+      - description: A unique integer value identifying this Order.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderUpdate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderUpdate'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/orders/{order_id}/comments/:
+    get:
+      description: List all comments of order.
+      operationId: orders_comments_list
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OrderComment'
+                type: array
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    post:
+      description: Add a new comment to order.
+      operationId: orders_comments_create
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCommentCreate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCommentCreate'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/orders/{order_id}/models/:
+    get:
+      description: Lists all models of order.
+      operationId: orders_models_list
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OrderModel'
+                type: array
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    post:
+      description: Add a new model.
+      operationId: orders_models_create
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderModelCreate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderModel'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/:
+    delete:
+      description: Delete model.
+      operationId: orders_models_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: A unique integer value identifying this Model.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: No response body
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    get:
+      description: '`ModelOrder` CRUD Viewset.'
+      operationId: orders_models_retrieve
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: A unique integer value identifying this Model.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderModelDetail'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    put:
+      description: Change model.
+      operationId: orders_models_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: A unique integer value identifying this Model.
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderModel'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderModel'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/comments/:
+    get:
+      description: List all comments of model.
+      operationId: orders_models_comments_list
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OrderModelComment'
+                type: array
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    post:
+      description: Add a new comment to order.
+      operationId: orders_models_comments_create
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderModelCommentCreate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderModelCommentCreate'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/files/:
+    get:
+      description: Lists all files of model.
+      operationId: orders_models_files_list
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OrderModelFile'
+                type: array
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+    put:
+      description: Upload a file. Max size 30MB. Filename is required!
+      operationId: orders_models_files_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: The original filename.
+        explode: false
+        in: header
+        name: Content-Disposition
+        required: true
+        schema:
+          default: attachment; filename=name.ext
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileUploaded'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-contentType: application/octet-stream
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/files/{file_id}/:
+    delete:
+      description: Delete file.
+      operationId: orders_models_files_destroy
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: file_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No response body
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/submit_to_finished/:
+    patch:
+      description: Model was accepted by customer and can be added to project.
+      operationId: orders_models_submit_to_finished_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/submit_to_review/:
+    patch:
+      description: Model is ready to be reviewed by customer.
+      operationId: orders_models_submit_to_review_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/submit_to_rework/:
+    patch:
+      description: Request rework of model, as specified in comments. Can only happen
+        once.
+      operationId: orders_models_submit_to_rework_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/models/{id}/transitions/:
+    get:
+      description: Lists available transitions of order model for current user.
+      operationId: orders_models_transitions_list
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AvailableState'
+                type: array
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/submit_to_estimation/:
+    patch:
+      description: Send order to estimation after all models have been added and specified.
+      operationId: orders_submit_to_estimation_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/submit_to_finished/:
+    patch:
+      description: All models are reviewed & accepted by customer, order is complete.
+      operationId: orders_submit_to_finished_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/submit_to_payment/:
+    patch:
+      description: Models have been estimated and and payment price for customer is
+        defined.
+      operationId: orders_submit_to_payment_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/submit_to_progress/:
+    patch:
+      description: Customer has payed estimated amount and modelling can begin.
+      operationId: orders_submit_to_progress_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/submit_to_review/:
+    patch:
+      description: All models are uploaded and ready, customer may begin with review.
+      operationId: orders_submit_to_review_partial_update
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateChanged'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDescription'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
+      x-accepts: application/json
+  /api/orders/{order_id}/transitions/:
+    get:
+      description: Lists available transitions of order for current user.
+      operationId: orders_transitions_list
+      parameters:
+      - explode: false
+        in: path
+        name: order_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AvailableState'
+                type: array
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - orders
       x-accepts: application/json
   /api/plans/:
     get:
@@ -1229,7 +2180,7 @@ paths:
       x-accepts: application/json
     post:
       description: |-
-        Create a new stripe Subscription for a Genie pricing plan in state incomplete.
+        Create a new stripe Subscription for a Yago pricing plan in state incomplete.
         Use client_secret to submit payment method with a stripe element to activate subscription.
       operationId: subscription_create
       requestBody:
@@ -1311,7 +2262,7 @@ paths:
       x-accepts: application/json
   /api/users/me/:
     get:
-      description: Show details of the user currently logged in.
+      description: Get or update current user details.
       operationId: users_me_retrieve
       responses:
         "200":
@@ -1326,8 +2277,46 @@ paths:
       tags:
       - users
       x-accepts: application/json
+    put:
+      description: Get or update current user details.
+      operationId: users_me_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - jwtAuth: []
+      tags:
+      - users
+      x-contentType: application/json
+      x-accepts: application/json
 components:
   schemas:
+    ActiveOrder:
+      example:
+        id: 0
+        state: ""
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        state:
+          allOf:
+          - $ref: '#/components/schemas/OrderState'
+          readOnly: true
+      required:
+      - id
+      - state
+      type: object
     Address:
       example:
         phone: phone
@@ -1391,6 +2380,21 @@ components:
       required:
       - id
       - name
+      type: object
+    AvailableState:
+      example:
+        action: action
+        target: target
+      properties:
+        action:
+          readOnly: true
+          type: string
+        target:
+          readOnly: true
+          type: string
+      required:
+      - action
+      - target
       type: object
     ChronicStats:
       properties:
@@ -1729,7 +2733,35 @@ components:
       - name
       - slug
       type: object
+    ErrorDescription:
+      properties:
+        title:
+          readOnly: true
+          type: string
+        status:
+          maximum: 599
+          minimum: 100
+          readOnly: true
+          type: integer
+        errors:
+          additionalProperties: {}
+          readOnly: true
+          type: object
+      required:
+      - errors
+      - status
+      - title
+      type: object
     FileUpload:
+      example:
+        file_url: file_url
+      properties:
+        file_url:
+          type: string
+      required:
+      - file_url
+      type: object
+    FileUploaded:
       example:
         file_url: file_url
       properties:
@@ -1848,6 +2880,7 @@ components:
         price: price
         name_de: name_de
         modified: 2000-01-23T04:56:07.000+00:00
+        model: https://openapi-generator.tech
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         sku: sku
         glb: https://openapi-generator.tech
@@ -2001,7 +3034,7 @@ components:
             webstore.
           format: decimal
           nullable: true
-          pattern: ^\d{0,8}(?:\.\d{0,2})?$
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
           type: string
         price_currency:
           readOnly: true
@@ -2023,6 +3056,13 @@ components:
           nullable: true
           pattern: (?:usdz|reality)$
           title: USDZ (iOS)
+          type: string
+        model:
+          description: Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use
+            archive for multiple files.
+          format: uri
+          nullable: true
+          title: Source Model
           type: string
         unity_ios:
           description: Unity Asset Bundle for Android
@@ -2262,7 +3302,7 @@ components:
             webstore.
           format: decimal
           nullable: true
-          pattern: ^\d{0,8}(?:\.\d{0,2})?$
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
           type: string
         price_currency:
           readOnly: true
@@ -2270,76 +3310,6 @@ components:
       required:
       - description
       - price_currency
-      type: object
-    Nested:
-      example:
-        custom_qr_codes: true
-        model_quotas: 5199562221600970752
-        price: price
-        seo_optimization: true
-        name: name
-        view_quotas: 2123345576459398144
-        project_quotas: 5499097924711910400
-        view_reporting: true
-        key: key
-        stripe_price_id: stripe_price_id
-      properties:
-        key:
-          maxLength: 20
-          type: string
-        name:
-          maxLength: 100
-          type: string
-        price:
-          description: For display purposes, payment price is defined in stripe product.
-          format: decimal
-          pattern: ^\d{0,4}(?:\.\d{0,2})?$
-          title: Price per month (CHF)
-          type: string
-        project_quotas:
-          description: How many projects are included in this plan.
-          format: int64
-          maximum: 9223372036854775807
-          minimum: 0
-          title: Project quota
-          type: integer
-        model_quotas:
-          description: How many models are included in this plan.
-          format: int64
-          maximum: 9223372036854775807
-          minimum: 0
-          title: Models quota
-          type: integer
-        view_quotas:
-          description: How many AR views are included in this plan.
-          format: int64
-          maximum: 9223372036854775807
-          minimum: 0
-          title: AR-Views quota
-          type: integer
-        seo_optimization:
-          description: Enables SEO tags and sharing previews.
-          title: SEO optimized models
-          type: boolean
-        view_reporting:
-          description: Allows to view detailed statistics about model views.
-          title: AR-View Reporting
-          type: boolean
-        custom_qr_codes:
-          description: Allows to visually customie QR Codes when enabled.
-          type: boolean
-        stripe_price_id:
-          description: Stripe price used to create a new subscriptions
-          maxLength: 255
-          nullable: true
-          type: string
-      required:
-      - key
-      - model_quotas
-      - name
-      - price
-      - project_quotas
-      - view_quotas
       type: object
     NewSubscription:
       example:
@@ -2371,6 +3341,490 @@ components:
       - plan
       - subscription_id
       - tos_accepted
+      type: object
+    Order:
+      example:
+        price: price
+        created: 2000-01-23T04:56:07.000+00:00
+        model_count: 6
+        project: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        modified: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        state: ""
+        price_currency: price_currency
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        project:
+          format: uuid
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/OrderState'
+          readOnly: true
+        price:
+          description: Estimation of order in CHF including taxes. Payment price for
+            User before starting production.
+          format: decimal
+          nullable: true
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          type: string
+        price_currency:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          format: date-time
+          readOnly: true
+          type: string
+        model_count:
+          readOnly: true
+          type: integer
+      required:
+      - created
+      - id
+      - model_count
+      - modified
+      - price_currency
+      - project
+      - state
+      type: object
+    OrderComment:
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        user_name: user_name
+        comment: comment
+        yago_team: true
+      properties:
+        yago_team:
+          readOnly: true
+          type: boolean
+        user_name:
+          readOnly: true
+          type: string
+        date:
+          format: date-time
+          readOnly: true
+          title: Created
+          type: string
+        comment:
+          maxLength: 3000
+          type: string
+      required:
+      - comment
+      - date
+      - user_name
+      - yago_team
+      type: object
+    OrderCommentCreate:
+      example:
+        comment: comment
+      properties:
+        comment:
+          maxLength: 3000
+          type: string
+      required:
+      - comment
+      type: object
+    OrderCreate:
+      example:
+        project: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        project:
+          format: uuid
+          type: string
+      required:
+      - project
+      type: object
+    OrderDetail:
+      example:
+        models:
+        - depth_mm: 2.3021358869347655
+          website: https://openapi-generator.tech
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          modified: 2000-01-23T04:56:07.000+00:00
+          model: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 6
+          state: ""
+          width_mm: 5.962133916683182
+          height_mm: 5.637376656633329
+          order: 1
+        - depth_mm: 2.3021358869347655
+          website: https://openapi-generator.tech
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          modified: 2000-01-23T04:56:07.000+00:00
+          model: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 6
+          state: ""
+          width_mm: 5.962133916683182
+          height_mm: 5.637376656633329
+          order: 1
+        comments:
+        - date: 2000-01-23T04:56:07.000+00:00
+          user_name: user_name
+          comment: comment
+          yago_team: true
+        - date: 2000-01-23T04:56:07.000+00:00
+          user_name: user_name
+          comment: comment
+          yago_team: true
+        price: price
+        created: 2000-01-23T04:56:07.000+00:00
+        project: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        modified: 2000-01-23T04:56:07.000+00:00
+        id: 0
+        state: ""
+        price_currency: price_currency
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        project:
+          format: uuid
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/OrderState'
+          readOnly: true
+        price:
+          description: Estimation of order in CHF including taxes. Payment price for
+            User before starting production.
+          format: decimal
+          nullable: true
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          type: string
+        price_currency:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          format: date-time
+          readOnly: true
+          type: string
+        models:
+          items:
+            $ref: '#/components/schemas/OrderModel'
+          type: array
+        comments:
+          items:
+            $ref: '#/components/schemas/OrderComment'
+          type: array
+      required:
+      - comments
+      - created
+      - id
+      - models
+      - modified
+      - price_currency
+      - project
+      - state
+      type: object
+    OrderModel:
+      example:
+        depth_mm: 2.3021358869347655
+        website: https://openapi-generator.tech
+        created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        modified: 2000-01-23T04:56:07.000+00:00
+        model: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 6
+        state: ""
+        width_mm: 5.962133916683182
+        height_mm: 5.637376656633329
+        order: 1
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          type: string
+        order:
+          readOnly: true
+          type: integer
+        state:
+          allOf:
+          - $ref: '#/components/schemas/OrderState'
+          readOnly: true
+        website:
+          format: uri
+          maxLength: 200
+          nullable: true
+          type: string
+        width_mm:
+          format: double
+          nullable: true
+          type: number
+        height_mm:
+          format: double
+          nullable: true
+          type: number
+        depth_mm:
+          format: double
+          nullable: true
+          type: number
+        model:
+          description: Resulting model after order is finished. Available when state
+            is IN_PROGRESS.
+          format: uuid
+          nullable: true
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - id
+      - model
+      - modified
+      - name
+      - order
+      - state
+      type: object
+    OrderModelComment:
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        user_name: user_name
+        comment: comment
+        yago_team: true
+      properties:
+        yago_team:
+          readOnly: true
+          type: boolean
+        user_name:
+          readOnly: true
+          type: string
+        date:
+          format: date-time
+          readOnly: true
+          title: Created
+          type: string
+        comment:
+          maxLength: 3000
+          type: string
+      required:
+      - comment
+      - date
+      - user_name
+      - yago_team
+      type: object
+    OrderModelCommentCreate:
+      example:
+        comment: comment
+      properties:
+        comment:
+          maxLength: 3000
+          type: string
+      required:
+      - comment
+      type: object
+    OrderModelCreate:
+      example:
+        depth_mm: 1.4658129805029452
+        website: https://openapi-generator.tech
+        name: name
+        width_mm: 0.8008281904610115
+        height_mm: 6.027456183070403
+      properties:
+        name:
+          maxLength: 100
+          type: string
+        website:
+          format: uri
+          maxLength: 200
+          nullable: true
+          type: string
+        width_mm:
+          format: double
+          nullable: true
+          type: number
+        height_mm:
+          format: double
+          nullable: true
+          type: number
+        depth_mm:
+          format: double
+          nullable: true
+          type: number
+      required:
+      - name
+      type: object
+    OrderModelDetail:
+      example:
+        depth_mm: 5.962133916683182
+        website: https://openapi-generator.tech
+        comments:
+        - date: 2000-01-23T04:56:07.000+00:00
+          user_name: user_name
+          comment: comment
+          yago_team: true
+        - date: 2000-01-23T04:56:07.000+00:00
+          user_name: user_name
+          comment: comment
+          yago_team: true
+        created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        modified: 2000-01-23T04:56:07.000+00:00
+        files:
+        - file: https://openapi-generator.tech
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - file: https://openapi-generator.tech
+          created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        model: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 0
+        state: ""
+        width_mm: 6.027456183070403
+        height_mm: 1.4658129805029452
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 100
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/OrderState'
+          readOnly: true
+        website:
+          format: uri
+          maxLength: 200
+          nullable: true
+          type: string
+        width_mm:
+          format: double
+          nullable: true
+          type: number
+        height_mm:
+          format: double
+          nullable: true
+          type: number
+        depth_mm:
+          format: double
+          nullable: true
+          type: number
+        model:
+          description: Resulting model after order is finished. Available when state
+            is IN_PROGRESS.
+          format: uuid
+          nullable: true
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          format: date-time
+          readOnly: true
+          type: string
+        files:
+          items:
+            $ref: '#/components/schemas/OrderModelFile'
+          type: array
+        comments:
+          items:
+            $ref: '#/components/schemas/OrderModelComment'
+          type: array
+      required:
+      - comments
+      - created
+      - files
+      - id
+      - model
+      - modified
+      - name
+      - state
+      type: object
+    OrderModelFile:
+      example:
+        file: https://openapi-generator.tech
+        created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        file:
+          format: uri
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - created
+      - file
+      - id
+      - name
+      type: object
+    OrderState:
+      enum:
+      - PREPARING
+      - ESTIMATING
+      - READY_TO_PAY
+      - IN_PROGRESS
+      - IN_REVIEW
+      - FINISHED
+      - RAGE_QUIT
+      type: string
+    OrderUpdate:
+      example:
+        price: price
+      properties:
+        price:
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          type: string
+        price_currency:
+          $ref: '#/components/schemas/PriceCurrencyEnum'
+      required:
+      - price
+      type: object
+    PasswordChange:
+      description: Serializer for requesting a password reset e-mail.
+      example:
+        old_password: old_password
+        new_password1: new_password1
+        new_password2: new_password2
+      properties:
+        old_password:
+          maxLength: 128
+          type: string
+        new_password1:
+          maxLength: 128
+          type: string
+        new_password2:
+          maxLength: 128
+          type: string
+      required:
+      - new_password1
+      - new_password2
+      - old_password
       type: object
     PasswordReset:
       description: Serializer for requesting a password reset e-mail.
@@ -2595,7 +4049,7 @@ components:
             webstore.
           format: decimal
           nullable: true
-          pattern: ^\d{0,8}(?:\.\d{0,2})?$
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
           type: string
         price_currency:
           readOnly: true
@@ -2662,6 +4116,13 @@ components:
       - PRO
       - PREMIUM
       type: string
+    PriceCurrencyEnum:
+      enum:
+      - CHF
+      - EUR
+      - GBP
+      - USD
+      type: string
     PricingPlan:
       example:
         custom_qr_codes: true
@@ -2683,7 +4144,7 @@ components:
         price:
           description: For display purposes, payment price is defined in stripe product.
           format: decimal
-          pattern: ^\d{0,4}(?:\.\d{0,2})?$
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
           title: Price per month (CHF)
           type: string
         project_quotas:
@@ -2739,6 +4200,11 @@ components:
         translations_en: true
         name: name
         modified: 2000-01-23T04:56:07.000+00:00
+        orders:
+        - id: 0
+          state: ""
+        - id: 0
+          state: ""
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         translations_it: true
         translations_fr: true
@@ -2799,6 +4265,11 @@ components:
             standalone QR codes (e.g. Print).
           title: Enable Backlink URLs
           type: boolean
+        orders:
+          items:
+            $ref: '#/components/schemas/ActiveOrder'
+          readOnly: true
+          type: array
         created:
           format: date-time
           readOnly: true
@@ -2814,6 +4285,7 @@ components:
       - image_thumb
       - modified
       - name
+      - orders
       - slug
       type: object
     ProjectCreate:
@@ -2975,7 +4447,30 @@ components:
       enum:
       - OWNER
       - MEMBER
+      - MANAGER
+      - DESIGNER
       type: string
+    StateChanged:
+      example:
+        old_state: old_state
+        new_state: new_state
+        modified: 2000-01-23T04:56:07.000+00:00
+      properties:
+        old_state:
+          readOnly: true
+          type: string
+        new_state:
+          readOnly: true
+          type: string
+        modified:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - modified
+      - new_state
+      - old_state
+      type: object
     StripeSubscription:
       example:
         djstripe_created: 2000-01-23T04:56:07.000+00:00
@@ -2985,7 +4480,7 @@ components:
         cancel_at_period_end: true
         pending_update:
           key: ""
-        pending_setup_intent: ""
+        pending_setup_intent: pending_setup_intent
         canceled_at: 2000-01-23T04:56:07.000+00:00
         description: description
         days_until_due: 441289069
@@ -2994,41 +4489,23 @@ components:
         application_fee_percent: application_fee_percent
         djstripe_id: 0
         id: id
-        plan: ""
+        plan: 5
         current_period_start: 2000-01-23T04:56:07.000+00:00
         start_date: 2000-01-23T04:56:07.000+00:00
         default_tax_rates:
-        - custom_qr_codes: true
-          model_quotas: 5199562221600970752
-          price: price
-          seo_optimization: true
-          name: name
-          view_quotas: 2123345576459398144
-          project_quotas: 5499097924711910400
-          view_reporting: true
-          key: key
-          stripe_price_id: stripe_price_id
-        - custom_qr_codes: true
-          model_quotas: 5199562221600970752
-          price: price
-          seo_optimization: true
-          name: name
-          view_quotas: 2123345576459398144
-          project_quotas: 5499097924711910400
-          view_reporting: true
-          key: key
-          stripe_price_id: stripe_price_id
+        - 2
+        - 2
         quantity: -1517921766
-        latest_invoice: ""
-        default_source: ""
+        latest_invoice: latest_invoice
+        default_source: default_source
         created: 2000-01-23T04:56:07.000+00:00
-        default_payment_method: ""
+        default_payment_method: default_payment_method
         trial_end: 2000-01-23T04:56:07.000+00:00
         current_period_end: 2000-01-23T04:56:07.000+00:00
         pending_invoice_item_interval:
           key: ""
         billing_cycle_anchor: 2000-01-23T04:56:07.000+00:00
-        schedule: ""
+        schedule: 5
         collection_method: ""
         trial_start: 2000-01-23T04:56:07.000+00:00
         djstripe_updated: 2000-01-23T04:56:07.000+00:00
@@ -3036,10 +4513,10 @@ components:
           key: ""
         next_pending_invoice_item_invoice: 2000-01-23T04:56:07.000+00:00
         ended_at: 2000-01-23T04:56:07.000+00:00
-        djstripe_owner_account: ""
+        djstripe_owner_account: djstripe_owner_account
         cancel_at: 2000-01-23T04:56:07.000+00:00
         status: ""
-        customer: ""
+        customer: customer
       properties:
         djstripe_id:
           readOnly: true
@@ -3084,7 +4561,7 @@ components:
             owner's Stripe account each billing period.
           format: decimal
           nullable: true
-          pattern: ^\d{0,3}(?:\.\d{0,2})?$
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
           type: string
         billing_cycle_anchor:
           description: Determines the date of the first full invoice, and, for plans
@@ -3203,59 +4680,62 @@ components:
           nullable: true
           type: string
         djstripe_owner_account:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: The Stripe Account this object belongs to.
+          nullable: true
+          type: string
         customer:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: The customer associated with this subscription.
+          type: string
         default_payment_method:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: The default payment method for the subscription. It must belong
+            to the customer associated with the subscription. If not set, invoices
+            will use the default payment method in the customer's invoice settings.
+          nullable: true
+          type: string
         default_source:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: The default payment source for the subscription. It must belong
+            to the customer associated with the subscription and be in a chargeable
+            state. If not set, defaults to the customer's default source.
+          nullable: true
+          type: string
         latest_invoice:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: The most recent invoice this subscription has generated.
+          nullable: true
+          type: string
         pending_setup_intent:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: We can use this SetupIntent to collect user authentication
+            when creating a subscription without immediate payment or updating a subscription's
+            payment method, allowing you to optimize for off-session payments.
+          nullable: true
+          type: string
         plan:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: The plan associated with this subscription. This value will
+            be `null` for multi-plan subscriptions
+          nullable: true
+          title: ID
+          type: integer
         schedule:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: The schedule associated with this subscription.
+          nullable: true
+          title: ID
+          type: integer
         default_tax_rates:
+          description: The tax rates that will apply to any subscription item that
+            does not have tax_rates set. Invoices created will have their default_tax_rates
+            populated from the subscription.
           items:
-            $ref: '#/components/schemas/Nested'
-          readOnly: true
+            title: ID
+            type: integer
           type: array
       required:
       - collection_method
       - current_period_end
       - current_period_start
       - customer
-      - default_payment_method
-      - default_source
-      - default_tax_rates
       - djstripe_created
       - djstripe_id
-      - djstripe_owner_account
       - djstripe_updated
       - id
-      - latest_invoice
-      - pending_setup_intent
-      - plan
-      - schedule
       - status
       type: object
     StripeSubscriptionStatusEnum:
@@ -3270,8 +4750,8 @@ components:
       type: string
     Subscription:
       example:
-        billing_address: ""
-        plan: ""
+        billing_address: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        plan: plan
         stripe_subscription:
           djstripe_created: 2000-01-23T04:56:07.000+00:00
           metadata:
@@ -3280,7 +4760,7 @@ components:
           cancel_at_period_end: true
           pending_update:
             key: ""
-          pending_setup_intent: ""
+          pending_setup_intent: pending_setup_intent
           canceled_at: 2000-01-23T04:56:07.000+00:00
           description: description
           days_until_due: 441289069
@@ -3289,41 +4769,23 @@ components:
           application_fee_percent: application_fee_percent
           djstripe_id: 0
           id: id
-          plan: ""
+          plan: 5
           current_period_start: 2000-01-23T04:56:07.000+00:00
           start_date: 2000-01-23T04:56:07.000+00:00
           default_tax_rates:
-          - custom_qr_codes: true
-            model_quotas: 5199562221600970752
-            price: price
-            seo_optimization: true
-            name: name
-            view_quotas: 2123345576459398144
-            project_quotas: 5499097924711910400
-            view_reporting: true
-            key: key
-            stripe_price_id: stripe_price_id
-          - custom_qr_codes: true
-            model_quotas: 5199562221600970752
-            price: price
-            seo_optimization: true
-            name: name
-            view_quotas: 2123345576459398144
-            project_quotas: 5499097924711910400
-            view_reporting: true
-            key: key
-            stripe_price_id: stripe_price_id
+          - 2
+          - 2
           quantity: -1517921766
-          latest_invoice: ""
-          default_source: ""
+          latest_invoice: latest_invoice
+          default_source: default_source
           created: 2000-01-23T04:56:07.000+00:00
-          default_payment_method: ""
+          default_payment_method: default_payment_method
           trial_end: 2000-01-23T04:56:07.000+00:00
           current_period_end: 2000-01-23T04:56:07.000+00:00
           pending_invoice_item_interval:
             key: ""
           billing_cycle_anchor: 2000-01-23T04:56:07.000+00:00
-          schedule: ""
+          schedule: 5
           collection_method: ""
           trial_start: 2000-01-23T04:56:07.000+00:00
           djstripe_updated: 2000-01-23T04:56:07.000+00:00
@@ -3331,26 +4793,25 @@ components:
             key: ""
           next_pending_invoice_item_invoice: 2000-01-23T04:56:07.000+00:00
           ended_at: 2000-01-23T04:56:07.000+00:00
-          djstripe_owner_account: ""
+          djstripe_owner_account: djstripe_owner_account
           cancel_at: 2000-01-23T04:56:07.000+00:00
           status: ""
-          customer: ""
+          customer: customer
       properties:
         payment_method:
           $ref: '#/components/schemas/PaymentMethodEnum'
         plan:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          description: Defines the number of available models and AR views. <a href="mailto:info@bitforge.ch">Contact
+            us</a> to upgrade your plan.
+          nullable: true
+          type: string
         billing_address:
-          allOf:
-          - $ref: '#/components/schemas/Nested'
-          readOnly: true
+          format: uuid
+          nullable: true
+          type: string
         stripe_subscription:
           $ref: '#/components/schemas/StripeSubscription'
       required:
-      - billing_address
-      - plan
       - stripe_subscription
       type: object
     SummaryStats:
@@ -3443,8 +4904,10 @@ components:
         is_active: true
         is_superuser: true
         is_staff: true
+        is_contractor: true
         last_name: last_name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        customer_name: customer_name
         date_joined: 2000-01-23T04:56:07.000+00:00
         first_name: first_name
         email: email
@@ -3455,7 +4918,7 @@ components:
           type: string
         email:
           format: email
-          maxLength: 254
+          readOnly: true
           title: Email address
           type: string
         first_name:
@@ -3464,24 +4927,43 @@ components:
         last_name:
           maxLength: 150
           type: string
+        customer_name:
+          readOnly: true
+          type: string
         date_joined:
           format: date-time
+          readOnly: true
           type: string
         is_active:
           description: Deactivated users cannot login.
+          readOnly: true
           title: Active
           type: boolean
         is_staff:
-          description: Allow login to Genie AR CMS. Can be disabled for API users.
+          description: Allow login to Yago Admin. For Admins only.
+          readOnly: true
           title: CMS login
           type: boolean
         is_superuser:
           description: User can see and change anything. Only for Bitforge employees.
+          readOnly: true
           title: Superuser status
           type: boolean
+        is_contractor:
+          description: User can manage model orders. For designers & customer project
+            managers.
+          readOnly: true
+          title: Contractor status
+          type: boolean
       required:
+      - customer_name
+      - date_joined
       - email
       - id
+      - is_active
+      - is_contractor
+      - is_staff
+      - is_superuser
       type: object
     UserVerified:
       example:

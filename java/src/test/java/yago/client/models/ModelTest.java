@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -276,6 +276,14 @@ public class ModelTest {
     @Test
     public void usdzTest() {
         // TODO: test usdz
+    }
+
+    /**
+     * Test the property 'model'
+     */
+    @Test
+    public void modelTest() {
+        // TODO: test model
     }
 
     /**

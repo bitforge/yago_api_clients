@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -23,14 +23,15 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import yago.client.models.Nested;
+import java.util.UUID;
+import org.openapitools.jackson.nullable.JsonNullable;
 import yago.client.models.PaymentMethodEnum;
 import yago.client.models.StripeSubscription;
 
 /**
  * Subscription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-02-21T17:02:29.236455048+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-03-25T09:56:53.475406+01:00[Europe/Zurich]")
 public class Subscription {
   public static final String SERIALIZED_NAME_PAYMENT_METHOD = "payment_method";
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
@@ -38,27 +39,17 @@ public class Subscription {
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
-  private Nested plan;
+  private String plan;
 
   public static final String SERIALIZED_NAME_BILLING_ADDRESS = "billing_address";
   @SerializedName(SERIALIZED_NAME_BILLING_ADDRESS)
-  private Nested billingAddress;
+  private UUID billingAddress;
 
   public static final String SERIALIZED_NAME_STRIPE_SUBSCRIPTION = "stripe_subscription";
   @SerializedName(SERIALIZED_NAME_STRIPE_SUBSCRIPTION)
   private StripeSubscription stripeSubscription;
 
   public Subscription() { 
-  }
-
-  
-  public Subscription(
-     Nested plan, 
-     Nested billingAddress
-  ) {
-    this();
-    this.plan = plan;
-    this.billingAddress = billingAddress;
   }
 
   public Subscription paymentMethod(PaymentMethodEnum paymentMethod) {
@@ -84,32 +75,50 @@ public class Subscription {
   }
 
 
+  public Subscription plan(String plan) {
+    
+    this.plan = plan;
+    return this;
+  }
+
    /**
-   * Get plan
+   * Defines the number of available models and AR views. &lt;a href&#x3D;\&quot;mailto:info@bitforge.ch\&quot;&gt;Contact us&lt;/a&gt; to upgrade your plan.
    * @return plan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "Defines the number of available models and AR views. <a href=\"mailto:info@bitforge.ch\">Contact us</a> to upgrade your plan.")
 
-  public Nested getPlan() {
+  public String getPlan() {
     return plan;
   }
 
 
+  public void setPlan(String plan) {
+    this.plan = plan;
+  }
 
+
+  public Subscription billingAddress(UUID billingAddress) {
+    
+    this.billingAddress = billingAddress;
+    return this;
+  }
 
    /**
    * Get billingAddress
    * @return billingAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
 
-  public Nested getBillingAddress() {
+  public UUID getBillingAddress() {
     return billingAddress;
   }
 
 
+  public void setBillingAddress(UUID billingAddress) {
+    this.billingAddress = billingAddress;
+  }
 
 
   public Subscription stripeSubscription(StripeSubscription stripeSubscription) {
@@ -150,9 +159,20 @@ public class Subscription {
         Objects.equals(this.stripeSubscription, subscription.stripeSubscription);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(paymentMethod, plan, billingAddress, stripeSubscription);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

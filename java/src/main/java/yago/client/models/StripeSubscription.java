@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -31,13 +31,12 @@ import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
 import yago.client.models.CollectionMethodEnum;
-import yago.client.models.Nested;
 import yago.client.models.StripeSubscriptionStatusEnum;
 
 /**
  * StripeSubscription
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-02-21T17:02:29.236455048+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-03-25T09:56:53.475406+01:00[Europe/Zurich]")
 public class StripeSubscription {
   public static final String SERIALIZED_NAME_DJSTRIPE_ID = "djstripe_id";
   @SerializedName(SERIALIZED_NAME_DJSTRIPE_ID)
@@ -153,39 +152,39 @@ public class StripeSubscription {
 
   public static final String SERIALIZED_NAME_DJSTRIPE_OWNER_ACCOUNT = "djstripe_owner_account";
   @SerializedName(SERIALIZED_NAME_DJSTRIPE_OWNER_ACCOUNT)
-  private Nested djstripeOwnerAccount;
+  private String djstripeOwnerAccount;
 
   public static final String SERIALIZED_NAME_CUSTOMER = "customer";
   @SerializedName(SERIALIZED_NAME_CUSTOMER)
-  private Nested customer;
+  private String customer;
 
   public static final String SERIALIZED_NAME_DEFAULT_PAYMENT_METHOD = "default_payment_method";
   @SerializedName(SERIALIZED_NAME_DEFAULT_PAYMENT_METHOD)
-  private Nested defaultPaymentMethod;
+  private String defaultPaymentMethod;
 
   public static final String SERIALIZED_NAME_DEFAULT_SOURCE = "default_source";
   @SerializedName(SERIALIZED_NAME_DEFAULT_SOURCE)
-  private Nested defaultSource;
+  private String defaultSource;
 
   public static final String SERIALIZED_NAME_LATEST_INVOICE = "latest_invoice";
   @SerializedName(SERIALIZED_NAME_LATEST_INVOICE)
-  private Nested latestInvoice;
+  private String latestInvoice;
 
   public static final String SERIALIZED_NAME_PENDING_SETUP_INTENT = "pending_setup_intent";
   @SerializedName(SERIALIZED_NAME_PENDING_SETUP_INTENT)
-  private Nested pendingSetupIntent;
+  private String pendingSetupIntent;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
-  private Nested plan;
+  private Integer plan;
 
   public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
-  private Nested schedule;
+  private Integer schedule;
 
   public static final String SERIALIZED_NAME_DEFAULT_TAX_RATES = "default_tax_rates";
   @SerializedName(SERIALIZED_NAME_DEFAULT_TAX_RATES)
-  private List<Nested> defaultTaxRates = new ArrayList<Nested>();
+  private List<Integer> defaultTaxRates = null;
 
   public StripeSubscription() { 
   }
@@ -194,30 +193,12 @@ public class StripeSubscription {
   public StripeSubscription(
      Integer djstripeId, 
      OffsetDateTime djstripeCreated, 
-     OffsetDateTime djstripeUpdated, 
-     Nested djstripeOwnerAccount, 
-     Nested customer, 
-     Nested defaultPaymentMethod, 
-     Nested defaultSource, 
-     Nested latestInvoice, 
-     Nested pendingSetupIntent, 
-     Nested plan, 
-     Nested schedule, 
-     List<Nested> defaultTaxRates
+     OffsetDateTime djstripeUpdated
   ) {
     this();
     this.djstripeId = djstripeId;
     this.djstripeCreated = djstripeCreated;
     this.djstripeUpdated = djstripeUpdated;
-    this.djstripeOwnerAccount = djstripeOwnerAccount;
-    this.customer = customer;
-    this.defaultPaymentMethod = defaultPaymentMethod;
-    this.defaultSource = defaultSource;
-    this.latestInvoice = latestInvoice;
-    this.pendingSetupIntent = pendingSetupIntent;
-    this.plan = plan;
-    this.schedule = schedule;
-    this.defaultTaxRates = defaultTaxRates;
   }
 
    /**
@@ -881,130 +862,219 @@ public class StripeSubscription {
   }
 
 
+  public StripeSubscription djstripeOwnerAccount(String djstripeOwnerAccount) {
+    
+    this.djstripeOwnerAccount = djstripeOwnerAccount;
+    return this;
+  }
+
    /**
-   * Get djstripeOwnerAccount
+   * The Stripe Account this object belongs to.
    * @return djstripeOwnerAccount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "The Stripe Account this object belongs to.")
 
-  public Nested getDjstripeOwnerAccount() {
+  public String getDjstripeOwnerAccount() {
     return djstripeOwnerAccount;
   }
 
 
+  public void setDjstripeOwnerAccount(String djstripeOwnerAccount) {
+    this.djstripeOwnerAccount = djstripeOwnerAccount;
+  }
 
+
+  public StripeSubscription customer(String customer) {
+    
+    this.customer = customer;
+    return this;
+  }
 
    /**
-   * Get customer
+   * The customer associated with this subscription.
    * @return customer
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The customer associated with this subscription.")
 
-  public Nested getCustomer() {
+  public String getCustomer() {
     return customer;
   }
 
 
+  public void setCustomer(String customer) {
+    this.customer = customer;
+  }
 
+
+  public StripeSubscription defaultPaymentMethod(String defaultPaymentMethod) {
+    
+    this.defaultPaymentMethod = defaultPaymentMethod;
+    return this;
+  }
 
    /**
-   * Get defaultPaymentMethod
+   * The default payment method for the subscription. It must belong to the customer associated with the subscription. If not set, invoices will use the default payment method in the customer&#39;s invoice settings.
    * @return defaultPaymentMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "The default payment method for the subscription. It must belong to the customer associated with the subscription. If not set, invoices will use the default payment method in the customer's invoice settings.")
 
-  public Nested getDefaultPaymentMethod() {
+  public String getDefaultPaymentMethod() {
     return defaultPaymentMethod;
   }
 
 
+  public void setDefaultPaymentMethod(String defaultPaymentMethod) {
+    this.defaultPaymentMethod = defaultPaymentMethod;
+  }
 
+
+  public StripeSubscription defaultSource(String defaultSource) {
+    
+    this.defaultSource = defaultSource;
+    return this;
+  }
 
    /**
-   * Get defaultSource
+   * The default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If not set, defaults to the customer&#39;s default source.
    * @return defaultSource
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "The default payment source for the subscription. It must belong to the customer associated with the subscription and be in a chargeable state. If not set, defaults to the customer's default source.")
 
-  public Nested getDefaultSource() {
+  public String getDefaultSource() {
     return defaultSource;
   }
 
 
+  public void setDefaultSource(String defaultSource) {
+    this.defaultSource = defaultSource;
+  }
 
+
+  public StripeSubscription latestInvoice(String latestInvoice) {
+    
+    this.latestInvoice = latestInvoice;
+    return this;
+  }
 
    /**
-   * Get latestInvoice
+   * The most recent invoice this subscription has generated.
    * @return latestInvoice
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "The most recent invoice this subscription has generated.")
 
-  public Nested getLatestInvoice() {
+  public String getLatestInvoice() {
     return latestInvoice;
   }
 
 
+  public void setLatestInvoice(String latestInvoice) {
+    this.latestInvoice = latestInvoice;
+  }
 
+
+  public StripeSubscription pendingSetupIntent(String pendingSetupIntent) {
+    
+    this.pendingSetupIntent = pendingSetupIntent;
+    return this;
+  }
 
    /**
-   * Get pendingSetupIntent
+   * We can use this SetupIntent to collect user authentication when creating a subscription without immediate payment or updating a subscription&#39;s payment method, allowing you to optimize for off-session payments.
    * @return pendingSetupIntent
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "We can use this SetupIntent to collect user authentication when creating a subscription without immediate payment or updating a subscription's payment method, allowing you to optimize for off-session payments.")
 
-  public Nested getPendingSetupIntent() {
+  public String getPendingSetupIntent() {
     return pendingSetupIntent;
   }
 
 
+  public void setPendingSetupIntent(String pendingSetupIntent) {
+    this.pendingSetupIntent = pendingSetupIntent;
+  }
 
+
+  public StripeSubscription plan(Integer plan) {
+    
+    this.plan = plan;
+    return this;
+  }
 
    /**
-   * Get plan
+   * The plan associated with this subscription. This value will be &#x60;null&#x60; for multi-plan subscriptions
    * @return plan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "The plan associated with this subscription. This value will be `null` for multi-plan subscriptions")
 
-  public Nested getPlan() {
+  public Integer getPlan() {
     return plan;
   }
 
 
+  public void setPlan(Integer plan) {
+    this.plan = plan;
+  }
 
+
+  public StripeSubscription schedule(Integer schedule) {
+    
+    this.schedule = schedule;
+    return this;
+  }
 
    /**
-   * Get schedule
+   * The schedule associated with this subscription.
    * @return schedule
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "The schedule associated with this subscription.")
 
-  public Nested getSchedule() {
+  public Integer getSchedule() {
     return schedule;
   }
 
 
+  public void setSchedule(Integer schedule) {
+    this.schedule = schedule;
+  }
 
+
+  public StripeSubscription defaultTaxRates(List<Integer> defaultTaxRates) {
+    
+    this.defaultTaxRates = defaultTaxRates;
+    return this;
+  }
+
+  public StripeSubscription addDefaultTaxRatesItem(Integer defaultTaxRatesItem) {
+    if (this.defaultTaxRates == null) {
+      this.defaultTaxRates = new ArrayList<Integer>();
+    }
+    this.defaultTaxRates.add(defaultTaxRatesItem);
+    return this;
+  }
 
    /**
-   * Get defaultTaxRates
+   * The tax rates that will apply to any subscription item that does not have tax_rates set. Invoices created will have their default_tax_rates populated from the subscription.
    * @return defaultTaxRates
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The tax rates that will apply to any subscription item that does not have tax_rates set. Invoices created will have their default_tax_rates populated from the subscription.")
 
-  public List<Nested> getDefaultTaxRates() {
+  public List<Integer> getDefaultTaxRates() {
     return defaultTaxRates;
   }
 
 
+  public void setDefaultTaxRates(List<Integer> defaultTaxRates) {
+    this.defaultTaxRates = defaultTaxRates;
+  }
 
 
   @Override

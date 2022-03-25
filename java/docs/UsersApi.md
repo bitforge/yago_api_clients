@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**usersList**](UsersApi.md#usersList) | **GET** /api/users/ | 
 [**usersMeRetrieve**](UsersApi.md#usersMeRetrieve) | **GET** /api/users/me/ | 
+[**usersMeUpdate**](UsersApi.md#usersMeUpdate) | **PUT** /api/users/me/ | 
 [**usersRetrieve**](UsersApi.md#usersRetrieve) | **GET** /api/users/{id}/ | 
 
 
@@ -94,7 +95,7 @@ Name | Type | Description  | Notes
 
 
 
-Show details of the user currently logged in.
+Get or update current user details.
 
 ### Example
 ```java
@@ -156,6 +157,85 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+<a name="usersMeUpdate"></a>
+# **usersMeUpdate**
+> User usersMeUpdate(user)
+
+
+
+Get or update current user details.
+
+### Example
+```java
+// Import classes:
+import yago.client.ApiClient;
+import yago.client.ApiException;
+import yago.client.Configuration;
+import yago.client.auth.*;
+import yago.client.models.*;
+import yago.client.apis.UsersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://dev.yago.cloud");
+    
+    // Configure API key authorization: cookieAuth
+    ApiKeyAuth cookieAuth = (ApiKeyAuth) defaultClient.getAuthentication("cookieAuth");
+    cookieAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //cookieAuth.setApiKeyPrefix("Token");
+
+    // Configure HTTP bearer authorization: jwtAuth
+    HttpBearerAuth jwtAuth = (HttpBearerAuth) defaultClient.getAuthentication("jwtAuth");
+    jwtAuth.setBearerToken("BEARER TOKEN");
+
+    // Configure API key authorization: tokenAuth
+    ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("tokenAuth");
+    tokenAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //tokenAuth.setApiKeyPrefix("Token");
+
+    UsersApi apiInstance = new UsersApi(defaultClient);
+    User user = new User(); // User | 
+    try {
+      User result = apiInstance.usersMeUpdate(user);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UsersApi#usersMeUpdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)|  | [optional]
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -31,7 +31,11 @@ public enum RoleEnum {
   
   OWNER("OWNER"),
   
-  MEMBER("MEMBER");
+  MEMBER("MEMBER"),
+  
+  MANAGER("MANAGER"),
+  
+  DESIGNER("DESIGNER");
 
   private String value;
 

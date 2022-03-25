@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import yago.client.models.GoogleIdToken;
+import yago.client.models.PasswordChange;
 import yago.client.models.PasswordReset;
 import yago.client.models.PasswordResetConfirm;
 import yago.client.models.TokenObtainRequest;
@@ -153,7 +154,7 @@ public class AuthApi {
 
     /**
      * 
-     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
      * @param googleIdToken  (required)
      * @return TokenObtainResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -170,7 +171,7 @@ public class AuthApi {
 
     /**
      * 
-     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
      * @param googleIdToken  (required)
      * @return ApiResponse&lt;TokenObtainResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -188,7 +189,7 @@ public class AuthApi {
 
     /**
      *  (asynchronously)
-     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
      * @param googleIdToken  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -330,6 +331,133 @@ public class AuthApi {
 
         okhttp3.Call localVarCall = authLoginCreateValidateBeforeCall(tokenObtainRequest, _callback);
         Type localVarReturnType = new TypeToken<TokenObtainResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for authPasswordChangeCreate
+     * @param passwordChange  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call authPasswordChangeCreateCall(PasswordChange passwordChange, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = passwordChange;
+
+        // create path and map variables
+        String localVarPath = "/api/auth/password/change/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "cookieAuth", "jwtAuth", "tokenAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call authPasswordChangeCreateValidateBeforeCall(PasswordChange passwordChange, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'passwordChange' is set
+        if (passwordChange == null) {
+            throw new ApiException("Missing the required parameter 'passwordChange' when calling authPasswordChangeCreate(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = authPasswordChangeCreateCall(passwordChange, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * 
+     * Change password of current user.
+     * @param passwordChange  (required)
+     * @return PasswordChange
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public PasswordChange authPasswordChangeCreate(PasswordChange passwordChange) throws ApiException {
+        ApiResponse<PasswordChange> localVarResp = authPasswordChangeCreateWithHttpInfo(passwordChange);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Change password of current user.
+     * @param passwordChange  (required)
+     * @return ApiResponse&lt;PasswordChange&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PasswordChange> authPasswordChangeCreateWithHttpInfo(PasswordChange passwordChange) throws ApiException {
+        okhttp3.Call localVarCall = authPasswordChangeCreateValidateBeforeCall(passwordChange, null);
+        Type localVarReturnType = new TypeToken<PasswordChange>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Change password of current user.
+     * @param passwordChange  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call authPasswordChangeCreateAsync(PasswordChange passwordChange, final ApiCallback<PasswordChange> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = authPasswordChangeCreateValidateBeforeCall(passwordChange, _callback);
+        Type localVarReturnType = new TypeToken<PasswordChange>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

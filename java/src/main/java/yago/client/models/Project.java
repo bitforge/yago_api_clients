@@ -1,5 +1,5 @@
 /*
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -24,14 +24,17 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.threeten.bp.OffsetDateTime;
+import yago.client.models.ActiveOrder;
 
 /**
  * Project
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-02-21T17:02:29.236455048+01:00[Europe/Zurich]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-03-25T09:56:53.475406+01:00[Europe/Zurich]")
 public class Project {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -89,6 +92,10 @@ public class Project {
   @SerializedName(SERIALIZED_NAME_BACKLINK_URLS)
   private Boolean backlinkUrls;
 
+  public static final String SERIALIZED_NAME_ORDERS = "orders";
+  @SerializedName(SERIALIZED_NAME_ORDERS)
+  private List<ActiveOrder> orders = new ArrayList<ActiveOrder>();
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   private OffsetDateTime created;
@@ -105,6 +112,7 @@ public class Project {
      UUID id, 
      String imageThumb, 
      String imagePreview, 
+     List<ActiveOrder> orders, 
      OffsetDateTime created, 
      OffsetDateTime modified
   ) {
@@ -112,6 +120,7 @@ public class Project {
     this.id = id;
     this.imageThumb = imageThumb;
     this.imagePreview = imagePreview;
+    this.orders = orders;
     this.created = created;
     this.modified = modified;
   }
@@ -412,6 +421,20 @@ public class Project {
 
 
    /**
+   * Get orders
+   * @return orders
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+
+  public List<ActiveOrder> getOrders() {
+    return orders;
+  }
+
+
+
+
+   /**
    * Get created
    * @return created
   **/
@@ -462,6 +485,7 @@ public class Project {
         Objects.equals(this.translationsFr, project.translationsFr) &&
         Objects.equals(this.translationsIt, project.translationsIt) &&
         Objects.equals(this.backlinkUrls, project.backlinkUrls) &&
+        Objects.equals(this.orders, project.orders) &&
         Objects.equals(this.created, project.created) &&
         Objects.equals(this.modified, project.modified);
   }
@@ -472,7 +496,7 @@ public class Project {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, slug, image, imageThumb, imagePreview, website, description, gallery, translationsDe, translationsEn, translationsFr, translationsIt, backlinkUrls, created, modified);
+    return Objects.hash(id, name, slug, image, imageThumb, imagePreview, website, description, gallery, translationsDe, translationsEn, translationsFr, translationsIt, backlinkUrls, orders, created, modified);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -500,6 +524,7 @@ public class Project {
     sb.append("    translationsFr: ").append(toIndentedString(translationsFr)).append("\n");
     sb.append("    translationsIt: ").append(toIndentedString(translationsIt)).append("\n");
     sb.append("    backlinkUrls: ").append(toIndentedString(backlinkUrls)).append("\n");
+    sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    modified: ").append(toIndentedString(modified)).append("\n");
     sb.append("}");
