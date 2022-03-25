@@ -118,6 +118,12 @@ export interface Project {
     readonly orders: Array<ActiveOrder>;
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof Project
+     */
+    arbuttonConfig?: { [key: string]: any; } | null;
+    /**
+     * 
      * @type {Date}
      * @memberof Project
      */
@@ -155,6 +161,7 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'translationsIt': !exists(json, 'translations_it') ? undefined : json['translations_it'],
         'backlinkUrls': !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
         'orders': ((json['orders'] as Array<any>).map(ActiveOrderFromJSON)),
+        'arbuttonConfig': !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
     };
@@ -180,6 +187,7 @@ export function ProjectToJSON(value?: Project | null): any {
         'translations_fr': value.translationsFr,
         'translations_it': value.translationsIt,
         'backlink_urls': value.backlinkUrls,
+        'arbutton_config': value.arbuttonConfig,
     };
 }
 

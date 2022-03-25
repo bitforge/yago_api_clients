@@ -73,6 +73,12 @@ export interface PatchedProjectUpdate {
      * @memberof PatchedProjectUpdate
      */
     backlinkUrls?: boolean;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof PatchedProjectUpdate
+     */
+    arbuttonConfig?: { [key: string]: any; } | null;
 }
 
 export function PatchedProjectUpdateFromJSON(json: any): PatchedProjectUpdate {
@@ -94,6 +100,7 @@ export function PatchedProjectUpdateFromJSONTyped(json: any, ignoreDiscriminator
         'translationsFr': !exists(json, 'translations_fr') ? undefined : json['translations_fr'],
         'translationsIt': !exists(json, 'translations_it') ? undefined : json['translations_it'],
         'backlinkUrls': !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
+        'arbuttonConfig': !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
     };
 }
 
@@ -115,6 +122,7 @@ export function PatchedProjectUpdateToJSON(value?: PatchedProjectUpdate | null):
         'translations_fr': value.translationsFr,
         'translations_it': value.translationsIt,
         'backlink_urls': value.backlinkUrls,
+        'arbutton_config': value.arbuttonConfig,
     };
 }
 

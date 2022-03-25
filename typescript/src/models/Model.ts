@@ -220,6 +220,12 @@ export interface Model {
     unityAndroid?: string | null;
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof Model
+     */
+    readonly arbuttonConfig: { [key: string]: any; };
+    /**
+     * 
      * @type {Date}
      * @memberof Model
      */
@@ -274,6 +280,7 @@ export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Mod
         'model': !exists(json, 'model') ? undefined : json['model'],
         'unityIos': !exists(json, 'unity_ios') ? undefined : json['unity_ios'],
         'unityAndroid': !exists(json, 'unity_android') ? undefined : json['unity_android'],
+        'arbuttonConfig': json['arbutton_config'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
     };

@@ -73,6 +73,12 @@ export interface ProjectUpdate {
      * @memberof ProjectUpdate
      */
     backlinkUrls?: boolean;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof ProjectUpdate
+     */
+    arbuttonConfig?: { [key: string]: any; } | null;
 }
 
 export function ProjectUpdateFromJSON(json: any): ProjectUpdate {
@@ -94,6 +100,7 @@ export function ProjectUpdateFromJSONTyped(json: any, ignoreDiscriminator: boole
         'translationsFr': !exists(json, 'translations_fr') ? undefined : json['translations_fr'],
         'translationsIt': !exists(json, 'translations_it') ? undefined : json['translations_it'],
         'backlinkUrls': !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
+        'arbuttonConfig': !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
     };
 }
 
@@ -115,6 +122,7 @@ export function ProjectUpdateToJSON(value?: ProjectUpdate | null): any {
         'translations_fr': value.translationsFr,
         'translations_it': value.translationsIt,
         'backlink_urls': value.backlinkUrls,
+        'arbutton_config': value.arbuttonConfig,
     };
 }
 
