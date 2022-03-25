@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0

@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -78,7 +78,7 @@ export interface AuthVerifyCreateRequest {
 export class AuthApi extends runtime.BaseAPI {
 
     /**
-     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
      */
     async authGoogleCreateRaw(requestParameters: AuthGoogleCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TokenObtainResponse>> {
         if (requestParameters.googleIdToken === null || requestParameters.googleIdToken === undefined) {
@@ -103,7 +103,7 @@ export class AuthApi extends runtime.BaseAPI {
     }
 
     /**
-     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Genie user will be created.
+     * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
      */
     async authGoogleCreate(requestParameters: AuthGoogleCreateRequest, initOverrides?: RequestInit): Promise<TokenObtainResponse> {
         const response = await this.authGoogleCreateRaw(requestParameters, initOverrides);

@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -33,7 +33,7 @@ export interface SubscriptionCreateRequest {
 export class SubscriptionApi extends runtime.BaseAPI {
 
     /**
-     * Create a new stripe Subscription for a Genie pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
+     * Create a new stripe Subscription for a Yago pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
      */
     async subscriptionCreateRaw(requestParameters: SubscriptionCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<NewSubscription>> {
         if (requestParameters.newSubscription === null || requestParameters.newSubscription === undefined) {
@@ -70,7 +70,7 @@ export class SubscriptionApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create a new stripe Subscription for a Genie pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
+     * Create a new stripe Subscription for a Yago pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
      */
     async subscriptionCreate(requestParameters: SubscriptionCreateRequest, initOverrides?: RequestInit): Promise<NewSubscription> {
         const response = await this.subscriptionCreateRaw(requestParameters, initOverrides);

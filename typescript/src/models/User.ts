@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -62,7 +62,7 @@ export interface User {
      */
     readonly isActive: boolean;
     /**
-     * Allow login to Genie AR CMS. Can be disabled for API users.
+     * Allow login to Yago Admin. For Admins only.
      * @type {boolean}
      * @memberof User
      */

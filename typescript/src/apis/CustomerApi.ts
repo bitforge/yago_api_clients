@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Genie API
+ * Yago API
  * Augemented Reality Made Easy.
  *
  * The version of the OpenAPI document: 1.0.0
@@ -40,7 +40,7 @@ export interface CustomerBillingAddressUpdateRequest {
 export class CustomerApi extends runtime.BaseAPI {
 
     /**
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      */
     async customerBillingAddressPartialUpdateRaw(requestParameters: CustomerBillingAddressPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
         const queryParameters: any = {};
@@ -73,7 +73,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      */
     async customerBillingAddressPartialUpdate(requestParameters: CustomerBillingAddressPartialUpdateRequest = {}, initOverrides?: RequestInit): Promise<Address> {
         const response = await this.customerBillingAddressPartialUpdateRaw(requestParameters, initOverrides);
@@ -81,7 +81,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      */
     async customerBillingAddressRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
         const queryParameters: any = {};
@@ -111,7 +111,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      */
     async customerBillingAddressRetrieve(initOverrides?: RequestInit): Promise<Address> {
         const response = await this.customerBillingAddressRetrieveRaw(initOverrides);
@@ -119,7 +119,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      */
     async customerBillingAddressUpdateRaw(requestParameters: CustomerBillingAddressUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
         if (requestParameters.address === null || requestParameters.address === undefined) {
@@ -156,7 +156,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Genie AR services
+     * Update customer billing address. Required prior to subscribing to Yago services
      */
     async customerBillingAddressUpdate(requestParameters: CustomerBillingAddressUpdateRequest, initOverrides?: RequestInit): Promise<Address> {
         const response = await this.customerBillingAddressUpdateRaw(requestParameters, initOverrides);
