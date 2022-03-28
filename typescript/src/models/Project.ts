@@ -45,6 +45,12 @@ export interface Project {
      */
     slug?: string;
     /**
+     * 
+     * @type {string}
+     * @memberof Project
+     */
+    readonly customerName: string;
+    /**
      * Image will be visible in gallery.
      * @type {string}
      * @memberof Project
@@ -149,6 +155,7 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'id': json['id'],
         'name': json['name'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
+        'customerName': json['customer_name'],
         'image': !exists(json, 'image') ? undefined : json['image'],
         'imageThumb': json['image_thumb'],
         'imagePreview': json['image_preview'],
