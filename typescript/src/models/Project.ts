@@ -43,7 +43,7 @@ export interface Project {
      * @type {string}
      * @memberof Project
      */
-    slug: string;
+    slug?: string;
     /**
      * Image will be visible in gallery.
      * @type {string}
@@ -148,7 +148,7 @@ export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         
         'id': json['id'],
         'name': json['name'],
-        'slug': json['slug'],
+        'slug': !exists(json, 'slug') ? undefined : json['slug'],
         'image': !exists(json, 'image') ? undefined : json['image'],
         'imageThumb': json['image_thumb'],
         'imagePreview': json['image_preview'],
