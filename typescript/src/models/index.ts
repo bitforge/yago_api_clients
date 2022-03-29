@@ -22,6 +22,7 @@ export * from './ModelInfo';
 export * from './ModelStatus';
 export * from './ModelUpdate';
 export * from './NewSubscription';
+export * from './NewSubscriptionCreate';
 export * from './Order';
 export * from './OrderComment';
 export * from './OrderCommentCreate';

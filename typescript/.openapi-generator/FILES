@@ -34,6 +34,7 @@ src/models/ModelInfo.ts
 src/models/ModelStatus.ts
 src/models/ModelUpdate.ts
 src/models/NewSubscription.ts
+src/models/NewSubscriptionCreate.ts
 src/models/Order.ts
 src/models/OrderComment.ts
 src/models/OrderCommentCreate.ts

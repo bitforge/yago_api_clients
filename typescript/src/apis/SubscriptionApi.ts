@@ -18,13 +18,16 @@ import {
     NewSubscription,
     NewSubscriptionFromJSON,
     NewSubscriptionToJSON,
+    NewSubscriptionCreate,
+    NewSubscriptionCreateFromJSON,
+    NewSubscriptionCreateToJSON,
     Subscription,
     SubscriptionFromJSON,
     SubscriptionToJSON,
 } from '../models';
 
 export interface SubscriptionCreateRequest {
-    newSubscription: NewSubscription;
+    newSubscriptionCreate: NewSubscriptionCreate;
 }
 
 /**
@@ -36,8 +39,8 @@ export class SubscriptionApi extends runtime.BaseAPI {
      * Create a new stripe Subscription for a Yago pricing plan in state incomplete. Use client_secret to submit payment method with a stripe element to activate subscription.
      */
     async subscriptionCreateRaw(requestParameters: SubscriptionCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<NewSubscription>> {
-        if (requestParameters.newSubscription === null || requestParameters.newSubscription === undefined) {
-            throw new runtime.RequiredError('newSubscription','Required parameter requestParameters.newSubscription was null or undefined when calling subscriptionCreate.');
+        if (requestParameters.newSubscriptionCreate === null || requestParameters.newSubscriptionCreate === undefined) {
+            throw new runtime.RequiredError('newSubscriptionCreate','Required parameter requestParameters.newSubscriptionCreate was null or undefined when calling subscriptionCreate.');
         }
 
         const queryParameters: any = {};
@@ -63,7 +66,7 @@ export class SubscriptionApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: NewSubscriptionToJSON(requestParameters.newSubscription),
+            body: NewSubscriptionCreateToJSON(requestParameters.newSubscriptionCreate),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => NewSubscriptionFromJSON(jsonValue));
