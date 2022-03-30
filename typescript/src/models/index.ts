@@ -43,7 +43,6 @@ export * from './PatchedAddress';
 export * from './PatchedModelUpdate';
 export * from './PatchedProjectUpdate';
 export * from './PaymentMethodEnum';
-export * from './PlanEnum';
 export * from './PriceCurrencyEnum';
 export * from './PricingPlan';
 export * from './Project';

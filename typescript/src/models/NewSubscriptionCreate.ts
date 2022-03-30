@@ -19,12 +19,6 @@ import {
     PaymentMethodEnumFromJSONTyped,
     PaymentMethodEnumToJSON,
 } from './PaymentMethodEnum';
-import {
-    PlanEnum,
-    PlanEnumFromJSON,
-    PlanEnumFromJSONTyped,
-    PlanEnumToJSON,
-} from './PlanEnum';
 
 /**
  * 
@@ -34,10 +28,10 @@ import {
 export interface NewSubscriptionCreate {
     /**
      * 
-     * @type {PlanEnum}
+     * @type {string}
      * @memberof NewSubscriptionCreate
      */
-    plan: PlanEnum;
+    plan: string;
     /**
      * 
      * @type {PaymentMethodEnum}
@@ -62,7 +56,7 @@ export function NewSubscriptionCreateFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'plan': PlanEnumFromJSON(json['plan']),
+        'plan': json['plan'],
         'paymentMethod': PaymentMethodEnumFromJSON(json['payment_method']),
         'tosAccepted': json['tos_accepted'],
     };
@@ -77,7 +71,7 @@ export function NewSubscriptionCreateToJSON(value?: NewSubscriptionCreate | null
     }
     return {
         
-        'plan': PlanEnumToJSON(value.plan),
+        'plan': value.plan,
         'payment_method': PaymentMethodEnumToJSON(value.paymentMethod),
         'tos_accepted': value.tosAccepted,
     };

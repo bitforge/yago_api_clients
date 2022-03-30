@@ -19,12 +19,6 @@ import {
     PaymentMethodEnumFromJSONTyped,
     PaymentMethodEnumToJSON,
 } from './PaymentMethodEnum';
-import {
-    PlanEnum,
-    PlanEnumFromJSON,
-    PlanEnumFromJSONTyped,
-    PlanEnumToJSON,
-} from './PlanEnum';
 
 /**
  * 
@@ -34,10 +28,10 @@ import {
 export interface NewSubscription {
     /**
      * 
-     * @type {PlanEnum}
+     * @type {string}
      * @memberof NewSubscription
      */
-    plan: PlanEnum;
+    plan: string;
     /**
      * 
      * @type {PaymentMethodEnum}
@@ -55,19 +49,19 @@ export interface NewSubscription {
      * @type {string}
      * @memberof NewSubscription
      */
-    readonly customerId: string;
+    customerId?: string;
     /**
      * 
      * @type {string}
      * @memberof NewSubscription
      */
-    readonly subscriptionId: string;
+    subscriptionId?: string;
     /**
      * 
      * @type {string}
      * @memberof NewSubscription
      */
-    readonly clientSecret: string;
+    clientSecret?: string;
 }
 
 export function NewSubscriptionFromJSON(json: any): NewSubscription {
@@ -80,12 +74,12 @@ export function NewSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
-        'plan': PlanEnumFromJSON(json['plan']),
+        'plan': json['plan'],
         'paymentMethod': PaymentMethodEnumFromJSON(json['payment_method']),
         'tosAccepted': json['tos_accepted'],
-        'customerId': json['customer_id'],
-        'subscriptionId': json['subscription_id'],
-        'clientSecret': json['client_secret'],
+        'customerId': !exists(json, 'customer_id') ? undefined : json['customer_id'],
+        'subscriptionId': !exists(json, 'subscription_id') ? undefined : json['subscription_id'],
+        'clientSecret': !exists(json, 'client_secret') ? undefined : json['client_secret'],
     };
 }
 
@@ -98,9 +92,12 @@ export function NewSubscriptionToJSON(value?: NewSubscription | null): any {
     }
     return {
         
-        'plan': PlanEnumToJSON(value.plan),
+        'plan': value.plan,
         'payment_method': PaymentMethodEnumToJSON(value.paymentMethod),
         'tos_accepted': value.tosAccepted,
+        'customer_id': value.customerId,
+        'subscription_id': value.subscriptionId,
+        'client_secret': value.clientSecret,
     };
 }
 

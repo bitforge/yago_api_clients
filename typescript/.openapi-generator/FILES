@@ -55,7 +55,6 @@ src/models/PatchedAddress.ts
 src/models/PatchedModelUpdate.ts
 src/models/PatchedProjectUpdate.ts
 src/models/PaymentMethodEnum.ts
-src/models/PlanEnum.ts
 src/models/PriceCurrencyEnum.ts
 src/models/PricingPlan.ts
 src/models/Project.ts
