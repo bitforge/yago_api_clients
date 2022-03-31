@@ -26,6 +26,7 @@ src/models/FilterEventsEnum.ts
 src/models/GlobalStatistics.ts
 src/models/GlobalStatisticsGroupByEnum.ts
 src/models/GoogleIdToken.ts
+src/models/GroupByE73Enum.ts
 src/models/HealthStatus.ts
 src/models/Membership.ts
 src/models/Model.ts
@@ -61,12 +62,12 @@ src/models/Project.ts
 src/models/ProjectCreate.ts
 src/models/ProjectUpdate.ts
 src/models/ProjectsStatistics.ts
-src/models/ProjectsStatisticsGroupByEnum.ts
 src/models/Registration.ts
 src/models/RegistrationCreate.ts
 src/models/ReportFormatEnum.ts
 src/models/RoleEnum.ts
 src/models/StateChanged.ts
+src/models/StatisticsRequest.ts
 src/models/StripeSubscription.ts
 src/models/StripeSubscriptionStatusEnum.ts
 src/models/Subscription.ts

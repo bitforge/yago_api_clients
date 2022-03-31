@@ -24,6 +24,9 @@ import {
     ProjectsStatistics,
     ProjectsStatisticsFromJSON,
     ProjectsStatisticsToJSON,
+    StatisticsRequest,
+    StatisticsRequestFromJSON,
+    StatisticsRequestToJSON,
     SummaryStats,
     SummaryStatsFromJSON,
     SummaryStatsToJSON,
@@ -33,9 +36,19 @@ export interface StatsGlobalCreateRequest {
     globalStatistics: GlobalStatistics;
 }
 
+export interface StatsProjectChronicCreateRequest {
+    id: string;
+    statisticsRequest: StatisticsRequest;
+}
+
 export interface StatsProjectCreateRequest {
     id: string;
     projectsStatistics: ProjectsStatistics;
+}
+
+export interface StatsProjectSummaryCreateRequest {
+    id: string;
+    statisticsRequest: StatisticsRequest;
 }
 
 /**
@@ -89,6 +102,55 @@ export class StatsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Chronic statistics for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
+     */
+    async statsProjectChronicCreateRaw(requestParameters: StatsProjectChronicCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<ChronicStats>>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling statsProjectChronicCreate.');
+        }
+
+        if (requestParameters.statisticsRequest === null || requestParameters.statisticsRequest === undefined) {
+            throw new runtime.RequiredError('statisticsRequest','Required parameter requestParameters.statisticsRequest was null or undefined when calling statsProjectChronicCreate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/stats/project/{id}/chronic/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StatisticsRequestToJSON(requestParameters.statisticsRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ChronicStatsFromJSON));
+    }
+
+    /**
+     * Chronic statistics for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
+     */
+    async statsProjectChronicCreate(requestParameters: StatsProjectChronicCreateRequest, initOverrides?: RequestInit): Promise<Array<ChronicStats>> {
+        const response = await this.statsProjectChronicCreateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Traffic for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
      */
     async statsProjectCreateRaw(requestParameters: StatsProjectCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SummaryStats>> {
@@ -134,6 +196,55 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsProjectCreate(requestParameters: StatsProjectCreateRequest, initOverrides?: RequestInit): Promise<SummaryStats> {
         const response = await this.statsProjectCreateRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Summary statistics for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
+     */
+    async statsProjectSummaryCreateRaw(requestParameters: StatsProjectSummaryCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SummaryStats>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling statsProjectSummaryCreate.');
+        }
+
+        if (requestParameters.statisticsRequest === null || requestParameters.statisticsRequest === undefined) {
+            throw new runtime.RequiredError('statisticsRequest','Required parameter requestParameters.statisticsRequest was null or undefined when calling statsProjectSummaryCreate.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/stats/project/{id}/summary/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StatisticsRequestToJSON(requestParameters.statisticsRequest),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SummaryStatsFromJSON(jsonValue));
+    }
+
+    /**
+     * Summary statistics for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
+     */
+    async statsProjectSummaryCreate(requestParameters: StatsProjectSummaryCreateRequest, initOverrides?: RequestInit): Promise<SummaryStats> {
+        const response = await this.statsProjectSummaryCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

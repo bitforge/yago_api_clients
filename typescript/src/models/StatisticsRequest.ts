@@ -26,12 +26,6 @@ import {
     GroupByE73EnumToJSON,
 } from './GroupByE73Enum';
 import {
-    ReportFormatEnum,
-    ReportFormatEnumFromJSON,
-    ReportFormatEnumFromJSONTyped,
-    ReportFormatEnumToJSON,
-} from './ReportFormatEnum';
-import {
     TimeRangeEnum,
     TimeRangeEnumFromJSON,
     TimeRangeEnumFromJSONTyped,
@@ -41,53 +35,46 @@ import {
 /**
  * 
  * @export
- * @interface ProjectsStatistics
+ * @interface StatisticsRequest
  */
-export interface ProjectsStatistics {
-    /**
-     * 
-     * @type {ReportFormatEnum}
-     * @memberof ProjectsStatistics
-     */
-    reportFormat: ReportFormatEnum;
+export interface StatisticsRequest {
     /**
      * 
      * @type {TimeRangeEnum}
-     * @memberof ProjectsStatistics
+     * @memberof StatisticsRequest
      */
     timeRange: TimeRangeEnum;
     /**
      * 
      * @type {FilterEventsEnum}
-     * @memberof ProjectsStatistics
+     * @memberof StatisticsRequest
      */
     filterEvents: FilterEventsEnum;
     /**
      * 
      * @type {GroupByE73Enum}
-     * @memberof ProjectsStatistics
+     * @memberof StatisticsRequest
      */
     groupBy: GroupByE73Enum;
 }
 
-export function ProjectsStatisticsFromJSON(json: any): ProjectsStatistics {
-    return ProjectsStatisticsFromJSONTyped(json, false);
+export function StatisticsRequestFromJSON(json: any): StatisticsRequest {
+    return StatisticsRequestFromJSONTyped(json, false);
 }
 
-export function ProjectsStatisticsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectsStatistics {
+export function StatisticsRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): StatisticsRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'reportFormat': ReportFormatEnumFromJSON(json['report_format']),
         'timeRange': TimeRangeEnumFromJSON(json['time_range']),
         'filterEvents': FilterEventsEnumFromJSON(json['filter_events']),
         'groupBy': GroupByE73EnumFromJSON(json['group_by']),
     };
 }
 
-export function ProjectsStatisticsToJSON(value?: ProjectsStatistics | null): any {
+export function StatisticsRequestToJSON(value?: StatisticsRequest | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -96,7 +83,6 @@ export function ProjectsStatisticsToJSON(value?: ProjectsStatistics | null): any
     }
     return {
         
-        'report_format': ReportFormatEnumToJSON(value.reportFormat),
         'time_range': TimeRangeEnumToJSON(value.timeRange),
         'filter_events': FilterEventsEnumToJSON(value.filterEvents),
         'group_by': GroupByE73EnumToJSON(value.groupBy),
