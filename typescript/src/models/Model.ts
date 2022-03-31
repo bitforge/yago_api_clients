@@ -93,6 +93,12 @@ export interface Model {
      */
     readonly imagePreview: string;
     /**
+     * True when model is in order and work is still in progress. False when order is completed.
+     * @type {boolean}
+     * @memberof Model
+     */
+    preview?: boolean;
+    /**
      * DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
      * @type {ModelStatus}
      * @memberof Model
@@ -259,6 +265,7 @@ export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Mod
         'image': !exists(json, 'image') ? undefined : json['image'],
         'imageThumb': json['image_thumb'],
         'imagePreview': json['image_preview'],
+        'preview': !exists(json, 'preview') ? undefined : json['preview'],
         'status': !exists(json, 'status') ? undefined : ModelStatusFromJSON(json['status']),
         'description': json['description'],
         'descriptionDe': !exists(json, 'description_de') ? undefined : json['description_de'],
@@ -302,6 +309,7 @@ export function ModelToJSON(value?: Model | null): any {
         'name_it': value.nameIt,
         'slug': value.slug,
         'image': value.image,
+        'preview': value.preview,
         'status': ModelStatusToJSON(value.status),
         'description_de': value.descriptionDe,
         'description_en': value.descriptionEn,
