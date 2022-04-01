@@ -213,13 +213,13 @@ export interface Model {
      */
     model?: string | null;
     /**
-     * Unity Asset Bundle for Android
+     * Unity Asset Bundle for iOS
      * @type {string}
      * @memberof Model
      */
     unityIos?: string | null;
     /**
-     * Unity Asset Bundle for iOS
+     * Unity Asset Bundle for Android
      * @type {string}
      * @memberof Model
      */

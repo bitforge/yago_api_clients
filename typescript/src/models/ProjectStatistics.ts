@@ -20,17 +20,11 @@ import {
     FilterEventsEnumToJSON,
 } from './FilterEventsEnum';
 import {
-    GroupByE73Enum,
-    GroupByE73EnumFromJSON,
-    GroupByE73EnumFromJSONTyped,
-    GroupByE73EnumToJSON,
-} from './GroupByE73Enum';
-import {
-    ReportFormatEnum,
-    ReportFormatEnumFromJSON,
-    ReportFormatEnumFromJSONTyped,
-    ReportFormatEnumToJSON,
-} from './ReportFormatEnum';
+    ProjectStatisticsGroupByEnum,
+    ProjectStatisticsGroupByEnumFromJSON,
+    ProjectStatisticsGroupByEnumFromJSONTyped,
+    ProjectStatisticsGroupByEnumToJSON,
+} from './ProjectStatisticsGroupByEnum';
 import {
     TimeRangeEnum,
     TimeRangeEnumFromJSON,
@@ -41,53 +35,46 @@ import {
 /**
  * 
  * @export
- * @interface ProjectsStatistics
+ * @interface ProjectStatistics
  */
-export interface ProjectsStatistics {
-    /**
-     * 
-     * @type {ReportFormatEnum}
-     * @memberof ProjectsStatistics
-     */
-    reportFormat: ReportFormatEnum;
+export interface ProjectStatistics {
     /**
      * 
      * @type {TimeRangeEnum}
-     * @memberof ProjectsStatistics
+     * @memberof ProjectStatistics
      */
     timeRange: TimeRangeEnum;
     /**
      * 
      * @type {FilterEventsEnum}
-     * @memberof ProjectsStatistics
+     * @memberof ProjectStatistics
      */
     filterEvents: FilterEventsEnum;
     /**
      * 
-     * @type {GroupByE73Enum}
-     * @memberof ProjectsStatistics
+     * @type {ProjectStatisticsGroupByEnum}
+     * @memberof ProjectStatistics
      */
-    groupBy: GroupByE73Enum;
+    groupBy: ProjectStatisticsGroupByEnum;
 }
 
-export function ProjectsStatisticsFromJSON(json: any): ProjectsStatistics {
-    return ProjectsStatisticsFromJSONTyped(json, false);
+export function ProjectStatisticsFromJSON(json: any): ProjectStatistics {
+    return ProjectStatisticsFromJSONTyped(json, false);
 }
 
-export function ProjectsStatisticsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectsStatistics {
+export function ProjectStatisticsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectStatistics {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'reportFormat': ReportFormatEnumFromJSON(json['report_format']),
         'timeRange': TimeRangeEnumFromJSON(json['time_range']),
         'filterEvents': FilterEventsEnumFromJSON(json['filter_events']),
-        'groupBy': GroupByE73EnumFromJSON(json['group_by']),
+        'groupBy': ProjectStatisticsGroupByEnumFromJSON(json['group_by']),
     };
 }
 
-export function ProjectsStatisticsToJSON(value?: ProjectsStatistics | null): any {
+export function ProjectStatisticsToJSON(value?: ProjectStatistics | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -96,10 +83,9 @@ export function ProjectsStatisticsToJSON(value?: ProjectsStatistics | null): any
     }
     return {
         
-        'report_format': ReportFormatEnumToJSON(value.reportFormat),
         'time_range': TimeRangeEnumToJSON(value.timeRange),
         'filter_events': FilterEventsEnumToJSON(value.filterEvents),
-        'group_by': GroupByE73EnumToJSON(value.groupBy),
+        'group_by': ProjectStatisticsGroupByEnumToJSON(value.groupBy),
     };
 }
 

@@ -26,12 +26,6 @@ import {
     GlobalStatisticsGroupByEnumToJSON,
 } from './GlobalStatisticsGroupByEnum';
 import {
-    ReportFormatEnum,
-    ReportFormatEnumFromJSON,
-    ReportFormatEnumFromJSONTyped,
-    ReportFormatEnumToJSON,
-} from './ReportFormatEnum';
-import {
     TimeRangeEnum,
     TimeRangeEnumFromJSON,
     TimeRangeEnumFromJSONTyped,
@@ -44,12 +38,6 @@ import {
  * @interface GlobalStatistics
  */
 export interface GlobalStatistics {
-    /**
-     * 
-     * @type {ReportFormatEnum}
-     * @memberof GlobalStatistics
-     */
-    reportFormat: ReportFormatEnum;
     /**
      * 
      * @type {TimeRangeEnum}
@@ -86,7 +74,6 @@ export function GlobalStatisticsFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'reportFormat': ReportFormatEnumFromJSON(json['report_format']),
         'timeRange': TimeRangeEnumFromJSON(json['time_range']),
         'filterEvents': FilterEventsEnumFromJSON(json['filter_events']),
         'filterProject': !exists(json, 'filter_project') ? undefined : json['filter_project'],
@@ -103,7 +90,6 @@ export function GlobalStatisticsToJSON(value?: GlobalStatistics | null): any {
     }
     return {
         
-        'report_format': ReportFormatEnumToJSON(value.reportFormat),
         'time_range': TimeRangeEnumToJSON(value.timeRange),
         'filter_events': FilterEventsEnumToJSON(value.filterEvents),
         'filter_project': value.filterProject,

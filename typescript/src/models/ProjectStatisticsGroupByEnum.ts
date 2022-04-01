@@ -17,7 +17,7 @@
  * @export
  * @enum {string}
  */
-export enum GroupByE73Enum {
+export enum ProjectStatisticsGroupByEnum {
     All = 'all',
     Events = 'events',
     Models = 'models',
@@ -28,15 +28,15 @@ export enum GroupByE73Enum {
     Countries = 'countries'
 }
 
-export function GroupByE73EnumFromJSON(json: any): GroupByE73Enum {
-    return GroupByE73EnumFromJSONTyped(json, false);
+export function ProjectStatisticsGroupByEnumFromJSON(json: any): ProjectStatisticsGroupByEnum {
+    return ProjectStatisticsGroupByEnumFromJSONTyped(json, false);
 }
 
-export function GroupByE73EnumFromJSONTyped(json: any, ignoreDiscriminator: boolean): GroupByE73Enum {
-    return json as GroupByE73Enum;
+export function ProjectStatisticsGroupByEnumFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectStatisticsGroupByEnum {
+    return json as ProjectStatisticsGroupByEnum;
 }
 
-export function GroupByE73EnumToJSON(value?: GroupByE73Enum | null): any {
+export function ProjectStatisticsGroupByEnumToJSON(value?: ProjectStatisticsGroupByEnum | null): any {
     return value as any;
 }
 
