@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    PaymentMethodEnum,
+    PaymentMethodEnumFromJSON,
+    PaymentMethodEnumFromJSONTyped,
+    PaymentMethodEnumToJSON,
+} from './PaymentMethodEnum';
+
 /**
  * 
  * @export
@@ -85,6 +92,12 @@ export interface Customer {
      * @memberof Customer
      */
     billingAddress?: string | null;
+    /**
+     * 
+     * @type {PaymentMethodEnum}
+     * @memberof Customer
+     */
+    paymentMethod?: PaymentMethodEnum;
 }
 
 export function CustomerFromJSON(json: any): Customer {
@@ -108,6 +121,7 @@ export function CustomerFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'description': !exists(json, 'description') ? undefined : json['description'],
         'contactAddress': !exists(json, 'contact_address') ? undefined : json['contact_address'],
         'billingAddress': !exists(json, 'billing_address') ? undefined : json['billing_address'],
+        'paymentMethod': !exists(json, 'payment_method') ? undefined : PaymentMethodEnumFromJSON(json['payment_method']),
     };
 }
 
@@ -128,6 +142,7 @@ export function CustomerToJSON(value?: Customer | null): any {
         'description': value.description,
         'contact_address': value.contactAddress,
         'billing_address': value.billingAddress,
+        'payment_method': PaymentMethodEnumToJSON(value.paymentMethod),
     };
 }
 
