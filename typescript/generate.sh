@@ -8,7 +8,7 @@ npx @openapitools/openapi-generator-cli version-manager set 5.4.0
 
 # Fetch OpenAPI Schema an generate api client
 npx @openapitools/openapi-generator-cli generate \
-    -i https://dev.yago.cloud/api/schema/ \
+    -i https://yago.cloud/api/schema/\?lang=en \
     -g typescript-fetch \
     --additional-properties=typescriptThreePlus=true \
     --additional-properties=npmName=genie-api-client
