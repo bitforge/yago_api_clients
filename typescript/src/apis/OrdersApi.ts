@@ -57,6 +57,9 @@ import {
     OrderModelFile,
     OrderModelFileFromJSON,
     OrderModelFileToJSON,
+    OrderModelUpdate,
+    OrderModelUpdateFromJSON,
+    OrderModelUpdateToJSON,
     OrderUpdate,
     OrderUpdateFromJSON,
     OrderUpdateToJSON,
@@ -157,7 +160,7 @@ export interface OrdersModelsTransitionsListRequest {
 export interface OrdersModelsUpdateRequest {
     orderId: number;
     id: number;
-    orderModel: OrderModel;
+    orderModelUpdate: OrderModelUpdate;
 }
 
 export interface OrdersRetrieveRequest {
@@ -1037,7 +1040,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Change model.
      */
-    async ordersModelsUpdateRaw(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModel>> {
+    async ordersModelsUpdateRaw(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelUpdate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsUpdate.');
         }
@@ -1046,8 +1049,8 @@ export class OrdersApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsUpdate.');
         }
 
-        if (requestParameters.orderModel === null || requestParameters.orderModel === undefined) {
-            throw new runtime.RequiredError('orderModel','Required parameter requestParameters.orderModel was null or undefined when calling ordersModelsUpdate.');
+        if (requestParameters.orderModelUpdate === null || requestParameters.orderModelUpdate === undefined) {
+            throw new runtime.RequiredError('orderModelUpdate','Required parameter requestParameters.orderModelUpdate was null or undefined when calling ordersModelsUpdate.');
         }
 
         const queryParameters: any = {};
@@ -1073,16 +1076,16 @@ export class OrdersApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: OrderModelToJSON(requestParameters.orderModel),
+            body: OrderModelUpdateToJSON(requestParameters.orderModelUpdate),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelUpdateFromJSON(jsonValue));
     }
 
     /**
      * Change model.
      */
-    async ordersModelsUpdate(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<OrderModel> {
+    async ordersModelsUpdate(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<OrderModelUpdate> {
         const response = await this.ordersModelsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }

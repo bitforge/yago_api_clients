@@ -13,7 +13,7 @@
  */
 
 
-export const BASE_PATH = "https://yago.cloud".replace(/\/+$/, "");
+export const BASE_PATH = "https://dev.yago.cloud".replace(/\/+$/, "");
 
 const isBlob = (value: any) => typeof Blob !== 'undefined' && value instanceof Blob;
 

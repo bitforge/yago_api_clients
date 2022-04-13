@@ -34,6 +34,7 @@ export * from './OrderModelCommentCreate';
 export * from './OrderModelCreate';
 export * from './OrderModelDetail';
 export * from './OrderModelFile';
+export * from './OrderModelUpdate';
 export * from './OrderState';
 export * from './OrderUpdate';
 export * from './PasswordChange';

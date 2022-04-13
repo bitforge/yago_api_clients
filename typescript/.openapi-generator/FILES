@@ -46,6 +46,7 @@ src/models/OrderModelCommentCreate.ts
 src/models/OrderModelCreate.ts
 src/models/OrderModelDetail.ts
 src/models/OrderModelFile.ts
+src/models/OrderModelUpdate.ts
 src/models/OrderState.ts
 src/models/OrderUpdate.ts
 src/models/PasswordChange.ts
