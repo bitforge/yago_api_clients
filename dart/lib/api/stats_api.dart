@@ -23,14 +23,14 @@ class StatsApi {
   /// Parameters:
   ///
   /// * [GlobalStatistics] globalStatistics (required):
-  Future<Response> statsGlobalCreateWithHttpInfo(GlobalStatistics globalStatistics,) async {
+  Future<Response> statsGlobalChronicCreateWithHttpInfo(GlobalStatistics globalStatistics,) async {
     // Verify required params are set.
     if (globalStatistics == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: globalStatistics');
     }
 
     // ignore: prefer_const_declarations
-    final path = r'/api/stats/global/';
+    final path = r'/api/stats/global/chronic/';
 
     // ignore: prefer_final_locals
     Object postBody = globalStatistics;
@@ -60,8 +60,8 @@ class StatsApi {
   /// Parameters:
   ///
   /// * [GlobalStatistics] globalStatistics (required):
-  Future<SummaryStats> statsGlobalCreate(GlobalStatistics globalStatistics,) async {
-    final response = await statsGlobalCreateWithHttpInfo(globalStatistics,);
+  Future<List<ChronicStats>> statsGlobalChronicCreate(GlobalStatistics globalStatistics,) async {
+    final response = await statsGlobalChronicCreateWithHttpInfo(globalStatistics,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -69,36 +69,33 @@ class StatsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SummaryStats',) as SummaryStats;
-    
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<ChronicStats>') as List)
+        .cast<ChronicStats>()
+        .toList(growable: false);
+
     }
-    return Future<SummaryStats>.value();
+    return Future<List<ChronicStats>>.value();
   }
 
-  /// Traffic for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
+  /// Traffic analytics over all projects and models.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
-  /// * [String] id (required):
-  ///
-  /// * [ProjectsStatistics] projectsStatistics (required):
-  Future<Response> statsProjectCreateWithHttpInfo(String id, ProjectsStatistics projectsStatistics,) async {
+  /// * [GlobalStatistics] globalStatistics (required):
+  Future<Response> statsGlobalSummaryCreateWithHttpInfo(GlobalStatistics globalStatistics,) async {
     // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-    if (projectsStatistics == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: projectsStatistics');
+    if (globalStatistics == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: globalStatistics');
     }
 
     // ignore: prefer_const_declarations
-    final path = r'/api/stats/project/{id}/'
-      .replaceAll('{id}', id);
+    final path = r'/api/stats/global/summary/';
 
     // ignore: prefer_final_locals
-    Object postBody = projectsStatistics;
+    Object postBody = globalStatistics;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -120,15 +117,150 @@ class StatsApi {
     );
   }
 
-  /// Traffic for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
+  /// Traffic analytics over all projects and models.
+  ///
+  /// Parameters:
+  ///
+  /// * [GlobalStatistics] globalStatistics (required):
+  Future<SummaryStats> statsGlobalSummaryCreate(GlobalStatistics globalStatistics,) async {
+    final response = await statsGlobalSummaryCreateWithHttpInfo(globalStatistics,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SummaryStats',) as SummaryStats;
+    
+    }
+    return Future<SummaryStats>.value();
+  }
+
+  /// Chronic statistics for single project and all models of that project.
+  ///
+  /// Note: This method returns the HTTP [Response].
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///
-  /// * [ProjectsStatistics] projectsStatistics (required):
-  Future<SummaryStats> statsProjectCreate(String id, ProjectsStatistics projectsStatistics,) async {
-    final response = await statsProjectCreateWithHttpInfo(id, projectsStatistics,);
+  /// * [ProjectStatistics] projectStatistics (required):
+  Future<Response> statsProjectChronicCreateWithHttpInfo(String id, ProjectStatistics projectStatistics,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (projectStatistics == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: projectStatistics');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/stats/project/{id}/chronic/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody = projectStatistics;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Chronic statistics for single project and all models of that project.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///
+  /// * [ProjectStatistics] projectStatistics (required):
+  Future<List<ChronicStats>> statsProjectChronicCreate(String id, ProjectStatistics projectStatistics,) async {
+    final response = await statsProjectChronicCreateWithHttpInfo(id, projectStatistics,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      final responseBody = await _decodeBodyBytes(response);
+      return (await apiClient.deserializeAsync(responseBody, 'List<ChronicStats>') as List)
+        .cast<ChronicStats>()
+        .toList(growable: false);
+
+    }
+    return Future<List<ChronicStats>>.value();
+  }
+
+  /// Summary statistics for single project and all models of that project.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///
+  /// * [ProjectStatistics] projectStatistics (required):
+  Future<Response> statsProjectSummaryCreateWithHttpInfo(String id, ProjectStatistics projectStatistics,) async {
+    // Verify required params are set.
+    if (id == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
+    }
+    if (projectStatistics == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: projectStatistics');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/api/stats/project/{id}/summary/'
+      .replaceAll('{id}', id);
+
+    // ignore: prefer_final_locals
+    Object postBody = projectStatistics;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// Summary statistics for single project and all models of that project.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] id (required):
+  ///
+  /// * [ProjectStatistics] projectStatistics (required):
+  Future<SummaryStats> statsProjectSummaryCreate(String id, ProjectStatistics projectStatistics,) async {
+    final response = await statsProjectSummaryCreateWithHttpInfo(id, projectStatistics,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

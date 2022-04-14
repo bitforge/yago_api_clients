@@ -24,6 +24,7 @@ class Customer {
     this.description,
     this.contactAddress,
     this.billingAddress,
+    this.paymentMethod,
   });
 
   String id;
@@ -52,6 +53,8 @@ class Customer {
 
   String billingAddress;
 
+  PaymentMethodEnum paymentMethod;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Customer &&
      other.id == id &&
@@ -64,7 +67,8 @@ class Customer {
      other.website == website &&
      other.description == description &&
      other.contactAddress == contactAddress &&
-     other.billingAddress == billingAddress;
+     other.billingAddress == billingAddress &&
+     other.paymentMethod == paymentMethod;
 
   @override
   int get hashCode =>
@@ -79,10 +83,11 @@ class Customer {
     (website == null ? 0 : website.hashCode) +
     (description == null ? 0 : description.hashCode) +
     (contactAddress == null ? 0 : contactAddress.hashCode) +
-    (billingAddress == null ? 0 : billingAddress.hashCode);
+    (billingAddress == null ? 0 : billingAddress.hashCode) +
+    (paymentMethod == null ? 0 : paymentMethod.hashCode);
 
   @override
-  String toString() => 'Customer[id=$id, name=$name, plan=$plan, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, contactAddress=$contactAddress, billingAddress=$billingAddress]';
+  String toString() => 'Customer[id=$id, name=$name, plan=$plan, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, contactAddress=$contactAddress, billingAddress=$billingAddress, paymentMethod=$paymentMethod]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -109,6 +114,9 @@ class Customer {
     if (billingAddress != null) {
       json[r'billing_address'] = billingAddress;
     }
+    if (paymentMethod != null) {
+      json[r'payment_method'] = paymentMethod;
+    }
     return json;
   }
 
@@ -130,6 +138,7 @@ class Customer {
         description: mapValueOfType<String>(json, r'description'),
         contactAddress: mapValueOfType<String>(json, r'contact_address'),
         billingAddress: mapValueOfType<String>(json, r'billing_address'),
+        paymentMethod: PaymentMethodEnum.fromJson(json[r'payment_method']),
       );
     }
     return null;

@@ -17,7 +17,7 @@ If this Dart package is published to Github, add the following dependency to you
 ```
 dependencies:
   openapi:
-    git: https://github.com/bitforge/genie-api-clients.git
+    git: https://github.com/bitforge/yago_api_clients.git
 ```
 
 ### Local
@@ -130,8 +130,10 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | [**projectsUpdate**](doc//ProjectsApi.md#projectsupdate) | **PUT** /api/projects/{id}/ | 
 *RegistrationApi* | [**registrationCreate**](doc//RegistrationApi.md#registrationcreate) | **POST** /api/registration/ | 
 *RegistrationApi* | [**registrationVerifyCreate**](doc//RegistrationApi.md#registrationverifycreate) | **POST** /api/registration/verify/{code}/ | 
-*StatsApi* | [**statsGlobalCreate**](doc//StatsApi.md#statsglobalcreate) | **POST** /api/stats/global/ | 
-*StatsApi* | [**statsProjectCreate**](doc//StatsApi.md#statsprojectcreate) | **POST** /api/stats/project/{id}/ | 
+*StatsApi* | [**statsGlobalChronicCreate**](doc//StatsApi.md#statsglobalchroniccreate) | **POST** /api/stats/global/chronic/ | 
+*StatsApi* | [**statsGlobalSummaryCreate**](doc//StatsApi.md#statsglobalsummarycreate) | **POST** /api/stats/global/summary/ | 
+*StatsApi* | [**statsProjectChronicCreate**](doc//StatsApi.md#statsprojectchroniccreate) | **POST** /api/stats/project/{id}/chronic/ | 
+*StatsApi* | [**statsProjectSummaryCreate**](doc//StatsApi.md#statsprojectsummarycreate) | **POST** /api/stats/project/{id}/summary/ | 
 *SubscriptionApi* | [**subscriptionCreate**](doc//SubscriptionApi.md#subscriptioncreate) | **POST** /api/subscription/ | 
 *SubscriptionApi* | [**subscriptionDestroy**](doc//SubscriptionApi.md#subscriptiondestroy) | **DELETE** /api/subscription/ | 
 *SubscriptionApi* | [**subscriptionRetrieve**](doc//SubscriptionApi.md#subscriptionretrieve) | **GET** /api/subscription/ | 
@@ -165,6 +167,7 @@ Class | Method | HTTP request | Description
  - [ModelStatus](doc//ModelStatus.md)
  - [ModelUpdate](doc//ModelUpdate.md)
  - [NewSubscription](doc//NewSubscription.md)
+ - [NewSubscriptionCreate](doc//NewSubscriptionCreate.md)
  - [Order](doc//Order.md)
  - [OrderComment](doc//OrderComment.md)
  - [OrderCommentCreate](doc//OrderCommentCreate.md)
@@ -176,6 +179,7 @@ Class | Method | HTTP request | Description
  - [OrderModelCreate](doc//OrderModelCreate.md)
  - [OrderModelDetail](doc//OrderModelDetail.md)
  - [OrderModelFile](doc//OrderModelFile.md)
+ - [OrderModelUpdate](doc//OrderModelUpdate.md)
  - [OrderState](doc//OrderState.md)
  - [OrderUpdate](doc//OrderUpdate.md)
  - [PasswordChange](doc//PasswordChange.md)
@@ -185,17 +189,15 @@ Class | Method | HTTP request | Description
  - [PatchedModelUpdate](doc//PatchedModelUpdate.md)
  - [PatchedProjectUpdate](doc//PatchedProjectUpdate.md)
  - [PaymentMethodEnum](doc//PaymentMethodEnum.md)
- - [PlanEnum](doc//PlanEnum.md)
  - [PriceCurrencyEnum](doc//PriceCurrencyEnum.md)
  - [PricingPlan](doc//PricingPlan.md)
  - [Project](doc//Project.md)
  - [ProjectCreate](doc//ProjectCreate.md)
+ - [ProjectStatistics](doc//ProjectStatistics.md)
+ - [ProjectStatisticsGroupByEnum](doc//ProjectStatisticsGroupByEnum.md)
  - [ProjectUpdate](doc//ProjectUpdate.md)
- - [ProjectsStatistics](doc//ProjectsStatistics.md)
- - [ProjectsStatisticsGroupByEnum](doc//ProjectsStatisticsGroupByEnum.md)
  - [Registration](doc//Registration.md)
  - [RegistrationCreate](doc//RegistrationCreate.md)
- - [ReportFormatEnum](doc//ReportFormatEnum.md)
  - [RoleEnum](doc//RoleEnum.md)
  - [StateChanged](doc//StateChanged.md)
  - [StripeSubscription](doc//StripeSubscription.md)

@@ -15,7 +15,8 @@ class Project {
   Project({
     @required this.id,
     @required this.name,
-    @required this.slug,
+    this.slug,
+    @required this.customerName,
     this.image,
     @required this.imageThumb,
     @required this.imagePreview,
@@ -28,6 +29,7 @@ class Project {
     this.translationsIt,
     this.backlinkUrls,
     this.orders = const [],
+    this.arbuttonConfig,
     @required this.created,
     @required this.modified,
   });
@@ -39,6 +41,8 @@ class Project {
 
   /// Will be part of asset urls. Cannot be changed once created.
   String slug;
+
+  String customerName;
 
   /// Image will be visible in gallery.
   String image;
@@ -67,6 +71,8 @@ class Project {
 
   List<ActiveOrder> orders;
 
+  Map<String, Object> arbuttonConfig;
+
   DateTime created;
 
   DateTime modified;
@@ -76,6 +82,7 @@ class Project {
      other.id == id &&
      other.name == name &&
      other.slug == slug &&
+     other.customerName == customerName &&
      other.image == image &&
      other.imageThumb == imageThumb &&
      other.imagePreview == imagePreview &&
@@ -88,6 +95,7 @@ class Project {
      other.translationsIt == translationsIt &&
      other.backlinkUrls == backlinkUrls &&
      other.orders == orders &&
+     other.arbuttonConfig == arbuttonConfig &&
      other.created == created &&
      other.modified == modified;
 
@@ -97,6 +105,7 @@ class Project {
     (id == null ? 0 : id.hashCode) +
     (name == null ? 0 : name.hashCode) +
     (slug == null ? 0 : slug.hashCode) +
+    (customerName == null ? 0 : customerName.hashCode) +
     (image == null ? 0 : image.hashCode) +
     (imageThumb == null ? 0 : imageThumb.hashCode) +
     (imagePreview == null ? 0 : imagePreview.hashCode) +
@@ -109,17 +118,21 @@ class Project {
     (translationsIt == null ? 0 : translationsIt.hashCode) +
     (backlinkUrls == null ? 0 : backlinkUrls.hashCode) +
     (orders == null ? 0 : orders.hashCode) +
+    (arbuttonConfig == null ? 0 : arbuttonConfig.hashCode) +
     (created == null ? 0 : created.hashCode) +
     (modified == null ? 0 : modified.hashCode);
 
   @override
-  String toString() => 'Project[id=$id, name=$name, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, orders=$orders, created=$created, modified=$modified]';
+  String toString() => 'Project[id=$id, name=$name, slug=$slug, customerName=$customerName, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, orders=$orders, arbuttonConfig=$arbuttonConfig, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = id;
       json[r'name'] = name;
+    if (slug != null) {
       json[r'slug'] = slug;
+    }
+      json[r'customer_name'] = customerName;
     if (image != null) {
       json[r'image'] = image;
     }
@@ -150,6 +163,9 @@ class Project {
       json[r'backlink_urls'] = backlinkUrls;
     }
       json[r'orders'] = orders;
+    if (arbuttonConfig != null) {
+      json[r'arbutton_config'] = arbuttonConfig;
+    }
       json[r'created'] = created.toUtc().toIso8601String();
       json[r'modified'] = modified.toUtc().toIso8601String();
     return json;
@@ -165,6 +181,7 @@ class Project {
         id: mapValueOfType<String>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
         slug: mapValueOfType<String>(json, r'slug'),
+        customerName: mapValueOfType<String>(json, r'customer_name'),
         image: mapValueOfType<String>(json, r'image'),
         imageThumb: mapValueOfType<String>(json, r'image_thumb'),
         imagePreview: mapValueOfType<String>(json, r'image_preview'),
@@ -177,6 +194,7 @@ class Project {
         translationsIt: mapValueOfType<bool>(json, r'translations_it'),
         backlinkUrls: mapValueOfType<bool>(json, r'backlink_urls'),
         orders: ActiveOrder.listFromJson(json[r'orders']),
+        arbuttonConfig: mapValueOfType<Map<String, Object>>(json, r'arbutton_config'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
       );

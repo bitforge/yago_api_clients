@@ -81,17 +81,11 @@ String parameterToString(dynamic value) {
   if (value is PaymentMethodEnum) {
     return PaymentMethodEnumTypeTransformer().encode(value).toString();
   }
-  if (value is PlanEnum) {
-    return PlanEnumTypeTransformer().encode(value).toString();
-  }
   if (value is PriceCurrencyEnum) {
     return PriceCurrencyEnumTypeTransformer().encode(value).toString();
   }
-  if (value is ProjectsStatisticsGroupByEnum) {
-    return ProjectsStatisticsGroupByEnumTypeTransformer().encode(value).toString();
-  }
-  if (value is ReportFormatEnum) {
-    return ReportFormatEnumTypeTransformer().encode(value).toString();
+  if (value is ProjectStatisticsGroupByEnum) {
+    return ProjectStatisticsGroupByEnumTypeTransformer().encode(value).toString();
   }
   if (value is RoleEnum) {
     return RoleEnumTypeTransformer().encode(value).toString();

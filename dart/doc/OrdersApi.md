@@ -1096,7 +1096,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ordersModelsUpdate**
-> OrderModel ordersModelsUpdate(orderId, id, orderModel)
+> OrderModelUpdate ordersModelsUpdate(orderId, id, orderModelUpdate)
 
 
 
@@ -1123,10 +1123,10 @@ import 'package:openapi/api.dart';
 final api_instance = OrdersApi();
 final orderId = 56; // int | 
 final id = 56; // int | A unique integer value identifying this Model.
-final orderModel = OrderModel(); // OrderModel | 
+final orderModelUpdate = OrderModelUpdate(); // OrderModelUpdate | 
 
 try {
-    final result = api_instance.ordersModelsUpdate(orderId, id, orderModel);
+    final result = api_instance.ordersModelsUpdate(orderId, id, orderModelUpdate);
     print(result);
 } catch (e) {
     print('Exception when calling OrdersApi->ordersModelsUpdate: $e\n');
@@ -1139,11 +1139,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **int**|  | 
  **id** | **int**| A unique integer value identifying this Model. | 
- **orderModel** | [**OrderModel**](OrderModel.md)|  | 
+ **orderModelUpdate** | [**OrderModelUpdate**](OrderModelUpdate.md)|  | 
 
 ### Return type
 
-[**OrderModel**](OrderModel.md)
+[**OrderModelUpdate**](OrderModelUpdate.md)
 
 ### Authorization
 

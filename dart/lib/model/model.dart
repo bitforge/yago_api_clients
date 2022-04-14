@@ -24,6 +24,7 @@ class Model {
     this.image,
     @required this.imageThumb,
     @required this.imagePreview,
+    this.preview,
     this.status,
     @required this.description,
     this.descriptionDe,
@@ -45,6 +46,7 @@ class Model {
     this.model,
     this.unityIos,
     this.unityAndroid,
+    this.arbuttonConfig = const {},
     @required this.created,
     @required this.modified,
   });
@@ -77,6 +79,9 @@ class Model {
   String imageThumb;
 
   String imagePreview;
+
+  /// True when model is in order and work is still in progress. False when order is completed.
+  bool preview;
 
   /// DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
   ModelStatus status;
@@ -134,11 +139,13 @@ class Model {
   /// Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files.
   String model;
 
-  /// Unity Asset Bundle for Android
+  /// Unity Asset Bundle for iOS
   String unityIos;
 
-  /// Unity Asset Bundle for iOS
+  /// Unity Asset Bundle for Android
   String unityAndroid;
+
+  Map<String, Object> arbuttonConfig;
 
   DateTime created;
 
@@ -157,6 +164,7 @@ class Model {
      other.image == image &&
      other.imageThumb == imageThumb &&
      other.imagePreview == imagePreview &&
+     other.preview == preview &&
      other.status == status &&
      other.description == description &&
      other.descriptionDe == descriptionDe &&
@@ -178,6 +186,7 @@ class Model {
      other.model == model &&
      other.unityIos == unityIos &&
      other.unityAndroid == unityAndroid &&
+     other.arbuttonConfig == arbuttonConfig &&
      other.created == created &&
      other.modified == modified;
 
@@ -195,6 +204,7 @@ class Model {
     (image == null ? 0 : image.hashCode) +
     (imageThumb == null ? 0 : imageThumb.hashCode) +
     (imagePreview == null ? 0 : imagePreview.hashCode) +
+    (preview == null ? 0 : preview.hashCode) +
     (status == null ? 0 : status.hashCode) +
     (description == null ? 0 : description.hashCode) +
     (descriptionDe == null ? 0 : descriptionDe.hashCode) +
@@ -216,11 +226,12 @@ class Model {
     (model == null ? 0 : model.hashCode) +
     (unityIos == null ? 0 : unityIos.hashCode) +
     (unityAndroid == null ? 0 : unityAndroid.hashCode) +
+    (arbuttonConfig == null ? 0 : arbuttonConfig.hashCode) +
     (created == null ? 0 : created.hashCode) +
     (modified == null ? 0 : modified.hashCode);
 
   @override
-  String toString() => 'Model[id=$id, project=$project, name=$name, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrl=$siteUrl, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, sku=$sku, price=$price, priceCurrency=$priceCurrency, scaleable=$scaleable, glb=$glb, usdz=$usdz, model=$model, unityIos=$unityIos, unityAndroid=$unityAndroid, created=$created, modified=$modified]';
+  String toString() => 'Model[id=$id, project=$project, name=$name, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, preview=$preview, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrl=$siteUrl, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, sku=$sku, price=$price, priceCurrency=$priceCurrency, scaleable=$scaleable, glb=$glb, usdz=$usdz, model=$model, unityIos=$unityIos, unityAndroid=$unityAndroid, arbuttonConfig=$arbuttonConfig, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -247,6 +258,9 @@ class Model {
     }
       json[r'image_thumb'] = imageThumb;
       json[r'image_preview'] = imagePreview;
+    if (preview != null) {
+      json[r'preview'] = preview;
+    }
     if (status != null) {
       json[r'status'] = status;
     }
@@ -304,6 +318,7 @@ class Model {
     if (unityAndroid != null) {
       json[r'unity_android'] = unityAndroid;
     }
+      json[r'arbutton_config'] = arbuttonConfig;
       json[r'created'] = created.toUtc().toIso8601String();
       json[r'modified'] = modified.toUtc().toIso8601String();
     return json;
@@ -327,6 +342,7 @@ class Model {
         image: mapValueOfType<String>(json, r'image'),
         imageThumb: mapValueOfType<String>(json, r'image_thumb'),
         imagePreview: mapValueOfType<String>(json, r'image_preview'),
+        preview: mapValueOfType<bool>(json, r'preview'),
         status: ModelStatus.fromJson(json[r'status']),
         description: mapValueOfType<String>(json, r'description'),
         descriptionDe: mapValueOfType<String>(json, r'description_de'),
@@ -348,6 +364,7 @@ class Model {
         model: mapValueOfType<String>(json, r'model'),
         unityIos: mapValueOfType<String>(json, r'unity_ios'),
         unityAndroid: mapValueOfType<String>(json, r'unity_android'),
+        arbuttonConfig: mapValueOfType<Map<String, Object>>(json, r'arbutton_config'),
         created: mapDateTime(json, r'created', ''),
         modified: mapDateTime(json, r'modified', ''),
       );

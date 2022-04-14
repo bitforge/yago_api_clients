@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **subscriptionCreate**
-> NewSubscription subscriptionCreate(newSubscription)
+> NewSubscription subscriptionCreate(newSubscriptionCreate)
 
 
 
@@ -40,10 +40,10 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = SubscriptionApi();
-final newSubscription = NewSubscription(); // NewSubscription | 
+final newSubscriptionCreate = NewSubscriptionCreate(); // NewSubscriptionCreate | 
 
 try {
-    final result = api_instance.subscriptionCreate(newSubscription);
+    final result = api_instance.subscriptionCreate(newSubscriptionCreate);
     print(result);
 } catch (e) {
     print('Exception when calling SubscriptionApi->subscriptionCreate: $e\n');
@@ -54,7 +54,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **newSubscription** | [**NewSubscription**](NewSubscription.md)|  | 
+ **newSubscriptionCreate** | [**NewSubscriptionCreate**](NewSubscriptionCreate.md)|  | 
 
 ### Return type
 

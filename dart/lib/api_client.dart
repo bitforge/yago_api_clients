@@ -239,6 +239,8 @@ class ApiClient {
           return ModelUpdate.fromJson(value);
         case 'NewSubscription':
           return NewSubscription.fromJson(value);
+        case 'NewSubscriptionCreate':
+          return NewSubscriptionCreate.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderComment':
@@ -261,6 +263,8 @@ class ApiClient {
           return OrderModelDetail.fromJson(value);
         case 'OrderModelFile':
           return OrderModelFile.fromJson(value);
+        case 'OrderModelUpdate':
+          return OrderModelUpdate.fromJson(value);
         case 'OrderState':
           return OrderStateTypeTransformer().decode(value);
         case 'OrderUpdate':
@@ -279,8 +283,6 @@ class ApiClient {
           return PatchedProjectUpdate.fromJson(value);
         case 'PaymentMethodEnum':
           return PaymentMethodEnumTypeTransformer().decode(value);
-        case 'PlanEnum':
-          return PlanEnumTypeTransformer().decode(value);
         case 'PriceCurrencyEnum':
           return PriceCurrencyEnumTypeTransformer().decode(value);
         case 'PricingPlan':
@@ -289,18 +291,16 @@ class ApiClient {
           return Project.fromJson(value);
         case 'ProjectCreate':
           return ProjectCreate.fromJson(value);
+        case 'ProjectStatistics':
+          return ProjectStatistics.fromJson(value);
+        case 'ProjectStatisticsGroupByEnum':
+          return ProjectStatisticsGroupByEnumTypeTransformer().decode(value);
         case 'ProjectUpdate':
           return ProjectUpdate.fromJson(value);
-        case 'ProjectsStatistics':
-          return ProjectsStatistics.fromJson(value);
-        case 'ProjectsStatisticsGroupByEnum':
-          return ProjectsStatisticsGroupByEnumTypeTransformer().decode(value);
         case 'Registration':
           return Registration.fromJson(value);
         case 'RegistrationCreate':
           return RegistrationCreate.fromJson(value);
-        case 'ReportFormatEnum':
-          return ReportFormatEnumTypeTransformer().decode(value);
         case 'RoleEnum':
           return RoleEnumTypeTransformer().decode(value);
         case 'StateChanged':

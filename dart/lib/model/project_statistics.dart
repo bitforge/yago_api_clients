@@ -10,12 +10,11 @@
 
 part of openapi.api;
 
-class GlobalStatistics {
-  /// Returns a new [GlobalStatistics] instance.
-  GlobalStatistics({
+class ProjectStatistics {
+  /// Returns a new [ProjectStatistics] instance.
+  ProjectStatistics({
     @required this.timeRange,
     @required this.filterEvents,
-    this.filterProject,
     @required this.groupBy,
   });
 
@@ -23,15 +22,12 @@ class GlobalStatistics {
 
   FilterEventsEnum filterEvents;
 
-  String filterProject;
-
-  GlobalStatisticsGroupByEnum groupBy;
+  ProjectStatisticsGroupByEnum groupBy;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GlobalStatistics &&
+  bool operator ==(Object other) => identical(this, other) || other is ProjectStatistics &&
      other.timeRange == timeRange &&
      other.filterEvents == filterEvents &&
-     other.filterProject == filterProject &&
      other.groupBy == groupBy;
 
   @override
@@ -39,62 +35,57 @@ class GlobalStatistics {
   // ignore: unnecessary_parenthesis
     (timeRange == null ? 0 : timeRange.hashCode) +
     (filterEvents == null ? 0 : filterEvents.hashCode) +
-    (filterProject == null ? 0 : filterProject.hashCode) +
     (groupBy == null ? 0 : groupBy.hashCode);
 
   @override
-  String toString() => 'GlobalStatistics[timeRange=$timeRange, filterEvents=$filterEvents, filterProject=$filterProject, groupBy=$groupBy]';
+  String toString() => 'ProjectStatistics[timeRange=$timeRange, filterEvents=$filterEvents, groupBy=$groupBy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'time_range'] = timeRange;
       json[r'filter_events'] = filterEvents;
-    if (filterProject != null) {
-      json[r'filter_project'] = filterProject;
-    }
       json[r'group_by'] = groupBy;
     return json;
   }
 
-  /// Returns a new [GlobalStatistics] instance and imports its values from
+  /// Returns a new [ProjectStatistics] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GlobalStatistics fromJson(dynamic value) {
+  static ProjectStatistics fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
-      return GlobalStatistics(
+      return ProjectStatistics(
         timeRange: TimeRangeEnum.fromJson(json[r'time_range']),
         filterEvents: FilterEventsEnum.fromJson(json[r'filter_events']),
-        filterProject: mapValueOfType<String>(json, r'filter_project'),
-        groupBy: GlobalStatisticsGroupByEnum.fromJson(json[r'group_by']),
+        groupBy: ProjectStatisticsGroupByEnum.fromJson(json[r'group_by']),
       );
     }
     return null;
   }
 
-  static List<GlobalStatistics> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+  static List<ProjectStatistics> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
     json is List && json.isNotEmpty
-      ? json.map(GlobalStatistics.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <GlobalStatistics>[];
+      ? json.map(ProjectStatistics.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <ProjectStatistics>[];
 
-  static Map<String, GlobalStatistics> mapFromJson(dynamic json) {
-    final map = <String, GlobalStatistics>{};
+  static Map<String, ProjectStatistics> mapFromJson(dynamic json) {
+    final map = <String, ProjectStatistics>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = GlobalStatistics.fromJson(value));
+        .forEach((key, dynamic value) => map[key] = ProjectStatistics.fromJson(value));
     }
     return map;
   }
 
-  // maps a json object with a list of GlobalStatistics-objects as value to a dart map
-  static Map<String, List<GlobalStatistics>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
-    final map = <String, List<GlobalStatistics>>{};
+  // maps a json object with a list of ProjectStatistics-objects as value to a dart map
+  static Map<String, List<ProjectStatistics>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<ProjectStatistics>>{};
     if (json is Map && json.isNotEmpty) {
       json
         .cast<String, dynamic>()
         .forEach((key, dynamic value) {
-          map[key] = GlobalStatistics.listFromJson(
+          map[key] = ProjectStatistics.listFromJson(
             value,
             emptyIsNull: emptyIsNull,
             growable: growable,

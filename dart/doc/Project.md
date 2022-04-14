@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [readonly] 
 **name** | **String** | Name will be visible as title in gallery. | 
-**slug** | **String** | Will be part of asset urls. Cannot be changed once created. | 
+**slug** | **String** | Will be part of asset urls. Cannot be changed once created. | [optional] 
+**customerName** | **String** |  | [readonly] 
 **image** | **String** | Image will be visible in gallery. | [optional] 
 **imageThumb** | **String** |  | [readonly] 
 **imagePreview** | **String** |  | [readonly] 
@@ -23,6 +24,7 @@ Name | Type | Description | Notes
 **translationsIt** | **bool** |  | [optional] 
 **backlinkUrls** | **bool** | Enable urls to the product on your site. Required when using standalone QR codes (e.g. Print). | [optional] 
 **orders** | [**List<ActiveOrder>**](ActiveOrder.md) |  | [readonly] [default to const []]
+**arbuttonConfig** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
 **created** | [**DateTime**](DateTime.md) |  | [readonly] 
 **modified** | [**DateTime**](DateTime.md) |  | [readonly] 
 

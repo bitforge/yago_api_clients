@@ -22,18 +22,18 @@ class SubscriptionApi {
   ///
   /// Parameters:
   ///
-  /// * [NewSubscription] newSubscription (required):
-  Future<Response> subscriptionCreateWithHttpInfo(NewSubscription newSubscription,) async {
+  /// * [NewSubscriptionCreate] newSubscriptionCreate (required):
+  Future<Response> subscriptionCreateWithHttpInfo(NewSubscriptionCreate newSubscriptionCreate,) async {
     // Verify required params are set.
-    if (newSubscription == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: newSubscription');
+    if (newSubscriptionCreate == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: newSubscriptionCreate');
     }
 
     // ignore: prefer_const_declarations
     final path = r'/api/subscription/';
 
     // ignore: prefer_final_locals
-    Object postBody = newSubscription;
+    Object postBody = newSubscriptionCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -59,9 +59,9 @@ class SubscriptionApi {
   ///
   /// Parameters:
   ///
-  /// * [NewSubscription] newSubscription (required):
-  Future<NewSubscription> subscriptionCreate(NewSubscription newSubscription,) async {
-    final response = await subscriptionCreateWithHttpInfo(newSubscription,);
+  /// * [NewSubscriptionCreate] newSubscriptionCreate (required):
+  Future<NewSubscription> subscriptionCreate(NewSubscriptionCreate newSubscriptionCreate,) async {
+    final response = await subscriptionCreateWithHttpInfo(newSubscriptionCreate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

@@ -16,12 +16,12 @@ class NewSubscription {
     @required this.plan,
     @required this.paymentMethod,
     @required this.tosAccepted,
-    @required this.customerId,
-    @required this.subscriptionId,
-    @required this.clientSecret,
+    this.customerId,
+    this.subscriptionId,
+    this.clientSecret,
   });
 
-  PlanEnum plan;
+  String plan;
 
   PaymentMethodEnum paymentMethod;
 
@@ -60,9 +60,15 @@ class NewSubscription {
       json[r'plan'] = plan;
       json[r'payment_method'] = paymentMethod;
       json[r'tos_accepted'] = tosAccepted;
+    if (customerId != null) {
       json[r'customer_id'] = customerId;
+    }
+    if (subscriptionId != null) {
       json[r'subscription_id'] = subscriptionId;
+    }
+    if (clientSecret != null) {
       json[r'client_secret'] = clientSecret;
+    }
     return json;
   }
 
@@ -73,7 +79,7 @@ class NewSubscription {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
       return NewSubscription(
-        plan: PlanEnum.fromJson(json[r'plan']),
+        plan: mapValueOfType<String>(json, r'plan'),
         paymentMethod: PaymentMethodEnum.fromJson(json[r'payment_method']),
         tosAccepted: mapValueOfType<bool>(json, r'tos_accepted'),
         customerId: mapValueOfType<String>(json, r'customer_id'),

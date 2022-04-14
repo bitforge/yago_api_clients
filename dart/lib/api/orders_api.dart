@@ -1238,8 +1238,8 @@ class OrdersApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this Model.
   ///
-  /// * [OrderModel] orderModel (required):
-  Future<Response> ordersModelsUpdateWithHttpInfo(int orderId, int id, OrderModel orderModel,) async {
+  /// * [OrderModelUpdate] orderModelUpdate (required):
+  Future<Response> ordersModelsUpdateWithHttpInfo(int orderId, int id, OrderModelUpdate orderModelUpdate,) async {
     // Verify required params are set.
     if (orderId == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: orderId');
@@ -1247,8 +1247,8 @@ class OrdersApi {
     if (id == null) {
      throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
     }
-    if (orderModel == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: orderModel');
+    if (orderModelUpdate == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: orderModelUpdate');
     }
 
     // ignore: prefer_const_declarations
@@ -1257,7 +1257,7 @@ class OrdersApi {
       .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
-    Object postBody = orderModel;
+    Object postBody = orderModelUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1288,9 +1288,9 @@ class OrdersApi {
   /// * [int] id (required):
   ///   A unique integer value identifying this Model.
   ///
-  /// * [OrderModel] orderModel (required):
-  Future<OrderModel> ordersModelsUpdate(int orderId, int id, OrderModel orderModel,) async {
-    final response = await ordersModelsUpdateWithHttpInfo(orderId, id, orderModel,);
+  /// * [OrderModelUpdate] orderModelUpdate (required):
+  Future<OrderModelUpdate> ordersModelsUpdate(int orderId, int id, OrderModelUpdate orderModelUpdate,) async {
+    final response = await ordersModelsUpdateWithHttpInfo(orderId, id, orderModelUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1298,10 +1298,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderModel',) as OrderModel;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderModelUpdate',) as OrderModelUpdate;
     
     }
-    return Future<OrderModel>.value();
+    return Future<OrderModelUpdate>.value();
   }
 
   /// Details of a single order.

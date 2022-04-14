@@ -1,4 +1,4 @@
-# openapi.model.GlobalStatistics
+# openapi.model.ProjectStatistics
 
 ## Load the model package
 ```dart
@@ -10,8 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **timeRange** | [**TimeRangeEnum**](TimeRangeEnum.md) |  | 
 **filterEvents** | [**FilterEventsEnum**](FilterEventsEnum.md) |  | 
-**filterProject** | **String** |  | [optional] 
-**groupBy** | [**GlobalStatisticsGroupByEnum**](GlobalStatisticsGroupByEnum.md) |  | 
+**groupBy** | [**ProjectStatisticsGroupByEnum**](ProjectStatisticsGroupByEnum.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

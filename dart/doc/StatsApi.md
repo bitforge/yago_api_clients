@@ -9,12 +9,14 @@ All URIs are relative to *https://dev.yago.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**statsGlobalCreate**](StatsApi.md#statsglobalcreate) | **POST** /api/stats/global/ | 
-[**statsProjectCreate**](StatsApi.md#statsprojectcreate) | **POST** /api/stats/project/{id}/ | 
+[**statsGlobalChronicCreate**](StatsApi.md#statsglobalchroniccreate) | **POST** /api/stats/global/chronic/ | 
+[**statsGlobalSummaryCreate**](StatsApi.md#statsglobalsummarycreate) | **POST** /api/stats/global/summary/ | 
+[**statsProjectChronicCreate**](StatsApi.md#statsprojectchroniccreate) | **POST** /api/stats/project/{id}/chronic/ | 
+[**statsProjectSummaryCreate**](StatsApi.md#statsprojectsummarycreate) | **POST** /api/stats/project/{id}/summary/ | 
 
 
-# **statsGlobalCreate**
-> SummaryStats statsGlobalCreate(globalStatistics)
+# **statsGlobalChronicCreate**
+> List<ChronicStats> statsGlobalChronicCreate(globalStatistics)
 
 
 
@@ -42,10 +44,67 @@ final api_instance = StatsApi();
 final globalStatistics = GlobalStatistics(); // GlobalStatistics | 
 
 try {
-    final result = api_instance.statsGlobalCreate(globalStatistics);
+    final result = api_instance.statsGlobalChronicCreate(globalStatistics);
     print(result);
 } catch (e) {
-    print('Exception when calling StatsApi->statsGlobalCreate: $e\n');
+    print('Exception when calling StatsApi->statsGlobalChronicCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **globalStatistics** | [**GlobalStatistics**](GlobalStatistics.md)|  | 
+
+### Return type
+
+[**List<ChronicStats>**](ChronicStats.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **statsGlobalSummaryCreate**
+> SummaryStats statsGlobalSummaryCreate(globalStatistics)
+
+
+
+Traffic analytics over all projects and models.
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: cookieAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure HTTP Bearer authorization: jwtAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: tokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = StatsApi();
+final globalStatistics = GlobalStatistics(); // GlobalStatistics | 
+
+try {
+    final result = api_instance.statsGlobalSummaryCreate(globalStatistics);
+    print(result);
+} catch (e) {
+    print('Exception when calling StatsApi->statsGlobalSummaryCreate: $e\n');
 }
 ```
 
@@ -70,12 +129,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **statsProjectCreate**
-> SummaryStats statsProjectCreate(id, projectsStatistics)
+# **statsProjectChronicCreate**
+> List<ChronicStats> statsProjectChronicCreate(id, projectStatistics)
 
 
 
-Traffic for single project and all models of that project. Raises 404 if the user is not allowed to view data of this project.
+Chronic statistics for single project and all models of that project.
 
 ### Example
 ```dart
@@ -97,13 +156,13 @@ import 'package:openapi/api.dart';
 
 final api_instance = StatsApi();
 final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-final projectsStatistics = ProjectsStatistics(); // ProjectsStatistics | 
+final projectStatistics = ProjectStatistics(); // ProjectStatistics | 
 
 try {
-    final result = api_instance.statsProjectCreate(id, projectsStatistics);
+    final result = api_instance.statsProjectChronicCreate(id, projectStatistics);
     print(result);
 } catch (e) {
-    print('Exception when calling StatsApi->statsProjectCreate: $e\n');
+    print('Exception when calling StatsApi->statsProjectChronicCreate: $e\n');
 }
 ```
 
@@ -112,7 +171,66 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **projectsStatistics** | [**ProjectsStatistics**](ProjectsStatistics.md)|  | 
+ **projectStatistics** | [**ProjectStatistics**](ProjectStatistics.md)|  | 
+
+### Return type
+
+[**List<ChronicStats>**](ChronicStats.md)
+
+### Authorization
+
+[cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth), [tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **statsProjectSummaryCreate**
+> SummaryStats statsProjectSummaryCreate(id, projectStatistics)
+
+
+
+Summary statistics for single project and all models of that project.
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+// TODO Configure API key authorization: cookieAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure HTTP Bearer authorization: jwtAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
+// TODO Configure API key authorization: tokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
+
+final api_instance = StatsApi();
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final projectStatistics = ProjectStatistics(); // ProjectStatistics | 
+
+try {
+    final result = api_instance.statsProjectSummaryCreate(id, projectStatistics);
+    print(result);
+} catch (e) {
+    print('Exception when calling StatsApi->statsProjectSummaryCreate: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **projectStatistics** | [**ProjectStatistics**](ProjectStatistics.md)|  | 
 
 ### Return type
 

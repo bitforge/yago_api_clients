@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **contactAddress** | **String** |  | [optional] 
 **billingAddress** | **String** |  | [optional] 
+**paymentMethod** | [**PaymentMethodEnum**](PaymentMethodEnum.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

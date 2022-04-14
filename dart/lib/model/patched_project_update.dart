@@ -22,6 +22,7 @@ class PatchedProjectUpdate {
     this.translationsFr,
     this.translationsIt,
     this.backlinkUrls,
+    this.arbuttonConfig,
   });
 
   /// Name will be visible as title in gallery.
@@ -45,6 +46,8 @@ class PatchedProjectUpdate {
   /// Enable urls to the product on your site. Required when using standalone QR codes (e.g. Print).
   bool backlinkUrls;
 
+  Map<String, Object> arbuttonConfig;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is PatchedProjectUpdate &&
      other.name == name &&
@@ -55,7 +58,8 @@ class PatchedProjectUpdate {
      other.translationsEn == translationsEn &&
      other.translationsFr == translationsFr &&
      other.translationsIt == translationsIt &&
-     other.backlinkUrls == backlinkUrls;
+     other.backlinkUrls == backlinkUrls &&
+     other.arbuttonConfig == arbuttonConfig;
 
   @override
   int get hashCode =>
@@ -68,10 +72,11 @@ class PatchedProjectUpdate {
     (translationsEn == null ? 0 : translationsEn.hashCode) +
     (translationsFr == null ? 0 : translationsFr.hashCode) +
     (translationsIt == null ? 0 : translationsIt.hashCode) +
-    (backlinkUrls == null ? 0 : backlinkUrls.hashCode);
+    (backlinkUrls == null ? 0 : backlinkUrls.hashCode) +
+    (arbuttonConfig == null ? 0 : arbuttonConfig.hashCode);
 
   @override
-  String toString() => 'PatchedProjectUpdate[name=$name, description=$description, website=$website, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls]';
+  String toString() => 'PatchedProjectUpdate[name=$name, description=$description, website=$website, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, arbuttonConfig=$arbuttonConfig]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -102,6 +107,9 @@ class PatchedProjectUpdate {
     if (backlinkUrls != null) {
       json[r'backlink_urls'] = backlinkUrls;
     }
+    if (arbuttonConfig != null) {
+      json[r'arbutton_config'] = arbuttonConfig;
+    }
     return json;
   }
 
@@ -121,6 +129,7 @@ class PatchedProjectUpdate {
         translationsFr: mapValueOfType<bool>(json, r'translations_fr'),
         translationsIt: mapValueOfType<bool>(json, r'translations_it'),
         backlinkUrls: mapValueOfType<bool>(json, r'backlink_urls'),
+        arbuttonConfig: mapValueOfType<Map<String, Object>>(json, r'arbutton_config'),
       );
     }
     return null;
