@@ -1,5 +1,5 @@
 
-# Genie API Clients
+# Yago API Clients
 
 Generated API Clients using `openapi-generator` for various languages
 
