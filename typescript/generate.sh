@@ -11,7 +11,7 @@ npx @openapitools/openapi-generator-cli generate \
     -i https://yago.cloud/api/schema/\?lang=en \
     -g typescript-fetch \
     --additional-properties=typescriptThreePlus=true \
-    --additional-properties=npmName=genie-api-client
+    --additional-properties=npmName=yago-api-client
 
 # Fix annoying typescript error in generated source
 sed -i -e 's/this\.configuration\.fetchApi/this\.configuration\.fetchApi\!/g' src/runtime.ts

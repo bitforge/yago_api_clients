@@ -1,6 +1,6 @@
-## genie-api-client
+## yago-api-client
 
-Client library to access [Genie REST API](https://genie-ar.ch/api/doc/).
+Client library to access [Yago REST API](https://yago.cloud/api/doc/).
 
 Generated with `openapi-generator` using the [Fetch API](https://fetch.spec.whatwg.org/).
 
@@ -8,11 +8,11 @@ Generated with `openapi-generator` using the [Fetch API](https://fetch.spec.what
 
 Use your favorite package manager:
 
-`npm install @bitforgehq/genie-api-client`
+`npm install @bitforgehq/yago-api-client`
 
 *OR*
 
-`yarn add @bitforgehq/genie-api-client`
+`yarn add @bitforgehq/yago-api-client`
 
 # Usage
 
@@ -28,7 +28,7 @@ const token = await new AuthApi().authCreate({
 
 // Initialize API configuration with token
 const apiConfig = new Configuration({
-    basePath = "https://genie-ar.ch",
+    basePath = "https://yago.cloud",
     accessToken: token.access
 });
 
@@ -38,4 +38,4 @@ const models = await new ModelsApi(apiConfig).modelsList({ project: projects[0].
 
 ```
 
-See [API Docs](https://genie-ar.ch/api/doc/) for a full list of all available endpoints.
+See [API Docs](https://yago.cloud/api/doc/) for a full list of all available endpoints.
