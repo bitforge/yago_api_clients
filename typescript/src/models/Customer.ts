@@ -98,6 +98,12 @@ export interface Customer {
      * @memberof Customer
      */
     paymentMethod?: PaymentMethodEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof Customer
+     */
+    readonly modelsCount: number;
 }
 
 export function CustomerFromJSON(json: any): Customer {
@@ -122,6 +128,7 @@ export function CustomerFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'contactAddress': !exists(json, 'contact_address') ? undefined : json['contact_address'],
         'billingAddress': !exists(json, 'billing_address') ? undefined : json['billing_address'],
         'paymentMethod': !exists(json, 'payment_method') ? undefined : PaymentMethodEnumFromJSON(json['payment_method']),
+        'modelsCount': json['models_count'],
     };
 }
 
