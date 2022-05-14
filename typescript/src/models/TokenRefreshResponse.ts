@@ -25,6 +25,12 @@ export interface TokenRefreshResponse {
      * @memberof TokenRefreshResponse
      */
     access: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenRefreshResponse
+     */
+    refresh: string;
 }
 
 export function TokenRefreshResponseFromJSON(json: any): TokenRefreshResponse {
@@ -38,6 +44,7 @@ export function TokenRefreshResponseFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'access': json['access'],
+        'refresh': json['refresh'],
     };
 }
 
@@ -51,6 +58,7 @@ export function TokenRefreshResponseToJSON(value?: TokenRefreshResponse | null):
     return {
         
         'access': value.access,
+        'refresh': value.refresh,
     };
 }
 
