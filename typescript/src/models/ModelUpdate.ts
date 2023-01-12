@@ -139,7 +139,13 @@ export interface ModelUpdate {
      * @type {string}
      * @memberof ModelUpdate
      */
-    readonly priceCurrency: string;
+    readonly priceCurrency: string | null;
+    /**
+     * When set to true, users will be able to place the model on a vertical surface.
+     * @type {boolean}
+     * @memberof ModelUpdate
+     */
+    verticalPlacement?: boolean;
 }
 
 export function ModelUpdateFromJSON(json: any): ModelUpdate {
@@ -171,6 +177,7 @@ export function ModelUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'price': !exists(json, 'price') ? undefined : json['price'],
         'priceCurrency': json['price_currency'],
+        'verticalPlacement': !exists(json, 'vertical_placement') ? undefined : json['vertical_placement'],
     };
 }
 
@@ -200,6 +207,7 @@ export function ModelUpdateToJSON(value?: ModelUpdate | null): any {
         'scaleable': value.scaleable,
         'sku': value.sku,
         'price': value.price,
+        'vertical_placement': value.verticalPlacement,
     };
 }
 

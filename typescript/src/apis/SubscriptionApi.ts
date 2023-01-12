@@ -118,7 +118,7 @@ export class SubscriptionApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details of active subscription i customer is signed up.
+     * Get details of active subscription if customer is signed up.
      */
     async subscriptionRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Subscription>> {
         const queryParameters: any = {};
@@ -148,7 +148,7 @@ export class SubscriptionApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get details of active subscription i customer is signed up.
+     * Get details of active subscription if customer is signed up.
      */
     async subscriptionRetrieve(initOverrides?: RequestInit): Promise<Subscription> {
         const response = await this.subscriptionRetrieveRaw(initOverrides);

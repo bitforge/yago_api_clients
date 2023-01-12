@@ -67,7 +67,7 @@ export interface OrderDetail {
      * @type {string}
      * @memberof OrderDetail
      */
-    readonly priceCurrency: string;
+    readonly priceCurrency: string | null;
     /**
      * 
      * @type {Date}

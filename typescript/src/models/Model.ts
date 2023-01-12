@@ -187,7 +187,7 @@ export interface Model {
      * @type {string}
      * @memberof Model
      */
-    readonly priceCurrency: string;
+    readonly priceCurrency: string | null;
     /**
      * Let's the user scale the model in AR when enabled.
      * @type {boolean}
@@ -242,6 +242,12 @@ export interface Model {
      * @memberof Model
      */
     readonly modified: Date;
+    /**
+     * When set to true, users will be able to place the model on a vertical surface.
+     * @type {boolean}
+     * @memberof Model
+     */
+    verticalPlacement?: boolean;
 }
 
 export function ModelFromJSON(json: any): Model {
@@ -290,6 +296,7 @@ export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Mod
         'arbuttonConfig': json['arbutton_config'],
         'created': (new Date(json['created'])),
         'modified': (new Date(json['modified'])),
+        'verticalPlacement': !exists(json, 'vertical_placement') ? undefined : json['vertical_placement'],
     };
 }
 
@@ -328,6 +335,7 @@ export function ModelToJSON(value?: Model | null): any {
         'model': value.model,
         'unity_ios': value.unityIos,
         'unity_android': value.unityAndroid,
+        'vertical_placement': value.verticalPlacement,
     };
 }
 

@@ -139,7 +139,13 @@ export interface PatchedModelUpdate {
      * @type {string}
      * @memberof PatchedModelUpdate
      */
-    readonly priceCurrency?: string;
+    readonly priceCurrency?: string | null;
+    /**
+     * When set to true, users will be able to place the model on a vertical surface.
+     * @type {boolean}
+     * @memberof PatchedModelUpdate
+     */
+    verticalPlacement?: boolean;
 }
 
 export function PatchedModelUpdateFromJSON(json: any): PatchedModelUpdate {
@@ -171,6 +177,7 @@ export function PatchedModelUpdateFromJSONTyped(json: any, ignoreDiscriminator: 
         'sku': !exists(json, 'sku') ? undefined : json['sku'],
         'price': !exists(json, 'price') ? undefined : json['price'],
         'priceCurrency': !exists(json, 'price_currency') ? undefined : json['price_currency'],
+        'verticalPlacement': !exists(json, 'vertical_placement') ? undefined : json['vertical_placement'],
     };
 }
 
@@ -200,6 +207,7 @@ export function PatchedModelUpdateToJSON(value?: PatchedModelUpdate | null): any
         'scaleable': value.scaleable,
         'sku': value.sku,
         'price': value.price,
+        'vertical_placement': value.verticalPlacement,
     };
 }
 

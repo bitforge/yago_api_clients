@@ -78,6 +78,43 @@ export interface AuthVerifyCreateRequest {
 export class AuthApi extends runtime.BaseAPI {
 
     /**
+     * Create a new anchor token.
+     */
+    async authAnchorTokenRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwtAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+        }
+
+        const response = await this.request({
+            path: `/api/auth/anchor_token/`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Create a new anchor token.
+     */
+    async authAnchorTokenRetrieve(initOverrides?: RequestInit): Promise<void> {
+        await this.authAnchorTokenRetrieveRaw(initOverrides);
+    }
+
+    /**
      * Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.
      */
     async authGoogleCreateRaw(requestParameters: AuthGoogleCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<TokenObtainResponse>> {

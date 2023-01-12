@@ -55,7 +55,7 @@ export interface Order {
      * @type {string}
      * @memberof Order
      */
-    readonly priceCurrency: string;
+    readonly priceCurrency: string | null;
     /**
      * 
      * @type {Date}

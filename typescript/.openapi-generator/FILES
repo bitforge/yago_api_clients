@@ -15,6 +15,7 @@ src/index.ts
 src/models/ActiveOrder.ts
 src/models/Address.ts
 src/models/AvailableState.ts
+src/models/BlankEnum.ts
 src/models/ChronicStats.ts
 src/models/CollectionMethodEnum.ts
 src/models/CountryEnum.ts
@@ -63,6 +64,7 @@ src/models/ProjectCreate.ts
 src/models/ProjectStatistics.ts
 src/models/ProjectStatisticsGroupByEnum.ts
 src/models/ProjectUpdate.ts
+src/models/ProrationBehaviorEnum.ts
 src/models/Registration.ts
 src/models/RegistrationCreate.ts
 src/models/RoleEnum.ts

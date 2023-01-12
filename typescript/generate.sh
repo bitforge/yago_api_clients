@@ -4,7 +4,7 @@
 rm -rf src
 
 # Pin openapi-generator version to avoid unintended changes
-npx @openapitools/openapi-generator-cli version-manager set 5.4.0
+# npx @openapitools/openapi-generator-cli version-manager set 5.4.0
 
 # Fetch OpenAPI Schema an generate api client
 npx @openapitools/openapi-generator-cli generate \

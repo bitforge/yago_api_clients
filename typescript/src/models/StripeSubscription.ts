@@ -20,6 +20,12 @@ import {
     CollectionMethodEnumToJSON,
 } from './CollectionMethodEnum';
 import {
+    ProrationBehaviorEnum | BlankEnum,
+    ProrationBehaviorEnum | BlankEnumFromJSON,
+    ProrationBehaviorEnum | BlankEnumFromJSONTyped,
+    ProrationBehaviorEnum | BlankEnumToJSON,
+} from './ProrationBehaviorEnum | BlankEnum';
+import {
     StripeSubscriptionStatusEnum,
     StripeSubscriptionStatusEnumFromJSON,
     StripeSubscriptionStatusEnumFromJSONTyped,
@@ -141,7 +147,7 @@ export interface StripeSubscription {
      */
     daysUntilDue?: number | null;
     /**
-     * 
+     * Describes the current discount applied to this subscription, if there is one. When billing, a discount applied to a subscription overrides a discount applied on a customer-wide basis.
      * @type {{ [key: string]: any; }}
      * @memberof StripeSubscription
      */
@@ -159,6 +165,12 @@ export interface StripeSubscription {
      */
     nextPendingInvoiceItemInvoice?: Date | null;
     /**
+     * If specified, payment collection for this subscription will be paused.
+     * @type {{ [key: string]: any; }}
+     * @memberof StripeSubscription
+     */
+    pauseCollection?: { [key: string]: any; } | null;
+    /**
      * Specifies an interval for how often to bill for any pending invoice items. It is analogous to calling Create an invoice for the given subscription at the specified interval.
      * @type {{ [key: string]: any; }}
      * @memberof StripeSubscription
@@ -170,6 +182,18 @@ export interface StripeSubscription {
      * @memberof StripeSubscription
      */
     pendingUpdate?: { [key: string]: any; } | null;
+    /**
+     * Determines how to handle prorations when the billing cycle changes (e.g., when switching plans, resetting billing_cycle_anchor=now, or starting a trial), or if an item’s quantity changes
+     * @type {ProrationBehaviorEnum | BlankEnum}
+     * @memberof StripeSubscription
+     */
+    prorationBehavior?: ProrationBehaviorEnum | BlankEnum | null;
+    /**
+     * If set, the proration will be calculated as though the subscription was updated at the given time. This can be used to apply exactly the same proration that was previewed with upcoming invoice endpoint. It can also be used to implement custom proration logic, such as prorating by day instead of by second, by providing the time that you wish to use for proration calculations
+     * @type {Date}
+     * @memberof StripeSubscription
+     */
+    prorationDate?: Date | null;
     /**
      * The quantity applied to this subscription. This value will be `null` for multi-plan subscriptions
      * @type {number}
@@ -287,8 +311,11 @@ export function StripeSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: 
         'discount': !exists(json, 'discount') ? undefined : json['discount'],
         'endedAt': !exists(json, 'ended_at') ? undefined : (json['ended_at'] === null ? null : new Date(json['ended_at'])),
         'nextPendingInvoiceItemInvoice': !exists(json, 'next_pending_invoice_item_invoice') ? undefined : (json['next_pending_invoice_item_invoice'] === null ? null : new Date(json['next_pending_invoice_item_invoice'])),
+        'pauseCollection': !exists(json, 'pause_collection') ? undefined : json['pause_collection'],
         'pendingInvoiceItemInterval': !exists(json, 'pending_invoice_item_interval') ? undefined : json['pending_invoice_item_interval'],
         'pendingUpdate': !exists(json, 'pending_update') ? undefined : json['pending_update'],
+        'prorationBehavior': !exists(json, 'proration_behavior') ? undefined : ProrationBehaviorEnum | BlankEnumFromJSON(json['proration_behavior']),
+        'prorationDate': !exists(json, 'proration_date') ? undefined : (json['proration_date'] === null ? null : new Date(json['proration_date'])),
         'quantity': !exists(json, 'quantity') ? undefined : json['quantity'],
         'startDate': !exists(json, 'start_date') ? undefined : (json['start_date'] === null ? null : new Date(json['start_date'])),
         'status': StripeSubscriptionStatusEnumFromJSON(json['status']),
@@ -333,8 +360,11 @@ export function StripeSubscriptionToJSON(value?: StripeSubscription | null): any
         'discount': value.discount,
         'ended_at': value.endedAt === undefined ? undefined : (value.endedAt === null ? null : value.endedAt.toISOString()),
         'next_pending_invoice_item_invoice': value.nextPendingInvoiceItemInvoice === undefined ? undefined : (value.nextPendingInvoiceItemInvoice === null ? null : value.nextPendingInvoiceItemInvoice.toISOString()),
+        'pause_collection': value.pauseCollection,
         'pending_invoice_item_interval': value.pendingInvoiceItemInterval,
         'pending_update': value.pendingUpdate,
+        'proration_behavior': ProrationBehaviorEnum | BlankEnumToJSON(value.prorationBehavior),
+        'proration_date': value.prorationDate === undefined ? undefined : (value.prorationDate === null ? null : value.prorationDate.toISOString()),
         'quantity': value.quantity,
         'start_date': value.startDate === undefined ? undefined : (value.startDate === null ? null : value.startDate.toISOString()),
         'status': StripeSubscriptionStatusEnumToJSON(value.status),

@@ -40,7 +40,7 @@ export interface CustomerBillingAddressUpdateRequest {
 export class CustomerApi extends runtime.BaseAPI {
 
     /**
-     * Update customer billing address. Required prior to subscribing to Yago services
+     * Manage customer billing address. Required prior to subscribing to Yago services.
      */
     async customerBillingAddressPartialUpdateRaw(requestParameters: CustomerBillingAddressPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
         const queryParameters: any = {};
@@ -73,7 +73,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Yago services
+     * Manage customer billing address. Required prior to subscribing to Yago services.
      */
     async customerBillingAddressPartialUpdate(requestParameters: CustomerBillingAddressPartialUpdateRequest = {}, initOverrides?: RequestInit): Promise<Address> {
         const response = await this.customerBillingAddressPartialUpdateRaw(requestParameters, initOverrides);
@@ -81,7 +81,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Yago services
+     * Manage customer billing address. Required prior to subscribing to Yago services.
      */
     async customerBillingAddressRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
         const queryParameters: any = {};
@@ -111,7 +111,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Yago services
+     * Manage customer billing address. Required prior to subscribing to Yago services.
      */
     async customerBillingAddressRetrieve(initOverrides?: RequestInit): Promise<Address> {
         const response = await this.customerBillingAddressRetrieveRaw(initOverrides);
@@ -119,7 +119,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Yago services
+     * Manage customer billing address. Required prior to subscribing to Yago services.
      */
     async customerBillingAddressUpdateRaw(requestParameters: CustomerBillingAddressUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
         if (requestParameters.address === null || requestParameters.address === undefined) {
@@ -156,7 +156,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update customer billing address. Required prior to subscribing to Yago services
+     * Manage customer billing address. Required prior to subscribing to Yago services.
      */
     async customerBillingAddressUpdate(requestParameters: CustomerBillingAddressUpdateRequest, initOverrides?: RequestInit): Promise<Address> {
         const response = await this.customerBillingAddressUpdateRaw(requestParameters, initOverrides);
@@ -164,7 +164,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the customer associated with the current user account
+     * Returns the customer associated with the current user account.
      */
     async customerRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Customer>> {
         const queryParameters: any = {};
@@ -194,7 +194,7 @@ export class CustomerApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the customer associated with the current user account
+     * Returns the customer associated with the current user account.
      */
     async customerRetrieve(initOverrides?: RequestInit): Promise<Customer> {
         const response = await this.customerRetrieveRaw(initOverrides);
