@@ -10,7 +10,7 @@
       "experimentalDecorators": true,
       "skipLibCheck": true,
       "esModuleInterop": true,
-      "types": ["jest"],
+      //"types": ["jest"],
       "lib": [
         "esnext",
         "dom",
