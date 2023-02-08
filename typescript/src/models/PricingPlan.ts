@@ -38,11 +38,29 @@ export interface PricingPlan {
      */
     price: string;
     /**
+     * Remove price and display request price offer in pricing table
+     * @type {boolean}
+     * @memberof PricingPlan
+     */
+    priceOnRequest?: boolean;
+    /**
+     * Comment for price, shown in product page.
+     * @type {string}
+     * @memberof PricingPlan
+     */
+    priceHint?: string | null;
+    /**
      * How many projects are included in this plan.
      * @type {number}
      * @memberof PricingPlan
      */
     projectQuotas: number;
+    /**
+     * Disable quota check for this plan.
+     * @type {boolean}
+     * @memberof PricingPlan
+     */
+    projectQuotasDisabled?: boolean;
     /**
      * How many models are included in this plan.
      * @type {number}
@@ -50,11 +68,23 @@ export interface PricingPlan {
      */
     modelQuotas: number;
     /**
+     * Disable quota check for models.
+     * @type {boolean}
+     * @memberof PricingPlan
+     */
+    modelQuotasDisabled?: boolean;
+    /**
      * How many AR views are included in this plan.
      * @type {number}
      * @memberof PricingPlan
      */
     viewQuotas: number;
+    /**
+     * Disable quota check for this plan.
+     * @type {boolean}
+     * @memberof PricingPlan
+     */
+    viewQuotasDisabled?: boolean;
     /**
      * Enables SEO tags and sharing previews.
      * @type {boolean}
@@ -73,6 +103,12 @@ export interface PricingPlan {
      * @memberof PricingPlan
      */
     customQrCodes?: boolean;
+    /**
+     * Allow usage of yago scenes app.
+     * @type {boolean}
+     * @memberof PricingPlan
+     */
+    scenesApp?: boolean;
 }
 
 export function PricingPlanFromJSON(json: any): PricingPlan {
@@ -88,12 +124,18 @@ export function PricingPlanFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'key': json['key'],
         'name': json['name'],
         'price': json['price'],
+        'priceOnRequest': !exists(json, 'price_on_request') ? undefined : json['price_on_request'],
+        'priceHint': !exists(json, 'price_hint') ? undefined : json['price_hint'],
         'projectQuotas': json['project_quotas'],
+        'projectQuotasDisabled': !exists(json, 'project_quotas_disabled') ? undefined : json['project_quotas_disabled'],
         'modelQuotas': json['model_quotas'],
+        'modelQuotasDisabled': !exists(json, 'model_quotas_disabled') ? undefined : json['model_quotas_disabled'],
         'viewQuotas': json['view_quotas'],
+        'viewQuotasDisabled': !exists(json, 'view_quotas_disabled') ? undefined : json['view_quotas_disabled'],
         'seoOptimization': !exists(json, 'seo_optimization') ? undefined : json['seo_optimization'],
         'viewReporting': !exists(json, 'view_reporting') ? undefined : json['view_reporting'],
         'customQrCodes': !exists(json, 'custom_qr_codes') ? undefined : json['custom_qr_codes'],
+        'scenesApp': !exists(json, 'scenes_app') ? undefined : json['scenes_app'],
     };
 }
 
@@ -109,12 +151,18 @@ export function PricingPlanToJSON(value?: PricingPlan | null): any {
         'key': value.key,
         'name': value.name,
         'price': value.price,
+        'price_on_request': value.priceOnRequest,
+        'price_hint': value.priceHint,
         'project_quotas': value.projectQuotas,
+        'project_quotas_disabled': value.projectQuotasDisabled,
         'model_quotas': value.modelQuotas,
+        'model_quotas_disabled': value.modelQuotasDisabled,
         'view_quotas': value.viewQuotas,
+        'view_quotas_disabled': value.viewQuotasDisabled,
         'seo_optimization': value.seoOptimization,
         'view_reporting': value.viewReporting,
         'custom_qr_codes': value.customQrCodes,
+        'scenes_app': value.scenesApp,
     };
 }
 

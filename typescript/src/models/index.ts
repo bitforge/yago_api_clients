@@ -3,6 +3,7 @@
 export * from './ActiveOrder';
 export * from './Address';
 export * from './AvailableState';
+export * from './BlankEnum';
 export * from './ChronicStats';
 export * from './CollectionMethodEnum';
 export * from './CountryEnum';

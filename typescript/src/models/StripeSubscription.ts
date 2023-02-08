@@ -16,40 +16,48 @@ import { exists, mapValues } from '../runtime';
 import {
     CollectionMethodEnum,
     CollectionMethodEnumFromJSON,
+    CollectionMethodEnumFromJSONTyped,
     CollectionMethodEnumToJSON,
 } from './CollectionMethodEnum';
 import {
+    ProrationBehaviorEnum | BlankEnum,
+    ProrationBehaviorEnum | BlankEnumFromJSON,
+    ProrationBehaviorEnum | BlankEnumFromJSONTyped,
+    ProrationBehaviorEnum | BlankEnumToJSON,
+} from './ProrationBehaviorEnum | BlankEnum';
+import {
     StripeSubscriptionStatusEnum,
     StripeSubscriptionStatusEnumFromJSON,
+    StripeSubscriptionStatusEnumFromJSONTyped,
     StripeSubscriptionStatusEnumToJSON,
 } from './StripeSubscriptionStatusEnum';
 
 /**
- *
+ * 
  * @export
  * @interface StripeSubscription
  */
 export interface StripeSubscription {
     /**
-     *
+     * 
      * @type {number}
      * @memberof StripeSubscription
      */
     readonly djstripeId: number;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof StripeSubscription
      */
     readonly djstripeCreated: Date;
     /**
-     *
+     * 
      * @type {Date}
      * @memberof StripeSubscription
      */
     readonly djstripeUpdated: Date;
     /**
-     *
+     * 
      * @type {string}
      * @memberof StripeSubscription
      */
@@ -175,6 +183,12 @@ export interface StripeSubscription {
      */
     pendingUpdate?: { [key: string]: any; } | null;
     /**
+     * Determines how to handle prorations when the billing cycle changes (e.g., when switching plans, resetting billing_cycle_anchor=now, or starting a trial), or if an item’s quantity changes
+     * @type {ProrationBehaviorEnum | BlankEnum}
+     * @memberof StripeSubscription
+     */
+    prorationBehavior?: ProrationBehaviorEnum | BlankEnum | null;
+    /**
      * If set, the proration will be calculated as though the subscription was updated at the given time. This can be used to apply exactly the same proration that was previewed with upcoming invoice endpoint. It can also be used to implement custom proration logic, such as prorating by day instead of by second, by providing the time that you wish to use for proration calculations
      * @type {Date}
      * @memberof StripeSubscription
@@ -275,7 +289,7 @@ export function StripeSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: 
         return json;
     }
     return {
-
+        
         'djstripeId': json['djstripe_id'],
         'djstripeCreated': (new Date(json['djstripe_created'])),
         'djstripeUpdated': (new Date(json['djstripe_updated'])),
@@ -300,6 +314,7 @@ export function StripeSubscriptionFromJSONTyped(json: any, ignoreDiscriminator: 
         'pauseCollection': !exists(json, 'pause_collection') ? undefined : json['pause_collection'],
         'pendingInvoiceItemInterval': !exists(json, 'pending_invoice_item_interval') ? undefined : json['pending_invoice_item_interval'],
         'pendingUpdate': !exists(json, 'pending_update') ? undefined : json['pending_update'],
+        'prorationBehavior': !exists(json, 'proration_behavior') ? undefined : ProrationBehaviorEnum | BlankEnumFromJSON(json['proration_behavior']),
         'prorationDate': !exists(json, 'proration_date') ? undefined : (json['proration_date'] === null ? null : new Date(json['proration_date'])),
         'quantity': !exists(json, 'quantity') ? undefined : json['quantity'],
         'startDate': !exists(json, 'start_date') ? undefined : (json['start_date'] === null ? null : new Date(json['start_date'])),
@@ -326,7 +341,7 @@ export function StripeSubscriptionToJSON(value?: StripeSubscription | null): any
         return null;
     }
     return {
-
+        
         'id': value.id,
         'livemode': value.livemode,
         'created': value.created === undefined ? undefined : (value.created === null ? null : value.created.toISOString()),
@@ -348,6 +363,7 @@ export function StripeSubscriptionToJSON(value?: StripeSubscription | null): any
         'pause_collection': value.pauseCollection,
         'pending_invoice_item_interval': value.pendingInvoiceItemInterval,
         'pending_update': value.pendingUpdate,
+        'proration_behavior': ProrationBehaviorEnum | BlankEnumToJSON(value.prorationBehavior),
         'proration_date': value.prorationDate === undefined ? undefined : (value.prorationDate === null ? null : value.prorationDate.toISOString()),
         'quantity': value.quantity,
         'start_date': value.startDate === undefined ? undefined : (value.startDate === null ? null : value.startDate.toISOString()),
