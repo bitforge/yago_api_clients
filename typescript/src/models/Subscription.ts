@@ -19,21 +19,15 @@ import {
     PaymentMethodEnumFromJSONTyped,
     PaymentMethodEnumToJSON,
 } from './PaymentMethodEnum';
-import {
-    StripeSubscription,
-    StripeSubscriptionFromJSON,
-    StripeSubscriptionFromJSONTyped,
-    StripeSubscriptionToJSON,
-} from './StripeSubscription';
 
 /**
- * 
+ *
  * @export
  * @interface Subscription
  */
 export interface Subscription {
     /**
-     * 
+     *
      * @type {PaymentMethodEnum}
      * @memberof Subscription
      */
@@ -45,17 +39,17 @@ export interface Subscription {
      */
     plan?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Subscription
      */
     billingAddress?: string | null;
     /**
-     * 
+     *
      * @type {StripeSubscription}
      * @memberof Subscription
      */
-    stripeSubscription: StripeSubscription;
+    //stripeSubscription: StripeSubscription;
 }
 
 export function SubscriptionFromJSON(json: any): Subscription {
@@ -67,11 +61,11 @@ export function SubscriptionFromJSONTyped(json: any, ignoreDiscriminator: boolea
         return json;
     }
     return {
-        
+
         'paymentMethod': !exists(json, 'payment_method') ? undefined : PaymentMethodEnumFromJSON(json['payment_method']),
         'plan': !exists(json, 'plan') ? undefined : json['plan'],
         'billingAddress': !exists(json, 'billing_address') ? undefined : json['billing_address'],
-        'stripeSubscription': StripeSubscriptionFromJSON(json['stripe_subscription']),
+        //'stripeSubscription': StripeSubscriptionFromJSON(json['stripe_subscription']),
     };
 }
 
@@ -83,11 +77,11 @@ export function SubscriptionToJSON(value?: Subscription | null): any {
         return null;
     }
     return {
-        
+
         'payment_method': PaymentMethodEnumToJSON(value.paymentMethod),
         'plan': value.plan,
         'billing_address': value.billingAddress,
-        'stripe_subscription': StripeSubscriptionToJSON(value.stripeSubscription),
+        //'stripe_subscription': StripeSubscriptionToJSON(value.stripeSubscription),
     };
 }
 
