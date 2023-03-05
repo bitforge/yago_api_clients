@@ -1,6 +1,5 @@
 .gitignore
 .travis.yml
-README.md
 analysis_options.yaml
 doc/ActiveOrder.md
 doc/Address.md
