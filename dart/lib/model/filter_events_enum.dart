@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class FilterEventsEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -34,13 +34,20 @@ class FilterEventsEnum {
     model,
   ];
 
-  static FilterEventsEnum fromJson(dynamic value) =>
-    FilterEventsEnumTypeTransformer().decode(value);
+  static FilterEventsEnum? fromJson(dynamic value) => FilterEventsEnumTypeTransformer().decode(value);
 
-  static List<FilterEventsEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(FilterEventsEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <FilterEventsEnum>[];
+  static List<FilterEventsEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <FilterEventsEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = FilterEventsEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [FilterEventsEnum] to String,
@@ -60,14 +67,14 @@ class FilterEventsEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  FilterEventsEnum decode(dynamic data, {bool allowNull}) {
+  FilterEventsEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'all': return FilterEventsEnum.all;
         case r'ar': return FilterEventsEnum.ar;
         case r'model': return FilterEventsEnum.model;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -76,6 +83,6 @@ class FilterEventsEnumTypeTransformer {
   }
 
   /// Singleton [FilterEventsEnumTypeTransformer] instance.
-  static FilterEventsEnumTypeTransformer _instance;
+  static FilterEventsEnumTypeTransformer? _instance;
 }
 

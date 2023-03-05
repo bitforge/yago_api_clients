@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **sku** | **String** | Stock-keeping unit. The identfier of the product in external webstore. | [optional] 
 **price** | **double** | Display price. The effective price is determined by the external webstore. | [optional] 
 **priceCurrency** | **String** |  | [optional] [readonly] 
+**verticalPlacement** | **bool** | When set to true, users will be able to place the model on a vertical surface. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

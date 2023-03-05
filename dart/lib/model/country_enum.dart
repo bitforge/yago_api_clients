@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class CountryEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -526,13 +526,20 @@ class CountryEnum {
     ZW,
   ];
 
-  static CountryEnum fromJson(dynamic value) =>
-    CountryEnumTypeTransformer().decode(value);
+  static CountryEnum? fromJson(dynamic value) => CountryEnumTypeTransformer().decode(value);
 
-  static List<CountryEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(CountryEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <CountryEnum>[];
+  static List<CountryEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CountryEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CountryEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [CountryEnum] to String,
@@ -552,9 +559,9 @@ class CountryEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  CountryEnum decode(dynamic data, {bool allowNull}) {
+  CountryEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'AF': return CountryEnum.AF;
         case r'AX': return CountryEnum.AX;
         case r'AL': return CountryEnum.AL;
@@ -805,7 +812,7 @@ class CountryEnumTypeTransformer {
         case r'ZM': return CountryEnum.ZM;
         case r'ZW': return CountryEnum.ZW;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -814,6 +821,6 @@ class CountryEnumTypeTransformer {
   }
 
   /// Singleton [CountryEnumTypeTransformer] instance.
-  static CountryEnumTypeTransformer _instance;
+  static CountryEnumTypeTransformer? _instance;
 }
 

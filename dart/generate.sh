@@ -5,7 +5,7 @@ rm -rf src
 
 # Fetch OpenAPI Schema an generate api client
 npx @openapitools/openapi-generator-cli generate \
-    -i http://dev.yago.cloud/api/schema/?lang=en \
+    -i http://yago.cloud/api/schema/?lang=en \
     -g dart
 
 # Remove empty tests

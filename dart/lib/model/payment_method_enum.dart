@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class PaymentMethodEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -34,13 +34,20 @@ class PaymentMethodEnum {
     BILL,
   ];
 
-  static PaymentMethodEnum fromJson(dynamic value) =>
-    PaymentMethodEnumTypeTransformer().decode(value);
+  static PaymentMethodEnum? fromJson(dynamic value) => PaymentMethodEnumTypeTransformer().decode(value);
 
-  static List<PaymentMethodEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(PaymentMethodEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <PaymentMethodEnum>[];
+  static List<PaymentMethodEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PaymentMethodEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PaymentMethodEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [PaymentMethodEnum] to String,
@@ -60,14 +67,14 @@ class PaymentMethodEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  PaymentMethodEnum decode(dynamic data, {bool allowNull}) {
+  PaymentMethodEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'NONE': return PaymentMethodEnum.NONE;
         case r'STRIPE': return PaymentMethodEnum.STRIPE;
         case r'BILL': return PaymentMethodEnum.BILL;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -76,6 +83,6 @@ class PaymentMethodEnumTypeTransformer {
   }
 
   /// Singleton [PaymentMethodEnumTypeTransformer] instance.
-  static PaymentMethodEnumTypeTransformer _instance;
+  static PaymentMethodEnumTypeTransformer? _instance;
 }
 

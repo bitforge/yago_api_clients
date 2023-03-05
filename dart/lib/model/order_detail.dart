@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,13 +13,13 @@ part of openapi.api;
 class OrderDetail {
   /// Returns a new [OrderDetail] instance.
   OrderDetail({
-    @required this.id,
-    @required this.project,
-    this.state,
+    required this.id,
+    required this.project,
+    required this.state,
     this.price,
-    @required this.priceCurrency,
-    @required this.created,
-    @required this.modified,
+    required this.priceCurrency,
+    required this.created,
+    required this.modified,
     this.models = const [],
     this.comments = const [],
   });
@@ -31,9 +31,9 @@ class OrderDetail {
   OrderState state;
 
   /// Estimation of order in CHF including taxes. Payment price for User before starting production.
-  double price;
+  double? price;
 
-  String priceCurrency;
+  String? priceCurrency;
 
   DateTime created;
 
@@ -57,87 +57,127 @@ class OrderDetail {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id.hashCode) +
-    (project == null ? 0 : project.hashCode) +
-    (state == null ? 0 : state.hashCode) +
-    (price == null ? 0 : price.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency.hashCode) +
-    (created == null ? 0 : created.hashCode) +
-    (modified == null ? 0 : modified.hashCode) +
-    (models == null ? 0 : models.hashCode) +
-    (comments == null ? 0 : comments.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (project.hashCode) +
+    (state.hashCode) +
+    (price == null ? 0 : price!.hashCode) +
+    (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
+    (created.hashCode) +
+    (modified.hashCode) +
+    (models.hashCode) +
+    (comments.hashCode);
 
   @override
   String toString() => 'OrderDetail[id=$id, project=$project, state=$state, price=$price, priceCurrency=$priceCurrency, created=$created, modified=$modified, models=$models, comments=$comments]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = id;
-      json[r'project'] = project;
-      json[r'state'] = state == null ? null : state;
-    if (price != null) {
-      json[r'price'] = price;
+      json[r'id'] = this.id;
+      json[r'project'] = this.project;
+      json[r'state'] = this.state;
+    if (this.price != null) {
+      json[r'price'] = this.price;
+    } else {
+      json[r'price'] = null;
     }
-      json[r'price_currency'] = priceCurrency;
-      json[r'created'] = created.toUtc().toIso8601String();
-      json[r'modified'] = modified.toUtc().toIso8601String();
-      json[r'models'] = models;
-      json[r'comments'] = comments;
+    if (this.priceCurrency != null) {
+      json[r'price_currency'] = this.priceCurrency;
+    } else {
+      json[r'price_currency'] = null;
+    }
+      json[r'created'] = this.created.toUtc().toIso8601String();
+      json[r'modified'] = this.modified.toUtc().toIso8601String();
+      json[r'models'] = this.models;
+      json[r'comments'] = this.comments;
     return json;
   }
 
   /// Returns a new [OrderDetail] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static OrderDetail fromJson(dynamic value) {
+  static OrderDetail? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "OrderDetail[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "OrderDetail[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return OrderDetail(
-        id: mapValueOfType<int>(json, r'id'),
-        project: mapValueOfType<String>(json, r'project'),
-        state: OrderState.fromJson(json[r'state']),
+        id: mapValueOfType<int>(json, r'id')!,
+        project: mapValueOfType<String>(json, r'project')!,
+        state: OrderState.fromJson(json[r'state'])!,
         price: mapValueOfType<double>(json, r'price'),
         priceCurrency: mapValueOfType<String>(json, r'price_currency'),
-        created: mapDateTime(json, r'created', ''),
-        modified: mapDateTime(json, r'modified', ''),
-        models: OrderModel.listFromJson(json[r'models']),
-        comments: OrderComment.listFromJson(json[r'comments']),
+        created: mapDateTime(json, r'created', '')!,
+        modified: mapDateTime(json, r'modified', '')!,
+        models: OrderModel.listFromJson(json[r'models'])!,
+        comments: OrderComment.listFromJson(json[r'comments'])!,
       );
     }
     return null;
   }
 
-  static List<OrderDetail> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(OrderDetail.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <OrderDetail>[];
+  static List<OrderDetail>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderDetail>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderDetail.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, OrderDetail> mapFromJson(dynamic json) {
     final map = <String, OrderDetail>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = OrderDetail.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderDetail.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of OrderDetail-objects as value to a dart map
-  static Map<String, List<OrderDetail>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<OrderDetail>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<OrderDetail>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = OrderDetail.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderDetail.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'project',
+    'state',
+    'price_currency',
+    'created',
+    'modified',
+    'models',
+    'comments',
+  };
 }
 

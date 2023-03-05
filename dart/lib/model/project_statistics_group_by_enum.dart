@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class ProjectStatisticsGroupByEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -44,13 +44,20 @@ class ProjectStatisticsGroupByEnum {
     countries,
   ];
 
-  static ProjectStatisticsGroupByEnum fromJson(dynamic value) =>
-    ProjectStatisticsGroupByEnumTypeTransformer().decode(value);
+  static ProjectStatisticsGroupByEnum? fromJson(dynamic value) => ProjectStatisticsGroupByEnumTypeTransformer().decode(value);
 
-  static List<ProjectStatisticsGroupByEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(ProjectStatisticsGroupByEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <ProjectStatisticsGroupByEnum>[];
+  static List<ProjectStatisticsGroupByEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProjectStatisticsGroupByEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ProjectStatisticsGroupByEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [ProjectStatisticsGroupByEnum] to String,
@@ -70,9 +77,9 @@ class ProjectStatisticsGroupByEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  ProjectStatisticsGroupByEnum decode(dynamic data, {bool allowNull}) {
+  ProjectStatisticsGroupByEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'all': return ProjectStatisticsGroupByEnum.all;
         case r'events': return ProjectStatisticsGroupByEnum.events;
         case r'models': return ProjectStatisticsGroupByEnum.models;
@@ -82,7 +89,7 @@ class ProjectStatisticsGroupByEnumTypeTransformer {
         case r'browsers': return ProjectStatisticsGroupByEnum.browsers;
         case r'countries': return ProjectStatisticsGroupByEnum.countries;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -91,6 +98,6 @@ class ProjectStatisticsGroupByEnumTypeTransformer {
   }
 
   /// Singleton [ProjectStatisticsGroupByEnumTypeTransformer] instance.
-  static ProjectStatisticsGroupByEnumTypeTransformer _instance;
+  static ProjectStatisticsGroupByEnumTypeTransformer? _instance;
 }
 

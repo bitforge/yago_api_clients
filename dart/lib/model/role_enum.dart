@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class RoleEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -36,13 +36,20 @@ class RoleEnum {
     DESIGNER,
   ];
 
-  static RoleEnum fromJson(dynamic value) =>
-    RoleEnumTypeTransformer().decode(value);
+  static RoleEnum? fromJson(dynamic value) => RoleEnumTypeTransformer().decode(value);
 
-  static List<RoleEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(RoleEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <RoleEnum>[];
+  static List<RoleEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RoleEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = RoleEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [RoleEnum] to String,
@@ -62,15 +69,15 @@ class RoleEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  RoleEnum decode(dynamic data, {bool allowNull}) {
+  RoleEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'OWNER': return RoleEnum.OWNER;
         case r'MEMBER': return RoleEnum.MEMBER;
         case r'MANAGER': return RoleEnum.MANAGER;
         case r'DESIGNER': return RoleEnum.DESIGNER;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -79,6 +86,6 @@ class RoleEnumTypeTransformer {
   }
 
   /// Singleton [RoleEnumTypeTransformer] instance.
-  static RoleEnumTypeTransformer _instance;
+  static RoleEnumTypeTransformer? _instance;
 }
 

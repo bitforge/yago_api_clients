@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class OrderState {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -42,13 +42,20 @@ class OrderState {
     RAGE_QUIT,
   ];
 
-  static OrderState fromJson(dynamic value) =>
-    OrderStateTypeTransformer().decode(value);
+  static OrderState? fromJson(dynamic value) => OrderStateTypeTransformer().decode(value);
 
-  static List<OrderState> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(OrderState.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <OrderState>[];
+  static List<OrderState>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderState>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderState.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [OrderState] to String,
@@ -68,9 +75,9 @@ class OrderStateTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  OrderState decode(dynamic data, {bool allowNull}) {
+  OrderState? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'PREPARING': return OrderState.PREPARING;
         case r'ESTIMATING': return OrderState.ESTIMATING;
         case r'READY_TO_PAY': return OrderState.READY_TO_PAY;
@@ -79,7 +86,7 @@ class OrderStateTypeTransformer {
         case r'FINISHED': return OrderState.FINISHED;
         case r'RAGE_QUIT': return OrderState.RAGE_QUIT;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -88,6 +95,6 @@ class OrderStateTypeTransformer {
   }
 
   /// Singleton [OrderStateTypeTransformer] instance.
-  static OrderStateTypeTransformer _instance;
+  static OrderStateTypeTransformer? _instance;
 }
 

@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -25,32 +25,50 @@ class PatchedAddress {
     this.country,
   });
 
-  String id;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? id;
 
   /// Full person name.
-  String name;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? name;
 
-  String email;
+  String? email;
 
   /// CH or international format (e.g 079 123 45 67 / +41791234567)
-  String phone;
+  String? phone;
 
   /// Address line 1 (e.g., street, PO Box, or company name).
-  String line1;
+  String? line1;
 
   /// Address line 2 (e.g., apartment, suite, unit, or building).
-  String line2;
+  String? line2;
 
   /// Postal code.
-  String postalCode;
+  String? postalCode;
 
   /// City, district, suburb, town, or village.
-  String city;
+  String? city;
 
   /// State, county, province, or region.
-  String state;
+  String? state;
 
-  CountryEnum country;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  CountryEnum? country;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PatchedAddress &&
@@ -67,52 +85,72 @@ class PatchedAddress {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id.hashCode) +
-    (name == null ? 0 : name.hashCode) +
-    (email == null ? 0 : email.hashCode) +
-    (phone == null ? 0 : phone.hashCode) +
-    (line1 == null ? 0 : line1.hashCode) +
-    (line2 == null ? 0 : line2.hashCode) +
-    (postalCode == null ? 0 : postalCode.hashCode) +
-    (city == null ? 0 : city.hashCode) +
-    (state == null ? 0 : state.hashCode) +
-    (country == null ? 0 : country.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
+    (phone == null ? 0 : phone!.hashCode) +
+    (line1 == null ? 0 : line1!.hashCode) +
+    (line2 == null ? 0 : line2!.hashCode) +
+    (postalCode == null ? 0 : postalCode!.hashCode) +
+    (city == null ? 0 : city!.hashCode) +
+    (state == null ? 0 : state!.hashCode) +
+    (country == null ? 0 : country!.hashCode);
 
   @override
   String toString() => 'PatchedAddress[id=$id, name=$name, email=$email, phone=$phone, line1=$line1, line2=$line2, postalCode=$postalCode, city=$city, state=$state, country=$country]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (id != null) {
-      json[r'id'] = id;
+    if (this.id != null) {
+      json[r'id'] = this.id;
+    } else {
+      json[r'id'] = null;
     }
-    if (name != null) {
-      json[r'name'] = name;
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
     }
-    if (email != null) {
-      json[r'email'] = email;
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
     }
-    if (phone != null) {
-      json[r'phone'] = phone;
+    if (this.phone != null) {
+      json[r'phone'] = this.phone;
+    } else {
+      json[r'phone'] = null;
     }
-    if (line1 != null) {
-      json[r'line1'] = line1;
+    if (this.line1 != null) {
+      json[r'line1'] = this.line1;
+    } else {
+      json[r'line1'] = null;
     }
-    if (line2 != null) {
-      json[r'line2'] = line2;
+    if (this.line2 != null) {
+      json[r'line2'] = this.line2;
+    } else {
+      json[r'line2'] = null;
     }
-    if (postalCode != null) {
-      json[r'postal_code'] = postalCode;
+    if (this.postalCode != null) {
+      json[r'postal_code'] = this.postalCode;
+    } else {
+      json[r'postal_code'] = null;
     }
-    if (city != null) {
-      json[r'city'] = city;
+    if (this.city != null) {
+      json[r'city'] = this.city;
+    } else {
+      json[r'city'] = null;
     }
-    if (state != null) {
-      json[r'state'] = state;
+    if (this.state != null) {
+      json[r'state'] = this.state;
+    } else {
+      json[r'state'] = null;
     }
-    if (country != null) {
-      json[r'country'] = country;
+    if (this.country != null) {
+      json[r'country'] = this.country;
+    } else {
+      json[r'country'] = null;
     }
     return json;
   }
@@ -120,9 +158,21 @@ class PatchedAddress {
   /// Returns a new [PatchedAddress] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PatchedAddress fromJson(dynamic value) {
+  static PatchedAddress? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "PatchedAddress[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PatchedAddress[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return PatchedAddress(
         id: mapValueOfType<String>(json, r'id'),
         name: mapValueOfType<String>(json, r'name'),
@@ -139,36 +189,50 @@ class PatchedAddress {
     return null;
   }
 
-  static List<PatchedAddress> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(PatchedAddress.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <PatchedAddress>[];
+  static List<PatchedAddress>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PatchedAddress>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PatchedAddress.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, PatchedAddress> mapFromJson(dynamic json) {
     final map = <String, PatchedAddress>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = PatchedAddress.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = PatchedAddress.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of PatchedAddress-objects as value to a dart map
-  static Map<String, List<PatchedAddress>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<PatchedAddress>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PatchedAddress>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = PatchedAddress.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = PatchedAddress.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+  };
 }
 

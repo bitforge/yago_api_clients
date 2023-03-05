@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class ModelsApi {
-  ModelsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  ModelsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -24,22 +24,16 @@ class ModelsApi {
   ///
   /// * [ModelCreate] modelCreate (required):
   Future<Response> modelsCreateWithHttpInfo(ModelCreate modelCreate,) async {
-    // Verify required params are set.
-    if (modelCreate == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: modelCreate');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/';
 
     // ignore: prefer_final_locals
-    Object postBody = modelCreate;
+    Object? postBody = modelCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -50,8 +44,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -60,7 +53,7 @@ class ModelsApi {
   /// Parameters:
   ///
   /// * [ModelCreate] modelCreate (required):
-  Future<ModelCreate> modelsCreate(ModelCreate modelCreate,) async {
+  Future<ModelCreate?> modelsCreate(ModelCreate modelCreate,) async {
     final response = await modelsCreateWithHttpInfo(modelCreate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -68,11 +61,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelCreate',) as ModelCreate;
     
     }
-    return Future<ModelCreate>.value();
+    return null;
   }
 
   /// Remove a model. Be cautious, this is permanent!
@@ -84,23 +77,17 @@ class ModelsApi {
   /// * [String] id (required):
   ///   A UUID string identifying this Model.
   Future<Response> modelsDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -111,8 +98,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -137,23 +123,17 @@ class ModelsApi {
   ///
   /// * [String] slug (required):
   Future<Response> modelsEmbedOptionsRetrieveWithHttpInfo(String slug,) async {
-    // Verify required params are set.
-    if (slug == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: slug');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/{slug}/embed/options/'
       .replaceAll('{slug}', slug);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>[];
     const contentTypes = <String>[];
 
 
@@ -164,8 +144,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -174,7 +153,7 @@ class ModelsApi {
   /// Parameters:
   ///
   /// * [String] slug (required):
-  Future<ModelInfo> modelsEmbedOptionsRetrieve(String slug,) async {
+  Future<ModelInfo?> modelsEmbedOptionsRetrieve(String slug,) async {
     final response = await modelsEmbedOptionsRetrieveWithHttpInfo(slug,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -182,11 +161,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelInfo',) as ModelInfo;
     
     }
-    return Future<ModelInfo>.value();
+    return null;
   }
 
   /// Delete a file.
@@ -197,23 +176,17 @@ class ModelsApi {
   ///
   /// * [String] id (required):
   Future<Response> modelsGlbDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/glb/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -224,8 +197,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -254,21 +226,13 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<Response> modelsGlbUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
-    // Verify required params are set.
-    if (contentDisposition == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
-    }
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> modelsGlbUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile? body, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/glb/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = body;
+    Object? postBody = body;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -276,7 +240,6 @@ class ModelsApi {
 
     headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/octet-stream'];
 
 
@@ -287,8 +250,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -303,7 +265,7 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<FileUpload> modelsGlbUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+  Future<FileUpload?> modelsGlbUpdate(String contentDisposition, String id, { MultipartFile? body, }) async {
     final response = await modelsGlbUpdateWithHttpInfo(contentDisposition, id,  body: body, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -311,11 +273,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
     
     }
-    return Future<FileUpload>.value();
+    return null;
   }
 
   /// Delete an image.
@@ -326,23 +288,17 @@ class ModelsApi {
   ///
   /// * [String] id (required):
   Future<Response> modelsImageDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/image/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -353,8 +309,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -383,21 +338,13 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<Response> modelsImageUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
-    // Verify required params are set.
-    if (contentDisposition == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
-    }
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> modelsImageUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile? body, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/image/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = body;
+    Object? postBody = body;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -405,8 +352,7 @@ class ModelsApi {
 
     headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
-    const contentTypes = <String>['image/_*'];
+    const contentTypes = <String>['image/*'];
 
 
     return apiClient.invokeAPI(
@@ -416,8 +362,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -432,7 +377,7 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<FileUpload> modelsImageUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+  Future<FileUpload?> modelsImageUpdate(String contentDisposition, String id, { MultipartFile? body, }) async {
     final response = await modelsImageUpdateWithHttpInfo(contentDisposition, id,  body: body, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -440,11 +385,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
     
     }
-    return Future<FileUpload>.value();
+    return null;
   }
 
   /// Lists all models for all projects the user is a member of. Can be filtered by `project`.
@@ -457,27 +402,24 @@ class ModelsApi {
   ///
   /// * [String] status:
   ///   DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
-  Future<Response> modelsListWithHttpInfo({ String project, String status, }) async {
-    // Verify required params are set.
-
+  Future<Response> modelsListWithHttpInfo({ String? project, String? status, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/models/';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
     if (project != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'project', project));
+      queryParams.addAll(_queryParams('', 'project', project));
     }
     if (status != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'status', status));
+      queryParams.addAll(_queryParams('', 'status', status));
     }
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -488,8 +430,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -501,7 +442,7 @@ class ModelsApi {
   ///
   /// * [String] status:
   ///   DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
-  Future<List<Model>> modelsList({ String project, String status, }) async {
+  Future<List<Model>?> modelsList({ String? project, String? status, }) async {
     final response = await modelsListWithHttpInfo( project: project, status: status, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -509,14 +450,14 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<Model>') as List)
         .cast<Model>()
-        .toList(growable: false);
+        .toList();
 
     }
-    return Future<List<Model>>.value();
+    return null;
   }
 
   /// Delete a file.
@@ -527,23 +468,17 @@ class ModelsApi {
   ///
   /// * [String] id (required):
   Future<Response> modelsModelDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/model/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -554,8 +489,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -584,21 +518,13 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<Response> modelsModelUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
-    // Verify required params are set.
-    if (contentDisposition == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
-    }
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> modelsModelUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile? body, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/model/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = body;
+    Object? postBody = body;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -606,7 +532,6 @@ class ModelsApi {
 
     headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/octet-stream'];
 
 
@@ -617,8 +542,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -633,7 +557,7 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<FileUpload> modelsModelUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+  Future<FileUpload?> modelsModelUpdate(String contentDisposition, String id, { MultipartFile? body, }) async {
     final response = await modelsModelUpdateWithHttpInfo(contentDisposition, id,  body: body, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -641,11 +565,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
     
     }
-    return Future<FileUpload>.value();
+    return null;
   }
 
   /// Change as subset of model details.
@@ -658,24 +582,18 @@ class ModelsApi {
   ///   A UUID string identifying this Model.
   ///
   /// * [PatchedModelUpdate] patchedModelUpdate:
-  Future<Response> modelsPartialUpdateWithHttpInfo(String id, { PatchedModelUpdate patchedModelUpdate, }) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> modelsPartialUpdateWithHttpInfo(String id, { PatchedModelUpdate? patchedModelUpdate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = patchedModelUpdate;
+    Object? postBody = patchedModelUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -686,8 +604,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -699,7 +616,7 @@ class ModelsApi {
   ///   A UUID string identifying this Model.
   ///
   /// * [PatchedModelUpdate] patchedModelUpdate:
-  Future<ModelUpdate> modelsPartialUpdate(String id, { PatchedModelUpdate patchedModelUpdate, }) async {
+  Future<ModelUpdate?> modelsPartialUpdate(String id, { PatchedModelUpdate? patchedModelUpdate, }) async {
     final response = await modelsPartialUpdateWithHttpInfo(id,  patchedModelUpdate: patchedModelUpdate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -707,11 +624,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelUpdate',) as ModelUpdate;
     
     }
-    return Future<ModelUpdate>.value();
+    return null;
   }
 
   /// Details of a single model.
@@ -723,23 +640,17 @@ class ModelsApi {
   /// * [String] id (required):
   ///   A UUID string identifying this Model.
   Future<Response> modelsRetrieveWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -750,8 +661,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -761,7 +671,7 @@ class ModelsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Model.
-  Future<Model> modelsRetrieve(String id,) async {
+  Future<Model?> modelsRetrieve(String id,) async {
     final response = await modelsRetrieveWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -769,269 +679,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Model',) as Model;
     
     }
-    return Future<Model>.value();
-  }
-
-  /// Delete a file.
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] id (required):
-  Future<Response> modelsUnityAndroidDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
-    // ignore: prefer_const_declarations
-    final path = r'/api/models/{id}/unity_android/'
-      .replaceAll('{id}', id);
-
-    // ignore: prefer_final_locals
-    Object postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'DELETE',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
-    );
-  }
-
-  /// Delete a file.
-  ///
-  /// Parameters:
-  ///
-  /// * [String] id (required):
-  Future<void> modelsUnityAndroidDestroy(String id,) async {
-    final response = await modelsUnityAndroidDestroyWithHttpInfo(id,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-  }
-
-  /// Upload a file. Max size 30MB. Filename is required!
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] contentDisposition (required):
-  ///   The original filename.
-  ///
-  /// * [String] id (required):
-  ///   A UUID identifying this object.
-  ///
-  /// * [MultipartFile] body:
-  Future<Response> modelsUnityAndroidUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
-    // Verify required params are set.
-    if (contentDisposition == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
-    }
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
-    // ignore: prefer_const_declarations
-    final path = r'/api/models/{id}/unity_android/'
-      .replaceAll('{id}', id);
-
-    // ignore: prefer_final_locals
-    Object postBody = body;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
-
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
-    const contentTypes = <String>['application/octet-stream'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
-    );
-  }
-
-  /// Upload a file. Max size 30MB. Filename is required!
-  ///
-  /// Parameters:
-  ///
-  /// * [String] contentDisposition (required):
-  ///   The original filename.
-  ///
-  /// * [String] id (required):
-  ///   A UUID identifying this object.
-  ///
-  /// * [MultipartFile] body:
-  Future<FileUpload> modelsUnityAndroidUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
-    final response = await modelsUnityAndroidUpdateWithHttpInfo(contentDisposition, id,  body: body, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
-    
-    }
-    return Future<FileUpload>.value();
-  }
-
-  /// Delete a file.
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] id (required):
-  Future<Response> modelsUnityIosDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
-    // ignore: prefer_const_declarations
-    final path = r'/api/models/{id}/unity_ios/'
-      .replaceAll('{id}', id);
-
-    // ignore: prefer_final_locals
-    Object postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
-    const contentTypes = <String>[];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'DELETE',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
-    );
-  }
-
-  /// Delete a file.
-  ///
-  /// Parameters:
-  ///
-  /// * [String] id (required):
-  Future<void> modelsUnityIosDestroy(String id,) async {
-    final response = await modelsUnityIosDestroyWithHttpInfo(id,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-  }
-
-  /// Upload a file. Max size 30MB. Filename is required!
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] contentDisposition (required):
-  ///   The original filename.
-  ///
-  /// * [String] id (required):
-  ///   A UUID identifying this object.
-  ///
-  /// * [MultipartFile] body:
-  Future<Response> modelsUnityIosUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
-    // Verify required params are set.
-    if (contentDisposition == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
-    }
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
-    // ignore: prefer_const_declarations
-    final path = r'/api/models/{id}/unity_ios/'
-      .replaceAll('{id}', id);
-
-    // ignore: prefer_final_locals
-    Object postBody = body;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
-
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
-    const contentTypes = <String>['application/octet-stream'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'PUT',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
-    );
-  }
-
-  /// Upload a file. Max size 30MB. Filename is required!
-  ///
-  /// Parameters:
-  ///
-  /// * [String] contentDisposition (required):
-  ///   The original filename.
-  ///
-  /// * [String] id (required):
-  ///   A UUID identifying this object.
-  ///
-  /// * [MultipartFile] body:
-  Future<FileUpload> modelsUnityIosUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
-    final response = await modelsUnityIosUpdateWithHttpInfo(contentDisposition, id,  body: body, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
-    
-    }
-    return Future<FileUpload>.value();
+    return null;
   }
 
   /// Change model details. Translated field are all optional expcet for `name_de`.
@@ -1044,24 +696,18 @@ class ModelsApi {
   ///   A UUID string identifying this Model.
   ///
   /// * [ModelUpdate] modelUpdate:
-  Future<Response> modelsUpdateWithHttpInfo(String id, { ModelUpdate modelUpdate, }) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> modelsUpdateWithHttpInfo(String id, { ModelUpdate? modelUpdate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = modelUpdate;
+    Object? postBody = modelUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -1072,8 +718,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -1085,7 +730,7 @@ class ModelsApi {
   ///   A UUID string identifying this Model.
   ///
   /// * [ModelUpdate] modelUpdate:
-  Future<ModelUpdate> modelsUpdate(String id, { ModelUpdate modelUpdate, }) async {
+  Future<ModelUpdate?> modelsUpdate(String id, { ModelUpdate? modelUpdate, }) async {
     final response = await modelsUpdateWithHttpInfo(id,  modelUpdate: modelUpdate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1093,11 +738,11 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ModelUpdate',) as ModelUpdate;
     
     }
-    return Future<ModelUpdate>.value();
+    return null;
   }
 
   /// Delete a file.
@@ -1108,23 +753,17 @@ class ModelsApi {
   ///
   /// * [String] id (required):
   Future<Response> modelsUsdzDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/usdz/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -1135,8 +774,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -1165,21 +803,13 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<Response> modelsUsdzUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
-    // Verify required params are set.
-    if (contentDisposition == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
-    }
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> modelsUsdzUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile? body, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/models/{id}/usdz/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = body;
+    Object? postBody = body;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -1187,7 +817,6 @@ class ModelsApi {
 
     headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/octet-stream'];
 
 
@@ -1198,8 +827,7 @@ class ModelsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -1214,7 +842,7 @@ class ModelsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<FileUpload> modelsUsdzUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+  Future<FileUpload?> modelsUsdzUpdate(String contentDisposition, String id, { MultipartFile? body, }) async {
     final response = await modelsUsdzUpdateWithHttpInfo(contentDisposition, id,  body: body, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -1222,10 +850,10 @@ class ModelsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
     
     }
-    return Future<FileUpload>.value();
+    return null;
   }
 }

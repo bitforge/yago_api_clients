@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,15 +13,21 @@ part of openapi.api;
 class PricingPlan {
   /// Returns a new [PricingPlan] instance.
   PricingPlan({
-    @required this.key,
-    @required this.name,
-    @required this.price,
-    @required this.projectQuotas,
-    @required this.modelQuotas,
-    @required this.viewQuotas,
+    required this.key,
+    required this.name,
+    required this.price,
+    this.priceOnRequest,
+    this.priceHint,
+    required this.projectQuotas,
+    this.projectQuotasDisabled,
+    required this.modelQuotas,
+    this.modelQuotasDisabled,
+    required this.viewQuotas,
+    this.viewQuotasDisabled,
     this.seoOptimization,
     this.viewReporting,
     this.customQrCodes,
+    this.scenesApp,
   });
 
   String key;
@@ -31,74 +37,191 @@ class PricingPlan {
   /// For display purposes, payment price is defined in stripe product.
   double price;
 
+  /// Remove price and display request price offer in pricing table
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? priceOnRequest;
+
+  /// Comment for price, shown in product page.
+  String? priceHint;
+
   /// How many projects are included in this plan.
-  // minimum: 0
-  // maximum: 9223372036854775807
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 9223372036854775807
   int projectQuotas;
 
+  /// Disable quota check for this plan.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? projectQuotasDisabled;
+
   /// How many models are included in this plan.
-  // minimum: 0
-  // maximum: 9223372036854775807
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 9223372036854775807
   int modelQuotas;
 
+  /// Disable quota check for models.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? modelQuotasDisabled;
+
   /// How many AR views are included in this plan.
-  // minimum: 0
-  // maximum: 9223372036854775807
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 9223372036854775807
   int viewQuotas;
 
+  /// Disable quota check for this plan.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? viewQuotasDisabled;
+
   /// Enables SEO tags and sharing previews.
-  bool seoOptimization;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? seoOptimization;
 
   /// Allows to view detailed statistics about model views.
-  bool viewReporting;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? viewReporting;
 
   /// Allows to visually customie QR Codes when enabled.
-  bool customQrCodes;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? customQrCodes;
+
+  /// Allow usage of yago scenes app.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? scenesApp;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PricingPlan &&
      other.key == key &&
      other.name == name &&
      other.price == price &&
+     other.priceOnRequest == priceOnRequest &&
+     other.priceHint == priceHint &&
      other.projectQuotas == projectQuotas &&
+     other.projectQuotasDisabled == projectQuotasDisabled &&
      other.modelQuotas == modelQuotas &&
+     other.modelQuotasDisabled == modelQuotasDisabled &&
      other.viewQuotas == viewQuotas &&
+     other.viewQuotasDisabled == viewQuotasDisabled &&
      other.seoOptimization == seoOptimization &&
      other.viewReporting == viewReporting &&
-     other.customQrCodes == customQrCodes;
+     other.customQrCodes == customQrCodes &&
+     other.scenesApp == scenesApp;
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (key == null ? 0 : key.hashCode) +
-    (name == null ? 0 : name.hashCode) +
-    (price == null ? 0 : price.hashCode) +
-    (projectQuotas == null ? 0 : projectQuotas.hashCode) +
-    (modelQuotas == null ? 0 : modelQuotas.hashCode) +
-    (viewQuotas == null ? 0 : viewQuotas.hashCode) +
-    (seoOptimization == null ? 0 : seoOptimization.hashCode) +
-    (viewReporting == null ? 0 : viewReporting.hashCode) +
-    (customQrCodes == null ? 0 : customQrCodes.hashCode);
+    // ignore: unnecessary_parenthesis
+    (key.hashCode) +
+    (name.hashCode) +
+    (price.hashCode) +
+    (priceOnRequest == null ? 0 : priceOnRequest!.hashCode) +
+    (priceHint == null ? 0 : priceHint!.hashCode) +
+    (projectQuotas.hashCode) +
+    (projectQuotasDisabled == null ? 0 : projectQuotasDisabled!.hashCode) +
+    (modelQuotas.hashCode) +
+    (modelQuotasDisabled == null ? 0 : modelQuotasDisabled!.hashCode) +
+    (viewQuotas.hashCode) +
+    (viewQuotasDisabled == null ? 0 : viewQuotasDisabled!.hashCode) +
+    (seoOptimization == null ? 0 : seoOptimization!.hashCode) +
+    (viewReporting == null ? 0 : viewReporting!.hashCode) +
+    (customQrCodes == null ? 0 : customQrCodes!.hashCode) +
+    (scenesApp == null ? 0 : scenesApp!.hashCode);
 
   @override
-  String toString() => 'PricingPlan[key=$key, name=$name, price=$price, projectQuotas=$projectQuotas, modelQuotas=$modelQuotas, viewQuotas=$viewQuotas, seoOptimization=$seoOptimization, viewReporting=$viewReporting, customQrCodes=$customQrCodes]';
+  String toString() => 'PricingPlan[key=$key, name=$name, price=$price, priceOnRequest=$priceOnRequest, priceHint=$priceHint, projectQuotas=$projectQuotas, projectQuotasDisabled=$projectQuotasDisabled, modelQuotas=$modelQuotas, modelQuotasDisabled=$modelQuotasDisabled, viewQuotas=$viewQuotas, viewQuotasDisabled=$viewQuotasDisabled, seoOptimization=$seoOptimization, viewReporting=$viewReporting, customQrCodes=$customQrCodes, scenesApp=$scenesApp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'key'] = key;
-      json[r'name'] = name;
-      json[r'price'] = price;
-      json[r'project_quotas'] = projectQuotas;
-      json[r'model_quotas'] = modelQuotas;
-      json[r'view_quotas'] = viewQuotas;
-    if (seoOptimization != null) {
-      json[r'seo_optimization'] = seoOptimization;
+      json[r'key'] = this.key;
+      json[r'name'] = this.name;
+      json[r'price'] = this.price;
+    if (this.priceOnRequest != null) {
+      json[r'price_on_request'] = this.priceOnRequest;
+    } else {
+      json[r'price_on_request'] = null;
     }
-    if (viewReporting != null) {
-      json[r'view_reporting'] = viewReporting;
+    if (this.priceHint != null) {
+      json[r'price_hint'] = this.priceHint;
+    } else {
+      json[r'price_hint'] = null;
     }
-    if (customQrCodes != null) {
-      json[r'custom_qr_codes'] = customQrCodes;
+      json[r'project_quotas'] = this.projectQuotas;
+    if (this.projectQuotasDisabled != null) {
+      json[r'project_quotas_disabled'] = this.projectQuotasDisabled;
+    } else {
+      json[r'project_quotas_disabled'] = null;
+    }
+      json[r'model_quotas'] = this.modelQuotas;
+    if (this.modelQuotasDisabled != null) {
+      json[r'model_quotas_disabled'] = this.modelQuotasDisabled;
+    } else {
+      json[r'model_quotas_disabled'] = null;
+    }
+      json[r'view_quotas'] = this.viewQuotas;
+    if (this.viewQuotasDisabled != null) {
+      json[r'view_quotas_disabled'] = this.viewQuotasDisabled;
+    } else {
+      json[r'view_quotas_disabled'] = null;
+    }
+    if (this.seoOptimization != null) {
+      json[r'seo_optimization'] = this.seoOptimization;
+    } else {
+      json[r'seo_optimization'] = null;
+    }
+    if (this.viewReporting != null) {
+      json[r'view_reporting'] = this.viewReporting;
+    } else {
+      json[r'view_reporting'] = null;
+    }
+    if (this.customQrCodes != null) {
+      json[r'custom_qr_codes'] = this.customQrCodes;
+    } else {
+      json[r'custom_qr_codes'] = null;
+    }
+    if (this.scenesApp != null) {
+      json[r'scenes_app'] = this.scenesApp;
+    } else {
+      json[r'scenes_app'] = null;
     }
     return json;
   }
@@ -106,54 +229,92 @@ class PricingPlan {
   /// Returns a new [PricingPlan] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PricingPlan fromJson(dynamic value) {
+  static PricingPlan? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "PricingPlan[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PricingPlan[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return PricingPlan(
-        key: mapValueOfType<String>(json, r'key'),
-        name: mapValueOfType<String>(json, r'name'),
-        price: mapValueOfType<double>(json, r'price'),
-        projectQuotas: mapValueOfType<int>(json, r'project_quotas'),
-        modelQuotas: mapValueOfType<int>(json, r'model_quotas'),
-        viewQuotas: mapValueOfType<int>(json, r'view_quotas'),
+        key: mapValueOfType<String>(json, r'key')!,
+        name: mapValueOfType<String>(json, r'name')!,
+        price: mapValueOfType<double>(json, r'price')!,
+        priceOnRequest: mapValueOfType<bool>(json, r'price_on_request'),
+        priceHint: mapValueOfType<String>(json, r'price_hint'),
+        projectQuotas: mapValueOfType<int>(json, r'project_quotas')!,
+        projectQuotasDisabled: mapValueOfType<bool>(json, r'project_quotas_disabled'),
+        modelQuotas: mapValueOfType<int>(json, r'model_quotas')!,
+        modelQuotasDisabled: mapValueOfType<bool>(json, r'model_quotas_disabled'),
+        viewQuotas: mapValueOfType<int>(json, r'view_quotas')!,
+        viewQuotasDisabled: mapValueOfType<bool>(json, r'view_quotas_disabled'),
         seoOptimization: mapValueOfType<bool>(json, r'seo_optimization'),
         viewReporting: mapValueOfType<bool>(json, r'view_reporting'),
         customQrCodes: mapValueOfType<bool>(json, r'custom_qr_codes'),
+        scenesApp: mapValueOfType<bool>(json, r'scenes_app'),
       );
     }
     return null;
   }
 
-  static List<PricingPlan> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(PricingPlan.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <PricingPlan>[];
+  static List<PricingPlan>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PricingPlan>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PricingPlan.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, PricingPlan> mapFromJson(dynamic json) {
     final map = <String, PricingPlan>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = PricingPlan.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = PricingPlan.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of PricingPlan-objects as value to a dart map
-  static Map<String, List<PricingPlan>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<PricingPlan>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PricingPlan>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = PricingPlan.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = PricingPlan.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'key',
+    'name',
+    'price',
+    'project_quotas',
+    'model_quotas',
+    'view_quotas',
+  };
 }
 

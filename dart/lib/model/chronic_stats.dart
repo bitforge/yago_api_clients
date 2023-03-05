@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,9 +13,9 @@ part of openapi.api;
 class ChronicStats {
   /// Returns a new [ChronicStats] instance.
   ChronicStats({
-    @required this.label,
+    required this.label,
     this.data = const {},
-    @required this.total,
+    required this.total,
   });
 
   String label;
@@ -32,67 +32,96 @@ class ChronicStats {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (label == null ? 0 : label.hashCode) +
-    (data == null ? 0 : data.hashCode) +
-    (total == null ? 0 : total.hashCode);
+    // ignore: unnecessary_parenthesis
+    (label.hashCode) +
+    (data.hashCode) +
+    (total.hashCode);
 
   @override
   String toString() => 'ChronicStats[label=$label, data=$data, total=$total]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'label'] = label;
-      json[r'data'] = data;
-      json[r'total'] = total;
+      json[r'label'] = this.label;
+      json[r'data'] = this.data;
+      json[r'total'] = this.total;
     return json;
   }
 
   /// Returns a new [ChronicStats] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ChronicStats fromJson(dynamic value) {
+  static ChronicStats? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "ChronicStats[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ChronicStats[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return ChronicStats(
-        label: mapValueOfType<String>(json, r'label'),
-        data: mapValueOfType<Map<String, Object>>(json, r'data'),
-        total: mapValueOfType<int>(json, r'total'),
+        label: mapValueOfType<String>(json, r'label')!,
+        data: mapCastOfType<String, Object>(json, r'data')!,
+        total: mapValueOfType<int>(json, r'total')!,
       );
     }
     return null;
   }
 
-  static List<ChronicStats> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(ChronicStats.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <ChronicStats>[];
+  static List<ChronicStats>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ChronicStats>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ChronicStats.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, ChronicStats> mapFromJson(dynamic json) {
     final map = <String, ChronicStats>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = ChronicStats.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = ChronicStats.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of ChronicStats-objects as value to a dart map
-  static Map<String, List<ChronicStats>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<ChronicStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ChronicStats>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = ChronicStats.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = ChronicStats.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'label',
+    'data',
+    'total',
+  };
 }
 

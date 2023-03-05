@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class MembershipsApi {
-  MembershipsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  MembershipsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -24,22 +24,16 @@ class MembershipsApi {
   ///
   /// * [Membership] membership (required):
   Future<Response> membershipsCreateWithHttpInfo(Membership membership,) async {
-    // Verify required params are set.
-    if (membership == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: membership');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/memberships/';
 
     // ignore: prefer_final_locals
-    Object postBody = membership;
+    Object? postBody = membership;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -50,8 +44,7 @@ class MembershipsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -60,7 +53,7 @@ class MembershipsApi {
   /// Parameters:
   ///
   /// * [Membership] membership (required):
-  Future<Membership> membershipsCreate(Membership membership,) async {
+  Future<Membership?> membershipsCreate(Membership membership,) async {
     final response = await membershipsCreateWithHttpInfo(membership,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -68,11 +61,11 @@ class MembershipsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Membership',) as Membership;
     
     }
-    return Future<Membership>.value();
+    return null;
   }
 
   /// Remove a project member. Only OWNERS can do this.
@@ -84,23 +77,17 @@ class MembershipsApi {
   /// * [String] id (required):
   ///   A UUID string identifying this Project member.
   Future<Response> membershipsDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/memberships/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -111,8 +98,7 @@ class MembershipsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -138,27 +124,24 @@ class MembershipsApi {
   /// * [String] project:
   ///
   /// * [String] user:
-  Future<Response> membershipsListWithHttpInfo({ String project, String user, }) async {
-    // Verify required params are set.
-
+  Future<Response> membershipsListWithHttpInfo({ String? project, String? user, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/memberships/';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
     if (project != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'project', project));
+      queryParams.addAll(_queryParams('', 'project', project));
     }
     if (user != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('', 'user', user));
+      queryParams.addAll(_queryParams('', 'user', user));
     }
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -169,8 +152,7 @@ class MembershipsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -181,7 +163,7 @@ class MembershipsApi {
   /// * [String] project:
   ///
   /// * [String] user:
-  Future<List<Membership>> membershipsList({ String project, String user, }) async {
+  Future<List<Membership>?> membershipsList({ String? project, String? user, }) async {
     final response = await membershipsListWithHttpInfo( project: project, user: user, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -189,13 +171,13 @@ class MembershipsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<Membership>') as List)
         .cast<Membership>()
-        .toList(growable: false);
+        .toList();
 
     }
-    return Future<List<Membership>>.value();
+    return null;
   }
 }

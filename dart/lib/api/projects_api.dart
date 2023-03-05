@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class ProjectsApi {
-  ProjectsApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  ProjectsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -24,22 +24,16 @@ class ProjectsApi {
   ///
   /// * [ProjectCreate] projectCreate (required):
   Future<Response> projectsCreateWithHttpInfo(ProjectCreate projectCreate,) async {
-    // Verify required params are set.
-    if (projectCreate == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: projectCreate');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/projects/';
 
     // ignore: prefer_final_locals
-    Object postBody = projectCreate;
+    Object? postBody = projectCreate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -50,8 +44,7 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -60,7 +53,7 @@ class ProjectsApi {
   /// Parameters:
   ///
   /// * [ProjectCreate] projectCreate (required):
-  Future<Project> projectsCreate(ProjectCreate projectCreate,) async {
+  Future<Project?> projectsCreate(ProjectCreate projectCreate,) async {
     final response = await projectsCreateWithHttpInfo(projectCreate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -68,11 +61,11 @@ class ProjectsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Project',) as Project;
     
     }
-    return Future<Project>.value();
+    return null;
   }
 
   /// Remove a project. Only members with role OWNER can do this.
@@ -84,23 +77,17 @@ class ProjectsApi {
   /// * [String] id (required):
   ///   A UUID string identifying this Project.
   Future<Response> projectsDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/projects/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -111,8 +98,7 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -137,23 +123,17 @@ class ProjectsApi {
   ///
   /// * [String] id (required):
   Future<Response> projectsImageDestroyWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/projects/{id}/image/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -164,8 +144,7 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -194,21 +173,13 @@ class ProjectsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<Response> projectsImageUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile body, }) async {
-    // Verify required params are set.
-    if (contentDisposition == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: contentDisposition');
-    }
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> projectsImageUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile? body, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/projects/{id}/image/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = body;
+    Object? postBody = body;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
@@ -216,8 +187,7 @@ class ProjectsApi {
 
     headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
-    const contentTypes = <String>['image/_*'];
+    const contentTypes = <String>['image/*'];
 
 
     return apiClient.invokeAPI(
@@ -227,8 +197,7 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -243,7 +212,7 @@ class ProjectsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<FileUpload> projectsImageUpdate(String contentDisposition, String id, { MultipartFile body, }) async {
+  Future<FileUpload?> projectsImageUpdate(String contentDisposition, String id, { MultipartFile? body, }) async {
     final response = await projectsImageUpdateWithHttpInfo(contentDisposition, id,  body: body, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -251,11 +220,11 @@ class ProjectsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
     
     }
-    return Future<FileUpload>.value();
+    return null;
   }
 
   /// Lists all projects the user is a member of.
@@ -266,13 +235,12 @@ class ProjectsApi {
     final path = r'/api/projects/';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -283,13 +251,12 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// Lists all projects the user is a member of.
-  Future<List<Project>> projectsList() async {
+  Future<List<Project>?> projectsList() async {
     final response = await projectsListWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -297,14 +264,14 @@ class ProjectsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<Project>') as List)
         .cast<Project>()
-        .toList(growable: false);
+        .toList();
 
     }
-    return Future<List<Project>>.value();
+    return null;
   }
 
   /// Change as subset of project details.
@@ -317,24 +284,18 @@ class ProjectsApi {
   ///   A UUID string identifying this Project.
   ///
   /// * [PatchedProjectUpdate] patchedProjectUpdate:
-  Future<Response> projectsPartialUpdateWithHttpInfo(String id, { PatchedProjectUpdate patchedProjectUpdate, }) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
+  Future<Response> projectsPartialUpdateWithHttpInfo(String id, { PatchedProjectUpdate? patchedProjectUpdate, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/projects/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = patchedProjectUpdate;
+    Object? postBody = patchedProjectUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -345,8 +306,7 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -358,7 +318,7 @@ class ProjectsApi {
   ///   A UUID string identifying this Project.
   ///
   /// * [PatchedProjectUpdate] patchedProjectUpdate:
-  Future<ProjectUpdate> projectsPartialUpdate(String id, { PatchedProjectUpdate patchedProjectUpdate, }) async {
+  Future<ProjectUpdate?> projectsPartialUpdate(String id, { PatchedProjectUpdate? patchedProjectUpdate, }) async {
     final response = await projectsPartialUpdateWithHttpInfo(id,  patchedProjectUpdate: patchedProjectUpdate, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -366,11 +326,11 @@ class ProjectsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectUpdate',) as ProjectUpdate;
     
     }
-    return Future<ProjectUpdate>.value();
+    return null;
   }
 
   /// Details of a single project.
@@ -382,23 +342,17 @@ class ProjectsApi {
   /// * [String] id (required):
   ///   A UUID string identifying this Project.
   Future<Response> projectsRetrieveWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/projects/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -409,8 +363,7 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -420,7 +373,7 @@ class ProjectsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Project.
-  Future<Project> projectsRetrieve(String id,) async {
+  Future<Project?> projectsRetrieve(String id,) async {
     final response = await projectsRetrieveWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -428,11 +381,11 @@ class ProjectsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Project',) as Project;
     
     }
-    return Future<Project>.value();
+    return null;
   }
 
   /// Change project and settings.
@@ -446,26 +399,17 @@ class ProjectsApi {
   ///
   /// * [ProjectUpdate] projectUpdate (required):
   Future<Response> projectsUpdateWithHttpInfo(String id, ProjectUpdate projectUpdate,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-    if (projectUpdate == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: projectUpdate');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/projects/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody = projectUpdate;
+    Object? postBody = projectUpdate;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -476,8 +420,7 @@ class ProjectsApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -489,7 +432,7 @@ class ProjectsApi {
   ///   A UUID string identifying this Project.
   ///
   /// * [ProjectUpdate] projectUpdate (required):
-  Future<ProjectUpdate> projectsUpdate(String id, ProjectUpdate projectUpdate,) async {
+  Future<ProjectUpdate?> projectsUpdate(String id, ProjectUpdate projectUpdate,) async {
     final response = await projectsUpdateWithHttpInfo(id, projectUpdate,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -497,10 +440,10 @@ class ProjectsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectUpdate',) as ProjectUpdate;
     
     }
-    return Future<ProjectUpdate>.value();
+    return null;
   }
 }

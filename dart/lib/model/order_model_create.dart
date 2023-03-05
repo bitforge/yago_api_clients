@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,7 +13,7 @@ part of openapi.api;
 class OrderModelCreate {
   /// Returns a new [OrderModelCreate] instance.
   OrderModelCreate({
-    @required this.name,
+    required this.name,
     this.website,
     this.widthMm,
     this.heightMm,
@@ -22,13 +22,13 @@ class OrderModelCreate {
 
   String name;
 
-  String website;
+  String? website;
 
-  double widthMm;
+  double? widthMm;
 
-  double heightMm;
+  double? heightMm;
 
-  double depthMm;
+  double? depthMm;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderModelCreate &&
@@ -40,30 +40,38 @@ class OrderModelCreate {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (name == null ? 0 : name.hashCode) +
-    (website == null ? 0 : website.hashCode) +
-    (widthMm == null ? 0 : widthMm.hashCode) +
-    (heightMm == null ? 0 : heightMm.hashCode) +
-    (depthMm == null ? 0 : depthMm.hashCode);
+    // ignore: unnecessary_parenthesis
+    (name.hashCode) +
+    (website == null ? 0 : website!.hashCode) +
+    (widthMm == null ? 0 : widthMm!.hashCode) +
+    (heightMm == null ? 0 : heightMm!.hashCode) +
+    (depthMm == null ? 0 : depthMm!.hashCode);
 
   @override
   String toString() => 'OrderModelCreate[name=$name, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'name'] = name;
-    if (website != null) {
-      json[r'website'] = website;
+      json[r'name'] = this.name;
+    if (this.website != null) {
+      json[r'website'] = this.website;
+    } else {
+      json[r'website'] = null;
     }
-    if (widthMm != null) {
-      json[r'width_mm'] = widthMm;
+    if (this.widthMm != null) {
+      json[r'width_mm'] = this.widthMm;
+    } else {
+      json[r'width_mm'] = null;
     }
-    if (heightMm != null) {
-      json[r'height_mm'] = heightMm;
+    if (this.heightMm != null) {
+      json[r'height_mm'] = this.heightMm;
+    } else {
+      json[r'height_mm'] = null;
     }
-    if (depthMm != null) {
-      json[r'depth_mm'] = depthMm;
+    if (this.depthMm != null) {
+      json[r'depth_mm'] = this.depthMm;
+    } else {
+      json[r'depth_mm'] = null;
     }
     return json;
   }
@@ -71,11 +79,23 @@ class OrderModelCreate {
   /// Returns a new [OrderModelCreate] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static OrderModelCreate fromJson(dynamic value) {
+  static OrderModelCreate? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "OrderModelCreate[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "OrderModelCreate[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return OrderModelCreate(
-        name: mapValueOfType<String>(json, r'name'),
+        name: mapValueOfType<String>(json, r'name')!,
         website: mapValueOfType<String>(json, r'website'),
         widthMm: mapValueOfType<double>(json, r'width_mm'),
         heightMm: mapValueOfType<double>(json, r'height_mm'),
@@ -85,36 +105,51 @@ class OrderModelCreate {
     return null;
   }
 
-  static List<OrderModelCreate> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(OrderModelCreate.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <OrderModelCreate>[];
+  static List<OrderModelCreate>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderModelCreate>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderModelCreate.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, OrderModelCreate> mapFromJson(dynamic json) {
     final map = <String, OrderModelCreate>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = OrderModelCreate.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderModelCreate.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of OrderModelCreate-objects as value to a dart map
-  static Map<String, List<OrderModelCreate>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<OrderModelCreate>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<OrderModelCreate>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = OrderModelCreate.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderModelCreate.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'name',
+  };
 }
 

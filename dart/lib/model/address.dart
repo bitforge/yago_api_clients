@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,8 +13,8 @@ part of openapi.api;
 class Address {
   /// Returns a new [Address] instance.
   Address({
-    @required this.id,
-    @required this.name,
+    required this.id,
+    required this.name,
     this.email,
     this.phone,
     this.line1,
@@ -30,27 +30,33 @@ class Address {
   /// Full person name.
   String name;
 
-  String email;
+  String? email;
 
   /// CH or international format (e.g 079 123 45 67 / +41791234567)
-  String phone;
+  String? phone;
 
   /// Address line 1 (e.g., street, PO Box, or company name).
-  String line1;
+  String? line1;
 
   /// Address line 2 (e.g., apartment, suite, unit, or building).
-  String line2;
+  String? line2;
 
   /// Postal code.
-  String postalCode;
+  String? postalCode;
 
   /// City, district, suburb, town, or village.
-  String city;
+  String? city;
 
   /// State, county, province, or region.
-  String state;
+  String? state;
 
-  CountryEnum country;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  CountryEnum? country;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Address &&
@@ -67,48 +73,64 @@ class Address {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id.hashCode) +
-    (name == null ? 0 : name.hashCode) +
-    (email == null ? 0 : email.hashCode) +
-    (phone == null ? 0 : phone.hashCode) +
-    (line1 == null ? 0 : line1.hashCode) +
-    (line2 == null ? 0 : line2.hashCode) +
-    (postalCode == null ? 0 : postalCode.hashCode) +
-    (city == null ? 0 : city.hashCode) +
-    (state == null ? 0 : state.hashCode) +
-    (country == null ? 0 : country.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (name.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
+    (phone == null ? 0 : phone!.hashCode) +
+    (line1 == null ? 0 : line1!.hashCode) +
+    (line2 == null ? 0 : line2!.hashCode) +
+    (postalCode == null ? 0 : postalCode!.hashCode) +
+    (city == null ? 0 : city!.hashCode) +
+    (state == null ? 0 : state!.hashCode) +
+    (country == null ? 0 : country!.hashCode);
 
   @override
   String toString() => 'Address[id=$id, name=$name, email=$email, phone=$phone, line1=$line1, line2=$line2, postalCode=$postalCode, city=$city, state=$state, country=$country]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = id;
-      json[r'name'] = name;
-    if (email != null) {
-      json[r'email'] = email;
+      json[r'id'] = this.id;
+      json[r'name'] = this.name;
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
     }
-    if (phone != null) {
-      json[r'phone'] = phone;
+    if (this.phone != null) {
+      json[r'phone'] = this.phone;
+    } else {
+      json[r'phone'] = null;
     }
-    if (line1 != null) {
-      json[r'line1'] = line1;
+    if (this.line1 != null) {
+      json[r'line1'] = this.line1;
+    } else {
+      json[r'line1'] = null;
     }
-    if (line2 != null) {
-      json[r'line2'] = line2;
+    if (this.line2 != null) {
+      json[r'line2'] = this.line2;
+    } else {
+      json[r'line2'] = null;
     }
-    if (postalCode != null) {
-      json[r'postal_code'] = postalCode;
+    if (this.postalCode != null) {
+      json[r'postal_code'] = this.postalCode;
+    } else {
+      json[r'postal_code'] = null;
     }
-    if (city != null) {
-      json[r'city'] = city;
+    if (this.city != null) {
+      json[r'city'] = this.city;
+    } else {
+      json[r'city'] = null;
     }
-    if (state != null) {
-      json[r'state'] = state;
+    if (this.state != null) {
+      json[r'state'] = this.state;
+    } else {
+      json[r'state'] = null;
     }
-    if (country != null) {
-      json[r'country'] = country;
+    if (this.country != null) {
+      json[r'country'] = this.country;
+    } else {
+      json[r'country'] = null;
     }
     return json;
   }
@@ -116,12 +138,24 @@ class Address {
   /// Returns a new [Address] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Address fromJson(dynamic value) {
+  static Address? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "Address[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Address[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return Address(
-        id: mapValueOfType<String>(json, r'id'),
-        name: mapValueOfType<String>(json, r'name'),
+        id: mapValueOfType<String>(json, r'id')!,
+        name: mapValueOfType<String>(json, r'name')!,
         email: mapValueOfType<String>(json, r'email'),
         phone: mapValueOfType<String>(json, r'phone'),
         line1: mapValueOfType<String>(json, r'line1'),
@@ -135,36 +169,52 @@ class Address {
     return null;
   }
 
-  static List<Address> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(Address.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <Address>[];
+  static List<Address>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <Address>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = Address.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, Address> mapFromJson(dynamic json) {
     final map = <String, Address>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = Address.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = Address.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of Address-objects as value to a dart map
-  static Map<String, List<Address>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<Address>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Address>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = Address.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = Address.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'name',
+  };
 }
 

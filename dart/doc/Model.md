@@ -39,11 +39,10 @@ Name | Type | Description | Notes
 **glb** | **String** | Must be a binary glTF file according to the Khronos Group standard. | [optional] 
 **usdz** | **String** | Must be a USDZ or Reality Composer file. | [optional] 
 **model** | **String** | Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files. | [optional] 
-**unityIos** | **String** | Unity Asset Bundle for iOS | [optional] 
-**unityAndroid** | **String** | Unity Asset Bundle for Android | [optional] 
 **arbuttonConfig** | [**Map<String, Object>**](Object.md) |  | [readonly] [default to const {}]
 **created** | [**DateTime**](DateTime.md) |  | [readonly] 
 **modified** | [**DateTime**](DateTime.md) |  | [readonly] 
+**verticalPlacement** | **bool** | When set to true, users will be able to place the model on a vertical surface. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

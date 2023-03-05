@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class TimeRangeEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -48,13 +48,20 @@ class TimeRangeEnum {
     n2y,
   ];
 
-  static TimeRangeEnum fromJson(dynamic value) =>
-    TimeRangeEnumTypeTransformer().decode(value);
+  static TimeRangeEnum? fromJson(dynamic value) => TimeRangeEnumTypeTransformer().decode(value);
 
-  static List<TimeRangeEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(TimeRangeEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <TimeRangeEnum>[];
+  static List<TimeRangeEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <TimeRangeEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = TimeRangeEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [TimeRangeEnum] to String,
@@ -74,9 +81,9 @@ class TimeRangeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  TimeRangeEnum decode(dynamic data, {bool allowNull}) {
+  TimeRangeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'24h': return TimeRangeEnum.n24h;
         case r'48h': return TimeRangeEnum.n48h;
         case r'7d': return TimeRangeEnum.n7d;
@@ -88,7 +95,7 @@ class TimeRangeEnumTypeTransformer {
         case r'1y': return TimeRangeEnum.n1y;
         case r'2y': return TimeRangeEnum.n2y;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -97,6 +104,6 @@ class TimeRangeEnumTypeTransformer {
   }
 
   /// Singleton [TimeRangeEnumTypeTransformer] instance.
-  static TimeRangeEnumTypeTransformer _instance;
+  static TimeRangeEnumTypeTransformer? _instance;
 }
 

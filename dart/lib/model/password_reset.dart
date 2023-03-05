@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,7 +13,7 @@ part of openapi.api;
 class PasswordReset {
   /// Returns a new [PasswordReset] instance.
   PasswordReset({
-    @required this.email,
+    required this.email,
   });
 
   String email;
@@ -24,61 +24,88 @@ class PasswordReset {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (email == null ? 0 : email.hashCode);
+    // ignore: unnecessary_parenthesis
+    (email.hashCode);
 
   @override
   String toString() => 'PasswordReset[email=$email]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'email'] = email;
+      json[r'email'] = this.email;
     return json;
   }
 
   /// Returns a new [PasswordReset] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static PasswordReset fromJson(dynamic value) {
+  static PasswordReset? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "PasswordReset[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "PasswordReset[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return PasswordReset(
-        email: mapValueOfType<String>(json, r'email'),
+        email: mapValueOfType<String>(json, r'email')!,
       );
     }
     return null;
   }
 
-  static List<PasswordReset> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(PasswordReset.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <PasswordReset>[];
+  static List<PasswordReset>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PasswordReset>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PasswordReset.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, PasswordReset> mapFromJson(dynamic json) {
     final map = <String, PasswordReset>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = PasswordReset.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = PasswordReset.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of PasswordReset-objects as value to a dart map
-  static Map<String, List<PasswordReset>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<PasswordReset>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<PasswordReset>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = PasswordReset.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = PasswordReset.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'email',
+  };
 }
 

@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,17 +13,17 @@ part of openapi.api;
 class OrderModel {
   /// Returns a new [OrderModel] instance.
   OrderModel({
-    @required this.id,
-    @required this.name,
-    @required this.order,
-    this.state,
+    required this.id,
+    required this.name,
+    required this.order,
+    required this.state,
     this.website,
     this.widthMm,
     this.heightMm,
     this.depthMm,
-    this.model,
-    @required this.created,
-    @required this.modified,
+    required this.model,
+    required this.created,
+    required this.modified,
   });
 
   int id;
@@ -34,16 +34,16 @@ class OrderModel {
 
   OrderState state;
 
-  String website;
+  String? website;
 
-  double widthMm;
+  double? widthMm;
 
-  double heightMm;
+  double? heightMm;
 
-  double depthMm;
+  double? depthMm;
 
   /// Resulting model after order is finished. Available when state is IN_PROGRESS.
-  String model;
+  String? model;
 
   DateTime created;
 
@@ -65,99 +65,144 @@ class OrderModel {
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id.hashCode) +
-    (name == null ? 0 : name.hashCode) +
-    (order == null ? 0 : order.hashCode) +
-    (state == null ? 0 : state.hashCode) +
-    (website == null ? 0 : website.hashCode) +
-    (widthMm == null ? 0 : widthMm.hashCode) +
-    (heightMm == null ? 0 : heightMm.hashCode) +
-    (depthMm == null ? 0 : depthMm.hashCode) +
-    (model == null ? 0 : model.hashCode) +
-    (created == null ? 0 : created.hashCode) +
-    (modified == null ? 0 : modified.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id.hashCode) +
+    (name.hashCode) +
+    (order.hashCode) +
+    (state.hashCode) +
+    (website == null ? 0 : website!.hashCode) +
+    (widthMm == null ? 0 : widthMm!.hashCode) +
+    (heightMm == null ? 0 : heightMm!.hashCode) +
+    (depthMm == null ? 0 : depthMm!.hashCode) +
+    (model == null ? 0 : model!.hashCode) +
+    (created.hashCode) +
+    (modified.hashCode);
 
   @override
   String toString() => 'OrderModel[id=$id, name=$name, order=$order, state=$state, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm, model=$model, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = id;
-      json[r'name'] = name;
-      json[r'order'] = order;
-      json[r'state'] = state == null ? null : state;
-    if (website != null) {
-      json[r'website'] = website;
+      json[r'id'] = this.id;
+      json[r'name'] = this.name;
+      json[r'order'] = this.order;
+      json[r'state'] = this.state;
+    if (this.website != null) {
+      json[r'website'] = this.website;
+    } else {
+      json[r'website'] = null;
     }
-    if (widthMm != null) {
-      json[r'width_mm'] = widthMm;
+    if (this.widthMm != null) {
+      json[r'width_mm'] = this.widthMm;
+    } else {
+      json[r'width_mm'] = null;
     }
-    if (heightMm != null) {
-      json[r'height_mm'] = heightMm;
+    if (this.heightMm != null) {
+      json[r'height_mm'] = this.heightMm;
+    } else {
+      json[r'height_mm'] = null;
     }
-    if (depthMm != null) {
-      json[r'depth_mm'] = depthMm;
+    if (this.depthMm != null) {
+      json[r'depth_mm'] = this.depthMm;
+    } else {
+      json[r'depth_mm'] = null;
     }
-      json[r'model'] = model == null ? null : model;
-      json[r'created'] = created.toUtc().toIso8601String();
-      json[r'modified'] = modified.toUtc().toIso8601String();
+    if (this.model != null) {
+      json[r'model'] = this.model;
+    } else {
+      json[r'model'] = null;
+    }
+      json[r'created'] = this.created.toUtc().toIso8601String();
+      json[r'modified'] = this.modified.toUtc().toIso8601String();
     return json;
   }
 
   /// Returns a new [OrderModel] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static OrderModel fromJson(dynamic value) {
+  static OrderModel? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "OrderModel[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "OrderModel[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return OrderModel(
-        id: mapValueOfType<int>(json, r'id'),
-        name: mapValueOfType<String>(json, r'name'),
-        order: mapValueOfType<int>(json, r'order'),
-        state: OrderState.fromJson(json[r'state']),
+        id: mapValueOfType<int>(json, r'id')!,
+        name: mapValueOfType<String>(json, r'name')!,
+        order: mapValueOfType<int>(json, r'order')!,
+        state: OrderState.fromJson(json[r'state'])!,
         website: mapValueOfType<String>(json, r'website'),
         widthMm: mapValueOfType<double>(json, r'width_mm'),
         heightMm: mapValueOfType<double>(json, r'height_mm'),
         depthMm: mapValueOfType<double>(json, r'depth_mm'),
         model: mapValueOfType<String>(json, r'model'),
-        created: mapDateTime(json, r'created', ''),
-        modified: mapDateTime(json, r'modified', ''),
+        created: mapDateTime(json, r'created', '')!,
+        modified: mapDateTime(json, r'modified', '')!,
       );
     }
     return null;
   }
 
-  static List<OrderModel> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(OrderModel.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <OrderModel>[];
+  static List<OrderModel>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <OrderModel>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = OrderModel.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, OrderModel> mapFromJson(dynamic json) {
     final map = <String, OrderModel>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = OrderModel.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderModel.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of OrderModel-objects as value to a dart map
-  static Map<String, List<OrderModel>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<OrderModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<OrderModel>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = OrderModel.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = OrderModel.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'id',
+    'name',
+    'order',
+    'state',
+    'model',
+    'created',
+    'modified',
+  };
 }
 

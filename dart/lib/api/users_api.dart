@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -12,7 +12,7 @@ part of openapi.api;
 
 
 class UsersApi {
-  UsersApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  UsersApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -23,24 +23,21 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [List<String>] projects:
-  Future<Response> usersListWithHttpInfo({ List<String> projects, }) async {
-    // Verify required params are set.
-
+  Future<Response> usersListWithHttpInfo({ List<String>? projects, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
     if (projects != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat('multi', 'projects', projects));
+      queryParams.addAll(_queryParams('multi', 'projects', projects));
     }
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -51,8 +48,7 @@ class UsersApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -61,7 +57,7 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [List<String>] projects:
-  Future<List<User>> usersList({ List<String> projects, }) async {
+  Future<List<User>?> usersList({ List<String>? projects, }) async {
     final response = await usersListWithHttpInfo( projects: projects, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -69,14 +65,14 @@ class UsersApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<User>') as List)
         .cast<User>()
-        .toList(growable: false);
+        .toList();
 
     }
-    return Future<List<User>>.value();
+    return null;
   }
 
   /// Get or update current user details.
@@ -87,13 +83,12 @@ class UsersApi {
     final path = r'/api/users/me/';
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -104,13 +99,12 @@ class UsersApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
   /// Get or update current user details.
-  Future<User> usersMeRetrieve() async {
+  Future<User?> usersMeRetrieve() async {
     final response = await usersMeRetrieveWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -118,11 +112,11 @@ class UsersApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
     
     }
-    return Future<User>.value();
+    return null;
   }
 
   /// Get or update current user details.
@@ -132,20 +126,17 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [User] user:
-  Future<Response> usersMeUpdateWithHttpInfo({ User user, }) async {
-    // Verify required params are set.
-
+  Future<Response> usersMeUpdateWithHttpInfo({ User? user, }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/me/';
 
     // ignore: prefer_final_locals
-    Object postBody = user;
+    Object? postBody = user;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>['application/json'];
 
 
@@ -156,8 +147,7 @@ class UsersApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -166,7 +156,7 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [User] user:
-  Future<User> usersMeUpdate({ User user, }) async {
+  Future<User?> usersMeUpdate({ User? user, }) async {
     final response = await usersMeUpdateWithHttpInfo( user: user, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -174,11 +164,11 @@ class UsersApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
     
     }
-    return Future<User>.value();
+    return null;
   }
 
   /// Details of a single user.
@@ -190,23 +180,17 @@ class UsersApi {
   /// * [String] id (required):
   ///   A UUID string identifying this User.
   Future<Response> usersRetrieveWithHttpInfo(String id,) async {
-    // Verify required params are set.
-    if (id == null) {
-     throw ApiException(HttpStatus.badRequest, 'Missing required param: id');
-    }
-
     // ignore: prefer_const_declarations
     final path = r'/api/users/{id}/'
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
-    Object postBody;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const authNames = <String>['cookieAuth', 'jwtAuth', 'tokenAuth'];
     const contentTypes = <String>[];
 
 
@@ -217,8 +201,7 @@ class UsersApi {
       postBody,
       headerParams,
       formParams,
-      contentTypes.isEmpty ? null : contentTypes[0],
-      authNames,
+      contentTypes.isEmpty ? null : contentTypes.first,
     );
   }
 
@@ -228,7 +211,7 @@ class UsersApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this User.
-  Future<User> usersRetrieve(String id,) async {
+  Future<User?> usersRetrieve(String id,) async {
     final response = await usersRetrieveWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -236,10 +219,10 @@ class UsersApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
     
     }
-    return Future<User>.value();
+    return null;
   }
 }

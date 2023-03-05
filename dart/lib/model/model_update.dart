@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -18,7 +18,7 @@ class ModelUpdate {
     this.nameFr,
     this.nameIt,
     this.status,
-    @required this.description,
+    required this.description,
     this.descriptionDe,
     this.descriptionEn,
     this.descriptionFr,
@@ -31,65 +31,82 @@ class ModelUpdate {
     this.scaleable,
     this.sku,
     this.price,
-    @required this.priceCurrency,
+    required this.priceCurrency,
+    this.verticalPlacement,
   });
 
   /// Name will be visible in Android as title.
-  String nameDe;
+  String? nameDe;
 
   /// Name will be visible in Android as title.
-  String nameEn;
+  String? nameEn;
 
   /// Name will be visible in Android as title.
-  String nameFr;
+  String? nameFr;
 
   /// Name will be visible in Android as title.
-  String nameIt;
+  String? nameIt;
 
   /// DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
-  ModelStatus status;
+  ModelStatus? status;
 
   String description;
 
   /// Used when shared as link and for SEO.
-  String descriptionDe;
+  String? descriptionDe;
 
   /// Used when shared as link and for SEO.
-  String descriptionEn;
+  String? descriptionEn;
 
   /// Used when shared as link and for SEO.
-  String descriptionFr;
+  String? descriptionFr;
 
   /// Used when shared as link and for SEO.
-  String descriptionIt;
+  String? descriptionIt;
 
   /// Use for custom sort order.
-  // minimum: 0
-  // maximum: 2147483647
-  int number;
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 2147483647
+  int? number;
 
   /// Link to the product on your site. Required when using standalone QR codes (e.g. Print).
-  String siteUrlDe;
+  String? siteUrlDe;
 
   /// Link to the product on your site. Required when using standalone QR codes (e.g. Print).
-  String siteUrlEn;
+  String? siteUrlEn;
 
   /// Link to the product on your site. Required when using standalone QR codes (e.g. Print).
-  String siteUrlFr;
+  String? siteUrlFr;
 
   /// Link to the product on your site. Required when using standalone QR codes (e.g. Print).
-  String siteUrlIt;
+  String? siteUrlIt;
 
   /// Let's the user scale the model in AR when enabled.
-  bool scaleable;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? scaleable;
 
   /// Stock-keeping unit. The identfier of the product in external webstore.
-  String sku;
+  String? sku;
 
   /// Display price. The effective price is determined by the external webstore.
-  double price;
+  double? price;
 
-  String priceCurrency;
+  String? priceCurrency;
+
+  /// When set to true, users will be able to place the model on a vertical surface.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? verticalPlacement;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ModelUpdate &&
@@ -111,105 +128,162 @@ class ModelUpdate {
      other.scaleable == scaleable &&
      other.sku == sku &&
      other.price == price &&
-     other.priceCurrency == priceCurrency;
+     other.priceCurrency == priceCurrency &&
+     other.verticalPlacement == verticalPlacement;
 
   @override
   int get hashCode =>
-  // ignore: unnecessary_parenthesis
-    (nameDe == null ? 0 : nameDe.hashCode) +
-    (nameEn == null ? 0 : nameEn.hashCode) +
-    (nameFr == null ? 0 : nameFr.hashCode) +
-    (nameIt == null ? 0 : nameIt.hashCode) +
-    (status == null ? 0 : status.hashCode) +
-    (description == null ? 0 : description.hashCode) +
-    (descriptionDe == null ? 0 : descriptionDe.hashCode) +
-    (descriptionEn == null ? 0 : descriptionEn.hashCode) +
-    (descriptionFr == null ? 0 : descriptionFr.hashCode) +
-    (descriptionIt == null ? 0 : descriptionIt.hashCode) +
-    (number == null ? 0 : number.hashCode) +
-    (siteUrlDe == null ? 0 : siteUrlDe.hashCode) +
-    (siteUrlEn == null ? 0 : siteUrlEn.hashCode) +
-    (siteUrlFr == null ? 0 : siteUrlFr.hashCode) +
-    (siteUrlIt == null ? 0 : siteUrlIt.hashCode) +
-    (scaleable == null ? 0 : scaleable.hashCode) +
-    (sku == null ? 0 : sku.hashCode) +
-    (price == null ? 0 : price.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency.hashCode);
+    // ignore: unnecessary_parenthesis
+    (nameDe == null ? 0 : nameDe!.hashCode) +
+    (nameEn == null ? 0 : nameEn!.hashCode) +
+    (nameFr == null ? 0 : nameFr!.hashCode) +
+    (nameIt == null ? 0 : nameIt!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (description.hashCode) +
+    (descriptionDe == null ? 0 : descriptionDe!.hashCode) +
+    (descriptionEn == null ? 0 : descriptionEn!.hashCode) +
+    (descriptionFr == null ? 0 : descriptionFr!.hashCode) +
+    (descriptionIt == null ? 0 : descriptionIt!.hashCode) +
+    (number == null ? 0 : number!.hashCode) +
+    (siteUrlDe == null ? 0 : siteUrlDe!.hashCode) +
+    (siteUrlEn == null ? 0 : siteUrlEn!.hashCode) +
+    (siteUrlFr == null ? 0 : siteUrlFr!.hashCode) +
+    (siteUrlIt == null ? 0 : siteUrlIt!.hashCode) +
+    (scaleable == null ? 0 : scaleable!.hashCode) +
+    (sku == null ? 0 : sku!.hashCode) +
+    (price == null ? 0 : price!.hashCode) +
+    (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
+    (verticalPlacement == null ? 0 : verticalPlacement!.hashCode);
 
   @override
-  String toString() => 'ModelUpdate[nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, scaleable=$scaleable, sku=$sku, price=$price, priceCurrency=$priceCurrency]';
+  String toString() => 'ModelUpdate[nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, scaleable=$scaleable, sku=$sku, price=$price, priceCurrency=$priceCurrency, verticalPlacement=$verticalPlacement]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (nameDe != null) {
-      json[r'name_de'] = nameDe;
+    if (this.nameDe != null) {
+      json[r'name_de'] = this.nameDe;
+    } else {
+      json[r'name_de'] = null;
     }
-    if (nameEn != null) {
-      json[r'name_en'] = nameEn;
+    if (this.nameEn != null) {
+      json[r'name_en'] = this.nameEn;
+    } else {
+      json[r'name_en'] = null;
     }
-    if (nameFr != null) {
-      json[r'name_fr'] = nameFr;
+    if (this.nameFr != null) {
+      json[r'name_fr'] = this.nameFr;
+    } else {
+      json[r'name_fr'] = null;
     }
-    if (nameIt != null) {
-      json[r'name_it'] = nameIt;
+    if (this.nameIt != null) {
+      json[r'name_it'] = this.nameIt;
+    } else {
+      json[r'name_it'] = null;
     }
-    if (status != null) {
-      json[r'status'] = status;
+    if (this.status != null) {
+      json[r'status'] = this.status;
+    } else {
+      json[r'status'] = null;
     }
-      json[r'description'] = description;
-    if (descriptionDe != null) {
-      json[r'description_de'] = descriptionDe;
+      json[r'description'] = this.description;
+    if (this.descriptionDe != null) {
+      json[r'description_de'] = this.descriptionDe;
+    } else {
+      json[r'description_de'] = null;
     }
-    if (descriptionEn != null) {
-      json[r'description_en'] = descriptionEn;
+    if (this.descriptionEn != null) {
+      json[r'description_en'] = this.descriptionEn;
+    } else {
+      json[r'description_en'] = null;
     }
-    if (descriptionFr != null) {
-      json[r'description_fr'] = descriptionFr;
+    if (this.descriptionFr != null) {
+      json[r'description_fr'] = this.descriptionFr;
+    } else {
+      json[r'description_fr'] = null;
     }
-    if (descriptionIt != null) {
-      json[r'description_it'] = descriptionIt;
+    if (this.descriptionIt != null) {
+      json[r'description_it'] = this.descriptionIt;
+    } else {
+      json[r'description_it'] = null;
     }
-    if (number != null) {
-      json[r'number'] = number;
+    if (this.number != null) {
+      json[r'number'] = this.number;
+    } else {
+      json[r'number'] = null;
     }
-    if (siteUrlDe != null) {
-      json[r'site_url_de'] = siteUrlDe;
+    if (this.siteUrlDe != null) {
+      json[r'site_url_de'] = this.siteUrlDe;
+    } else {
+      json[r'site_url_de'] = null;
     }
-    if (siteUrlEn != null) {
-      json[r'site_url_en'] = siteUrlEn;
+    if (this.siteUrlEn != null) {
+      json[r'site_url_en'] = this.siteUrlEn;
+    } else {
+      json[r'site_url_en'] = null;
     }
-    if (siteUrlFr != null) {
-      json[r'site_url_fr'] = siteUrlFr;
+    if (this.siteUrlFr != null) {
+      json[r'site_url_fr'] = this.siteUrlFr;
+    } else {
+      json[r'site_url_fr'] = null;
     }
-    if (siteUrlIt != null) {
-      json[r'site_url_it'] = siteUrlIt;
+    if (this.siteUrlIt != null) {
+      json[r'site_url_it'] = this.siteUrlIt;
+    } else {
+      json[r'site_url_it'] = null;
     }
-    if (scaleable != null) {
-      json[r'scaleable'] = scaleable;
+    if (this.scaleable != null) {
+      json[r'scaleable'] = this.scaleable;
+    } else {
+      json[r'scaleable'] = null;
     }
-    if (sku != null) {
-      json[r'sku'] = sku;
+    if (this.sku != null) {
+      json[r'sku'] = this.sku;
+    } else {
+      json[r'sku'] = null;
     }
-    if (price != null) {
-      json[r'price'] = price;
+    if (this.price != null) {
+      json[r'price'] = this.price;
+    } else {
+      json[r'price'] = null;
     }
-      json[r'price_currency'] = priceCurrency;
+    if (this.priceCurrency != null) {
+      json[r'price_currency'] = this.priceCurrency;
+    } else {
+      json[r'price_currency'] = null;
+    }
+    if (this.verticalPlacement != null) {
+      json[r'vertical_placement'] = this.verticalPlacement;
+    } else {
+      json[r'vertical_placement'] = null;
+    }
     return json;
   }
 
   /// Returns a new [ModelUpdate] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ModelUpdate fromJson(dynamic value) {
+  static ModelUpdate? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
+
+      // Ensure that the map contains the required keys.
+      // Note 1: the values aren't checked for validity beyond being non-null.
+      // Note 2: this code is stripped in release mode!
+      assert(() {
+        requiredKeys.forEach((key) {
+          assert(json.containsKey(key), 'Required key "ModelUpdate[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ModelUpdate[$key]" has a null value in JSON.');
+        });
+        return true;
+      }());
+
       return ModelUpdate(
         nameDe: mapValueOfType<String>(json, r'name_de'),
         nameEn: mapValueOfType<String>(json, r'name_en'),
         nameFr: mapValueOfType<String>(json, r'name_fr'),
         nameIt: mapValueOfType<String>(json, r'name_it'),
         status: ModelStatus.fromJson(json[r'status']),
-        description: mapValueOfType<String>(json, r'description'),
+        description: mapValueOfType<String>(json, r'description')!,
         descriptionDe: mapValueOfType<String>(json, r'description_de'),
         descriptionEn: mapValueOfType<String>(json, r'description_en'),
         descriptionFr: mapValueOfType<String>(json, r'description_fr'),
@@ -223,41 +297,58 @@ class ModelUpdate {
         sku: mapValueOfType<String>(json, r'sku'),
         price: mapValueOfType<double>(json, r'price'),
         priceCurrency: mapValueOfType<String>(json, r'price_currency'),
+        verticalPlacement: mapValueOfType<bool>(json, r'vertical_placement'),
       );
     }
     return null;
   }
 
-  static List<ModelUpdate> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(ModelUpdate.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <ModelUpdate>[];
+  static List<ModelUpdate>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ModelUpdate>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ModelUpdate.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 
   static Map<String, ModelUpdate> mapFromJson(dynamic json) {
     final map = <String, ModelUpdate>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) => map[key] = ModelUpdate.fromJson(value));
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = ModelUpdate.fromJson(entry.value);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
 
   // maps a json object with a list of ModelUpdate-objects as value to a dart map
-  static Map<String, List<ModelUpdate>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+  static Map<String, List<ModelUpdate>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ModelUpdate>>{};
     if (json is Map && json.isNotEmpty) {
-      json
-        .cast<String, dynamic>()
-        .forEach((key, dynamic value) {
-          map[key] = ModelUpdate.listFromJson(
-            value,
-            emptyIsNull: emptyIsNull,
-            growable: growable,
-          );
-        });
+      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      for (final entry in json.entries) {
+        final value = ModelUpdate.listFromJson(entry.value, growable: growable,);
+        if (value != null) {
+          map[entry.key] = value;
+        }
+      }
     }
     return map;
   }
+
+  /// The list of required keys that must be present in a JSON.
+  static const requiredKeys = <String>{
+    'description',
+    'price_currency',
+  };
 }
 

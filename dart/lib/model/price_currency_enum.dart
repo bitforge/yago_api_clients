@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class PriceCurrencyEnum {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -36,13 +36,20 @@ class PriceCurrencyEnum {
     USD,
   ];
 
-  static PriceCurrencyEnum fromJson(dynamic value) =>
-    PriceCurrencyEnumTypeTransformer().decode(value);
+  static PriceCurrencyEnum? fromJson(dynamic value) => PriceCurrencyEnumTypeTransformer().decode(value);
 
-  static List<PriceCurrencyEnum> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(PriceCurrencyEnum.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <PriceCurrencyEnum>[];
+  static List<PriceCurrencyEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <PriceCurrencyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = PriceCurrencyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [PriceCurrencyEnum] to String,
@@ -62,15 +69,15 @@ class PriceCurrencyEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  PriceCurrencyEnum decode(dynamic data, {bool allowNull}) {
+  PriceCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'CHF': return PriceCurrencyEnum.CHF;
         case r'EUR': return PriceCurrencyEnum.EUR;
         case r'GBP': return PriceCurrencyEnum.GBP;
         case r'USD': return PriceCurrencyEnum.USD;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -79,6 +86,6 @@ class PriceCurrencyEnumTypeTransformer {
   }
 
   /// Singleton [PriceCurrencyEnumTypeTransformer] instance.
-  static PriceCurrencyEnumTypeTransformer _instance;
+  static PriceCurrencyEnumTypeTransformer? _instance;
 }
 
