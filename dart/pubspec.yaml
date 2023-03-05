@@ -1,9 +1,9 @@
-name: 'yago-api-client'
+name: 'yago_api'
 version: '1.0.0'
-description: 'Genie REST API Client'
+description: 'Yago REST API Client'
 homepage: 'https://bitforge.ch/'
-repository: 'https://github.com/bitforge/genie-api-clients'
-documentation: 'https://genie-ar.ch/api/doc/'
+repository: 'https://github.com/bitforge/yago-api-clients'
+documentation: 'https://yago.cloud/api/doc/'
 environment:
   sdk: '>=2.12.0 <3.0.0'
 dependencies:
