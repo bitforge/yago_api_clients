@@ -4,8 +4,8 @@ Augemented Reality Made Easy.
 
 A generated Yago Cloud API Client for Flutter & Dart.
 
-More on Yago: https://yago.cloud
-API Docs: https://yago.cloud/api/doc/
+- More on Yago: https://yago.cloud
+- API Docs: https://yago.cloud/api/doc/
 
 ## Requirements
 
