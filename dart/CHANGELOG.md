@@ -1,3 +1,8 @@
+# 1.2.0
+
+- Align with typescript version
+- Fix GitHub Repo link
+
 # 1.1.0
 
 Update pubspec.yaml

@@ -1,8 +1,8 @@
 name: 'yago_cloud'
-version: '1.1.0'
+version: '1.2.0'
 description: 'Yago Cloud API Client for Flutter & Dart'
 homepage: https://yago.cloud/
-repository: https://github.com/bitforge/yago-api-clients
+repository: https://github.com/bitforge/yago_api_clients
 documentation: https://yago.cloud/api/doc
 environment:
   sdk: '>=2.12.0 <3.0.0'
