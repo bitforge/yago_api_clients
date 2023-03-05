@@ -14,25 +14,25 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface ChronicStats
  */
 export interface ChronicStats {
     /**
-     * 
+     *
      * @type {string}
      * @memberof ChronicStats
      */
     label: string;
     /**
-     * 
+     *
      * @type {{ [key: string]: any; }}
      * @memberof ChronicStats
      */
-    data: { [key: string]: any; };
+    data: { [key: string]: any };
     /**
-     * 
+     *
      * @type {number}
      * @memberof ChronicStats
      */
@@ -44,14 +44,13 @@ export function ChronicStatsFromJSON(json: any): ChronicStats {
 }
 
 export function ChronicStatsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ChronicStats {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'label': json['label'],
-        'data': json['data'],
-        'total': json['total'],
+        label: json['label'],
+        data: json['data'],
+        total: json['total'],
     };
 }
 
@@ -63,10 +62,8 @@ export function ChronicStatsToJSON(value?: ChronicStats | null): any {
         return null;
     }
     return {
-        
-        'label': value.label,
-        'data': value.data,
-        'total': value.total,
+        label: value.label,
+        data: value.data,
+        total: value.total,
     };
 }
-

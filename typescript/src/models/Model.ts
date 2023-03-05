@@ -13,21 +13,16 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    ModelStatus,
-    ModelStatusFromJSON,
-    ModelStatusFromJSONTyped,
-    ModelStatusToJSON,
-} from './ModelStatus';
+import { ModelStatus, ModelStatusFromJSON, ModelStatusFromJSONTyped, ModelStatusToJSON } from './ModelStatus';
 
 /**
- * 
+ *
  * @export
  * @interface Model
  */
 export interface Model {
     /**
-     * 
+     *
      * @type {string}
      * @memberof Model
      */
@@ -39,7 +34,7 @@ export interface Model {
      */
     project: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Model
      */
@@ -81,17 +76,17 @@ export interface Model {
      */
     image?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Model
      */
-    readonly imageThumb: string;
+    imageThumb?: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Model
      */
-    readonly imagePreview: string;
+    imagePreview?: string;
     /**
      * True when model is in order and work is still in progress. False when order is completed.
      * @type {boolean}
@@ -105,11 +100,11 @@ export interface Model {
      */
     status?: ModelStatus | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Model
      */
-    readonly description: string;
+    description?: string;
     /**
      * Used when shared as link and for SEO.
      * @type {string}
@@ -141,11 +136,11 @@ export interface Model {
      */
     number?: number | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Model
      */
-    readonly siteUrl: string;
+    siteUrl?: string;
     /**
      * Link to the product on your site. Required when using standalone QR codes (e.g. Print).
      * @type {string}
@@ -183,11 +178,11 @@ export interface Model {
      */
     price?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Model
      */
-    readonly priceCurrency: string | null;
+    priceCurrency?: string;
     /**
      * Let's the user scale the model in AR when enabled.
      * @type {boolean}
@@ -213,31 +208,19 @@ export interface Model {
      */
     model?: string | null;
     /**
-     * Unity Asset Bundle for iOS
-     * @type {string}
-     * @memberof Model
-     */
-    unityIos?: string | null;
-    /**
-     * Unity Asset Bundle for Android
-     * @type {string}
-     * @memberof Model
-     */
-    unityAndroid?: string | null;
-    /**
-     * 
+     *
      * @type {{ [key: string]: any; }}
      * @memberof Model
      */
-    readonly arbuttonConfig: { [key: string]: any; };
+    arbuttonConfig?: { [key: string]: any };
     /**
-     * 
+     *
      * @type {Date}
      * @memberof Model
      */
     readonly created: Date;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof Model
      */
@@ -255,48 +238,45 @@ export function ModelFromJSON(json: any): Model {
 }
 
 export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Model {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'project': json['project'],
-        'name': json['name'],
-        'nameDe': !exists(json, 'name_de') ? undefined : json['name_de'],
-        'nameEn': !exists(json, 'name_en') ? undefined : json['name_en'],
-        'nameFr': !exists(json, 'name_fr') ? undefined : json['name_fr'],
-        'nameIt': !exists(json, 'name_it') ? undefined : json['name_it'],
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
-        'image': !exists(json, 'image') ? undefined : json['image'],
-        'imageThumb': json['image_thumb'],
-        'imagePreview': json['image_preview'],
-        'preview': !exists(json, 'preview') ? undefined : json['preview'],
-        'status': !exists(json, 'status') ? undefined : ModelStatusFromJSON(json['status']),
-        'description': json['description'],
-        'descriptionDe': !exists(json, 'description_de') ? undefined : json['description_de'],
-        'descriptionEn': !exists(json, 'description_en') ? undefined : json['description_en'],
-        'descriptionFr': !exists(json, 'description_fr') ? undefined : json['description_fr'],
-        'descriptionIt': !exists(json, 'description_it') ? undefined : json['description_it'],
-        'number': !exists(json, 'number') ? undefined : json['number'],
-        'siteUrl': json['site_url'],
-        'siteUrlDe': !exists(json, 'site_url_de') ? undefined : json['site_url_de'],
-        'siteUrlEn': !exists(json, 'site_url_en') ? undefined : json['site_url_en'],
-        'siteUrlFr': !exists(json, 'site_url_fr') ? undefined : json['site_url_fr'],
-        'siteUrlIt': !exists(json, 'site_url_it') ? undefined : json['site_url_it'],
-        'sku': !exists(json, 'sku') ? undefined : json['sku'],
-        'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
-        'scaleable': !exists(json, 'scaleable') ? undefined : json['scaleable'],
-        'glb': !exists(json, 'glb') ? undefined : json['glb'],
-        'usdz': !exists(json, 'usdz') ? undefined : json['usdz'],
-        'model': !exists(json, 'model') ? undefined : json['model'],
-        'unityIos': !exists(json, 'unity_ios') ? undefined : json['unity_ios'],
-        'unityAndroid': !exists(json, 'unity_android') ? undefined : json['unity_android'],
-        'arbuttonConfig': json['arbutton_config'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
-        'verticalPlacement': !exists(json, 'vertical_placement') ? undefined : json['vertical_placement'],
+        id: json['id'],
+        project: json['project'],
+        name: json['name'],
+        nameDe: !exists(json, 'name_de') ? undefined : json['name_de'],
+        nameEn: !exists(json, 'name_en') ? undefined : json['name_en'],
+        nameFr: !exists(json, 'name_fr') ? undefined : json['name_fr'],
+        nameIt: !exists(json, 'name_it') ? undefined : json['name_it'],
+        slug: !exists(json, 'slug') ? undefined : json['slug'],
+        image: !exists(json, 'image') ? undefined : json['image'],
+        imageThumb: !exists(json, 'image_thumb') ? undefined : json['image_thumb'],
+        imagePreview: !exists(json, 'image_preview') ? undefined : json['image_preview'],
+        preview: !exists(json, 'preview') ? undefined : json['preview'],
+        status: !exists(json, 'status') ? undefined : ModelStatusFromJSON(json['status']),
+        description: !exists(json, 'description') ? undefined : json['description'],
+        descriptionDe: !exists(json, 'description_de') ? undefined : json['description_de'],
+        descriptionEn: !exists(json, 'description_en') ? undefined : json['description_en'],
+        descriptionFr: !exists(json, 'description_fr') ? undefined : json['description_fr'],
+        descriptionIt: !exists(json, 'description_it') ? undefined : json['description_it'],
+        number: !exists(json, 'number') ? undefined : json['number'],
+        siteUrl: !exists(json, 'site_url') ? undefined : json['site_url'],
+        siteUrlDe: !exists(json, 'site_url_de') ? undefined : json['site_url_de'],
+        siteUrlEn: !exists(json, 'site_url_en') ? undefined : json['site_url_en'],
+        siteUrlFr: !exists(json, 'site_url_fr') ? undefined : json['site_url_fr'],
+        siteUrlIt: !exists(json, 'site_url_it') ? undefined : json['site_url_it'],
+        sku: !exists(json, 'sku') ? undefined : json['sku'],
+        price: !exists(json, 'price') ? undefined : json['price'],
+        priceCurrency: !exists(json, 'price_currency') ? undefined : json['price_currency'],
+        scaleable: !exists(json, 'scaleable') ? undefined : json['scaleable'],
+        glb: !exists(json, 'glb') ? undefined : json['glb'],
+        usdz: !exists(json, 'usdz') ? undefined : json['usdz'],
+        model: !exists(json, 'model') ? undefined : json['model'],
+        arbuttonConfig: !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
+        created: new Date(json['created']),
+        modified: new Date(json['modified']),
+        verticalPlacement: !exists(json, 'vertical_placement') ? undefined : json['vertical_placement'],
     };
 }
 
@@ -308,34 +288,36 @@ export function ModelToJSON(value?: Model | null): any {
         return null;
     }
     return {
-        
-        'project': value.project,
-        'name_de': value.nameDe,
-        'name_en': value.nameEn,
-        'name_fr': value.nameFr,
-        'name_it': value.nameIt,
-        'slug': value.slug,
-        'image': value.image,
-        'preview': value.preview,
-        'status': ModelStatusToJSON(value.status),
-        'description_de': value.descriptionDe,
-        'description_en': value.descriptionEn,
-        'description_fr': value.descriptionFr,
-        'description_it': value.descriptionIt,
-        'number': value.number,
-        'site_url_de': value.siteUrlDe,
-        'site_url_en': value.siteUrlEn,
-        'site_url_fr': value.siteUrlFr,
-        'site_url_it': value.siteUrlIt,
-        'sku': value.sku,
-        'price': value.price,
-        'scaleable': value.scaleable,
-        'glb': value.glb,
-        'usdz': value.usdz,
-        'model': value.model,
-        'unity_ios': value.unityIos,
-        'unity_android': value.unityAndroid,
-        'vertical_placement': value.verticalPlacement,
+        project: value.project,
+        name_de: value.nameDe,
+        name_en: value.nameEn,
+        name_fr: value.nameFr,
+        name_it: value.nameIt,
+        slug: value.slug,
+        image: value.image,
+        image_thumb: value.imageThumb,
+        image_preview: value.imagePreview,
+        preview: value.preview,
+        status: ModelStatusToJSON(value.status),
+        description: value.description,
+        description_de: value.descriptionDe,
+        description_en: value.descriptionEn,
+        description_fr: value.descriptionFr,
+        description_it: value.descriptionIt,
+        number: value.number,
+        site_url: value.siteUrl,
+        site_url_de: value.siteUrlDe,
+        site_url_en: value.siteUrlEn,
+        site_url_fr: value.siteUrlFr,
+        site_url_it: value.siteUrlIt,
+        sku: value.sku,
+        price: value.price,
+        price_currency: value.priceCurrency,
+        scaleable: value.scaleable,
+        glb: value.glb,
+        usdz: value.usdz,
+        model: value.model,
+        arbutton_config: value.arbuttonConfig,
+        vertical_placement: value.verticalPlacement,
     };
 }
-

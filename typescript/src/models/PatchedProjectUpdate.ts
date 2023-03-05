@@ -14,7 +14,7 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface PatchedProjectUpdate
  */
@@ -26,13 +26,13 @@ export interface PatchedProjectUpdate {
      */
     name?: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PatchedProjectUpdate
      */
     description?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PatchedProjectUpdate
      */
@@ -44,25 +44,25 @@ export interface PatchedProjectUpdate {
      */
     gallery?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof PatchedProjectUpdate
      */
     translationsDe?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof PatchedProjectUpdate
      */
     translationsEn?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof PatchedProjectUpdate
      */
     translationsFr?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof PatchedProjectUpdate
      */
@@ -74,11 +74,11 @@ export interface PatchedProjectUpdate {
      */
     backlinkUrls?: boolean;
     /**
-     * 
+     *
      * @type {{ [key: string]: any; }}
      * @memberof PatchedProjectUpdate
      */
-    arbuttonConfig?: { [key: string]: any; } | null;
+    arbuttonConfig?: { [key: string]: any } | null;
 }
 
 export function PatchedProjectUpdateFromJSON(json: any): PatchedProjectUpdate {
@@ -86,21 +86,20 @@ export function PatchedProjectUpdateFromJSON(json: any): PatchedProjectUpdate {
 }
 
 export function PatchedProjectUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean): PatchedProjectUpdate {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'website': !exists(json, 'website') ? undefined : json['website'],
-        'gallery': !exists(json, 'gallery') ? undefined : json['gallery'],
-        'translationsDe': !exists(json, 'translations_de') ? undefined : json['translations_de'],
-        'translationsEn': !exists(json, 'translations_en') ? undefined : json['translations_en'],
-        'translationsFr': !exists(json, 'translations_fr') ? undefined : json['translations_fr'],
-        'translationsIt': !exists(json, 'translations_it') ? undefined : json['translations_it'],
-        'backlinkUrls': !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
-        'arbuttonConfig': !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
+        name: !exists(json, 'name') ? undefined : json['name'],
+        description: !exists(json, 'description') ? undefined : json['description'],
+        website: !exists(json, 'website') ? undefined : json['website'],
+        gallery: !exists(json, 'gallery') ? undefined : json['gallery'],
+        translationsDe: !exists(json, 'translations_de') ? undefined : json['translations_de'],
+        translationsEn: !exists(json, 'translations_en') ? undefined : json['translations_en'],
+        translationsFr: !exists(json, 'translations_fr') ? undefined : json['translations_fr'],
+        translationsIt: !exists(json, 'translations_it') ? undefined : json['translations_it'],
+        backlinkUrls: !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
+        arbuttonConfig: !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
     };
 }
 
@@ -112,17 +111,15 @@ export function PatchedProjectUpdateToJSON(value?: PatchedProjectUpdate | null):
         return null;
     }
     return {
-        
-        'name': value.name,
-        'description': value.description,
-        'website': value.website,
-        'gallery': value.gallery,
-        'translations_de': value.translationsDe,
-        'translations_en': value.translationsEn,
-        'translations_fr': value.translationsFr,
-        'translations_it': value.translationsIt,
-        'backlink_urls': value.backlinkUrls,
-        'arbutton_config': value.arbuttonConfig,
+        name: value.name,
+        description: value.description,
+        website: value.website,
+        gallery: value.gallery,
+        translations_de: value.translationsDe,
+        translations_en: value.translationsEn,
+        translations_fr: value.translationsFr,
+        translations_it: value.translationsIt,
+        backlink_urls: value.backlinkUrls,
+        arbutton_config: value.arbuttonConfig,
     };
 }
-

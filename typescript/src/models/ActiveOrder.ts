@@ -13,27 +13,22 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    OrderState,
-    OrderStateFromJSON,
-    OrderStateFromJSONTyped,
-    OrderStateToJSON,
-} from './OrderState';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
- * 
+ *
  * @export
  * @interface ActiveOrder
  */
 export interface ActiveOrder {
     /**
-     * 
+     *
      * @type {number}
      * @memberof ActiveOrder
      */
     readonly id: number;
     /**
-     * 
+     *
      * @type {OrderState}
      * @memberof ActiveOrder
      */
@@ -45,13 +40,12 @@ export function ActiveOrderFromJSON(json: any): ActiveOrder {
 }
 
 export function ActiveOrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): ActiveOrder {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'state': OrderStateFromJSON(json['state']),
+        id: json['id'],
+        state: OrderStateFromJSON(json['state']),
     };
 }
 
@@ -62,8 +56,5 @@ export function ActiveOrderToJSON(value?: ActiveOrder | null): any {
     if (value === null) {
         return null;
     }
-    return {
-        
-    };
+    return {};
 }
-

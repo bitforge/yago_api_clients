@@ -12,8 +12,7 @@
  * Do not edit the class manually.
  */
 
-
-export const BASE_PATH = "https://yago.cloud".replace(/\/+$/, "");
+export const BASE_PATH = 'https://yago.cloud'.replace(/\/+$/, '');
 
 const isBlob = (value: any) => typeof Blob !== 'undefined' && value instanceof Blob;
 
@@ -21,7 +20,6 @@ const isBlob = (value: any) => typeof Blob !== 'undefined' && value instanceof B
  * This is the base class for all generated API classes.
  */
 export class BaseAPI {
-
     private middleware: Middleware[];
 
     constructor(protected configuration = new Configuration()) {
@@ -35,12 +33,12 @@ export class BaseAPI {
     }
 
     withPreMiddleware<T extends BaseAPI>(this: T, ...preMiddlewares: Array<Middleware['pre']>) {
-        const middlewares = preMiddlewares.map((pre) => ({ pre }));
+        const middlewares = preMiddlewares.map(pre => ({ pre }));
         return this.withMiddleware<T>(...middlewares);
     }
 
     withPostMiddleware<T extends BaseAPI>(this: T, ...postMiddlewares: Array<Middleware['post']>) {
-        const middlewares = postMiddlewares.map((post) => ({ post }));
+        const middlewares = postMiddlewares.map(post => ({ post }));
         return this.withMiddleware<T>(...middlewares);
     }
 
@@ -61,9 +59,12 @@ export class BaseAPI {
             // do not handle correctly sometimes.
             url += '?' + this.configuration.queryParamsStringify(context.query);
         }
-        const body = ((typeof FormData !== "undefined" && context.body instanceof FormData) || context.body instanceof URLSearchParams || isBlob(context.body))
-        ? context.body
-        : JSON.stringify(context.body);
+        const body =
+            (typeof FormData !== 'undefined' && context.body instanceof FormData) ||
+            context.body instanceof URLSearchParams ||
+            isBlob(context.body)
+                ? context.body
+                : JSON.stringify(context.body);
 
         const headers = Object.assign({}, this.configuration.headers, context.headers);
         const init = {
@@ -71,7 +72,7 @@ export class BaseAPI {
             headers: headers,
             body,
             credentials: this.configuration.credentials,
-            ...initOverrides
+            ...initOverrides,
         };
         return { url, init };
     }
@@ -80,25 +81,27 @@ export class BaseAPI {
         let fetchParams = { url, init };
         for (const middleware of this.middleware) {
             if (middleware.pre) {
-                fetchParams = await middleware.pre({
-                    fetch: this.fetchApi,
-                    ...fetchParams,
-                }) || fetchParams;
+                fetchParams =
+                    (await middleware.pre({
+                        fetch: this.fetchApi,
+                        ...fetchParams,
+                    })) || fetchParams;
             }
         }
         let response = await (this.configuration.fetchApi! || fetch)(fetchParams.url, fetchParams.init);
         for (const middleware of this.middleware) {
             if (middleware.post) {
-                response = await middleware.post({
-                    fetch: this.fetchApi,
-                    url: fetchParams.url,
-                    init: fetchParams.init,
-                    response: response.clone(),
-                }) || response;
+                response =
+                    (await middleware.post({
+                        fetch: this.fetchApi,
+                        url: fetchParams.url,
+                        init: fetchParams.init,
+                        response: response.clone(),
+                    })) || response;
             }
         }
         return response;
-    }
+    };
 
     /**
      * Create a shallow clone of `this` by constructing a new instance
@@ -110,20 +113,20 @@ export class BaseAPI {
         next.middleware = this.middleware.slice();
         return next;
     }
-};
+}
 
 export class RequiredError extends Error {
-    name: "RequiredError" = "RequiredError";
+    name: 'RequiredError' = 'RequiredError';
     constructor(public field: string, msg?: string) {
         super(msg);
     }
 }
 
 export const COLLECTION_FORMATS = {
-    csv: ",",
-    ssv: " ",
-    tsv: "\t",
-    pipes: "|",
+    csv: ',',
+    ssv: ' ',
+    tsv: '\t',
+    pipes: '|',
 };
 
 export type FetchAPI = WindowOrWorkerGlobalScope['fetch'];
@@ -196,7 +199,9 @@ export class Configuration {
 export type Json = any;
 export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'OPTIONS' | 'HEAD';
 export type HTTPHeaders = { [key: string]: string };
-export type HTTPQuery = { [key: string]: string | number | null | boolean | Array<string | number | null | boolean> | HTTPQuery };
+export type HTTPQuery = {
+    [key: string]: string | number | null | boolean | Array<string | number | null | boolean> | HTTPQuery;
+};
 export type HTTPBody = Json | FormData | URLSearchParams;
 export type ModelPropertyNaming = 'camelCase' | 'snake_case' | 'PascalCase' | 'original';
 
@@ -220,11 +225,12 @@ export function exists(json: any, key: string) {
 
 export function querystring(params: HTTPQuery, prefix: string = ''): string {
     return Object.keys(params)
-        .map((key) => {
+        .map(key => {
             const fullKey = prefix + (prefix.length ? `[${key}]` : key);
             const value = params[key];
             if (value instanceof Array) {
-                const multiValue = value.map(singleValue => encodeURIComponent(String(singleValue)))
+                const multiValue = value
+                    .map(singleValue => encodeURIComponent(String(singleValue)))
                     .join(`&${encodeURIComponent(fullKey)}=`);
                 return `${encodeURIComponent(fullKey)}=${multiValue}`;
             }
@@ -241,10 +247,7 @@ export function querystring(params: HTTPQuery, prefix: string = ''): string {
 }
 
 export function mapValues(data: any, fn: (item: any) => any) {
-  return Object.keys(data).reduce(
-    (acc, key) => ({ ...acc, [key]: fn(data[key]) }),
-    {}
-  );
+    return Object.keys(data).reduce((acc, key) => ({ ...acc, [key]: fn(data[key]) }), {});
 }
 
 export function canConsumeForm(consumes: Consume[]): boolean {
@@ -257,7 +260,7 @@ export function canConsumeForm(consumes: Consume[]): boolean {
 }
 
 export interface Consume {
-    contentType: string
+    contentType: string;
 }
 
 export interface RequestContext {
@@ -308,7 +311,7 @@ export class BlobApiResponse {
 
     async value(): Promise<Blob> {
         return await this.raw.blob();
-    };
+    }
 }
 
 export class TextApiResponse {
@@ -316,5 +319,5 @@ export class TextApiResponse {
 
     async value(): Promise<string> {
         return await this.raw.text();
-    };
+    }
 }

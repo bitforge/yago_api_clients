@@ -13,7 +13,7 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
@@ -26,18 +26,20 @@ export enum GlobalStatisticsGroupByEnum {
     Devices = 'devices',
     Browsers = 'browsers',
     Countries = 'countries',
-    Projects = 'projects'
+    Projects = 'projects',
 }
 
 export function GlobalStatisticsGroupByEnumFromJSON(json: any): GlobalStatisticsGroupByEnum {
     return GlobalStatisticsGroupByEnumFromJSONTyped(json, false);
 }
 
-export function GlobalStatisticsGroupByEnumFromJSONTyped(json: any, ignoreDiscriminator: boolean): GlobalStatisticsGroupByEnum {
+export function GlobalStatisticsGroupByEnumFromJSONTyped(
+    json: any,
+    ignoreDiscriminator: boolean
+): GlobalStatisticsGroupByEnum {
     return json as GlobalStatisticsGroupByEnum;
 }
 
 export function GlobalStatisticsGroupByEnumToJSON(value?: GlobalStatisticsGroupByEnum | null): any {
     return value as any;
 }
-

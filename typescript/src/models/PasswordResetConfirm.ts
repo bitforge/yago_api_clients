@@ -20,25 +20,25 @@ import { exists, mapValues } from '../runtime';
  */
 export interface PasswordResetConfirm {
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordResetConfirm
      */
     newPassword1: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordResetConfirm
      */
     newPassword2: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordResetConfirm
      */
     uid: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordResetConfirm
      */
@@ -50,15 +50,14 @@ export function PasswordResetConfirmFromJSON(json: any): PasswordResetConfirm {
 }
 
 export function PasswordResetConfirmFromJSONTyped(json: any, ignoreDiscriminator: boolean): PasswordResetConfirm {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'newPassword1': json['new_password1'],
-        'newPassword2': json['new_password2'],
-        'uid': json['uid'],
-        'token': json['token'],
+        newPassword1: json['new_password1'],
+        newPassword2: json['new_password2'],
+        uid: json['uid'],
+        token: json['token'],
     };
 }
 
@@ -70,11 +69,9 @@ export function PasswordResetConfirmToJSON(value?: PasswordResetConfirm | null):
         return null;
     }
     return {
-        
-        'new_password1': value.newPassword1,
-        'new_password2': value.newPassword2,
-        'uid': value.uid,
-        'token': value.token,
+        new_password1: value.newPassword1,
+        new_password2: value.newPassword2,
+        uid: value.uid,
+        token: value.token,
     };
 }
-

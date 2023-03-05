@@ -13,21 +13,16 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    ActiveOrder,
-    ActiveOrderFromJSON,
-    ActiveOrderFromJSONTyped,
-    ActiveOrderToJSON,
-} from './ActiveOrder';
+import { ActiveOrder, ActiveOrderFromJSON, ActiveOrderFromJSONTyped, ActiveOrderToJSON } from './ActiveOrder';
 
 /**
- * 
+ *
  * @export
  * @interface Project
  */
 export interface Project {
     /**
-     * 
+     *
      * @type {string}
      * @memberof Project
      */
@@ -45,11 +40,11 @@ export interface Project {
      */
     slug?: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Project
      */
-    readonly customerName: string;
+    customerName?: string;
     /**
      * Image will be visible in gallery.
      * @type {string}
@@ -57,25 +52,25 @@ export interface Project {
      */
     image?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Project
      */
-    readonly imageThumb: string;
+    imageThumb?: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Project
      */
-    readonly imagePreview: string;
+    imagePreview?: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Project
      */
     website?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Project
      */
@@ -87,25 +82,25 @@ export interface Project {
      */
     gallery?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof Project
      */
     translationsDe?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof Project
      */
     translationsEn?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof Project
      */
     translationsFr?: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof Project
      */
@@ -117,25 +112,25 @@ export interface Project {
      */
     backlinkUrls?: boolean;
     /**
-     * 
+     *
      * @type {Array<ActiveOrder>}
      * @memberof Project
      */
-    readonly orders: Array<ActiveOrder>;
+    orders?: Array<ActiveOrder>;
     /**
-     * 
+     *
      * @type {{ [key: string]: any; }}
      * @memberof Project
      */
-    arbuttonConfig?: { [key: string]: any; } | null;
+    arbuttonConfig?: { [key: string]: any } | null;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof Project
      */
     readonly created: Date;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof Project
      */
@@ -147,30 +142,29 @@ export function ProjectFromJSON(json: any): Project {
 }
 
 export function ProjectFromJSONTyped(json: any, ignoreDiscriminator: boolean): Project {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'name': json['name'],
-        'slug': !exists(json, 'slug') ? undefined : json['slug'],
-        'customerName': json['customer_name'],
-        'image': !exists(json, 'image') ? undefined : json['image'],
-        'imageThumb': json['image_thumb'],
-        'imagePreview': json['image_preview'],
-        'website': !exists(json, 'website') ? undefined : json['website'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'gallery': !exists(json, 'gallery') ? undefined : json['gallery'],
-        'translationsDe': !exists(json, 'translations_de') ? undefined : json['translations_de'],
-        'translationsEn': !exists(json, 'translations_en') ? undefined : json['translations_en'],
-        'translationsFr': !exists(json, 'translations_fr') ? undefined : json['translations_fr'],
-        'translationsIt': !exists(json, 'translations_it') ? undefined : json['translations_it'],
-        'backlinkUrls': !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
-        'orders': ((json['orders'] as Array<any>).map(ActiveOrderFromJSON)),
-        'arbuttonConfig': !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
+        id: json['id'],
+        name: json['name'],
+        slug: !exists(json, 'slug') ? undefined : json['slug'],
+        customerName: !exists(json, 'customer_name') ? undefined : json['customer_name'],
+        image: !exists(json, 'image') ? undefined : json['image'],
+        imageThumb: !exists(json, 'image_thumb') ? undefined : json['image_thumb'],
+        imagePreview: !exists(json, 'image_preview') ? undefined : json['image_preview'],
+        website: !exists(json, 'website') ? undefined : json['website'],
+        description: !exists(json, 'description') ? undefined : json['description'],
+        gallery: !exists(json, 'gallery') ? undefined : json['gallery'],
+        translationsDe: !exists(json, 'translations_de') ? undefined : json['translations_de'],
+        translationsEn: !exists(json, 'translations_en') ? undefined : json['translations_en'],
+        translationsFr: !exists(json, 'translations_fr') ? undefined : json['translations_fr'],
+        translationsIt: !exists(json, 'translations_it') ? undefined : json['translations_it'],
+        backlinkUrls: !exists(json, 'backlink_urls') ? undefined : json['backlink_urls'],
+        orders: !exists(json, 'orders') ? undefined : (json['orders'] as Array<any>).map(ActiveOrderFromJSON),
+        arbuttonConfig: !exists(json, 'arbutton_config') ? undefined : json['arbutton_config'],
+        created: new Date(json['created']),
+        modified: new Date(json['modified']),
     };
 }
 
@@ -182,19 +176,21 @@ export function ProjectToJSON(value?: Project | null): any {
         return null;
     }
     return {
-        
-        'name': value.name,
-        'slug': value.slug,
-        'image': value.image,
-        'website': value.website,
-        'description': value.description,
-        'gallery': value.gallery,
-        'translations_de': value.translationsDe,
-        'translations_en': value.translationsEn,
-        'translations_fr': value.translationsFr,
-        'translations_it': value.translationsIt,
-        'backlink_urls': value.backlinkUrls,
-        'arbutton_config': value.arbuttonConfig,
+        name: value.name,
+        slug: value.slug,
+        customer_name: value.customerName,
+        image: value.image,
+        image_thumb: value.imageThumb,
+        image_preview: value.imagePreview,
+        website: value.website,
+        description: value.description,
+        gallery: value.gallery,
+        translations_de: value.translationsDe,
+        translations_en: value.translationsEn,
+        translations_fr: value.translationsFr,
+        translations_it: value.translationsIt,
+        backlink_urls: value.backlinkUrls,
+        orders: value.orders === undefined ? undefined : (value.orders as Array<any>).map(ActiveOrderToJSON),
+        arbutton_config: value.arbuttonConfig,
     };
 }
-

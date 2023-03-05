@@ -14,31 +14,31 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface OrderModelComment
  */
 export interface OrderModelComment {
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof OrderModelComment
      */
     readonly yagoTeam: boolean;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelComment
      */
     readonly userName: string;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderModelComment
      */
     readonly date: Date;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelComment
      */
@@ -50,15 +50,14 @@ export function OrderModelCommentFromJSON(json: any): OrderModelComment {
 }
 
 export function OrderModelCommentFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModelComment {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'yagoTeam': json['yago_team'],
-        'userName': json['user_name'],
-        'date': (new Date(json['date'])),
-        'comment': json['comment'],
+        yagoTeam: json['yago_team'],
+        userName: json['user_name'],
+        date: new Date(json['date']),
+        comment: json['comment'],
     };
 }
 
@@ -70,8 +69,6 @@ export function OrderModelCommentToJSON(value?: OrderModelComment | null): any {
         return null;
     }
     return {
-        
-        'comment': value.comment,
+        comment: value.comment,
     };
 }
-

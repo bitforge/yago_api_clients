@@ -13,7 +13,7 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
@@ -21,7 +21,7 @@ export enum RoleEnum {
     Owner = 'OWNER',
     Member = 'MEMBER',
     Manager = 'MANAGER',
-    Designer = 'DESIGNER'
+    Designer = 'DESIGNER',
 }
 
 export function RoleEnumFromJSON(json: any): RoleEnum {
@@ -35,4 +35,3 @@ export function RoleEnumFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
 export function RoleEnumToJSON(value?: RoleEnum | null): any {
     return value as any;
 }
-

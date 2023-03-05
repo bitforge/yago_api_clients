@@ -14,37 +14,37 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface OrderModelCreate
  */
 export interface OrderModelCreate {
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelCreate
      */
     name: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelCreate
      */
     website?: string | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModelCreate
      */
     widthMm?: number | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModelCreate
      */
     heightMm?: number | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModelCreate
      */
@@ -56,16 +56,15 @@ export function OrderModelCreateFromJSON(json: any): OrderModelCreate {
 }
 
 export function OrderModelCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModelCreate {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'name': json['name'],
-        'website': !exists(json, 'website') ? undefined : json['website'],
-        'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
-        'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
-        'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
+        name: json['name'],
+        website: !exists(json, 'website') ? undefined : json['website'],
+        widthMm: !exists(json, 'width_mm') ? undefined : json['width_mm'],
+        heightMm: !exists(json, 'height_mm') ? undefined : json['height_mm'],
+        depthMm: !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
     };
 }
 
@@ -77,12 +76,10 @@ export function OrderModelCreateToJSON(value?: OrderModelCreate | null): any {
         return null;
     }
     return {
-        
-        'name': value.name,
-        'website': value.website,
-        'width_mm': value.widthMm,
-        'height_mm': value.heightMm,
-        'depth_mm': value.depthMm,
+        name: value.name,
+        website: value.website,
+        width_mm: value.widthMm,
+        height_mm: value.heightMm,
+        depth_mm: value.depthMm,
     };
 }
-

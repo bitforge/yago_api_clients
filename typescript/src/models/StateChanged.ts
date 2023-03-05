@@ -14,25 +14,25 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface StateChanged
  */
 export interface StateChanged {
     /**
-     * 
+     *
      * @type {string}
      * @memberof StateChanged
      */
     readonly oldState: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof StateChanged
      */
     readonly newState: string;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof StateChanged
      */
@@ -44,14 +44,13 @@ export function StateChangedFromJSON(json: any): StateChanged {
 }
 
 export function StateChangedFromJSONTyped(json: any, ignoreDiscriminator: boolean): StateChanged {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'oldState': json['old_state'],
-        'newState': json['new_state'],
-        'modified': (new Date(json['modified'])),
+        oldState: json['old_state'],
+        newState: json['new_state'],
+        modified: new Date(json['modified']),
     };
 }
 
@@ -62,8 +61,5 @@ export function StateChangedToJSON(value?: StateChanged | null): any {
     if (value === null) {
         return null;
     }
-    return {
-        
-    };
+    return {};
 }
-

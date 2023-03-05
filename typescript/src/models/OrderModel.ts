@@ -13,63 +13,58 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    OrderState,
-    OrderStateFromJSON,
-    OrderStateFromJSONTyped,
-    OrderStateToJSON,
-} from './OrderState';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
- * 
+ *
  * @export
  * @interface OrderModel
  */
 export interface OrderModel {
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModel
      */
     readonly id: number;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModel
      */
     name: string;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModel
      */
     readonly order: number;
     /**
-     * 
+     *
      * @type {OrderState}
      * @memberof OrderModel
      */
     readonly state: OrderState | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModel
      */
     website?: string | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModel
      */
     widthMm?: number | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModel
      */
     heightMm?: number | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModel
      */
@@ -81,13 +76,13 @@ export interface OrderModel {
      */
     readonly model: string | null;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderModel
      */
     readonly created: Date;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderModel
      */
@@ -99,22 +94,21 @@ export function OrderModelFromJSON(json: any): OrderModel {
 }
 
 export function OrderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModel {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'name': json['name'],
-        'order': json['order'],
-        'state': OrderStateFromJSON(json['state']),
-        'website': !exists(json, 'website') ? undefined : json['website'],
-        'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
-        'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
-        'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
-        'model': json['model'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
+        id: json['id'],
+        name: json['name'],
+        order: json['order'],
+        state: OrderStateFromJSON(json['state']),
+        website: !exists(json, 'website') ? undefined : json['website'],
+        widthMm: !exists(json, 'width_mm') ? undefined : json['width_mm'],
+        heightMm: !exists(json, 'height_mm') ? undefined : json['height_mm'],
+        depthMm: !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
+        model: json['model'],
+        created: new Date(json['created']),
+        modified: new Date(json['modified']),
     };
 }
 
@@ -126,12 +120,10 @@ export function OrderModelToJSON(value?: OrderModel | null): any {
         return null;
     }
     return {
-        
-        'name': value.name,
-        'website': value.website,
-        'width_mm': value.widthMm,
-        'height_mm': value.heightMm,
-        'depth_mm': value.depthMm,
+        name: value.name,
+        website: value.website,
+        width_mm: value.widthMm,
+        height_mm: value.heightMm,
+        depth_mm: value.depthMm,
     };
 }
-

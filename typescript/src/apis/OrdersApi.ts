@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 import {
     AvailableState,
@@ -197,20 +196,28 @@ export interface OrdersUpdateRequest {
 }
 
 /**
- * 
+ *
  */
 export class OrdersApi extends runtime.BaseAPI {
-
     /**
      * Add a new comment to order.
      */
-    async ordersCommentsCreateRaw(requestParameters: OrdersCommentsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderCommentCreate>> {
+    async ordersCommentsCreateRaw(
+        requestParameters: OrdersCommentsCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<OrderCommentCreate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersCommentsCreate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersCommentsCreate.'
+            );
         }
 
         if (requestParameters.orderCommentCreate === null || requestParameters.orderCommentCreate === undefined) {
-            throw new runtime.RequiredError('orderCommentCreate','Required parameter requestParameters.orderCommentCreate was null or undefined when calling ordersCommentsCreate.');
+            throw new runtime.RequiredError(
+                'orderCommentCreate',
+                'Required parameter requestParameters.orderCommentCreate was null or undefined when calling ordersCommentsCreate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -221,31 +228,40 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/comments/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: OrderCommentCreateToJSON(requestParameters.orderCommentCreate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/comments/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: OrderCommentCreateToJSON(requestParameters.orderCommentCreate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderCommentCreateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderCommentCreateFromJSON(jsonValue));
     }
 
     /**
      * Add a new comment to order.
      */
-    async ordersCommentsCreate(requestParameters: OrdersCommentsCreateRequest, initOverrides?: RequestInit): Promise<OrderCommentCreate> {
+    async ordersCommentsCreate(
+        requestParameters: OrdersCommentsCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<OrderCommentCreate> {
         const response = await this.ordersCommentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -253,9 +269,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * List all comments of order.
      */
-    async ordersCommentsListRaw(requestParameters: OrdersCommentsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<OrderComment>>> {
+    async ordersCommentsListRaw(
+        requestParameters: OrdersCommentsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Array<OrderComment>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersCommentsList.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersCommentsList.'
+            );
         }
 
         const queryParameters: any = {};
@@ -264,30 +286,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/comments/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/comments/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(OrderCommentFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(OrderCommentFromJSON));
     }
 
     /**
      * List all comments of order.
      */
-    async ordersCommentsList(requestParameters: OrdersCommentsListRequest, initOverrides?: RequestInit): Promise<Array<OrderComment>> {
+    async ordersCommentsList(
+        requestParameters: OrdersCommentsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<Array<OrderComment>> {
         const response = await this.ordersCommentsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -295,9 +326,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new order.
      */
-    async ordersCreateRaw(requestParameters: OrdersCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Order>> {
+    async ordersCreateRaw(
+        requestParameters: OrdersCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Order>> {
         if (requestParameters.orderCreate === null || requestParameters.orderCreate === undefined) {
-            throw new runtime.RequiredError('orderCreate','Required parameter requestParameters.orderCreate was null or undefined when calling ordersCreate.');
+            throw new runtime.RequiredError(
+                'orderCreate',
+                'Required parameter requestParameters.orderCreate was null or undefined when calling ordersCreate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -308,25 +345,28 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: OrderCreateToJSON(requestParameters.orderCreate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/`,
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: OrderCreateToJSON(requestParameters.orderCreate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderFromJSON(jsonValue));
     }
 
     /**
@@ -340,9 +380,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Delete order.
      */
-    async ordersDestroyRaw(requestParameters: OrdersDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async ordersDestroyRaw(
+        requestParameters: OrdersDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersDestroy.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersDestroy.'
+            );
         }
 
         const queryParameters: any = {};
@@ -351,22 +397,25 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{id}/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'DELETE',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
         return new runtime.VoidApiResponse(response);
     }
@@ -381,7 +430,10 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Lists all orders of customer.
      */
-    async ordersListRaw(requestParameters: OrdersListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<Order>>> {
+    async ordersListRaw(
+        requestParameters: OrdersListRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Array<Order>>> {
         const queryParameters: any = {};
 
         if (requestParameters.project !== undefined) {
@@ -392,24 +444,27 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/`,
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(OrderFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(OrderFromJSON));
     }
 
     /**
@@ -423,17 +478,32 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new comment to order.
      */
-    async ordersModelsCommentsCreateRaw(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelCommentCreate>> {
+    async ordersModelsCommentsCreateRaw(
+        requestParameters: OrdersModelsCommentsCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<OrderModelCommentCreate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCommentsCreate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCommentsCreate.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsCommentsCreate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsCommentsCreate.'
+            );
         }
 
-        if (requestParameters.orderModelCommentCreate === null || requestParameters.orderModelCommentCreate === undefined) {
-            throw new runtime.RequiredError('orderModelCommentCreate','Required parameter requestParameters.orderModelCommentCreate was null or undefined when calling ordersModelsCommentsCreate.');
+        if (
+            requestParameters.orderModelCommentCreate === null ||
+            requestParameters.orderModelCommentCreate === undefined
+        ) {
+            throw new runtime.RequiredError(
+                'orderModelCommentCreate',
+                'Required parameter requestParameters.orderModelCommentCreate was null or undefined when calling ordersModelsCommentsCreate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -444,31 +514,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/comments/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: OrderModelCommentCreateToJSON(requestParameters.orderModelCommentCreate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/comments/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: OrderModelCommentCreateToJSON(requestParameters.orderModelCommentCreate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelCommentCreateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderModelCommentCreateFromJSON(jsonValue));
     }
 
     /**
      * Add a new comment to order.
      */
-    async ordersModelsCommentsCreate(requestParameters: OrdersModelsCommentsCreateRequest, initOverrides?: RequestInit): Promise<OrderModelCommentCreate> {
+    async ordersModelsCommentsCreate(
+        requestParameters: OrdersModelsCommentsCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<OrderModelCommentCreate> {
         const response = await this.ordersModelsCommentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -476,13 +554,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * List all comments of model.
      */
-    async ordersModelsCommentsListRaw(requestParameters: OrdersModelsCommentsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<OrderModelComment>>> {
+    async ordersModelsCommentsListRaw(
+        requestParameters: OrdersModelsCommentsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Array<OrderModelComment>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCommentsList.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCommentsList.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsCommentsList.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsCommentsList.'
+            );
         }
 
         const queryParameters: any = {};
@@ -491,30 +578,38 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/comments/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/comments/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(OrderModelCommentFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(OrderModelCommentFromJSON));
     }
 
     /**
      * List all comments of model.
      */
-    async ordersModelsCommentsList(requestParameters: OrdersModelsCommentsListRequest, initOverrides?: RequestInit): Promise<Array<OrderModelComment>> {
+    async ordersModelsCommentsList(
+        requestParameters: OrdersModelsCommentsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<Array<OrderModelComment>> {
         const response = await this.ordersModelsCommentsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -522,13 +617,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new model.
      */
-    async ordersModelsCreateRaw(requestParameters: OrdersModelsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModel>> {
+    async ordersModelsCreateRaw(
+        requestParameters: OrdersModelsCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<OrderModel>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCreate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsCreate.'
+            );
         }
 
         if (requestParameters.orderModelCreate === null || requestParameters.orderModelCreate === undefined) {
-            throw new runtime.RequiredError('orderModelCreate','Required parameter requestParameters.orderModelCreate was null or undefined when calling ordersModelsCreate.');
+            throw new runtime.RequiredError(
+                'orderModelCreate',
+                'Required parameter requestParameters.orderModelCreate was null or undefined when calling ordersModelsCreate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -539,31 +643,40 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: OrderModelCreateToJSON(requestParameters.orderModelCreate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: OrderModelCreateToJSON(requestParameters.orderModelCreate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderModelFromJSON(jsonValue));
     }
 
     /**
      * Add a new model.
      */
-    async ordersModelsCreate(requestParameters: OrdersModelsCreateRequest, initOverrides?: RequestInit): Promise<OrderModel> {
+    async ordersModelsCreate(
+        requestParameters: OrdersModelsCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<OrderModel> {
         const response = await this.ordersModelsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -571,13 +684,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Delete model.
      */
-    async ordersModelsDestroyRaw(requestParameters: OrdersModelsDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async ordersModelsDestroyRaw(
+        requestParameters: OrdersModelsDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsDestroy.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsDestroy.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsDestroy.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsDestroy.'
+            );
         }
 
         const queryParameters: any = {};
@@ -586,22 +708,27 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'DELETE',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
         return new runtime.VoidApiResponse(response);
     }
@@ -609,24 +736,39 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Delete model.
      */
-    async ordersModelsDestroy(requestParameters: OrdersModelsDestroyRequest, initOverrides?: RequestInit): Promise<void> {
+    async ordersModelsDestroy(
+        requestParameters: OrdersModelsDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<void> {
         await this.ordersModelsDestroyRaw(requestParameters, initOverrides);
     }
 
     /**
      * Delete file.
      */
-    async ordersModelsFilesDestroyRaw(requestParameters: OrdersModelsFilesDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async ordersModelsFilesDestroyRaw(
+        requestParameters: OrdersModelsFilesDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsFilesDestroy.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsFilesDestroy.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsFilesDestroy.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsFilesDestroy.'
+            );
         }
 
         if (requestParameters.fileId === null || requestParameters.fileId === undefined) {
-            throw new runtime.RequiredError('fileId','Required parameter requestParameters.fileId was null or undefined when calling ordersModelsFilesDestroy.');
+            throw new runtime.RequiredError(
+                'fileId',
+                'Required parameter requestParameters.fileId was null or undefined when calling ordersModelsFilesDestroy.'
+            );
         }
 
         const queryParameters: any = {};
@@ -635,22 +777,28 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/files/{file_id}/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"file_id"}}`, encodeURIComponent(String(requestParameters.fileId))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/files/{file_id}/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id)))
+                    .replace(`{${'file_id'}}`, encodeURIComponent(String(requestParameters.fileId))),
+                method: 'DELETE',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
         return new runtime.VoidApiResponse(response);
     }
@@ -658,20 +806,32 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Delete file.
      */
-    async ordersModelsFilesDestroy(requestParameters: OrdersModelsFilesDestroyRequest, initOverrides?: RequestInit): Promise<void> {
+    async ordersModelsFilesDestroy(
+        requestParameters: OrdersModelsFilesDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<void> {
         await this.ordersModelsFilesDestroyRaw(requestParameters, initOverrides);
     }
 
     /**
      * Lists all files of model.
      */
-    async ordersModelsFilesListRaw(requestParameters: OrdersModelsFilesListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<OrderModelFile>>> {
+    async ordersModelsFilesListRaw(
+        requestParameters: OrdersModelsFilesListRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Array<OrderModelFile>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsFilesList.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsFilesList.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsFilesList.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsFilesList.'
+            );
         }
 
         const queryParameters: any = {};
@@ -680,30 +840,38 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/files/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/files/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(OrderModelFileFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(OrderModelFileFromJSON));
     }
 
     /**
      * Lists all files of model.
      */
-    async ordersModelsFilesList(requestParameters: OrdersModelsFilesListRequest, initOverrides?: RequestInit): Promise<Array<OrderModelFile>> {
+    async ordersModelsFilesList(
+        requestParameters: OrdersModelsFilesListRequest,
+        initOverrides?: RequestInit
+    ): Promise<Array<OrderModelFile>> {
         const response = await this.ordersModelsFilesListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -711,17 +879,29 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Upload a file. Max size 30MB. Filename is required!
      */
-    async ordersModelsFilesUpdateRaw(requestParameters: OrdersModelsFilesUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUploaded>> {
+    async ordersModelsFilesUpdateRaw(
+        requestParameters: OrdersModelsFilesUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<FileUploaded>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsFilesUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsFilesUpdate.'
+            );
         }
 
         if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
-            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling ordersModelsFilesUpdate.');
+            throw new runtime.RequiredError(
+                'contentDisposition',
+                'Required parameter requestParameters.contentDisposition was null or undefined when calling ordersModelsFilesUpdate.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsFilesUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsFilesUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -736,31 +916,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/files/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: requestParameters.body as any,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/files/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: requestParameters.body as any,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => FileUploadedFromJSON(jsonValue));
     }
 
     /**
      * Upload a file. Max size 30MB. Filename is required!
      */
-    async ordersModelsFilesUpdate(requestParameters: OrdersModelsFilesUpdateRequest, initOverrides?: RequestInit): Promise<FileUploaded> {
+    async ordersModelsFilesUpdate(
+        requestParameters: OrdersModelsFilesUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<FileUploaded> {
         const response = await this.ordersModelsFilesUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -768,9 +956,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Lists all models of order.
      */
-    async ordersModelsListRaw(requestParameters: OrdersModelsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<OrderModel>>> {
+    async ordersModelsListRaw(
+        requestParameters: OrdersModelsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Array<OrderModel>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsList.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsList.'
+            );
         }
 
         const queryParameters: any = {};
@@ -779,30 +973,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(OrderModelFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(OrderModelFromJSON));
     }
 
     /**
      * Lists all models of order.
      */
-    async ordersModelsList(requestParameters: OrdersModelsListRequest, initOverrides?: RequestInit): Promise<Array<OrderModel>> {
+    async ordersModelsList(
+        requestParameters: OrdersModelsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<Array<OrderModel>> {
         const response = await this.ordersModelsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -810,13 +1013,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * `ModelOrder` CRUD Viewset.
      */
-    async ordersModelsRetrieveRaw(requestParameters: OrdersModelsRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelDetail>> {
+    async ordersModelsRetrieveRaw(
+        requestParameters: OrdersModelsRetrieveRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<OrderModelDetail>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsRetrieve.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsRetrieve.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsRetrieve.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsRetrieve.'
+            );
         }
 
         const queryParameters: any = {};
@@ -825,30 +1037,38 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelDetailFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderModelDetailFromJSON(jsonValue));
     }
 
     /**
      * `ModelOrder` CRUD Viewset.
      */
-    async ordersModelsRetrieve(requestParameters: OrdersModelsRetrieveRequest, initOverrides?: RequestInit): Promise<OrderModelDetail> {
+    async ordersModelsRetrieve(
+        requestParameters: OrdersModelsRetrieveRequest,
+        initOverrides?: RequestInit
+    ): Promise<OrderModelDetail> {
         const response = await this.ordersModelsRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -856,13 +1076,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Model was accepted by customer and can be added to project.
      */
-    async ordersModelsSubmitToFinishedPartialUpdateRaw(requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersModelsSubmitToFinishedPartialUpdateRaw(
+        requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToFinishedPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToFinishedPartialUpdate.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToFinishedPartialUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToFinishedPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -871,30 +1100,38 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/submit_to_finished/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/submit_to_finished/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * Model was accepted by customer and can be added to project.
      */
-    async ordersModelsSubmitToFinishedPartialUpdate(requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersModelsSubmitToFinishedPartialUpdate(
+        requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersModelsSubmitToFinishedPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -902,13 +1139,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Model is ready to be reviewed by customer.
      */
-    async ordersModelsSubmitToReviewPartialUpdateRaw(requestParameters: OrdersModelsSubmitToReviewPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersModelsSubmitToReviewPartialUpdateRaw(
+        requestParameters: OrdersModelsSubmitToReviewPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToReviewPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToReviewPartialUpdate.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToReviewPartialUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToReviewPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -917,30 +1163,38 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/submit_to_review/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/submit_to_review/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * Model is ready to be reviewed by customer.
      */
-    async ordersModelsSubmitToReviewPartialUpdate(requestParameters: OrdersModelsSubmitToReviewPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersModelsSubmitToReviewPartialUpdate(
+        requestParameters: OrdersModelsSubmitToReviewPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersModelsSubmitToReviewPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -948,13 +1202,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Request rework of model, as specified in comments. Can only happen once.
      */
-    async ordersModelsSubmitToReworkPartialUpdateRaw(requestParameters: OrdersModelsSubmitToReworkPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersModelsSubmitToReworkPartialUpdateRaw(
+        requestParameters: OrdersModelsSubmitToReworkPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToReworkPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsSubmitToReworkPartialUpdate.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToReworkPartialUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsSubmitToReworkPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -963,30 +1226,38 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/submit_to_rework/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/submit_to_rework/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * Request rework of model, as specified in comments. Can only happen once.
      */
-    async ordersModelsSubmitToReworkPartialUpdate(requestParameters: OrdersModelsSubmitToReworkPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersModelsSubmitToReworkPartialUpdate(
+        requestParameters: OrdersModelsSubmitToReworkPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersModelsSubmitToReworkPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -994,13 +1265,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Lists available transitions of order model for current user.
      */
-    async ordersModelsTransitionsListRaw(requestParameters: OrdersModelsTransitionsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<AvailableState>>> {
+    async ordersModelsTransitionsListRaw(
+        requestParameters: OrdersModelsTransitionsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Array<AvailableState>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsTransitionsList.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsTransitionsList.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsTransitionsList.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsTransitionsList.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1009,30 +1289,38 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/transitions/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/transitions/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AvailableStateFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(AvailableStateFromJSON));
     }
 
     /**
      * Lists available transitions of order model for current user.
      */
-    async ordersModelsTransitionsList(requestParameters: OrdersModelsTransitionsListRequest, initOverrides?: RequestInit): Promise<Array<AvailableState>> {
+    async ordersModelsTransitionsList(
+        requestParameters: OrdersModelsTransitionsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<Array<AvailableState>> {
         const response = await this.ordersModelsTransitionsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1040,17 +1328,29 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Change model.
      */
-    async ordersModelsUpdateRaw(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderModelUpdate>> {
+    async ordersModelsUpdateRaw(
+        requestParameters: OrdersModelsUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<OrderModelUpdate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersModelsUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersModelsUpdate.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersModelsUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersModelsUpdate.'
+            );
         }
 
         if (requestParameters.orderModelUpdate === null || requestParameters.orderModelUpdate === undefined) {
-            throw new runtime.RequiredError('orderModelUpdate','Required parameter requestParameters.orderModelUpdate was null or undefined when calling ordersModelsUpdate.');
+            throw new runtime.RequiredError(
+                'orderModelUpdate',
+                'Required parameter requestParameters.orderModelUpdate was null or undefined when calling ordersModelsUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1061,31 +1361,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/models/{id}/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))).replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: OrderModelUpdateToJSON(requestParameters.orderModelUpdate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/models/{id}/`
+                    .replace(`{${'order_id'}}`, encodeURIComponent(String(requestParameters.orderId)))
+                    .replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: OrderModelUpdateToJSON(requestParameters.orderModelUpdate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderModelUpdateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderModelUpdateFromJSON(jsonValue));
     }
 
     /**
      * Change model.
      */
-    async ordersModelsUpdate(requestParameters: OrdersModelsUpdateRequest, initOverrides?: RequestInit): Promise<OrderModelUpdate> {
+    async ordersModelsUpdate(
+        requestParameters: OrdersModelsUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<OrderModelUpdate> {
         const response = await this.ordersModelsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1093,9 +1401,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Details of a single order.
      */
-    async ordersRetrieveRaw(requestParameters: OrdersRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderDetail>> {
+    async ordersRetrieveRaw(
+        requestParameters: OrdersRetrieveRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<OrderDetail>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersRetrieve.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersRetrieve.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1104,24 +1418,27 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{id}/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderDetailFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderDetailFromJSON(jsonValue));
     }
 
     /**
@@ -1135,9 +1452,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Send order to estimation after all models have been added and specified.
      */
-    async ordersSubmitToEstimationPartialUpdateRaw(requestParameters: OrdersSubmitToEstimationPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersSubmitToEstimationPartialUpdateRaw(
+        requestParameters: OrdersSubmitToEstimationPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToEstimationPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToEstimationPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1146,30 +1469,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/submit_to_estimation/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/submit_to_estimation/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * Send order to estimation after all models have been added and specified.
      */
-    async ordersSubmitToEstimationPartialUpdate(requestParameters: OrdersSubmitToEstimationPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersSubmitToEstimationPartialUpdate(
+        requestParameters: OrdersSubmitToEstimationPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersSubmitToEstimationPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1177,9 +1509,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * All models are reviewed & accepted by customer, order is complete.
      */
-    async ordersSubmitToFinishedPartialUpdateRaw(requestParameters: OrdersSubmitToFinishedPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersSubmitToFinishedPartialUpdateRaw(
+        requestParameters: OrdersSubmitToFinishedPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToFinishedPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToFinishedPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1188,30 +1526,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/submit_to_finished/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/submit_to_finished/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * All models are reviewed & accepted by customer, order is complete.
      */
-    async ordersSubmitToFinishedPartialUpdate(requestParameters: OrdersSubmitToFinishedPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersSubmitToFinishedPartialUpdate(
+        requestParameters: OrdersSubmitToFinishedPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersSubmitToFinishedPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1219,9 +1566,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Models have been estimated and and payment price for customer is defined.
      */
-    async ordersSubmitToPaymentPartialUpdateRaw(requestParameters: OrdersSubmitToPaymentPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersSubmitToPaymentPartialUpdateRaw(
+        requestParameters: OrdersSubmitToPaymentPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToPaymentPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToPaymentPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1230,30 +1583,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/submit_to_payment/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/submit_to_payment/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * Models have been estimated and and payment price for customer is defined.
      */
-    async ordersSubmitToPaymentPartialUpdate(requestParameters: OrdersSubmitToPaymentPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersSubmitToPaymentPartialUpdate(
+        requestParameters: OrdersSubmitToPaymentPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersSubmitToPaymentPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1261,9 +1623,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Customer has payed estimated amount and modelling can begin.
      */
-    async ordersSubmitToProgressPartialUpdateRaw(requestParameters: OrdersSubmitToProgressPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersSubmitToProgressPartialUpdateRaw(
+        requestParameters: OrdersSubmitToProgressPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToProgressPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToProgressPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1272,30 +1640,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/submit_to_progress/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/submit_to_progress/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * Customer has payed estimated amount and modelling can begin.
      */
-    async ordersSubmitToProgressPartialUpdate(requestParameters: OrdersSubmitToProgressPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersSubmitToProgressPartialUpdate(
+        requestParameters: OrdersSubmitToProgressPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersSubmitToProgressPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1303,9 +1680,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * All models are uploaded and ready, customer may begin with review.
      */
-    async ordersSubmitToReviewPartialUpdateRaw(requestParameters: OrdersSubmitToReviewPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<StateChanged>> {
+    async ordersSubmitToReviewPartialUpdateRaw(
+        requestParameters: OrdersSubmitToReviewPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToReviewPartialUpdate.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersSubmitToReviewPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1314,30 +1697,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/submit_to_review/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/submit_to_review/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StateChangedFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => StateChangedFromJSON(jsonValue));
     }
 
     /**
      * All models are uploaded and ready, customer may begin with review.
      */
-    async ordersSubmitToReviewPartialUpdate(requestParameters: OrdersSubmitToReviewPartialUpdateRequest, initOverrides?: RequestInit): Promise<StateChanged> {
+    async ordersSubmitToReviewPartialUpdate(
+        requestParameters: OrdersSubmitToReviewPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<StateChanged> {
         const response = await this.ordersSubmitToReviewPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1345,9 +1737,15 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Lists available transitions of order for current user.
      */
-    async ordersTransitionsListRaw(requestParameters: OrdersTransitionsListRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<AvailableState>>> {
+    async ordersTransitionsListRaw(
+        requestParameters: OrdersTransitionsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Array<AvailableState>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
-            throw new runtime.RequiredError('orderId','Required parameter requestParameters.orderId was null or undefined when calling ordersTransitionsList.');
+            throw new runtime.RequiredError(
+                'orderId',
+                'Required parameter requestParameters.orderId was null or undefined when calling ordersTransitionsList.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1356,30 +1754,39 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{order_id}/transitions/`.replace(`{${"order_id"}}`, encodeURIComponent(String(requestParameters.orderId))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{order_id}/transitions/`.replace(
+                    `{${'order_id'}}`,
+                    encodeURIComponent(String(requestParameters.orderId))
+                ),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AvailableStateFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(AvailableStateFromJSON));
     }
 
     /**
      * Lists available transitions of order for current user.
      */
-    async ordersTransitionsList(requestParameters: OrdersTransitionsListRequest, initOverrides?: RequestInit): Promise<Array<AvailableState>> {
+    async ordersTransitionsList(
+        requestParameters: OrdersTransitionsListRequest,
+        initOverrides?: RequestInit
+    ): Promise<Array<AvailableState>> {
         const response = await this.ordersTransitionsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1387,13 +1794,22 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Update order price estimation.
      */
-    async ordersUpdateRaw(requestParameters: OrdersUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<OrderUpdate>> {
+    async ordersUpdateRaw(
+        requestParameters: OrdersUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<OrderUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling ordersUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling ordersUpdate.'
+            );
         }
 
         if (requestParameters.orderUpdate === null || requestParameters.orderUpdate === undefined) {
-            throw new runtime.RequiredError('orderUpdate','Required parameter requestParameters.orderUpdate was null or undefined when calling ordersUpdate.');
+            throw new runtime.RequiredError(
+                'orderUpdate',
+                'Required parameter requestParameters.orderUpdate was null or undefined when calling ordersUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -1404,25 +1820,28 @@ export class OrdersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/orders/{id}/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: OrderUpdateToJSON(requestParameters.orderUpdate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/orders/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: OrderUpdateToJSON(requestParameters.orderUpdate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OrderUpdateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => OrderUpdateFromJSON(jsonValue));
     }
 
     /**
@@ -1432,5 +1851,4 @@ export class OrdersApi extends runtime.BaseAPI {
         const response = await this.ordersUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
-
 }

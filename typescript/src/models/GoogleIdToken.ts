@@ -20,7 +20,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface GoogleIdToken {
     /**
-     * 
+     *
      * @type {string}
      * @memberof GoogleIdToken
      */
@@ -32,12 +32,11 @@ export function GoogleIdTokenFromJSON(json: any): GoogleIdToken {
 }
 
 export function GoogleIdTokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): GoogleIdToken {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'token': json['token'],
+        token: json['token'],
     };
 }
 
@@ -49,8 +48,6 @@ export function GoogleIdTokenToJSON(value?: GoogleIdToken | null): any {
         return null;
     }
     return {
-        
-        'token': value.token,
+        token: value.token,
     };
 }
-

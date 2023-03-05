@@ -10,5 +10,4 @@ export * from './PlansApi';
 export * from './ProjectsApi';
 export * from './RegistrationApi';
 export * from './StatsApi';
-export * from './SubscriptionApi';
 export * from './UsersApi';

@@ -14,13 +14,13 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface ModelCreate
  */
 export interface ModelCreate {
     /**
-     * 
+     *
      * @type {string}
      * @memberof ModelCreate
      */
@@ -68,18 +68,17 @@ export function ModelCreateFromJSON(json: any): ModelCreate {
 }
 
 export function ModelCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelCreate {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'project': json['project'],
-        'nameDe': !exists(json, 'name_de') ? undefined : json['name_de'],
-        'nameEn': !exists(json, 'name_en') ? undefined : json['name_en'],
-        'nameFr': !exists(json, 'name_fr') ? undefined : json['name_fr'],
-        'nameIt': !exists(json, 'name_it') ? undefined : json['name_it'],
-        'slug': json['slug'],
+        id: json['id'],
+        project: json['project'],
+        nameDe: !exists(json, 'name_de') ? undefined : json['name_de'],
+        nameEn: !exists(json, 'name_en') ? undefined : json['name_en'],
+        nameFr: !exists(json, 'name_fr') ? undefined : json['name_fr'],
+        nameIt: !exists(json, 'name_it') ? undefined : json['name_it'],
+        slug: json['slug'],
     };
 }
 
@@ -91,12 +90,10 @@ export function ModelCreateToJSON(value?: ModelCreate | null): any {
         return null;
     }
     return {
-        
-        'project': value.project,
-        'name_de': value.nameDe,
-        'name_en': value.nameEn,
-        'name_fr': value.nameFr,
-        'name_it': value.nameIt,
+        project: value.project,
+        name_de: value.nameDe,
+        name_en: value.nameEn,
+        name_fr: value.nameFr,
+        name_it: value.nameIt,
     };
 }
-

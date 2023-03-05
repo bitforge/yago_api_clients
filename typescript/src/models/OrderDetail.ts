@@ -13,45 +13,30 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    OrderComment,
-    OrderCommentFromJSON,
-    OrderCommentFromJSONTyped,
-    OrderCommentToJSON,
-} from './OrderComment';
-import {
-    OrderModel,
-    OrderModelFromJSON,
-    OrderModelFromJSONTyped,
-    OrderModelToJSON,
-} from './OrderModel';
-import {
-    OrderState,
-    OrderStateFromJSON,
-    OrderStateFromJSONTyped,
-    OrderStateToJSON,
-} from './OrderState';
+import { OrderComment, OrderCommentFromJSON, OrderCommentFromJSONTyped, OrderCommentToJSON } from './OrderComment';
+import { OrderModel, OrderModelFromJSON, OrderModelFromJSONTyped, OrderModelToJSON } from './OrderModel';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
- * 
+ *
  * @export
  * @interface OrderDetail
  */
 export interface OrderDetail {
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderDetail
      */
     readonly id: number;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderDetail
      */
     project: string;
     /**
-     * 
+     *
      * @type {OrderState}
      * @memberof OrderDetail
      */
@@ -63,31 +48,31 @@ export interface OrderDetail {
      */
     price?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderDetail
      */
     readonly priceCurrency: string | null;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderDetail
      */
     readonly created: Date;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderDetail
      */
     readonly modified: Date;
     /**
-     * 
+     *
      * @type {Array<OrderModel>}
      * @memberof OrderDetail
      */
     models: Array<OrderModel>;
     /**
-     * 
+     *
      * @type {Array<OrderComment>}
      * @memberof OrderDetail
      */
@@ -99,20 +84,19 @@ export function OrderDetailFromJSON(json: any): OrderDetail {
 }
 
 export function OrderDetailFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderDetail {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'project': json['project'],
-        'state': OrderStateFromJSON(json['state']),
-        'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
-        'models': ((json['models'] as Array<any>).map(OrderModelFromJSON)),
-        'comments': ((json['comments'] as Array<any>).map(OrderCommentFromJSON)),
+        id: json['id'],
+        project: json['project'],
+        state: OrderStateFromJSON(json['state']),
+        price: !exists(json, 'price') ? undefined : json['price'],
+        priceCurrency: json['price_currency'],
+        created: new Date(json['created']),
+        modified: new Date(json['modified']),
+        models: (json['models'] as Array<any>).map(OrderModelFromJSON),
+        comments: (json['comments'] as Array<any>).map(OrderCommentFromJSON),
     };
 }
 
@@ -124,11 +108,9 @@ export function OrderDetailToJSON(value?: OrderDetail | null): any {
         return null;
     }
     return {
-        
-        'project': value.project,
-        'price': value.price,
-        'models': ((value.models as Array<any>).map(OrderModelToJSON)),
-        'comments': ((value.comments as Array<any>).map(OrderCommentToJSON)),
+        project: value.project,
+        price: value.price,
+        models: (value.models as Array<any>).map(OrderModelToJSON),
+        comments: (value.comments as Array<any>).map(OrderCommentToJSON),
     };
 }
-

@@ -1,20 +1,20 @@
 {
-  "name": "@bitforgehq/yago-api-client",
-  "version": "1.1.2",
-  "private": false,
-  "license": "MIT",
-  "homepage": "https://github.com/bitforge/yago_api_clients",
-  "main": "src/index.ts",
-  "scripts": {
-    "build": "tsc",
-    "test": "jest --env=node --colors tests"
-  },
-  "devDependencies": {
-    "@types/jest": "^27.0.2",
-    "jest": "^27.3.1",
-    "node-fetch": "2.6.6",
-    "ts-jest": "^27.0.7",
-    "typescript": "4.1.5"
-  },
-  "dependencies": {}
+    "name": "@bitforgehq/yago-api-client",
+    "version": "1.2.0",
+    "private": false,
+    "license": "MIT",
+    "homepage": "https://github.com/bitforge/yago_api_clients",
+    "main": "src/index.ts",
+    "scripts": {
+        "build": "tsc",
+        "test": "jest --env=node --colors tests"
+    },
+    "devDependencies": {
+        "@types/jest": "^27.0.2",
+        "jest": "^27.3.1",
+        "node-fetch": "2.6.6",
+        "ts-jest": "^27.0.7",
+        "typescript": "4.1.5"
+    },
+    "dependencies": {}
 }

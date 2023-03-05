@@ -13,15 +13,10 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    ModelStatus,
-    ModelStatusFromJSON,
-    ModelStatusFromJSONTyped,
-    ModelStatusToJSON,
-} from './ModelStatus';
+import { ModelStatus, ModelStatusFromJSON, ModelStatusFromJSONTyped, ModelStatusToJSON } from './ModelStatus';
 
 /**
- * 
+ *
  * @export
  * @interface ModelUpdate
  */
@@ -57,7 +52,7 @@ export interface ModelUpdate {
      */
     status?: ModelStatus | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof ModelUpdate
      */
@@ -135,7 +130,7 @@ export interface ModelUpdate {
      */
     price?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof ModelUpdate
      */
@@ -153,31 +148,30 @@ export function ModelUpdateFromJSON(json: any): ModelUpdate {
 }
 
 export function ModelUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelUpdate {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'nameDe': !exists(json, 'name_de') ? undefined : json['name_de'],
-        'nameEn': !exists(json, 'name_en') ? undefined : json['name_en'],
-        'nameFr': !exists(json, 'name_fr') ? undefined : json['name_fr'],
-        'nameIt': !exists(json, 'name_it') ? undefined : json['name_it'],
-        'status': !exists(json, 'status') ? undefined : ModelStatusFromJSON(json['status']),
-        'description': json['description'],
-        'descriptionDe': !exists(json, 'description_de') ? undefined : json['description_de'],
-        'descriptionEn': !exists(json, 'description_en') ? undefined : json['description_en'],
-        'descriptionFr': !exists(json, 'description_fr') ? undefined : json['description_fr'],
-        'descriptionIt': !exists(json, 'description_it') ? undefined : json['description_it'],
-        'number': !exists(json, 'number') ? undefined : json['number'],
-        'siteUrlDe': !exists(json, 'site_url_de') ? undefined : json['site_url_de'],
-        'siteUrlEn': !exists(json, 'site_url_en') ? undefined : json['site_url_en'],
-        'siteUrlFr': !exists(json, 'site_url_fr') ? undefined : json['site_url_fr'],
-        'siteUrlIt': !exists(json, 'site_url_it') ? undefined : json['site_url_it'],
-        'scaleable': !exists(json, 'scaleable') ? undefined : json['scaleable'],
-        'sku': !exists(json, 'sku') ? undefined : json['sku'],
-        'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
-        'verticalPlacement': !exists(json, 'vertical_placement') ? undefined : json['vertical_placement'],
+        nameDe: !exists(json, 'name_de') ? undefined : json['name_de'],
+        nameEn: !exists(json, 'name_en') ? undefined : json['name_en'],
+        nameFr: !exists(json, 'name_fr') ? undefined : json['name_fr'],
+        nameIt: !exists(json, 'name_it') ? undefined : json['name_it'],
+        status: !exists(json, 'status') ? undefined : ModelStatusFromJSON(json['status']),
+        description: json['description'],
+        descriptionDe: !exists(json, 'description_de') ? undefined : json['description_de'],
+        descriptionEn: !exists(json, 'description_en') ? undefined : json['description_en'],
+        descriptionFr: !exists(json, 'description_fr') ? undefined : json['description_fr'],
+        descriptionIt: !exists(json, 'description_it') ? undefined : json['description_it'],
+        number: !exists(json, 'number') ? undefined : json['number'],
+        siteUrlDe: !exists(json, 'site_url_de') ? undefined : json['site_url_de'],
+        siteUrlEn: !exists(json, 'site_url_en') ? undefined : json['site_url_en'],
+        siteUrlFr: !exists(json, 'site_url_fr') ? undefined : json['site_url_fr'],
+        siteUrlIt: !exists(json, 'site_url_it') ? undefined : json['site_url_it'],
+        scaleable: !exists(json, 'scaleable') ? undefined : json['scaleable'],
+        sku: !exists(json, 'sku') ? undefined : json['sku'],
+        price: !exists(json, 'price') ? undefined : json['price'],
+        priceCurrency: json['price_currency'],
+        verticalPlacement: !exists(json, 'vertical_placement') ? undefined : json['vertical_placement'],
     };
 }
 
@@ -189,25 +183,23 @@ export function ModelUpdateToJSON(value?: ModelUpdate | null): any {
         return null;
     }
     return {
-        
-        'name_de': value.nameDe,
-        'name_en': value.nameEn,
-        'name_fr': value.nameFr,
-        'name_it': value.nameIt,
-        'status': ModelStatusToJSON(value.status),
-        'description_de': value.descriptionDe,
-        'description_en': value.descriptionEn,
-        'description_fr': value.descriptionFr,
-        'description_it': value.descriptionIt,
-        'number': value.number,
-        'site_url_de': value.siteUrlDe,
-        'site_url_en': value.siteUrlEn,
-        'site_url_fr': value.siteUrlFr,
-        'site_url_it': value.siteUrlIt,
-        'scaleable': value.scaleable,
-        'sku': value.sku,
-        'price': value.price,
-        'vertical_placement': value.verticalPlacement,
+        name_de: value.nameDe,
+        name_en: value.nameEn,
+        name_fr: value.nameFr,
+        name_it: value.nameIt,
+        status: ModelStatusToJSON(value.status),
+        description_de: value.descriptionDe,
+        description_en: value.descriptionEn,
+        description_fr: value.descriptionFr,
+        description_it: value.descriptionIt,
+        number: value.number,
+        site_url_de: value.siteUrlDe,
+        site_url_en: value.siteUrlEn,
+        site_url_fr: value.siteUrlFr,
+        site_url_it: value.siteUrlIt,
+        scaleable: value.scaleable,
+        sku: value.sku,
+        price: value.price,
+        vertical_placement: value.verticalPlacement,
     };
 }
-

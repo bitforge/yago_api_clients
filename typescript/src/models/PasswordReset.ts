@@ -20,7 +20,7 @@ import { exists, mapValues } from '../runtime';
  */
 export interface PasswordReset {
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordReset
      */
@@ -32,12 +32,11 @@ export function PasswordResetFromJSON(json: any): PasswordReset {
 }
 
 export function PasswordResetFromJSONTyped(json: any, ignoreDiscriminator: boolean): PasswordReset {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'email': json['email'],
+        email: json['email'],
     };
 }
 
@@ -49,8 +48,6 @@ export function PasswordResetToJSON(value?: PasswordReset | null): any {
         return null;
     }
     return {
-        
-        'email': value.email,
+        email: value.email,
     };
 }
-

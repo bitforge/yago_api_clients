@@ -20,19 +20,19 @@ import { exists, mapValues } from '../runtime';
  */
 export interface PasswordChange {
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordChange
      */
     oldPassword: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordChange
      */
     newPassword1: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PasswordChange
      */
@@ -44,14 +44,13 @@ export function PasswordChangeFromJSON(json: any): PasswordChange {
 }
 
 export function PasswordChangeFromJSONTyped(json: any, ignoreDiscriminator: boolean): PasswordChange {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'oldPassword': json['old_password'],
-        'newPassword1': json['new_password1'],
-        'newPassword2': json['new_password2'],
+        oldPassword: json['old_password'],
+        newPassword1: json['new_password1'],
+        newPassword2: json['new_password2'],
     };
 }
 
@@ -63,10 +62,8 @@ export function PasswordChangeToJSON(value?: PasswordChange | null): any {
         return null;
     }
     return {
-        
-        'old_password': value.oldPassword,
-        'new_password1': value.newPassword1,
-        'new_password2': value.newPassword2,
+        old_password: value.oldPassword,
+        new_password1: value.newPassword1,
+        new_password2: value.newPassword2,
     };
 }
-

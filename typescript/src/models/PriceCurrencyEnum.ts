@@ -13,7 +13,7 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
@@ -21,7 +21,7 @@ export enum PriceCurrencyEnum {
     Chf = 'CHF',
     Eur = 'EUR',
     Gbp = 'GBP',
-    Usd = 'USD'
+    Usd = 'USD',
 }
 
 export function PriceCurrencyEnumFromJSON(json: any): PriceCurrencyEnum {
@@ -35,4 +35,3 @@ export function PriceCurrencyEnumFromJSONTyped(json: any, ignoreDiscriminator: b
 export function PriceCurrencyEnumToJSON(value?: PriceCurrencyEnum | null): any {
     return value as any;
 }
-

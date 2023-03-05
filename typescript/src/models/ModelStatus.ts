@@ -13,14 +13,14 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
 export enum ModelStatus {
     Draft = 'DRAFT',
     Ready = 'READY',
-    Online = 'ONLINE'
+    Online = 'ONLINE',
 }
 
 export function ModelStatusFromJSON(json: any): ModelStatus {
@@ -34,4 +34,3 @@ export function ModelStatusFromJSONTyped(json: any, ignoreDiscriminator: boolean
 export function ModelStatusToJSON(value?: ModelStatus | null): any {
     return value as any;
 }
-

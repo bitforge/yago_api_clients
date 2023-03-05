@@ -13,45 +13,40 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    RoleEnum,
-    RoleEnumFromJSON,
-    RoleEnumFromJSONTyped,
-    RoleEnumToJSON,
-} from './RoleEnum';
+import { RoleEnum, RoleEnumFromJSON, RoleEnumFromJSONTyped, RoleEnumToJSON } from './RoleEnum';
 
 /**
- * 
+ *
  * @export
  * @interface Membership
  */
 export interface Membership {
     /**
-     * 
+     *
      * @type {string}
      * @memberof Membership
      */
     readonly id: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Membership
      */
     project: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Membership
      */
     user: string;
     /**
-     * 
+     *
      * @type {RoleEnum}
      * @memberof Membership
      */
     role?: RoleEnum;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof Membership
      */
@@ -63,16 +58,15 @@ export function MembershipFromJSON(json: any): Membership {
 }
 
 export function MembershipFromJSONTyped(json: any, ignoreDiscriminator: boolean): Membership {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'project': json['project'],
-        'user': json['user'],
-        'role': !exists(json, 'role') ? undefined : RoleEnumFromJSON(json['role']),
-        'created': (new Date(json['created'])),
+        id: json['id'],
+        project: json['project'],
+        user: json['user'],
+        role: !exists(json, 'role') ? undefined : RoleEnumFromJSON(json['role']),
+        created: new Date(json['created']),
     };
 }
 
@@ -84,10 +78,8 @@ export function MembershipToJSON(value?: Membership | null): any {
         return null;
     }
     return {
-        
-        'project': value.project,
-        'user': value.user,
-        'role': RoleEnumToJSON(value.role),
+        project: value.project,
+        user: value.user,
+        role: RoleEnumToJSON(value.role),
     };
 }
-

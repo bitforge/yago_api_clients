@@ -14,29 +14,29 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface ModelInfo
  */
 export interface ModelInfo {
     /**
-     * 
+     *
      * @type {string}
      * @memberof ModelInfo
      */
     siteUrl: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof ModelInfo
      */
     quicklookLink: string;
     /**
-     * 
+     *
      * @type {{ [key: string]: any; }}
      * @memberof ModelInfo
      */
-    qrConfig: { [key: string]: any; };
+    qrConfig: { [key: string]: any };
 }
 
 export function ModelInfoFromJSON(json: any): ModelInfo {
@@ -44,14 +44,13 @@ export function ModelInfoFromJSON(json: any): ModelInfo {
 }
 
 export function ModelInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'siteUrl': json['site_url'],
-        'quicklookLink': json['quicklook_link'],
-        'qrConfig': json['qr_config'],
+        siteUrl: json['site_url'],
+        quicklookLink: json['quicklook_link'],
+        qrConfig: json['qr_config'],
     };
 }
 
@@ -63,10 +62,8 @@ export function ModelInfoToJSON(value?: ModelInfo | null): any {
         return null;
     }
     return {
-        
-        'site_url': value.siteUrl,
-        'quicklook_link': value.quicklookLink,
-        'qr_config': value.qrConfig,
+        site_url: value.siteUrl,
+        quicklook_link: value.quicklookLink,
+        qr_config: value.qrConfig,
     };
 }
-

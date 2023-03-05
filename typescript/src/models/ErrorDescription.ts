@@ -14,29 +14,29 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface ErrorDescription
  */
 export interface ErrorDescription {
     /**
-     * 
+     *
      * @type {string}
      * @memberof ErrorDescription
      */
     readonly title: string;
     /**
-     * 
+     *
      * @type {number}
      * @memberof ErrorDescription
      */
     readonly status: number;
     /**
-     * 
+     *
      * @type {{ [key: string]: any; }}
      * @memberof ErrorDescription
      */
-    readonly errors: { [key: string]: any; };
+    readonly errors: { [key: string]: any };
 }
 
 export function ErrorDescriptionFromJSON(json: any): ErrorDescription {
@@ -44,14 +44,13 @@ export function ErrorDescriptionFromJSON(json: any): ErrorDescription {
 }
 
 export function ErrorDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ErrorDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'title': json['title'],
-        'status': json['status'],
-        'errors': json['errors'],
+        title: json['title'],
+        status: json['status'],
+        errors: json['errors'],
     };
 }
 
@@ -62,8 +61,5 @@ export function ErrorDescriptionToJSON(value?: ErrorDescription | null): any {
     if (value === null) {
         return null;
     }
-    return {
-        
-    };
+    return {};
 }
-

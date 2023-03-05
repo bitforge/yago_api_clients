@@ -13,7 +13,7 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
@@ -27,7 +27,7 @@ export enum TimeRangeEnum {
     _3m = '3m',
     _6m = '6m',
     _1y = '1y',
-    _2y = '2y'
+    _2y = '2y',
 }
 
 export function TimeRangeEnumFromJSON(json: any): TimeRangeEnum {
@@ -41,4 +41,3 @@ export function TimeRangeEnumFromJSONTyped(json: any, ignoreDiscriminator: boole
 export function TimeRangeEnumToJSON(value?: TimeRangeEnum | null): any {
     return value as any;
 }
-

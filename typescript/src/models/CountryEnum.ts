@@ -13,7 +13,7 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
@@ -266,7 +266,7 @@ export enum CountryEnum {
     Eh = 'EH',
     Ye = 'YE',
     Zm = 'ZM',
-    Zw = 'ZW'
+    Zw = 'ZW',
 }
 
 export function CountryEnumFromJSON(json: any): CountryEnum {
@@ -280,4 +280,3 @@ export function CountryEnumFromJSONTyped(json: any, ignoreDiscriminator: boolean
 export function CountryEnumToJSON(value?: CountryEnum | null): any {
     return value as any;
 }
-

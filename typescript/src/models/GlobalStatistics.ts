@@ -25,39 +25,34 @@ import {
     GlobalStatisticsGroupByEnumFromJSONTyped,
     GlobalStatisticsGroupByEnumToJSON,
 } from './GlobalStatisticsGroupByEnum';
-import {
-    TimeRangeEnum,
-    TimeRangeEnumFromJSON,
-    TimeRangeEnumFromJSONTyped,
-    TimeRangeEnumToJSON,
-} from './TimeRangeEnum';
+import { TimeRangeEnum, TimeRangeEnumFromJSON, TimeRangeEnumFromJSONTyped, TimeRangeEnumToJSON } from './TimeRangeEnum';
 
 /**
- * 
+ *
  * @export
  * @interface GlobalStatistics
  */
 export interface GlobalStatistics {
     /**
-     * 
+     *
      * @type {TimeRangeEnum}
      * @memberof GlobalStatistics
      */
     timeRange: TimeRangeEnum;
     /**
-     * 
+     *
      * @type {FilterEventsEnum}
      * @memberof GlobalStatistics
      */
     filterEvents: FilterEventsEnum;
     /**
-     * 
+     *
      * @type {string}
      * @memberof GlobalStatistics
      */
     filterProject?: string;
     /**
-     * 
+     *
      * @type {GlobalStatisticsGroupByEnum}
      * @memberof GlobalStatistics
      */
@@ -69,15 +64,14 @@ export function GlobalStatisticsFromJSON(json: any): GlobalStatistics {
 }
 
 export function GlobalStatisticsFromJSONTyped(json: any, ignoreDiscriminator: boolean): GlobalStatistics {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'timeRange': TimeRangeEnumFromJSON(json['time_range']),
-        'filterEvents': FilterEventsEnumFromJSON(json['filter_events']),
-        'filterProject': !exists(json, 'filter_project') ? undefined : json['filter_project'],
-        'groupBy': GlobalStatisticsGroupByEnumFromJSON(json['group_by']),
+        timeRange: TimeRangeEnumFromJSON(json['time_range']),
+        filterEvents: FilterEventsEnumFromJSON(json['filter_events']),
+        filterProject: !exists(json, 'filter_project') ? undefined : json['filter_project'],
+        groupBy: GlobalStatisticsGroupByEnumFromJSON(json['group_by']),
     };
 }
 
@@ -89,11 +83,9 @@ export function GlobalStatisticsToJSON(value?: GlobalStatistics | null): any {
         return null;
     }
     return {
-        
-        'time_range': TimeRangeEnumToJSON(value.timeRange),
-        'filter_events': FilterEventsEnumToJSON(value.filterEvents),
-        'filter_project': value.filterProject,
-        'group_by': GlobalStatisticsGroupByEnumToJSON(value.groupBy),
+        time_range: TimeRangeEnumToJSON(value.timeRange),
+        filter_events: FilterEventsEnumToJSON(value.filterEvents),
+        filter_project: value.filterProject,
+        group_by: GlobalStatisticsGroupByEnumToJSON(value.groupBy),
     };
 }
-

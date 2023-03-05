@@ -14,23 +14,23 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface SummaryStats
  */
 export interface SummaryStats {
     /**
-     * 
+     *
      * @type {Array<any>}
      * @memberof SummaryStats
      */
     labels: Array<any>;
     /**
-     * 
+     *
      * @type {{ [key: string]: any; }}
      * @memberof SummaryStats
      */
-    datasets: { [key: string]: any; };
+    datasets: { [key: string]: any };
 }
 
 export function SummaryStatsFromJSON(json: any): SummaryStats {
@@ -38,13 +38,12 @@ export function SummaryStatsFromJSON(json: any): SummaryStats {
 }
 
 export function SummaryStatsFromJSONTyped(json: any, ignoreDiscriminator: boolean): SummaryStats {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'labels': json['labels'],
-        'datasets': json['datasets'],
+        labels: json['labels'],
+        datasets: json['datasets'],
     };
 }
 
@@ -56,9 +55,7 @@ export function SummaryStatsToJSON(value?: SummaryStats | null): any {
         return null;
     }
     return {
-        
-        'labels': value.labels,
-        'datasets': value.datasets,
+        labels: value.labels,
+        datasets: value.datasets,
     };
 }
-

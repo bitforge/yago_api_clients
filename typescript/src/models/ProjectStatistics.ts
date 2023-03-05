@@ -25,33 +25,28 @@ import {
     ProjectStatisticsGroupByEnumFromJSONTyped,
     ProjectStatisticsGroupByEnumToJSON,
 } from './ProjectStatisticsGroupByEnum';
-import {
-    TimeRangeEnum,
-    TimeRangeEnumFromJSON,
-    TimeRangeEnumFromJSONTyped,
-    TimeRangeEnumToJSON,
-} from './TimeRangeEnum';
+import { TimeRangeEnum, TimeRangeEnumFromJSON, TimeRangeEnumFromJSONTyped, TimeRangeEnumToJSON } from './TimeRangeEnum';
 
 /**
- * 
+ *
  * @export
  * @interface ProjectStatistics
  */
 export interface ProjectStatistics {
     /**
-     * 
+     *
      * @type {TimeRangeEnum}
      * @memberof ProjectStatistics
      */
     timeRange: TimeRangeEnum;
     /**
-     * 
+     *
      * @type {FilterEventsEnum}
      * @memberof ProjectStatistics
      */
     filterEvents: FilterEventsEnum;
     /**
-     * 
+     *
      * @type {ProjectStatisticsGroupByEnum}
      * @memberof ProjectStatistics
      */
@@ -63,14 +58,13 @@ export function ProjectStatisticsFromJSON(json: any): ProjectStatistics {
 }
 
 export function ProjectStatisticsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectStatistics {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'timeRange': TimeRangeEnumFromJSON(json['time_range']),
-        'filterEvents': FilterEventsEnumFromJSON(json['filter_events']),
-        'groupBy': ProjectStatisticsGroupByEnumFromJSON(json['group_by']),
+        timeRange: TimeRangeEnumFromJSON(json['time_range']),
+        filterEvents: FilterEventsEnumFromJSON(json['filter_events']),
+        groupBy: ProjectStatisticsGroupByEnumFromJSON(json['group_by']),
     };
 }
 
@@ -82,10 +76,8 @@ export function ProjectStatisticsToJSON(value?: ProjectStatistics | null): any {
         return null;
     }
     return {
-        
-        'time_range': TimeRangeEnumToJSON(value.timeRange),
-        'filter_events': FilterEventsEnumToJSON(value.filterEvents),
-        'group_by': ProjectStatisticsGroupByEnumToJSON(value.groupBy),
+        time_range: TimeRangeEnumToJSON(value.timeRange),
+        filter_events: FilterEventsEnumToJSON(value.filterEvents),
+        group_by: ProjectStatisticsGroupByEnumToJSON(value.groupBy),
     };
 }
-

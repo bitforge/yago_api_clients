@@ -14,19 +14,19 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface PricingPlan
  */
 export interface PricingPlan {
     /**
-     * 
+     *
      * @type {string}
      * @memberof PricingPlan
      */
     key: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PricingPlan
      */
@@ -50,11 +50,11 @@ export interface PricingPlan {
      */
     priceHint?: string | null;
     /**
-     * How many projects are included in this plan.
+     *
      * @type {number}
      * @memberof PricingPlan
      */
-    projectQuotas: number;
+    projectQuotas?: number;
     /**
      * Disable quota check for this plan.
      * @type {boolean}
@@ -62,11 +62,11 @@ export interface PricingPlan {
      */
     projectQuotasDisabled?: boolean;
     /**
-     * How many models are included in this plan.
-     * @type {number}
+     *
+     * @type {string}
      * @memberof PricingPlan
      */
-    modelQuotas: number;
+    modelQuotas?: string;
     /**
      * Disable quota check for models.
      * @type {boolean}
@@ -74,11 +74,11 @@ export interface PricingPlan {
      */
     modelQuotasDisabled?: boolean;
     /**
-     * How many AR views are included in this plan.
+     *
      * @type {number}
      * @memberof PricingPlan
      */
-    viewQuotas: number;
+    viewQuotas?: number;
     /**
      * Disable quota check for this plan.
      * @type {boolean}
@@ -116,26 +116,25 @@ export function PricingPlanFromJSON(json: any): PricingPlan {
 }
 
 export function PricingPlanFromJSONTyped(json: any, ignoreDiscriminator: boolean): PricingPlan {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'key': json['key'],
-        'name': json['name'],
-        'price': json['price'],
-        'priceOnRequest': !exists(json, 'price_on_request') ? undefined : json['price_on_request'],
-        'priceHint': !exists(json, 'price_hint') ? undefined : json['price_hint'],
-        'projectQuotas': json['project_quotas'],
-        'projectQuotasDisabled': !exists(json, 'project_quotas_disabled') ? undefined : json['project_quotas_disabled'],
-        'modelQuotas': json['model_quotas'],
-        'modelQuotasDisabled': !exists(json, 'model_quotas_disabled') ? undefined : json['model_quotas_disabled'],
-        'viewQuotas': json['view_quotas'],
-        'viewQuotasDisabled': !exists(json, 'view_quotas_disabled') ? undefined : json['view_quotas_disabled'],
-        'seoOptimization': !exists(json, 'seo_optimization') ? undefined : json['seo_optimization'],
-        'viewReporting': !exists(json, 'view_reporting') ? undefined : json['view_reporting'],
-        'customQrCodes': !exists(json, 'custom_qr_codes') ? undefined : json['custom_qr_codes'],
-        'scenesApp': !exists(json, 'scenes_app') ? undefined : json['scenes_app'],
+        key: json['key'],
+        name: json['name'],
+        price: json['price'],
+        priceOnRequest: !exists(json, 'price_on_request') ? undefined : json['price_on_request'],
+        priceHint: !exists(json, 'price_hint') ? undefined : json['price_hint'],
+        projectQuotas: !exists(json, 'project_quotas') ? undefined : json['project_quotas'],
+        projectQuotasDisabled: !exists(json, 'project_quotas_disabled') ? undefined : json['project_quotas_disabled'],
+        modelQuotas: !exists(json, 'model_quotas') ? undefined : json['model_quotas'],
+        modelQuotasDisabled: !exists(json, 'model_quotas_disabled') ? undefined : json['model_quotas_disabled'],
+        viewQuotas: !exists(json, 'view_quotas') ? undefined : json['view_quotas'],
+        viewQuotasDisabled: !exists(json, 'view_quotas_disabled') ? undefined : json['view_quotas_disabled'],
+        seoOptimization: !exists(json, 'seo_optimization') ? undefined : json['seo_optimization'],
+        viewReporting: !exists(json, 'view_reporting') ? undefined : json['view_reporting'],
+        customQrCodes: !exists(json, 'custom_qr_codes') ? undefined : json['custom_qr_codes'],
+        scenesApp: !exists(json, 'scenes_app') ? undefined : json['scenes_app'],
     };
 }
 
@@ -147,22 +146,20 @@ export function PricingPlanToJSON(value?: PricingPlan | null): any {
         return null;
     }
     return {
-        
-        'key': value.key,
-        'name': value.name,
-        'price': value.price,
-        'price_on_request': value.priceOnRequest,
-        'price_hint': value.priceHint,
-        'project_quotas': value.projectQuotas,
-        'project_quotas_disabled': value.projectQuotasDisabled,
-        'model_quotas': value.modelQuotas,
-        'model_quotas_disabled': value.modelQuotasDisabled,
-        'view_quotas': value.viewQuotas,
-        'view_quotas_disabled': value.viewQuotasDisabled,
-        'seo_optimization': value.seoOptimization,
-        'view_reporting': value.viewReporting,
-        'custom_qr_codes': value.customQrCodes,
-        'scenes_app': value.scenesApp,
+        key: value.key,
+        name: value.name,
+        price: value.price,
+        price_on_request: value.priceOnRequest,
+        price_hint: value.priceHint,
+        project_quotas: value.projectQuotas,
+        project_quotas_disabled: value.projectQuotasDisabled,
+        model_quotas: value.modelQuotas,
+        model_quotas_disabled: value.modelQuotasDisabled,
+        view_quotas: value.viewQuotas,
+        view_quotas_disabled: value.viewQuotasDisabled,
+        seo_optimization: value.seoOptimization,
+        view_reporting: value.viewReporting,
+        custom_qr_codes: value.customQrCodes,
+        scenes_app: value.scenesApp,
     };
 }
-

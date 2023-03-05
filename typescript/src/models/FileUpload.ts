@@ -14,13 +14,13 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface FileUpload
  */
 export interface FileUpload {
     /**
-     * 
+     *
      * @type {string}
      * @memberof FileUpload
      */
@@ -32,12 +32,11 @@ export function FileUploadFromJSON(json: any): FileUpload {
 }
 
 export function FileUploadFromJSONTyped(json: any, ignoreDiscriminator: boolean): FileUpload {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'fileUrl': json['file_url'],
+        fileUrl: json['file_url'],
     };
 }
 
@@ -49,8 +48,6 @@ export function FileUploadToJSON(value?: FileUpload | null): any {
         return null;
     }
     return {
-        
-        'file_url': value.fileUrl,
+        file_url: value.fileUrl,
     };
 }
-

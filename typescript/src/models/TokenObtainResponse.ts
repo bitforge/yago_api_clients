@@ -14,19 +14,19 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface TokenObtainResponse
  */
 export interface TokenObtainResponse {
     /**
-     * 
+     *
      * @type {string}
      * @memberof TokenObtainResponse
      */
     access: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof TokenObtainResponse
      */
@@ -38,13 +38,12 @@ export function TokenObtainResponseFromJSON(json: any): TokenObtainResponse {
 }
 
 export function TokenObtainResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TokenObtainResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'access': json['access'],
-        'refresh': json['refresh'],
+        access: json['access'],
+        refresh: json['refresh'],
     };
 }
 
@@ -56,9 +55,7 @@ export function TokenObtainResponseToJSON(value?: TokenObtainResponse | null): a
         return null;
     }
     return {
-        
-        'access': value.access,
-        'refresh': value.refresh,
+        access: value.access,
+        refresh: value.refresh,
     };
 }
-

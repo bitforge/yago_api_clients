@@ -13,7 +13,7 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
@@ -24,7 +24,7 @@ export enum OrderState {
     InProgress = 'IN_PROGRESS',
     InReview = 'IN_REVIEW',
     Finished = 'FINISHED',
-    RageQuit = 'RAGE_QUIT'
+    RageQuit = 'RAGE_QUIT',
 }
 
 export function OrderStateFromJSON(json: any): OrderState {
@@ -38,4 +38,3 @@ export function OrderStateFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 export function OrderStateToJSON(value?: OrderState | null): any {
     return value as any;
 }
-

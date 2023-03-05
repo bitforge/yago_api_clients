@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 import {
     Address,
@@ -35,14 +34,16 @@ export interface CustomerBillingAddressUpdateRequest {
 }
 
 /**
- * 
+ *
  */
 export class CustomerApi extends runtime.BaseAPI {
-
     /**
      * Manage customer billing address. Required prior to subscribing to Yago services.
      */
-    async customerBillingAddressPartialUpdateRaw(requestParameters: CustomerBillingAddressPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
+    async customerBillingAddressPartialUpdateRaw(
+        requestParameters: CustomerBillingAddressPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Address>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -51,31 +52,37 @@ export class CustomerApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/customer/billing_address/`,
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PatchedAddressToJSON(requestParameters.patchedAddress),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/customer/billing_address/`,
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+                body: PatchedAddressToJSON(requestParameters.patchedAddress),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AddressFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => AddressFromJSON(jsonValue));
     }
 
     /**
      * Manage customer billing address. Required prior to subscribing to Yago services.
      */
-    async customerBillingAddressPartialUpdate(requestParameters: CustomerBillingAddressPartialUpdateRequest = {}, initOverrides?: RequestInit): Promise<Address> {
+    async customerBillingAddressPartialUpdate(
+        requestParameters: CustomerBillingAddressPartialUpdateRequest = {},
+        initOverrides?: RequestInit
+    ): Promise<Address> {
         const response = await this.customerBillingAddressPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -90,24 +97,27 @@ export class CustomerApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/customer/billing_address/`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/customer/billing_address/`,
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AddressFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => AddressFromJSON(jsonValue));
     }
 
     /**
@@ -121,9 +131,15 @@ export class CustomerApi extends runtime.BaseAPI {
     /**
      * Manage customer billing address. Required prior to subscribing to Yago services.
      */
-    async customerBillingAddressUpdateRaw(requestParameters: CustomerBillingAddressUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
+    async customerBillingAddressUpdateRaw(
+        requestParameters: CustomerBillingAddressUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Address>> {
         if (requestParameters.address === null || requestParameters.address === undefined) {
-            throw new runtime.RequiredError('address','Required parameter requestParameters.address was null or undefined when calling customerBillingAddressUpdate.');
+            throw new runtime.RequiredError(
+                'address',
+                'Required parameter requestParameters.address was null or undefined when calling customerBillingAddressUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -134,31 +150,37 @@ export class CustomerApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/customer/billing_address/`,
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: AddressToJSON(requestParameters.address),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/customer/billing_address/`,
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: AddressToJSON(requestParameters.address),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AddressFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => AddressFromJSON(jsonValue));
     }
 
     /**
      * Manage customer billing address. Required prior to subscribing to Yago services.
      */
-    async customerBillingAddressUpdate(requestParameters: CustomerBillingAddressUpdateRequest, initOverrides?: RequestInit): Promise<Address> {
+    async customerBillingAddressUpdate(
+        requestParameters: CustomerBillingAddressUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<Address> {
         const response = await this.customerBillingAddressUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -173,24 +195,27 @@ export class CustomerApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/customer/`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/customer/`,
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CustomerFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => CustomerFromJSON(jsonValue));
     }
 
     /**
@@ -200,5 +225,4 @@ export class CustomerApi extends runtime.BaseAPI {
         const response = await this.customerRetrieveRaw(initOverrides);
         return await response.value();
     }
-
 }

@@ -14,13 +14,13 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface TokenVerify
  */
 export interface TokenVerify {
     /**
-     * 
+     *
      * @type {string}
      * @memberof TokenVerify
      */
@@ -32,12 +32,11 @@ export function TokenVerifyFromJSON(json: any): TokenVerify {
 }
 
 export function TokenVerifyFromJSONTyped(json: any, ignoreDiscriminator: boolean): TokenVerify {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'token': json['token'],
+        token: json['token'],
     };
 }
 
@@ -49,8 +48,6 @@ export function TokenVerifyToJSON(value?: TokenVerify | null): any {
         return null;
     }
     return {
-        
-        'token': value.token,
+        token: value.token,
     };
 }
-

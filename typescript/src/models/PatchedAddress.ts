@@ -13,21 +13,16 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    CountryEnum,
-    CountryEnumFromJSON,
-    CountryEnumFromJSONTyped,
-    CountryEnumToJSON,
-} from './CountryEnum';
+import { CountryEnum, CountryEnumFromJSON, CountryEnumFromJSONTyped, CountryEnumToJSON } from './CountryEnum';
 
 /**
- * 
+ *
  * @export
  * @interface PatchedAddress
  */
 export interface PatchedAddress {
     /**
-     * 
+     *
      * @type {string}
      * @memberof PatchedAddress
      */
@@ -39,7 +34,7 @@ export interface PatchedAddress {
      */
     name?: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof PatchedAddress
      */
@@ -81,7 +76,7 @@ export interface PatchedAddress {
      */
     state?: string | null;
     /**
-     * 
+     *
      * @type {CountryEnum}
      * @memberof PatchedAddress
      */
@@ -93,21 +88,20 @@ export function PatchedAddressFromJSON(json: any): PatchedAddress {
 }
 
 export function PatchedAddressFromJSONTyped(json: any, ignoreDiscriminator: boolean): PatchedAddress {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'email': !exists(json, 'email') ? undefined : json['email'],
-        'phone': !exists(json, 'phone') ? undefined : json['phone'],
-        'line1': !exists(json, 'line1') ? undefined : json['line1'],
-        'line2': !exists(json, 'line2') ? undefined : json['line2'],
-        'postalCode': !exists(json, 'postal_code') ? undefined : json['postal_code'],
-        'city': !exists(json, 'city') ? undefined : json['city'],
-        'state': !exists(json, 'state') ? undefined : json['state'],
-        'country': !exists(json, 'country') ? undefined : CountryEnumFromJSON(json['country']),
+        id: !exists(json, 'id') ? undefined : json['id'],
+        name: !exists(json, 'name') ? undefined : json['name'],
+        email: !exists(json, 'email') ? undefined : json['email'],
+        phone: !exists(json, 'phone') ? undefined : json['phone'],
+        line1: !exists(json, 'line1') ? undefined : json['line1'],
+        line2: !exists(json, 'line2') ? undefined : json['line2'],
+        postalCode: !exists(json, 'postal_code') ? undefined : json['postal_code'],
+        city: !exists(json, 'city') ? undefined : json['city'],
+        state: !exists(json, 'state') ? undefined : json['state'],
+        country: !exists(json, 'country') ? undefined : CountryEnumFromJSON(json['country']),
     };
 }
 
@@ -119,16 +113,14 @@ export function PatchedAddressToJSON(value?: PatchedAddress | null): any {
         return null;
     }
     return {
-        
-        'name': value.name,
-        'email': value.email,
-        'phone': value.phone,
-        'line1': value.line1,
-        'line2': value.line2,
-        'postal_code': value.postalCode,
-        'city': value.city,
-        'state': value.state,
-        'country': CountryEnumToJSON(value.country),
+        name: value.name,
+        email: value.email,
+        phone: value.phone,
+        line1: value.line1,
+        line2: value.line2,
+        postal_code: value.postalCode,
+        city: value.city,
+        state: value.state,
+        country: CountryEnumToJSON(value.country),
     };
 }
-

@@ -16,6 +16,10 @@ npx @openapitools/openapi-generator-cli generate \
 # Fix annoying typescript error in generated source
 sed -i -e 's/this\.configuration\.fetchApi/this\.configuration\.fetchApi\!/g' src/runtime.ts
 
+# Auto format files with prettier
+echo "Auto formatting files with prettier"
+npx -y prettier -w src
+
 # Remove backup file from sed on macOS
 if [[ -f "src/runtime.ts-e" ]]; then
     rm -f src/runtime.ts-e

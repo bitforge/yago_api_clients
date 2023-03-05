@@ -1,28 +1,18 @@
 {
     "compilerOptions": {
-      "target": "esnext",
-      "module": "esnext",
-      "strict": true,
-      "outDir": "dist",
-      "sourceMap": true,
-      "importHelpers": true,
-      "moduleResolution": "node",
-      "experimentalDecorators": true,
-      "skipLibCheck": true,
-      "esModuleInterop": true,
-      //"types": ["jest"],
-      "lib": [
-        "esnext",
-        "dom",
-        "dom.iterable",
-        "scripthost"
-      ]
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "outDir": "dist",
+        "sourceMap": true,
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        //"types": ["jest"],
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
-    "include": [
-      "src/**/*",
-    ],
-    "exclude": [
-      "node_modules",
-      "tests"
-    ]
-  }
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "tests"]
+}

@@ -14,25 +14,25 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface HealthStatus
  */
 export interface HealthStatus {
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof HealthStatus
      */
     dbUp: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof HealthStatus
      */
     storageUp: boolean;
     /**
-     * 
+     *
      * @type {boolean}
      * @memberof HealthStatus
      */
@@ -44,14 +44,13 @@ export function HealthStatusFromJSON(json: any): HealthStatus {
 }
 
 export function HealthStatusFromJSONTyped(json: any, ignoreDiscriminator: boolean): HealthStatus {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'dbUp': json['db_up'],
-        'storageUp': json['storage_up'],
-        'cacheUp': json['cache_up'],
+        dbUp: json['db_up'],
+        storageUp: json['storage_up'],
+        cacheUp: json['cache_up'],
     };
 }
 
@@ -63,10 +62,8 @@ export function HealthStatusToJSON(value?: HealthStatus | null): any {
         return null;
     }
     return {
-        
-        'db_up': value.dbUp,
-        'storage_up': value.storageUp,
-        'cache_up': value.cacheUp,
+        db_up: value.dbUp,
+        storage_up: value.storageUp,
+        cache_up: value.cacheUp,
     };
 }
-

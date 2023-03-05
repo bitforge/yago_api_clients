@@ -14,19 +14,19 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface TokenObtainRequest
  */
 export interface TokenObtainRequest {
     /**
-     * 
+     *
      * @type {string}
      * @memberof TokenObtainRequest
      */
     email: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof TokenObtainRequest
      */
@@ -38,13 +38,12 @@ export function TokenObtainRequestFromJSON(json: any): TokenObtainRequest {
 }
 
 export function TokenObtainRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): TokenObtainRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'email': json['email'],
-        'password': json['password'],
+        email: json['email'],
+        password: json['password'],
     };
 }
 
@@ -56,9 +55,7 @@ export function TokenObtainRequestToJSON(value?: TokenObtainRequest | null): any
         return null;
     }
     return {
-        
-        'email': value.email,
-        'password': value.password,
+        email: value.email,
+        password: value.password,
     };
 }
-

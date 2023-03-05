@@ -25,57 +25,52 @@ import {
     OrderModelFileFromJSONTyped,
     OrderModelFileToJSON,
 } from './OrderModelFile';
-import {
-    OrderState,
-    OrderStateFromJSON,
-    OrderStateFromJSONTyped,
-    OrderStateToJSON,
-} from './OrderState';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
- * 
+ *
  * @export
  * @interface OrderModelDetail
  */
 export interface OrderModelDetail {
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModelDetail
      */
     readonly id: number;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelDetail
      */
     name: string;
     /**
-     * 
+     *
      * @type {OrderState}
      * @memberof OrderModelDetail
      */
     readonly state: OrderState | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelDetail
      */
     website?: string | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModelDetail
      */
     widthMm?: number | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModelDetail
      */
     heightMm?: number | null;
     /**
-     * 
+     *
      * @type {number}
      * @memberof OrderModelDetail
      */
@@ -87,25 +82,25 @@ export interface OrderModelDetail {
      */
     readonly model: string | null;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderModelDetail
      */
     readonly created: Date;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderModelDetail
      */
     readonly modified: Date;
     /**
-     * 
+     *
      * @type {Array<OrderModelFile>}
      * @memberof OrderModelDetail
      */
     files: Array<OrderModelFile>;
     /**
-     * 
+     *
      * @type {Array<OrderModelComment>}
      * @memberof OrderModelDetail
      */
@@ -117,23 +112,22 @@ export function OrderModelDetailFromJSON(json: any): OrderModelDetail {
 }
 
 export function OrderModelDetailFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModelDetail {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'name': json['name'],
-        'state': OrderStateFromJSON(json['state']),
-        'website': !exists(json, 'website') ? undefined : json['website'],
-        'widthMm': !exists(json, 'width_mm') ? undefined : json['width_mm'],
-        'heightMm': !exists(json, 'height_mm') ? undefined : json['height_mm'],
-        'depthMm': !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
-        'model': json['model'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
-        'files': ((json['files'] as Array<any>).map(OrderModelFileFromJSON)),
-        'comments': ((json['comments'] as Array<any>).map(OrderModelCommentFromJSON)),
+        id: json['id'],
+        name: json['name'],
+        state: OrderStateFromJSON(json['state']),
+        website: !exists(json, 'website') ? undefined : json['website'],
+        widthMm: !exists(json, 'width_mm') ? undefined : json['width_mm'],
+        heightMm: !exists(json, 'height_mm') ? undefined : json['height_mm'],
+        depthMm: !exists(json, 'depth_mm') ? undefined : json['depth_mm'],
+        model: json['model'],
+        created: new Date(json['created']),
+        modified: new Date(json['modified']),
+        files: (json['files'] as Array<any>).map(OrderModelFileFromJSON),
+        comments: (json['comments'] as Array<any>).map(OrderModelCommentFromJSON),
     };
 }
 
@@ -145,14 +139,12 @@ export function OrderModelDetailToJSON(value?: OrderModelDetail | null): any {
         return null;
     }
     return {
-        
-        'name': value.name,
-        'website': value.website,
-        'width_mm': value.widthMm,
-        'height_mm': value.heightMm,
-        'depth_mm': value.depthMm,
-        'files': ((value.files as Array<any>).map(OrderModelFileToJSON)),
-        'comments': ((value.comments as Array<any>).map(OrderModelCommentToJSON)),
+        name: value.name,
+        website: value.website,
+        width_mm: value.widthMm,
+        height_mm: value.heightMm,
+        depth_mm: value.depthMm,
+        files: (value.files as Array<any>).map(OrderModelFileToJSON),
+        comments: (value.comments as Array<any>).map(OrderModelCommentToJSON),
     };
 }
-

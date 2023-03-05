@@ -14,13 +14,13 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface TokenRefreshRequest
  */
 export interface TokenRefreshRequest {
     /**
-     * 
+     *
      * @type {string}
      * @memberof TokenRefreshRequest
      */
@@ -32,12 +32,11 @@ export function TokenRefreshRequestFromJSON(json: any): TokenRefreshRequest {
 }
 
 export function TokenRefreshRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): TokenRefreshRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'refresh': json['refresh'],
+        refresh: json['refresh'],
     };
 }
 
@@ -49,8 +48,6 @@ export function TokenRefreshRequestToJSON(value?: TokenRefreshRequest | null): a
         return null;
     }
     return {
-        
-        'refresh': value.refresh,
+        refresh: value.refresh,
     };
 }
-

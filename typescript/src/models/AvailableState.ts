@@ -14,19 +14,19 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface AvailableState
  */
 export interface AvailableState {
     /**
-     * 
+     *
      * @type {string}
      * @memberof AvailableState
      */
     readonly action: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof AvailableState
      */
@@ -38,13 +38,12 @@ export function AvailableStateFromJSON(json: any): AvailableState {
 }
 
 export function AvailableStateFromJSONTyped(json: any, ignoreDiscriminator: boolean): AvailableState {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'action': json['action'],
-        'target': json['target'],
+        action: json['action'],
+        target: json['target'],
     };
 }
 
@@ -55,8 +54,5 @@ export function AvailableStateToJSON(value?: AvailableState | null): any {
     if (value === null) {
         return null;
     }
-    return {
-        
-    };
+    return {};
 }
-

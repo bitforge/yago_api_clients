@@ -14,13 +14,13 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface OrderCommentCreate
  */
 export interface OrderCommentCreate {
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderCommentCreate
      */
@@ -32,12 +32,11 @@ export function OrderCommentCreateFromJSON(json: any): OrderCommentCreate {
 }
 
 export function OrderCommentCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderCommentCreate {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'comment': json['comment'],
+        comment: json['comment'],
     };
 }
 
@@ -49,8 +48,6 @@ export function OrderCommentCreateToJSON(value?: OrderCommentCreate | null): any
         return null;
     }
     return {
-        
-        'comment': value.comment,
+        comment: value.comment,
     };
 }
-

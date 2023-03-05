@@ -14,13 +14,13 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface ProjectCreate
  */
 export interface ProjectCreate {
     /**
-     * 
+     *
      * @type {string}
      * @memberof ProjectCreate
      */
@@ -32,12 +32,11 @@ export function ProjectCreateFromJSON(json: any): ProjectCreate {
 }
 
 export function ProjectCreateFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectCreate {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'name': json['name'],
+        name: json['name'],
     };
 }
 
@@ -49,8 +48,6 @@ export function ProjectCreateToJSON(value?: ProjectCreate | null): any {
         return null;
     }
     return {
-        
-        'name': value.name,
+        name: value.name,
     };
 }
-

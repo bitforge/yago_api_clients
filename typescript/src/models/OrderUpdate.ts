@@ -21,19 +21,19 @@ import {
 } from './PriceCurrencyEnum';
 
 /**
- * 
+ *
  * @export
  * @interface OrderUpdate
  */
 export interface OrderUpdate {
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderUpdate
      */
     price: string;
     /**
-     * 
+     *
      * @type {PriceCurrencyEnum}
      * @memberof OrderUpdate
      */
@@ -45,13 +45,12 @@ export function OrderUpdateFromJSON(json: any): OrderUpdate {
 }
 
 export function OrderUpdateFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderUpdate {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'price': json['price'],
-        'priceCurrency': !exists(json, 'price_currency') ? undefined : PriceCurrencyEnumFromJSON(json['price_currency']),
+        price: json['price'],
+        priceCurrency: !exists(json, 'price_currency') ? undefined : PriceCurrencyEnumFromJSON(json['price_currency']),
     };
 }
 
@@ -63,9 +62,7 @@ export function OrderUpdateToJSON(value?: OrderUpdate | null): any {
         return null;
     }
     return {
-        
-        'price': value.price,
-        'price_currency': PriceCurrencyEnumToJSON(value.priceCurrency),
+        price: value.price,
+        price_currency: PriceCurrencyEnumToJSON(value.priceCurrency),
     };
 }
-

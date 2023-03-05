@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 import {
     FileUpload,
@@ -65,16 +64,21 @@ export interface ProjectsUpdateRequest {
 }
 
 /**
- * 
+ *
  */
 export class ProjectsApi extends runtime.BaseAPI {
-
     /**
      * Add a new project. Change details later via PUT or PATCH.
      */
-    async projectsCreateRaw(requestParameters: ProjectsCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Project>> {
+    async projectsCreateRaw(
+        requestParameters: ProjectsCreateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Project>> {
         if (requestParameters.projectCreate === null || requestParameters.projectCreate === undefined) {
-            throw new runtime.RequiredError('projectCreate','Required parameter requestParameters.projectCreate was null or undefined when calling projectsCreate.');
+            throw new runtime.RequiredError(
+                'projectCreate',
+                'Required parameter requestParameters.projectCreate was null or undefined when calling projectsCreate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -85,25 +89,28 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ProjectCreateToJSON(requestParameters.projectCreate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/`,
+                method: 'POST',
+                headers: headerParameters,
+                query: queryParameters,
+                body: ProjectCreateToJSON(requestParameters.projectCreate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => ProjectFromJSON(jsonValue));
     }
 
     /**
@@ -117,9 +124,15 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Remove a project. Only members with role OWNER can do this.
      */
-    async projectsDestroyRaw(requestParameters: ProjectsDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async projectsDestroyRaw(
+        requestParameters: ProjectsDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsDestroy.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling projectsDestroy.'
+            );
         }
 
         const queryParameters: any = {};
@@ -128,22 +141,25 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/{id}/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'DELETE',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
         return new runtime.VoidApiResponse(response);
     }
@@ -158,9 +174,15 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Delete an image.
      */
-    async projectsImageDestroyRaw(requestParameters: ProjectsImageDestroyRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async projectsImageDestroyRaw(
+        requestParameters: ProjectsImageDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsImageDestroy.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling projectsImageDestroy.'
+            );
         }
 
         const queryParameters: any = {};
@@ -169,22 +191,28 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/{id}/image/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/{id}/image/`.replace(
+                    `{${'id'}}`,
+                    encodeURIComponent(String(requestParameters.id))
+                ),
+                method: 'DELETE',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
         return new runtime.VoidApiResponse(response);
     }
@@ -192,20 +220,32 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Delete an image.
      */
-    async projectsImageDestroy(requestParameters: ProjectsImageDestroyRequest, initOverrides?: RequestInit): Promise<void> {
+    async projectsImageDestroy(
+        requestParameters: ProjectsImageDestroyRequest,
+        initOverrides?: RequestInit
+    ): Promise<void> {
         await this.projectsImageDestroyRaw(requestParameters, initOverrides);
     }
 
     /**
      * Upload an image. Max size 30MB. Filename is required!
      */
-    async projectsImageUpdateRaw(requestParameters: ProjectsImageUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<FileUpload>> {
+    async projectsImageUpdateRaw(
+        requestParameters: ProjectsImageUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<FileUpload>> {
         if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
-            throw new runtime.RequiredError('contentDisposition','Required parameter requestParameters.contentDisposition was null or undefined when calling projectsImageUpdate.');
+            throw new runtime.RequiredError(
+                'contentDisposition',
+                'Required parameter requestParameters.contentDisposition was null or undefined when calling projectsImageUpdate.'
+            );
         }
 
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsImageUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling projectsImageUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -220,31 +260,40 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/{id}/image/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: requestParameters.body as any,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/{id}/image/`.replace(
+                    `{${'id'}}`,
+                    encodeURIComponent(String(requestParameters.id))
+                ),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: requestParameters.body as any,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => FileUploadFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => FileUploadFromJSON(jsonValue));
     }
 
     /**
      * Upload an image. Max size 30MB. Filename is required!
      */
-    async projectsImageUpdate(requestParameters: ProjectsImageUpdateRequest, initOverrides?: RequestInit): Promise<FileUpload> {
+    async projectsImageUpdate(
+        requestParameters: ProjectsImageUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<FileUpload> {
         const response = await this.projectsImageUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -259,24 +308,27 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/`,
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(ProjectFromJSON));
     }
 
     /**
@@ -290,9 +342,15 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Change as subset of project details.
      */
-    async projectsPartialUpdateRaw(requestParameters: ProjectsPartialUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectUpdate>> {
+    async projectsPartialUpdateRaw(
+        requestParameters: ProjectsPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<ProjectUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsPartialUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling projectsPartialUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -303,31 +361,37 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/{id}/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PatchedProjectUpdateToJSON(requestParameters.patchedProjectUpdate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PATCH',
+                headers: headerParameters,
+                query: queryParameters,
+                body: PatchedProjectUpdateToJSON(requestParameters.patchedProjectUpdate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectUpdateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => ProjectUpdateFromJSON(jsonValue));
     }
 
     /**
      * Change as subset of project details.
      */
-    async projectsPartialUpdate(requestParameters: ProjectsPartialUpdateRequest, initOverrides?: RequestInit): Promise<ProjectUpdate> {
+    async projectsPartialUpdate(
+        requestParameters: ProjectsPartialUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<ProjectUpdate> {
         const response = await this.projectsPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -335,9 +399,15 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Details of a single project.
      */
-    async projectsRetrieveRaw(requestParameters: ProjectsRetrieveRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Project>> {
+    async projectsRetrieveRaw(
+        requestParameters: ProjectsRetrieveRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<Project>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsRetrieve.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling projectsRetrieve.'
+            );
         }
 
         const queryParameters: any = {};
@@ -346,24 +416,27 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/{id}/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => ProjectFromJSON(jsonValue));
     }
 
     /**
@@ -377,13 +450,22 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Change project and settings.
      */
-    async projectsUpdateRaw(requestParameters: ProjectsUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectUpdate>> {
+    async projectsUpdateRaw(
+        requestParameters: ProjectsUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<runtime.ApiResponse<ProjectUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsUpdate.');
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter requestParameters.id was null or undefined when calling projectsUpdate.'
+            );
         }
 
         if (requestParameters.projectUpdate === null || requestParameters.projectUpdate === undefined) {
-            throw new runtime.RequiredError('projectUpdate','Required parameter requestParameters.projectUpdate was null or undefined when calling projectsUpdate.');
+            throw new runtime.RequiredError(
+                'projectUpdate',
+                'Required parameter requestParameters.projectUpdate was null or undefined when calling projectsUpdate.'
+            );
         }
 
         const queryParameters: any = {};
@@ -394,33 +476,38 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
-            const tokenString = await token("jwtAuth", []);
+            const tokenString = await token('jwtAuth', []);
 
             if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+                headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Authorization"] = this.configuration.apiKey("Authorization"); // tokenAuth authentication
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
-        const response = await this.request({
-            path: `/api/projects/{id}/`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ProjectUpdateToJSON(requestParameters.projectUpdate),
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
+                method: 'PUT',
+                headers: headerParameters,
+                query: queryParameters,
+                body: ProjectUpdateToJSON(requestParameters.projectUpdate),
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectUpdateFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => ProjectUpdateFromJSON(jsonValue));
     }
 
     /**
      * Change project and settings.
      */
-    async projectsUpdate(requestParameters: ProjectsUpdateRequest, initOverrides?: RequestInit): Promise<ProjectUpdate> {
+    async projectsUpdate(
+        requestParameters: ProjectsUpdateRequest,
+        initOverrides?: RequestInit
+    ): Promise<ProjectUpdate> {
         const response = await this.projectsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
-
 }

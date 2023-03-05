@@ -13,14 +13,14 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
 export enum FilterEventsEnum {
     All = 'all',
     Ar = 'ar',
-    Model = 'model'
+    Model = 'model',
 }
 
 export function FilterEventsEnumFromJSON(json: any): FilterEventsEnum {
@@ -34,4 +34,3 @@ export function FilterEventsEnumFromJSONTyped(json: any, ignoreDiscriminator: bo
 export function FilterEventsEnumToJSON(value?: FilterEventsEnum | null): any {
     return value as any;
 }
-

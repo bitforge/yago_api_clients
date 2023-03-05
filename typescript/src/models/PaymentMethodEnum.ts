@@ -13,14 +13,14 @@
  */
 
 /**
- * 
+ *
  * @export
  * @enum {string}
  */
 export enum PaymentMethodEnum {
     None = 'NONE',
     Stripe = 'STRIPE',
-    Bill = 'BILL'
+    Bill = 'BILL',
 }
 
 export function PaymentMethodEnumFromJSON(json: any): PaymentMethodEnum {
@@ -34,4 +34,3 @@ export function PaymentMethodEnumFromJSONTyped(json: any, ignoreDiscriminator: b
 export function PaymentMethodEnumToJSON(value?: PaymentMethodEnum | null): any {
     return value as any;
 }
-

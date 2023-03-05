@@ -14,31 +14,31 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface Registration
  */
 export interface Registration {
     /**
-     * 
+     *
      * @type {string}
      * @memberof Registration
      */
     readonly id: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Registration
      */
     email: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Registration
      */
     firstName?: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Registration
      */
@@ -50,15 +50,14 @@ export function RegistrationFromJSON(json: any): Registration {
 }
 
 export function RegistrationFromJSONTyped(json: any, ignoreDiscriminator: boolean): Registration {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'email': json['email'],
-        'firstName': !exists(json, 'first_name') ? undefined : json['first_name'],
-        'lastName': !exists(json, 'last_name') ? undefined : json['last_name'],
+        id: json['id'],
+        email: json['email'],
+        firstName: !exists(json, 'first_name') ? undefined : json['first_name'],
+        lastName: !exists(json, 'last_name') ? undefined : json['last_name'],
     };
 }
 
@@ -70,10 +69,8 @@ export function RegistrationToJSON(value?: Registration | null): any {
         return null;
     }
     return {
-        
-        'email': value.email,
-        'first_name': value.firstName,
-        'last_name': value.lastName,
+        email: value.email,
+        first_name: value.firstName,
+        last_name: value.lastName,
     };
 }
-

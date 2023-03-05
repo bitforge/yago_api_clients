@@ -12,19 +12,13 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import {
-    PricingPlan,
-    PricingPlanFromJSON,
-    PricingPlanToJSON,
-} from '../models';
+import { PricingPlan, PricingPlanFromJSON, PricingPlanToJSON } from '../models';
 
 /**
- * 
+ *
  */
 export class PlansApi extends runtime.BaseAPI {
-
     /**
      * List all available pricing plans
      */
@@ -33,14 +27,17 @@ export class PlansApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        const response = await this.request({
-            path: `/api/plans/`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/plans/`,
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PricingPlanFromJSON));
+        return new runtime.JSONApiResponse(response, jsonValue => jsonValue.map(PricingPlanFromJSON));
     }
 
     /**
@@ -50,5 +47,4 @@ export class PlansApi extends runtime.BaseAPI {
         const response = await this.plansListRaw(initOverrides);
         return await response.value();
     }
-
 }

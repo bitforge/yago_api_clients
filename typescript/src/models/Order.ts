@@ -13,33 +13,28 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import {
-    OrderState,
-    OrderStateFromJSON,
-    OrderStateFromJSONTyped,
-    OrderStateToJSON,
-} from './OrderState';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
- * 
+ *
  * @export
  * @interface Order
  */
 export interface Order {
     /**
-     * 
+     *
      * @type {number}
      * @memberof Order
      */
     readonly id: number;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Order
      */
     project: string;
     /**
-     * 
+     *
      * @type {OrderState}
      * @memberof Order
      */
@@ -51,25 +46,25 @@ export interface Order {
      */
     price?: string | null;
     /**
-     * 
+     *
      * @type {string}
      * @memberof Order
      */
     readonly priceCurrency: string | null;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof Order
      */
     readonly created: Date;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof Order
      */
     readonly modified: Date;
     /**
-     * 
+     *
      * @type {number}
      * @memberof Order
      */
@@ -81,19 +76,18 @@ export function OrderFromJSON(json: any): Order {
 }
 
 export function OrderFromJSONTyped(json: any, ignoreDiscriminator: boolean): Order {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'project': json['project'],
-        'state': OrderStateFromJSON(json['state']),
-        'price': !exists(json, 'price') ? undefined : json['price'],
-        'priceCurrency': json['price_currency'],
-        'created': (new Date(json['created'])),
-        'modified': (new Date(json['modified'])),
-        'modelCount': json['model_count'],
+        id: json['id'],
+        project: json['project'],
+        state: OrderStateFromJSON(json['state']),
+        price: !exists(json, 'price') ? undefined : json['price'],
+        priceCurrency: json['price_currency'],
+        created: new Date(json['created']),
+        modified: new Date(json['modified']),
+        modelCount: json['model_count'],
     };
 }
 
@@ -105,9 +99,7 @@ export function OrderToJSON(value?: Order | null): any {
         return null;
     }
     return {
-        
-        'project': value.project,
-        'price': value.price,
+        project: value.project,
+        price: value.price,
     };
 }
-

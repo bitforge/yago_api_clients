@@ -14,31 +14,31 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * 
+ *
  * @export
  * @interface OrderModelFile
  */
 export interface OrderModelFile {
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelFile
      */
     readonly id: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelFile
      */
     readonly name: string;
     /**
-     * 
+     *
      * @type {string}
      * @memberof OrderModelFile
      */
     file: string;
     /**
-     * 
+     *
      * @type {Date}
      * @memberof OrderModelFile
      */
@@ -50,15 +50,14 @@ export function OrderModelFileFromJSON(json: any): OrderModelFile {
 }
 
 export function OrderModelFileFromJSONTyped(json: any, ignoreDiscriminator: boolean): OrderModelFile {
-    if ((json === undefined) || (json === null)) {
+    if (json === undefined || json === null) {
         return json;
     }
     return {
-        
-        'id': json['id'],
-        'name': json['name'],
-        'file': json['file'],
-        'created': (new Date(json['created'])),
+        id: json['id'],
+        name: json['name'],
+        file: json['file'],
+        created: new Date(json['created']),
     };
 }
 
@@ -70,8 +69,6 @@ export function OrderModelFileToJSON(value?: OrderModelFile | null): any {
         return null;
     }
     return {
-        
-        'file': value.file,
+        file: value.file,
     };
 }
-

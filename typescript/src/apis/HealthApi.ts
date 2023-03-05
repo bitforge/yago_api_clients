@@ -12,19 +12,13 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import {
-    HealthStatus,
-    HealthStatusFromJSON,
-    HealthStatusToJSON,
-} from '../models';
+import { HealthStatus, HealthStatusFromJSON, HealthStatusToJSON } from '../models';
 
 /**
- * 
+ *
  */
 export class HealthApi extends runtime.BaseAPI {
-
     /**
      * Check health status of required subsystems.
      */
@@ -33,14 +27,17 @@ export class HealthApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        const response = await this.request({
-            path: `/api/health/`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
+        const response = await this.request(
+            {
+                path: `/api/health/`,
+                method: 'GET',
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides
+        );
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => HealthStatusFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, jsonValue => HealthStatusFromJSON(jsonValue));
     }
 
     /**
@@ -50,5 +47,4 @@ export class HealthApi extends runtime.BaseAPI {
         const response = await this.healthRetrieveRaw(initOverrides);
         return await response.value();
     }
-
 }
