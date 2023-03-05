@@ -1,8 +1,8 @@
-# openapi.model.RoleEnum
+# yago_cloud.model.RoleEnum
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

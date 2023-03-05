@@ -1,8 +1,8 @@
-# openapi.model.ErrorDescription
+# yago_cloud.model.ErrorDescription
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

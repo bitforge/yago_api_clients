@@ -1,8 +1,8 @@
-# openapi.model.CountryEnum
+# yago_cloud.model.CountryEnum
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

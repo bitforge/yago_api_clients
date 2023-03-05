@@ -1,8 +1,8 @@
-# openapi.api.ModelsApi
+# yago_cloud.api.ModelsApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -35,7 +35,7 @@ Add a new model. Change details and translations later via PUT or PATCH.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -92,7 +92,7 @@ Remove a model. Be cautious, this is permanent!
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -148,7 +148,7 @@ Model infos for embedding. Loaded by <ar-button> web component.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = ModelsApi();
 final slug = slug_example; // String | 
@@ -191,7 +191,7 @@ Delete a file.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -247,7 +247,7 @@ Upload a file. Max size 30MB. Filename is required!
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -308,7 +308,7 @@ Delete an image.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -364,7 +364,7 @@ Upload an image. Max size 30MB. Filename is required!
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -425,7 +425,7 @@ Lists all models for all projects the user is a member of. Can be filtered by `p
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -484,7 +484,7 @@ Delete a file.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -540,7 +540,7 @@ Upload a file. Max size 30MB. Filename is required!
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -601,7 +601,7 @@ Change as subset of model details.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -660,7 +660,7 @@ Details of a single model.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -717,7 +717,7 @@ Change model details. Translated field are all optional expcet for `name_de`.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -776,7 +776,7 @@ Delete a file.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -832,7 +832,7 @@ Upload a file. Max size 30MB. Filename is required!
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

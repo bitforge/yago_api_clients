@@ -1,8 +1,8 @@
-# openapi.model.OrderState
+# yago_cloud.model.OrderState
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

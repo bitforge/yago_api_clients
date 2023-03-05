@@ -1,8 +1,8 @@
-# openapi.model.ModelUpdate
+# yago_cloud.model.ModelUpdate
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

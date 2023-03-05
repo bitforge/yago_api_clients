@@ -1,8 +1,8 @@
-# openapi.api.StatsApi
+# yago_cloud.api.StatsApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -24,7 +24,7 @@ Traffic analytics over all projects and models.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -81,7 +81,7 @@ Traffic analytics over all projects and models.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -138,7 +138,7 @@ Chronic statistics for single project and all models of that project.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -197,7 +197,7 @@ Summary statistics for single project and all models of that project.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

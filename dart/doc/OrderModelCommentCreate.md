@@ -1,8 +1,8 @@
-# openapi.model.OrderModelCommentCreate
+# yago_cloud.model.OrderModelCommentCreate
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

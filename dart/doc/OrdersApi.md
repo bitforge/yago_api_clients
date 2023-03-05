@@ -1,8 +1,8 @@
-# openapi.api.OrdersApi
+# yago_cloud.api.OrdersApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -47,7 +47,7 @@ Add a new comment to order.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -106,7 +106,7 @@ List all comments of order.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -163,7 +163,7 @@ Add a new order.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -220,7 +220,7 @@ Delete order.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -276,7 +276,7 @@ Lists all orders of customer.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -333,7 +333,7 @@ Add a new comment to order.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -394,7 +394,7 @@ List all comments of model.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -453,7 +453,7 @@ Add a new model.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -512,7 +512,7 @@ Delete model.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -570,7 +570,7 @@ Delete file.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -630,7 +630,7 @@ Lists all files of model.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -689,7 +689,7 @@ Upload a file. Max size 30MB. Filename is required!
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -752,7 +752,7 @@ Lists all models of order.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -809,7 +809,7 @@ Name | Type | Description  | Notes
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -868,7 +868,7 @@ Model was accepted by customer and can be added to project.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -927,7 +927,7 @@ Model is ready to be reviewed by customer.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -986,7 +986,7 @@ Request rework of model, as specified in comments. Can only happen once.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1045,7 +1045,7 @@ Lists available transitions of order model for current user.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1104,7 +1104,7 @@ Change model.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1165,7 +1165,7 @@ Details of a single order.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1222,7 +1222,7 @@ Send order to estimation after all models have been added and specified.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1279,7 +1279,7 @@ All models are reviewed & accepted by customer, order is complete.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1336,7 +1336,7 @@ Models have been estimated and and payment price for customer is defined.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1393,7 +1393,7 @@ Customer has payed estimated amount and modelling can begin.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1450,7 +1450,7 @@ All models are uploaded and ready, customer may begin with review.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1507,7 +1507,7 @@ Lists available transitions of order for current user.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1564,7 +1564,7 @@ Update order price estimation.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

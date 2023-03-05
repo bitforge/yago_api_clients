@@ -1,8 +1,8 @@
-# openapi.model.GoogleIdToken
+# yago_cloud.model.GoogleIdToken
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

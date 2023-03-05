@@ -1,7 +1,7 @@
-name: 'yago_api'
+name: 'yago_cloud'
 version: '1.0.0'
-description: 'Yago REST API Client'
-homepage: 'https://bitforge.ch/'
+description: 'Yago Cloud API Client for Flutter & Dart'
+homepage: 'https://yago.cloud/'
 repository: 'https://github.com/bitforge/yago-api-clients'
 documentation: 'https://yago.cloud/api/doc/'
 environment:

@@ -1,8 +1,8 @@
-# openapi.model.TokenObtainResponse
+# yago_cloud.model.TokenObtainResponse
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

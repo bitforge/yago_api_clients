@@ -1,8 +1,8 @@
-# openapi.model.ProjectCreate
+# yago_cloud.model.ProjectCreate
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

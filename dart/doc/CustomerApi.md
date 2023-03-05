@@ -1,8 +1,8 @@
-# openapi.api.CustomerApi
+# yago_cloud.api.CustomerApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -24,7 +24,7 @@ Manage customer billing address. Required prior to subscribing to Yago services.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -81,7 +81,7 @@ Manage customer billing address. Required prior to subscribing to Yago services.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -134,7 +134,7 @@ Manage customer billing address. Required prior to subscribing to Yago services.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -191,7 +191,7 @@ Returns the customer associated with the current user account.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed

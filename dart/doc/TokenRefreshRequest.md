@@ -1,8 +1,8 @@
-# openapi.model.TokenRefreshRequest
+# yago_cloud.model.TokenRefreshRequest
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

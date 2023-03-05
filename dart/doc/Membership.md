@@ -1,8 +1,8 @@
-# openapi.model.Membership
+# yago_cloud.model.Membership
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties

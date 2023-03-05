@@ -1,8 +1,8 @@
-# openapi.api.PlansApi
+# yago_cloud.api.PlansApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -21,7 +21,7 @@ List all available pricing plans
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = PlansApi();
 

@@ -4,9 +4,11 @@
 rm -rf src
 
 # Fetch OpenAPI Schema an generate api client
+# Docs: https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/dart.md
 npx @openapitools/openapi-generator-cli generate \
     -i http://yago.cloud/api/schema/?lang=en \
-    -g dart
+    -g dart \
+    --additional-properties=pubName="yago_cloud"
 
 # Remove empty tests
 rm -rf test

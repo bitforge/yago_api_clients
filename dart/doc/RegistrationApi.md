@@ -1,8 +1,8 @@
-# openapi.api.RegistrationApi
+# yago_cloud.api.RegistrationApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -22,7 +22,7 @@ Create a new registeration and sends out an activation email.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = RegistrationApi();
 final registrationCreate = RegistrationCreate(); // RegistrationCreate | 
@@ -65,7 +65,7 @@ Verifiy registration email, create user and return login token
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = RegistrationApi();
 final code = code_example; // String | 

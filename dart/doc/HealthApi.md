@@ -1,8 +1,8 @@
-# openapi.api.HealthApi
+# yago_cloud.api.HealthApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -21,7 +21,7 @@ Check health status of required subsystems.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = HealthApi();
 

@@ -1,8 +1,8 @@
-# openapi.api.AuthApi
+# yago_cloud.api.AuthApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 All URIs are relative to *https://yago.cloud*
@@ -28,7 +28,7 @@ Create a new anchor token.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -80,7 +80,7 @@ Takes a Google ID token and returns an access and refresh token for this API. If
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = AuthApi();
 final googleIdToken = GoogleIdToken(); // GoogleIdToken | 
@@ -123,7 +123,7 @@ Takes a set of user credentials and returns an access and refresh JSON web token
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = AuthApi();
 final tokenObtainRequest = TokenObtainRequest(); // TokenObtainRequest | 
@@ -166,7 +166,7 @@ Change password of current user.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 // TODO Configure API key authorization: cookieAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('cookieAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -223,7 +223,7 @@ Password reset e-mail link is confirmed, reset the user's password.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = AuthApi();
 final passwordResetConfirm = PasswordResetConfirm(); // PasswordResetConfirm | 
@@ -266,7 +266,7 @@ Request password reset. Send an email to the user first.
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = AuthApi();
 final passwordReset = PasswordReset(); // PasswordReset | 
@@ -309,7 +309,7 @@ Takes a refresh type JSON web token and returns an access type JSON web token if
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = AuthApi();
 final tokenRefreshRequest = TokenRefreshRequest(); // TokenRefreshRequest | 
@@ -352,7 +352,7 @@ Takes a token and indicates if it is valid.  This view provides no information a
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 
 final api_instance = AuthApi();
 final tokenVerify = TokenVerify(); // TokenVerify | 

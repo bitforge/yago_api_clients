@@ -1,8 +1,8 @@
-# openapi.model.GlobalStatistics
+# yago_cloud.model.GlobalStatistics
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:yago_cloud/api.dart';
 ```
 
 ## Properties
