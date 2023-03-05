@@ -3,9 +3,9 @@
 .dart_tool/
 .packages
 build/
-pubspec.lock  # Except for application packages
 
-doc/api/
+# VS Code
+.vscode
 
 # IntelliJ
 *.iml

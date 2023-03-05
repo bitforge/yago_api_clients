@@ -59,7 +59,7 @@ class SummaryStats {
       }());
 
       return SummaryStats(
-        labels: List<Object>.from(json[r'labels'])!,
+        labels: List<Object>.from(json[r'labels']),
         datasets: mapCastOfType<String, Object>(json, r'datasets')!,
       );
     }
