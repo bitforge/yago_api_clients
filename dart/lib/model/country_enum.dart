@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class CountryEnum {
   /// Instantiate a new enum with the provided [value].
   const CountryEnum._(this.value);
@@ -528,7 +527,10 @@ class CountryEnum {
 
   static CountryEnum? fromJson(dynamic value) => CountryEnumTypeTransformer().decode(value);
 
-  static List<CountryEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<CountryEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <CountryEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -562,255 +564,504 @@ class CountryEnumTypeTransformer {
   CountryEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'AF': return CountryEnum.AF;
-        case r'AX': return CountryEnum.AX;
-        case r'AL': return CountryEnum.AL;
-        case r'DZ': return CountryEnum.DZ;
-        case r'AS': return CountryEnum.AS;
-        case r'AD': return CountryEnum.AD;
-        case r'AO': return CountryEnum.AO;
-        case r'AI': return CountryEnum.AI;
-        case r'AQ': return CountryEnum.AQ;
-        case r'AG': return CountryEnum.AG;
-        case r'AR': return CountryEnum.AR;
-        case r'AM': return CountryEnum.AM;
-        case r'AW': return CountryEnum.AW;
-        case r'AU': return CountryEnum.AU;
-        case r'AT': return CountryEnum.AT;
-        case r'AZ': return CountryEnum.AZ;
-        case r'BS': return CountryEnum.BS;
-        case r'BH': return CountryEnum.BH;
-        case r'BD': return CountryEnum.BD;
-        case r'BB': return CountryEnum.BB;
-        case r'BY': return CountryEnum.BY;
-        case r'BE': return CountryEnum.BE;
-        case r'BZ': return CountryEnum.BZ;
-        case r'BJ': return CountryEnum.BJ;
-        case r'BM': return CountryEnum.BM;
-        case r'BT': return CountryEnum.BT;
-        case r'BO': return CountryEnum.BO;
-        case r'BQ': return CountryEnum.BQ;
-        case r'BA': return CountryEnum.BA;
-        case r'BW': return CountryEnum.BW;
-        case r'BV': return CountryEnum.BV;
-        case r'BR': return CountryEnum.BR;
-        case r'IO': return CountryEnum.IO;
-        case r'BN': return CountryEnum.BN;
-        case r'BG': return CountryEnum.BG;
-        case r'BF': return CountryEnum.BF;
-        case r'BI': return CountryEnum.BI;
-        case r'CV': return CountryEnum.CV;
-        case r'KH': return CountryEnum.KH;
-        case r'CM': return CountryEnum.CM;
-        case r'CA': return CountryEnum.CA;
-        case r'KY': return CountryEnum.KY;
-        case r'CF': return CountryEnum.CF;
-        case r'TD': return CountryEnum.TD;
-        case r'CL': return CountryEnum.CL;
-        case r'CN': return CountryEnum.CN;
-        case r'CX': return CountryEnum.CX;
-        case r'CC': return CountryEnum.CC;
-        case r'CO': return CountryEnum.CO;
-        case r'KM': return CountryEnum.KM;
-        case r'CG': return CountryEnum.CG;
-        case r'CD': return CountryEnum.CD;
-        case r'CK': return CountryEnum.CK;
-        case r'CR': return CountryEnum.CR;
-        case r'CI': return CountryEnum.CI;
-        case r'HR': return CountryEnum.HR;
-        case r'CU': return CountryEnum.CU;
-        case r'CW': return CountryEnum.CW;
-        case r'CY': return CountryEnum.CY;
-        case r'CZ': return CountryEnum.CZ;
-        case r'DK': return CountryEnum.DK;
-        case r'DJ': return CountryEnum.DJ;
-        case r'DM': return CountryEnum.DM;
-        case r'DO': return CountryEnum.DO;
-        case r'EC': return CountryEnum.EC;
-        case r'EG': return CountryEnum.EG;
-        case r'SV': return CountryEnum.SV;
-        case r'GQ': return CountryEnum.GQ;
-        case r'ER': return CountryEnum.ER;
-        case r'EE': return CountryEnum.EE;
-        case r'SZ': return CountryEnum.SZ;
-        case r'ET': return CountryEnum.ET;
-        case r'FK': return CountryEnum.FK;
-        case r'FO': return CountryEnum.FO;
-        case r'FJ': return CountryEnum.FJ;
-        case r'FI': return CountryEnum.FI;
-        case r'FR': return CountryEnum.FR;
-        case r'GF': return CountryEnum.GF;
-        case r'PF': return CountryEnum.PF;
-        case r'TF': return CountryEnum.TF;
-        case r'GA': return CountryEnum.GA;
-        case r'GM': return CountryEnum.GM;
-        case r'GE': return CountryEnum.GE;
-        case r'DE': return CountryEnum.DE;
-        case r'GH': return CountryEnum.GH;
-        case r'GI': return CountryEnum.GI;
-        case r'GR': return CountryEnum.GR;
-        case r'GL': return CountryEnum.GL;
-        case r'GD': return CountryEnum.GD;
-        case r'GP': return CountryEnum.GP;
-        case r'GU': return CountryEnum.GU;
-        case r'GT': return CountryEnum.GT;
-        case r'GG': return CountryEnum.GG;
-        case r'GN': return CountryEnum.GN;
-        case r'GW': return CountryEnum.GW;
-        case r'GY': return CountryEnum.GY;
-        case r'HT': return CountryEnum.HT;
-        case r'HM': return CountryEnum.HM;
-        case r'VA': return CountryEnum.VA;
-        case r'HN': return CountryEnum.HN;
-        case r'HK': return CountryEnum.HK;
-        case r'HU': return CountryEnum.HU;
-        case r'IS': return CountryEnum.IS;
-        case r'IN': return CountryEnum.IN;
-        case r'ID': return CountryEnum.ID;
-        case r'IR': return CountryEnum.IR;
-        case r'IQ': return CountryEnum.IQ;
-        case r'IE': return CountryEnum.IE;
-        case r'IM': return CountryEnum.IM;
-        case r'IL': return CountryEnum.IL;
-        case r'IT': return CountryEnum.IT;
-        case r'JM': return CountryEnum.JM;
-        case r'JP': return CountryEnum.JP;
-        case r'JE': return CountryEnum.JE;
-        case r'JO': return CountryEnum.JO;
-        case r'KZ': return CountryEnum.KZ;
-        case r'KE': return CountryEnum.KE;
-        case r'KI': return CountryEnum.KI;
-        case r'KW': return CountryEnum.KW;
-        case r'KG': return CountryEnum.KG;
-        case r'LA': return CountryEnum.LA;
-        case r'LV': return CountryEnum.LV;
-        case r'LB': return CountryEnum.LB;
-        case r'LS': return CountryEnum.LS;
-        case r'LR': return CountryEnum.LR;
-        case r'LY': return CountryEnum.LY;
-        case r'LI': return CountryEnum.LI;
-        case r'LT': return CountryEnum.LT;
-        case r'LU': return CountryEnum.LU;
-        case r'MO': return CountryEnum.MO;
-        case r'MG': return CountryEnum.MG;
-        case r'MW': return CountryEnum.MW;
-        case r'MY': return CountryEnum.MY;
-        case r'MV': return CountryEnum.MV;
-        case r'ML': return CountryEnum.ML;
-        case r'MT': return CountryEnum.MT;
-        case r'MH': return CountryEnum.MH;
-        case r'MQ': return CountryEnum.MQ;
-        case r'MR': return CountryEnum.MR;
-        case r'MU': return CountryEnum.MU;
-        case r'YT': return CountryEnum.YT;
-        case r'MX': return CountryEnum.MX;
-        case r'FM': return CountryEnum.FM;
-        case r'MD': return CountryEnum.MD;
-        case r'MC': return CountryEnum.MC;
-        case r'MN': return CountryEnum.MN;
-        case r'ME': return CountryEnum.ME;
-        case r'MS': return CountryEnum.MS;
-        case r'MA': return CountryEnum.MA;
-        case r'MZ': return CountryEnum.MZ;
-        case r'MM': return CountryEnum.MM;
-        case r'NA': return CountryEnum.NA;
-        case r'NR': return CountryEnum.NR;
-        case r'NP': return CountryEnum.NP;
-        case r'NL': return CountryEnum.NL;
-        case r'NC': return CountryEnum.NC;
-        case r'NZ': return CountryEnum.NZ;
-        case r'NI': return CountryEnum.NI;
-        case r'NE': return CountryEnum.NE;
-        case r'NG': return CountryEnum.NG;
-        case r'NU': return CountryEnum.NU;
-        case r'NF': return CountryEnum.NF;
-        case r'KP': return CountryEnum.KP;
-        case r'MK': return CountryEnum.MK;
-        case r'MP': return CountryEnum.MP;
-        case r'NO': return CountryEnum.NO;
-        case r'OM': return CountryEnum.OM;
-        case r'PK': return CountryEnum.PK;
-        case r'PW': return CountryEnum.PW;
-        case r'PS': return CountryEnum.PS;
-        case r'PA': return CountryEnum.PA;
-        case r'PG': return CountryEnum.PG;
-        case r'PY': return CountryEnum.PY;
-        case r'PE': return CountryEnum.PE;
-        case r'PH': return CountryEnum.PH;
-        case r'PN': return CountryEnum.PN;
-        case r'PL': return CountryEnum.PL;
-        case r'PT': return CountryEnum.PT;
-        case r'PR': return CountryEnum.PR;
-        case r'QA': return CountryEnum.QA;
-        case r'RE': return CountryEnum.RE;
-        case r'RO': return CountryEnum.RO;
-        case r'RU': return CountryEnum.RU;
-        case r'RW': return CountryEnum.RW;
-        case r'BL': return CountryEnum.BL;
-        case r'SH': return CountryEnum.SH;
-        case r'KN': return CountryEnum.KN;
-        case r'LC': return CountryEnum.LC;
-        case r'MF': return CountryEnum.MF;
-        case r'PM': return CountryEnum.PM;
-        case r'VC': return CountryEnum.VC;
-        case r'WS': return CountryEnum.WS;
-        case r'SM': return CountryEnum.SM;
-        case r'ST': return CountryEnum.ST;
-        case r'SA': return CountryEnum.SA;
-        case r'SN': return CountryEnum.SN;
-        case r'RS': return CountryEnum.RS;
-        case r'SC': return CountryEnum.SC;
-        case r'SL': return CountryEnum.SL;
-        case r'SG': return CountryEnum.SG;
-        case r'SX': return CountryEnum.SX;
-        case r'SK': return CountryEnum.SK;
-        case r'SI': return CountryEnum.SI;
-        case r'SB': return CountryEnum.SB;
-        case r'SO': return CountryEnum.SO;
-        case r'ZA': return CountryEnum.ZA;
-        case r'GS': return CountryEnum.GS;
-        case r'KR': return CountryEnum.KR;
-        case r'SS': return CountryEnum.SS;
-        case r'ES': return CountryEnum.ES;
-        case r'LK': return CountryEnum.LK;
-        case r'SD': return CountryEnum.SD;
-        case r'SR': return CountryEnum.SR;
-        case r'SJ': return CountryEnum.SJ;
-        case r'SE': return CountryEnum.SE;
-        case r'CH': return CountryEnum.CH;
-        case r'SY': return CountryEnum.SY;
-        case r'TW': return CountryEnum.TW;
-        case r'TJ': return CountryEnum.TJ;
-        case r'TZ': return CountryEnum.TZ;
-        case r'TH': return CountryEnum.TH;
-        case r'TL': return CountryEnum.TL;
-        case r'TG': return CountryEnum.TG;
-        case r'TK': return CountryEnum.TK;
-        case r'TO': return CountryEnum.TO;
-        case r'TT': return CountryEnum.TT;
-        case r'TN': return CountryEnum.TN;
-        case r'TR': return CountryEnum.TR;
-        case r'TM': return CountryEnum.TM;
-        case r'TC': return CountryEnum.TC;
-        case r'TV': return CountryEnum.TV;
-        case r'UG': return CountryEnum.UG;
-        case r'UA': return CountryEnum.UA;
-        case r'AE': return CountryEnum.AE;
-        case r'GB': return CountryEnum.GB;
-        case r'UM': return CountryEnum.UM;
-        case r'US': return CountryEnum.US;
-        case r'UY': return CountryEnum.UY;
-        case r'UZ': return CountryEnum.UZ;
-        case r'VU': return CountryEnum.VU;
-        case r'VE': return CountryEnum.VE;
-        case r'VN': return CountryEnum.VN;
-        case r'VG': return CountryEnum.VG;
-        case r'VI': return CountryEnum.VI;
-        case r'WF': return CountryEnum.WF;
-        case r'EH': return CountryEnum.EH;
-        case r'YE': return CountryEnum.YE;
-        case r'ZM': return CountryEnum.ZM;
-        case r'ZW': return CountryEnum.ZW;
+        case r'AF':
+          return CountryEnum.AF;
+        case r'AX':
+          return CountryEnum.AX;
+        case r'AL':
+          return CountryEnum.AL;
+        case r'DZ':
+          return CountryEnum.DZ;
+        case r'AS':
+          return CountryEnum.AS;
+        case r'AD':
+          return CountryEnum.AD;
+        case r'AO':
+          return CountryEnum.AO;
+        case r'AI':
+          return CountryEnum.AI;
+        case r'AQ':
+          return CountryEnum.AQ;
+        case r'AG':
+          return CountryEnum.AG;
+        case r'AR':
+          return CountryEnum.AR;
+        case r'AM':
+          return CountryEnum.AM;
+        case r'AW':
+          return CountryEnum.AW;
+        case r'AU':
+          return CountryEnum.AU;
+        case r'AT':
+          return CountryEnum.AT;
+        case r'AZ':
+          return CountryEnum.AZ;
+        case r'BS':
+          return CountryEnum.BS;
+        case r'BH':
+          return CountryEnum.BH;
+        case r'BD':
+          return CountryEnum.BD;
+        case r'BB':
+          return CountryEnum.BB;
+        case r'BY':
+          return CountryEnum.BY;
+        case r'BE':
+          return CountryEnum.BE;
+        case r'BZ':
+          return CountryEnum.BZ;
+        case r'BJ':
+          return CountryEnum.BJ;
+        case r'BM':
+          return CountryEnum.BM;
+        case r'BT':
+          return CountryEnum.BT;
+        case r'BO':
+          return CountryEnum.BO;
+        case r'BQ':
+          return CountryEnum.BQ;
+        case r'BA':
+          return CountryEnum.BA;
+        case r'BW':
+          return CountryEnum.BW;
+        case r'BV':
+          return CountryEnum.BV;
+        case r'BR':
+          return CountryEnum.BR;
+        case r'IO':
+          return CountryEnum.IO;
+        case r'BN':
+          return CountryEnum.BN;
+        case r'BG':
+          return CountryEnum.BG;
+        case r'BF':
+          return CountryEnum.BF;
+        case r'BI':
+          return CountryEnum.BI;
+        case r'CV':
+          return CountryEnum.CV;
+        case r'KH':
+          return CountryEnum.KH;
+        case r'CM':
+          return CountryEnum.CM;
+        case r'CA':
+          return CountryEnum.CA;
+        case r'KY':
+          return CountryEnum.KY;
+        case r'CF':
+          return CountryEnum.CF;
+        case r'TD':
+          return CountryEnum.TD;
+        case r'CL':
+          return CountryEnum.CL;
+        case r'CN':
+          return CountryEnum.CN;
+        case r'CX':
+          return CountryEnum.CX;
+        case r'CC':
+          return CountryEnum.CC;
+        case r'CO':
+          return CountryEnum.CO;
+        case r'KM':
+          return CountryEnum.KM;
+        case r'CG':
+          return CountryEnum.CG;
+        case r'CD':
+          return CountryEnum.CD;
+        case r'CK':
+          return CountryEnum.CK;
+        case r'CR':
+          return CountryEnum.CR;
+        case r'CI':
+          return CountryEnum.CI;
+        case r'HR':
+          return CountryEnum.HR;
+        case r'CU':
+          return CountryEnum.CU;
+        case r'CW':
+          return CountryEnum.CW;
+        case r'CY':
+          return CountryEnum.CY;
+        case r'CZ':
+          return CountryEnum.CZ;
+        case r'DK':
+          return CountryEnum.DK;
+        case r'DJ':
+          return CountryEnum.DJ;
+        case r'DM':
+          return CountryEnum.DM;
+        case r'DO':
+          return CountryEnum.DO;
+        case r'EC':
+          return CountryEnum.EC;
+        case r'EG':
+          return CountryEnum.EG;
+        case r'SV':
+          return CountryEnum.SV;
+        case r'GQ':
+          return CountryEnum.GQ;
+        case r'ER':
+          return CountryEnum.ER;
+        case r'EE':
+          return CountryEnum.EE;
+        case r'SZ':
+          return CountryEnum.SZ;
+        case r'ET':
+          return CountryEnum.ET;
+        case r'FK':
+          return CountryEnum.FK;
+        case r'FO':
+          return CountryEnum.FO;
+        case r'FJ':
+          return CountryEnum.FJ;
+        case r'FI':
+          return CountryEnum.FI;
+        case r'FR':
+          return CountryEnum.FR;
+        case r'GF':
+          return CountryEnum.GF;
+        case r'PF':
+          return CountryEnum.PF;
+        case r'TF':
+          return CountryEnum.TF;
+        case r'GA':
+          return CountryEnum.GA;
+        case r'GM':
+          return CountryEnum.GM;
+        case r'GE':
+          return CountryEnum.GE;
+        case r'DE':
+          return CountryEnum.DE;
+        case r'GH':
+          return CountryEnum.GH;
+        case r'GI':
+          return CountryEnum.GI;
+        case r'GR':
+          return CountryEnum.GR;
+        case r'GL':
+          return CountryEnum.GL;
+        case r'GD':
+          return CountryEnum.GD;
+        case r'GP':
+          return CountryEnum.GP;
+        case r'GU':
+          return CountryEnum.GU;
+        case r'GT':
+          return CountryEnum.GT;
+        case r'GG':
+          return CountryEnum.GG;
+        case r'GN':
+          return CountryEnum.GN;
+        case r'GW':
+          return CountryEnum.GW;
+        case r'GY':
+          return CountryEnum.GY;
+        case r'HT':
+          return CountryEnum.HT;
+        case r'HM':
+          return CountryEnum.HM;
+        case r'VA':
+          return CountryEnum.VA;
+        case r'HN':
+          return CountryEnum.HN;
+        case r'HK':
+          return CountryEnum.HK;
+        case r'HU':
+          return CountryEnum.HU;
+        case r'IS':
+          return CountryEnum.IS;
+        case r'IN':
+          return CountryEnum.IN;
+        case r'ID':
+          return CountryEnum.ID;
+        case r'IR':
+          return CountryEnum.IR;
+        case r'IQ':
+          return CountryEnum.IQ;
+        case r'IE':
+          return CountryEnum.IE;
+        case r'IM':
+          return CountryEnum.IM;
+        case r'IL':
+          return CountryEnum.IL;
+        case r'IT':
+          return CountryEnum.IT;
+        case r'JM':
+          return CountryEnum.JM;
+        case r'JP':
+          return CountryEnum.JP;
+        case r'JE':
+          return CountryEnum.JE;
+        case r'JO':
+          return CountryEnum.JO;
+        case r'KZ':
+          return CountryEnum.KZ;
+        case r'KE':
+          return CountryEnum.KE;
+        case r'KI':
+          return CountryEnum.KI;
+        case r'KW':
+          return CountryEnum.KW;
+        case r'KG':
+          return CountryEnum.KG;
+        case r'LA':
+          return CountryEnum.LA;
+        case r'LV':
+          return CountryEnum.LV;
+        case r'LB':
+          return CountryEnum.LB;
+        case r'LS':
+          return CountryEnum.LS;
+        case r'LR':
+          return CountryEnum.LR;
+        case r'LY':
+          return CountryEnum.LY;
+        case r'LI':
+          return CountryEnum.LI;
+        case r'LT':
+          return CountryEnum.LT;
+        case r'LU':
+          return CountryEnum.LU;
+        case r'MO':
+          return CountryEnum.MO;
+        case r'MG':
+          return CountryEnum.MG;
+        case r'MW':
+          return CountryEnum.MW;
+        case r'MY':
+          return CountryEnum.MY;
+        case r'MV':
+          return CountryEnum.MV;
+        case r'ML':
+          return CountryEnum.ML;
+        case r'MT':
+          return CountryEnum.MT;
+        case r'MH':
+          return CountryEnum.MH;
+        case r'MQ':
+          return CountryEnum.MQ;
+        case r'MR':
+          return CountryEnum.MR;
+        case r'MU':
+          return CountryEnum.MU;
+        case r'YT':
+          return CountryEnum.YT;
+        case r'MX':
+          return CountryEnum.MX;
+        case r'FM':
+          return CountryEnum.FM;
+        case r'MD':
+          return CountryEnum.MD;
+        case r'MC':
+          return CountryEnum.MC;
+        case r'MN':
+          return CountryEnum.MN;
+        case r'ME':
+          return CountryEnum.ME;
+        case r'MS':
+          return CountryEnum.MS;
+        case r'MA':
+          return CountryEnum.MA;
+        case r'MZ':
+          return CountryEnum.MZ;
+        case r'MM':
+          return CountryEnum.MM;
+        case r'NA':
+          return CountryEnum.NA;
+        case r'NR':
+          return CountryEnum.NR;
+        case r'NP':
+          return CountryEnum.NP;
+        case r'NL':
+          return CountryEnum.NL;
+        case r'NC':
+          return CountryEnum.NC;
+        case r'NZ':
+          return CountryEnum.NZ;
+        case r'NI':
+          return CountryEnum.NI;
+        case r'NE':
+          return CountryEnum.NE;
+        case r'NG':
+          return CountryEnum.NG;
+        case r'NU':
+          return CountryEnum.NU;
+        case r'NF':
+          return CountryEnum.NF;
+        case r'KP':
+          return CountryEnum.KP;
+        case r'MK':
+          return CountryEnum.MK;
+        case r'MP':
+          return CountryEnum.MP;
+        case r'NO':
+          return CountryEnum.NO;
+        case r'OM':
+          return CountryEnum.OM;
+        case r'PK':
+          return CountryEnum.PK;
+        case r'PW':
+          return CountryEnum.PW;
+        case r'PS':
+          return CountryEnum.PS;
+        case r'PA':
+          return CountryEnum.PA;
+        case r'PG':
+          return CountryEnum.PG;
+        case r'PY':
+          return CountryEnum.PY;
+        case r'PE':
+          return CountryEnum.PE;
+        case r'PH':
+          return CountryEnum.PH;
+        case r'PN':
+          return CountryEnum.PN;
+        case r'PL':
+          return CountryEnum.PL;
+        case r'PT':
+          return CountryEnum.PT;
+        case r'PR':
+          return CountryEnum.PR;
+        case r'QA':
+          return CountryEnum.QA;
+        case r'RE':
+          return CountryEnum.RE;
+        case r'RO':
+          return CountryEnum.RO;
+        case r'RU':
+          return CountryEnum.RU;
+        case r'RW':
+          return CountryEnum.RW;
+        case r'BL':
+          return CountryEnum.BL;
+        case r'SH':
+          return CountryEnum.SH;
+        case r'KN':
+          return CountryEnum.KN;
+        case r'LC':
+          return CountryEnum.LC;
+        case r'MF':
+          return CountryEnum.MF;
+        case r'PM':
+          return CountryEnum.PM;
+        case r'VC':
+          return CountryEnum.VC;
+        case r'WS':
+          return CountryEnum.WS;
+        case r'SM':
+          return CountryEnum.SM;
+        case r'ST':
+          return CountryEnum.ST;
+        case r'SA':
+          return CountryEnum.SA;
+        case r'SN':
+          return CountryEnum.SN;
+        case r'RS':
+          return CountryEnum.RS;
+        case r'SC':
+          return CountryEnum.SC;
+        case r'SL':
+          return CountryEnum.SL;
+        case r'SG':
+          return CountryEnum.SG;
+        case r'SX':
+          return CountryEnum.SX;
+        case r'SK':
+          return CountryEnum.SK;
+        case r'SI':
+          return CountryEnum.SI;
+        case r'SB':
+          return CountryEnum.SB;
+        case r'SO':
+          return CountryEnum.SO;
+        case r'ZA':
+          return CountryEnum.ZA;
+        case r'GS':
+          return CountryEnum.GS;
+        case r'KR':
+          return CountryEnum.KR;
+        case r'SS':
+          return CountryEnum.SS;
+        case r'ES':
+          return CountryEnum.ES;
+        case r'LK':
+          return CountryEnum.LK;
+        case r'SD':
+          return CountryEnum.SD;
+        case r'SR':
+          return CountryEnum.SR;
+        case r'SJ':
+          return CountryEnum.SJ;
+        case r'SE':
+          return CountryEnum.SE;
+        case r'CH':
+          return CountryEnum.CH;
+        case r'SY':
+          return CountryEnum.SY;
+        case r'TW':
+          return CountryEnum.TW;
+        case r'TJ':
+          return CountryEnum.TJ;
+        case r'TZ':
+          return CountryEnum.TZ;
+        case r'TH':
+          return CountryEnum.TH;
+        case r'TL':
+          return CountryEnum.TL;
+        case r'TG':
+          return CountryEnum.TG;
+        case r'TK':
+          return CountryEnum.TK;
+        case r'TO':
+          return CountryEnum.TO;
+        case r'TT':
+          return CountryEnum.TT;
+        case r'TN':
+          return CountryEnum.TN;
+        case r'TR':
+          return CountryEnum.TR;
+        case r'TM':
+          return CountryEnum.TM;
+        case r'TC':
+          return CountryEnum.TC;
+        case r'TV':
+          return CountryEnum.TV;
+        case r'UG':
+          return CountryEnum.UG;
+        case r'UA':
+          return CountryEnum.UA;
+        case r'AE':
+          return CountryEnum.AE;
+        case r'GB':
+          return CountryEnum.GB;
+        case r'UM':
+          return CountryEnum.UM;
+        case r'US':
+          return CountryEnum.US;
+        case r'UY':
+          return CountryEnum.UY;
+        case r'UZ':
+          return CountryEnum.UZ;
+        case r'VU':
+          return CountryEnum.VU;
+        case r'VE':
+          return CountryEnum.VE;
+        case r'VN':
+          return CountryEnum.VN;
+        case r'VG':
+          return CountryEnum.VG;
+        case r'VI':
+          return CountryEnum.VI;
+        case r'WF':
+          return CountryEnum.WF;
+        case r'EH':
+          return CountryEnum.EH;
+        case r'YE':
+          return CountryEnum.YE;
+        case r'ZM':
+          return CountryEnum.ZM;
+        case r'ZW':
+          return CountryEnum.ZW;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -823,4 +1074,3 @@ class CountryEnumTypeTransformer {
   /// Singleton [CountryEnumTypeTransformer] instance.
   static CountryEnumTypeTransformer? _instance;
 }
-

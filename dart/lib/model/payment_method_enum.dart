@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class PaymentMethodEnum {
   /// Instantiate a new enum with the provided [value].
   const PaymentMethodEnum._(this.value);
@@ -36,7 +35,10 @@ class PaymentMethodEnum {
 
   static PaymentMethodEnum? fromJson(dynamic value) => PaymentMethodEnumTypeTransformer().decode(value);
 
-  static List<PaymentMethodEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PaymentMethodEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PaymentMethodEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -70,9 +72,12 @@ class PaymentMethodEnumTypeTransformer {
   PaymentMethodEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'NONE': return PaymentMethodEnum.NONE;
-        case r'STRIPE': return PaymentMethodEnum.STRIPE;
-        case r'BILL': return PaymentMethodEnum.BILL;
+        case r'NONE':
+          return PaymentMethodEnum.NONE;
+        case r'STRIPE':
+          return PaymentMethodEnum.STRIPE;
+        case r'BILL':
+          return PaymentMethodEnum.BILL;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -85,4 +90,3 @@ class PaymentMethodEnumTypeTransformer {
   /// Singleton [PaymentMethodEnumTypeTransformer] instance.
   static PaymentMethodEnumTypeTransformer? _instance;
 }
-

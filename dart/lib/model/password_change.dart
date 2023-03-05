@@ -25,26 +25,27 @@ class PasswordChange {
   String newPassword2;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PasswordChange &&
-     other.oldPassword == oldPassword &&
-     other.newPassword1 == newPassword1 &&
-     other.newPassword2 == newPassword2;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PasswordChange &&
+          other.oldPassword == oldPassword &&
+          other.newPassword1 == newPassword1 &&
+          other.newPassword2 == newPassword2;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (oldPassword.hashCode) +
-    (newPassword1.hashCode) +
-    (newPassword2.hashCode);
+      // ignore: unnecessary_parenthesis
+      (oldPassword.hashCode) + (newPassword1.hashCode) + (newPassword2.hashCode);
 
   @override
-  String toString() => 'PasswordChange[oldPassword=$oldPassword, newPassword1=$newPassword1, newPassword2=$newPassword2]';
+  String toString() =>
+      'PasswordChange[oldPassword=$oldPassword, newPassword1=$newPassword1, newPassword2=$newPassword2]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'old_password'] = this.oldPassword;
-      json[r'new_password1'] = this.newPassword1;
-      json[r'new_password2'] = this.newPassword2;
+    json[r'old_password'] = this.oldPassword;
+    json[r'new_password1'] = this.newPassword1;
+    json[r'new_password2'] = this.newPassword2;
     return json;
   }
 
@@ -75,7 +76,10 @@ class PasswordChange {
     return null;
   }
 
-  static List<PasswordChange>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PasswordChange>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PasswordChange>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +107,18 @@ class PasswordChange {
   }
 
   // maps a json object with a list of PasswordChange-objects as value to a dart map
-  static Map<String, List<PasswordChange>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<PasswordChange>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<PasswordChange>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PasswordChange.listFromJson(entry.value, growable: growable,);
+        final value = PasswordChange.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,4 +134,3 @@ class PasswordChange {
     'new_password2',
   };
 }
-

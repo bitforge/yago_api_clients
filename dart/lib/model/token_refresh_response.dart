@@ -22,23 +22,21 @@ class TokenRefreshResponse {
   String refresh;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TokenRefreshResponse &&
-     other.access == access &&
-     other.refresh == refresh;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is TokenRefreshResponse && other.access == access && other.refresh == refresh;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (access.hashCode) +
-    (refresh.hashCode);
+      // ignore: unnecessary_parenthesis
+      (access.hashCode) + (refresh.hashCode);
 
   @override
   String toString() => 'TokenRefreshResponse[access=$access, refresh=$refresh]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'access'] = this.access;
-      json[r'refresh'] = this.refresh;
+    json[r'access'] = this.access;
+    json[r'refresh'] = this.refresh;
     return json;
   }
 
@@ -68,7 +66,10 @@ class TokenRefreshResponse {
     return null;
   }
 
-  static List<TokenRefreshResponse>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TokenRefreshResponse>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TokenRefreshResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +97,18 @@ class TokenRefreshResponse {
   }
 
   // maps a json object with a list of TokenRefreshResponse-objects as value to a dart map
-  static Map<String, List<TokenRefreshResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<TokenRefreshResponse>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<TokenRefreshResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = TokenRefreshResponse.listFromJson(entry.value, growable: growable,);
+        final value = TokenRefreshResponse.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,4 +123,3 @@ class TokenRefreshResponse {
     'refresh',
   };
 }
-

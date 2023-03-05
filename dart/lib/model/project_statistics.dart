@@ -25,26 +25,26 @@ class ProjectStatistics {
   ProjectStatisticsGroupByEnum groupBy;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProjectStatistics &&
-     other.timeRange == timeRange &&
-     other.filterEvents == filterEvents &&
-     other.groupBy == groupBy;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ProjectStatistics &&
+          other.timeRange == timeRange &&
+          other.filterEvents == filterEvents &&
+          other.groupBy == groupBy;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (timeRange.hashCode) +
-    (filterEvents.hashCode) +
-    (groupBy.hashCode);
+      // ignore: unnecessary_parenthesis
+      (timeRange.hashCode) + (filterEvents.hashCode) + (groupBy.hashCode);
 
   @override
   String toString() => 'ProjectStatistics[timeRange=$timeRange, filterEvents=$filterEvents, groupBy=$groupBy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'time_range'] = this.timeRange;
-      json[r'filter_events'] = this.filterEvents;
-      json[r'group_by'] = this.groupBy;
+    json[r'time_range'] = this.timeRange;
+    json[r'filter_events'] = this.filterEvents;
+    json[r'group_by'] = this.groupBy;
     return json;
   }
 
@@ -75,7 +75,10 @@ class ProjectStatistics {
     return null;
   }
 
-  static List<ProjectStatistics>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ProjectStatistics>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ProjectStatistics>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +106,18 @@ class ProjectStatistics {
   }
 
   // maps a json object with a list of ProjectStatistics-objects as value to a dart map
-  static Map<String, List<ProjectStatistics>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ProjectStatistics>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ProjectStatistics>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProjectStatistics.listFromJson(entry.value, growable: growable,);
+        final value = ProjectStatistics.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,4 +133,3 @@ class ProjectStatistics {
     'group_by',
   };
 }
-

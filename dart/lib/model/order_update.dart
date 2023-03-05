@@ -28,22 +28,20 @@ class OrderUpdate {
   PriceCurrencyEnum? priceCurrency;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderUpdate &&
-     other.price == price &&
-     other.priceCurrency == priceCurrency;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is OrderUpdate && other.price == price && other.priceCurrency == priceCurrency;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (price.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (price.hashCode) + (priceCurrency == null ? 0 : priceCurrency!.hashCode);
 
   @override
   String toString() => 'OrderUpdate[price=$price, priceCurrency=$priceCurrency]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'price'] = this.price;
+    json[r'price'] = this.price;
     if (this.priceCurrency != null) {
       json[r'price_currency'] = this.priceCurrency;
     } else {
@@ -78,7 +76,10 @@ class OrderUpdate {
     return null;
   }
 
-  static List<OrderUpdate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderUpdate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderUpdate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -106,12 +107,18 @@ class OrderUpdate {
   }
 
   // maps a json object with a list of OrderUpdate-objects as value to a dart map
-  static Map<String, List<OrderUpdate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderUpdate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderUpdate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderUpdate.listFromJson(entry.value, growable: growable,);
+        final value = OrderUpdate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -125,4 +132,3 @@ class OrderUpdate {
     'price',
   };
 }
-

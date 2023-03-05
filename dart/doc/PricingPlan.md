@@ -13,11 +13,11 @@ Name | Type | Description | Notes
 **price** | **double** | For display purposes, payment price is defined in stripe product. | 
 **priceOnRequest** | **bool** | Remove price and display request price offer in pricing table | [optional] 
 **priceHint** | **String** | Comment for price, shown in product page. | [optional] 
-**projectQuotas** | **int** | How many projects are included in this plan. | 
+**projectQuotas** | **int** |  | [optional] [default to 0]
 **projectQuotasDisabled** | **bool** | Disable quota check for this plan. | [optional] 
-**modelQuotas** | **int** | How many models are included in this plan. | 
+**modelQuotas** | **String** |  | [optional] [default to '0']
 **modelQuotasDisabled** | **bool** | Disable quota check for models. | [optional] 
-**viewQuotas** | **int** | How many AR views are included in this plan. | 
+**viewQuotas** | **int** |  | [optional] [default to 0]
 **viewQuotasDisabled** | **bool** | Disable quota check for this plan. | [optional] 
 **seoOptimization** | **bool** | Enables SEO tags and sharing previews. | [optional] 
 **viewReporting** | **bool** | Allows to view detailed statistics about model views. | [optional] 

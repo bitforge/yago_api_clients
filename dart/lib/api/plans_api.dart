@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class PlansApi {
   PlansApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -31,7 +30,6 @@ class PlansApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -55,10 +53,7 @@ class PlansApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<PricingPlan>') as List)
-        .cast<PricingPlan>()
-        .toList();
-
+      return (await apiClient.deserializeAsync(responseBody, 'List<PricingPlan>') as List).cast<PricingPlan>().toList();
     }
     return null;
   }

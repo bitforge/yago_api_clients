@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class ModelStatus {
   /// Instantiate a new enum with the provided [value].
   const ModelStatus._(this.value);
@@ -36,7 +35,10 @@ class ModelStatus {
 
   static ModelStatus? fromJson(dynamic value) => ModelStatusTypeTransformer().decode(value);
 
-  static List<ModelStatus>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ModelStatus>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ModelStatus>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -70,9 +72,12 @@ class ModelStatusTypeTransformer {
   ModelStatus? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'DRAFT': return ModelStatus.DRAFT;
-        case r'READY': return ModelStatus.READY;
-        case r'ONLINE': return ModelStatus.ONLINE;
+        case r'DRAFT':
+          return ModelStatus.DRAFT;
+        case r'READY':
+          return ModelStatus.READY;
+        case r'ONLINE':
+          return ModelStatus.ONLINE;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -85,4 +90,3 @@ class ModelStatusTypeTransformer {
   /// Singleton [ModelStatusTypeTransformer] instance.
   static ModelStatusTypeTransformer? _instance;
 }
-

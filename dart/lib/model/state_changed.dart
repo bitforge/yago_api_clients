@@ -25,26 +25,23 @@ class StateChanged {
   DateTime modified;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is StateChanged &&
-     other.oldState == oldState &&
-     other.newState == newState &&
-     other.modified == modified;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StateChanged && other.oldState == oldState && other.newState == newState && other.modified == modified;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (oldState.hashCode) +
-    (newState.hashCode) +
-    (modified.hashCode);
+      // ignore: unnecessary_parenthesis
+      (oldState.hashCode) + (newState.hashCode) + (modified.hashCode);
 
   @override
   String toString() => 'StateChanged[oldState=$oldState, newState=$newState, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'old_state'] = this.oldState;
-      json[r'new_state'] = this.newState;
-      json[r'modified'] = this.modified.toUtc().toIso8601String();
+    json[r'old_state'] = this.oldState;
+    json[r'new_state'] = this.newState;
+    json[r'modified'] = this.modified.toUtc().toIso8601String();
     return json;
   }
 
@@ -75,7 +72,10 @@ class StateChanged {
     return null;
   }
 
-  static List<StateChanged>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<StateChanged>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <StateChanged>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +103,18 @@ class StateChanged {
   }
 
   // maps a json object with a list of StateChanged-objects as value to a dart map
-  static Map<String, List<StateChanged>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<StateChanged>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<StateChanged>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = StateChanged.listFromJson(entry.value, growable: growable,);
+        final value = StateChanged.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,4 +130,3 @@ class StateChanged {
     'modified',
   };
 }
-

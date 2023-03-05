@@ -25,26 +25,23 @@ class HealthStatus {
   bool cacheUp;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is HealthStatus &&
-     other.dbUp == dbUp &&
-     other.storageUp == storageUp &&
-     other.cacheUp == cacheUp;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HealthStatus && other.dbUp == dbUp && other.storageUp == storageUp && other.cacheUp == cacheUp;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (dbUp.hashCode) +
-    (storageUp.hashCode) +
-    (cacheUp.hashCode);
+      // ignore: unnecessary_parenthesis
+      (dbUp.hashCode) + (storageUp.hashCode) + (cacheUp.hashCode);
 
   @override
   String toString() => 'HealthStatus[dbUp=$dbUp, storageUp=$storageUp, cacheUp=$cacheUp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'db_up'] = this.dbUp;
-      json[r'storage_up'] = this.storageUp;
-      json[r'cache_up'] = this.cacheUp;
+    json[r'db_up'] = this.dbUp;
+    json[r'storage_up'] = this.storageUp;
+    json[r'cache_up'] = this.cacheUp;
     return json;
   }
 
@@ -75,7 +72,10 @@ class HealthStatus {
     return null;
   }
 
-  static List<HealthStatus>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<HealthStatus>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <HealthStatus>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +103,18 @@ class HealthStatus {
   }
 
   // maps a json object with a list of HealthStatus-objects as value to a dart map
-  static Map<String, List<HealthStatus>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<HealthStatus>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<HealthStatus>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = HealthStatus.listFromJson(entry.value, growable: growable,);
+        final value = HealthStatus.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,4 +130,3 @@ class HealthStatus {
     'cache_up',
   };
 }
-

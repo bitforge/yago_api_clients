@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class TimeRangeEnum {
   /// Instantiate a new enum with the provided [value].
   const TimeRangeEnum._(this.value);
@@ -50,7 +49,10 @@ class TimeRangeEnum {
 
   static TimeRangeEnum? fromJson(dynamic value) => TimeRangeEnumTypeTransformer().decode(value);
 
-  static List<TimeRangeEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TimeRangeEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TimeRangeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -84,16 +86,26 @@ class TimeRangeEnumTypeTransformer {
   TimeRangeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'24h': return TimeRangeEnum.n24h;
-        case r'48h': return TimeRangeEnum.n48h;
-        case r'7d': return TimeRangeEnum.n7d;
-        case r'14d': return TimeRangeEnum.n14d;
-        case r'1m': return TimeRangeEnum.n1m;
-        case r'2m': return TimeRangeEnum.n2m;
-        case r'3m': return TimeRangeEnum.n3m;
-        case r'6m': return TimeRangeEnum.n6m;
-        case r'1y': return TimeRangeEnum.n1y;
-        case r'2y': return TimeRangeEnum.n2y;
+        case r'24h':
+          return TimeRangeEnum.n24h;
+        case r'48h':
+          return TimeRangeEnum.n48h;
+        case r'7d':
+          return TimeRangeEnum.n7d;
+        case r'14d':
+          return TimeRangeEnum.n14d;
+        case r'1m':
+          return TimeRangeEnum.n1m;
+        case r'2m':
+          return TimeRangeEnum.n2m;
+        case r'3m':
+          return TimeRangeEnum.n3m;
+        case r'6m':
+          return TimeRangeEnum.n6m;
+        case r'1y':
+          return TimeRangeEnum.n1y;
+        case r'2y':
+          return TimeRangeEnum.n2y;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -106,4 +118,3 @@ class TimeRangeEnumTypeTransformer {
   /// Singleton [TimeRangeEnumTypeTransformer] instance.
   static TimeRangeEnumTypeTransformer? _instance;
 }
-

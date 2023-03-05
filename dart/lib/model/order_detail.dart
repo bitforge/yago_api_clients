@@ -44,38 +44,41 @@ class OrderDetail {
   List<OrderComment> comments;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderDetail &&
-     other.id == id &&
-     other.project == project &&
-     other.state == state &&
-     other.price == price &&
-     other.priceCurrency == priceCurrency &&
-     other.created == created &&
-     other.modified == modified &&
-     other.models == models &&
-     other.comments == comments;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderDetail &&
+          other.id == id &&
+          other.project == project &&
+          other.state == state &&
+          other.price == price &&
+          other.priceCurrency == priceCurrency &&
+          other.created == created &&
+          other.modified == modified &&
+          other.models == models &&
+          other.comments == comments;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (project.hashCode) +
-    (state.hashCode) +
-    (price == null ? 0 : price!.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
-    (created.hashCode) +
-    (modified.hashCode) +
-    (models.hashCode) +
-    (comments.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (project.hashCode) +
+      (state.hashCode) +
+      (price == null ? 0 : price!.hashCode) +
+      (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
+      (created.hashCode) +
+      (modified.hashCode) +
+      (models.hashCode) +
+      (comments.hashCode);
 
   @override
-  String toString() => 'OrderDetail[id=$id, project=$project, state=$state, price=$price, priceCurrency=$priceCurrency, created=$created, modified=$modified, models=$models, comments=$comments]';
+  String toString() =>
+      'OrderDetail[id=$id, project=$project, state=$state, price=$price, priceCurrency=$priceCurrency, created=$created, modified=$modified, models=$models, comments=$comments]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'project'] = this.project;
-      json[r'state'] = this.state;
+    json[r'id'] = this.id;
+    json[r'project'] = this.project;
+    json[r'state'] = this.state;
     if (this.price != null) {
       json[r'price'] = this.price;
     } else {
@@ -86,10 +89,10 @@ class OrderDetail {
     } else {
       json[r'price_currency'] = null;
     }
-      json[r'created'] = this.created.toUtc().toIso8601String();
-      json[r'modified'] = this.modified.toUtc().toIso8601String();
-      json[r'models'] = this.models;
-      json[r'comments'] = this.comments;
+    json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'modified'] = this.modified.toUtc().toIso8601String();
+    json[r'models'] = this.models;
+    json[r'comments'] = this.comments;
     return json;
   }
 
@@ -126,7 +129,10 @@ class OrderDetail {
     return null;
   }
 
-  static List<OrderDetail>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderDetail>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderDetail>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -154,12 +160,18 @@ class OrderDetail {
   }
 
   // maps a json object with a list of OrderDetail-objects as value to a dart map
-  static Map<String, List<OrderDetail>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderDetail>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderDetail>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderDetail.listFromJson(entry.value, growable: growable,);
+        final value = OrderDetail.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -180,4 +192,3 @@ class OrderDetail {
     'comments',
   };
 }
-

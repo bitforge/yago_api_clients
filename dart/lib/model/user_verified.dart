@@ -55,33 +55,36 @@ class UserVerified {
   String refresh;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UserVerified &&
-     other.id == id &&
-     other.email == email &&
-     other.firstName == firstName &&
-     other.lastName == lastName &&
-     other.dateJoined == dateJoined &&
-     other.access == access &&
-     other.refresh == refresh;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserVerified &&
+          other.id == id &&
+          other.email == email &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.dateJoined == dateJoined &&
+          other.access == access &&
+          other.refresh == refresh;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (email.hashCode) +
-    (firstName == null ? 0 : firstName!.hashCode) +
-    (lastName == null ? 0 : lastName!.hashCode) +
-    (dateJoined == null ? 0 : dateJoined!.hashCode) +
-    (access.hashCode) +
-    (refresh.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (email.hashCode) +
+      (firstName == null ? 0 : firstName!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode) +
+      (dateJoined == null ? 0 : dateJoined!.hashCode) +
+      (access.hashCode) +
+      (refresh.hashCode);
 
   @override
-  String toString() => 'UserVerified[id=$id, email=$email, firstName=$firstName, lastName=$lastName, dateJoined=$dateJoined, access=$access, refresh=$refresh]';
+  String toString() =>
+      'UserVerified[id=$id, email=$email, firstName=$firstName, lastName=$lastName, dateJoined=$dateJoined, access=$access, refresh=$refresh]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'email'] = this.email;
+    json[r'id'] = this.id;
+    json[r'email'] = this.email;
     if (this.firstName != null) {
       json[r'first_name'] = this.firstName;
     } else {
@@ -97,8 +100,8 @@ class UserVerified {
     } else {
       json[r'date_joined'] = null;
     }
-      json[r'access'] = this.access;
-      json[r'refresh'] = this.refresh;
+    json[r'access'] = this.access;
+    json[r'refresh'] = this.refresh;
     return json;
   }
 
@@ -133,7 +136,10 @@ class UserVerified {
     return null;
   }
 
-  static List<UserVerified>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UserVerified>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UserVerified>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -161,12 +167,18 @@ class UserVerified {
   }
 
   // maps a json object with a list of UserVerified-objects as value to a dart map
-  static Map<String, List<UserVerified>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<UserVerified>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<UserVerified>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = UserVerified.listFromJson(entry.value, growable: growable,);
+        final value = UserVerified.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -183,4 +195,3 @@ class UserVerified {
     'refresh',
   };
 }
-

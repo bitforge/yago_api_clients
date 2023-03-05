@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class FilterEventsEnum {
   /// Instantiate a new enum with the provided [value].
   const FilterEventsEnum._(this.value);
@@ -36,7 +35,10 @@ class FilterEventsEnum {
 
   static FilterEventsEnum? fromJson(dynamic value) => FilterEventsEnumTypeTransformer().decode(value);
 
-  static List<FilterEventsEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<FilterEventsEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <FilterEventsEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -70,9 +72,12 @@ class FilterEventsEnumTypeTransformer {
   FilterEventsEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'all': return FilterEventsEnum.all;
-        case r'ar': return FilterEventsEnum.ar;
-        case r'model': return FilterEventsEnum.model;
+        case r'all':
+          return FilterEventsEnum.all;
+        case r'ar':
+          return FilterEventsEnum.ar;
+        case r'model':
+          return FilterEventsEnum.model;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -85,4 +90,3 @@ class FilterEventsEnumTypeTransformer {
   /// Singleton [FilterEventsEnumTypeTransformer] instance.
   static FilterEventsEnumTypeTransformer? _instance;
 }
-

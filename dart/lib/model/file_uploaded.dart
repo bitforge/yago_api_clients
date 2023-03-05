@@ -19,20 +19,19 @@ class FileUploaded {
   String fileUrl;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is FileUploaded &&
-     other.fileUrl == fileUrl;
+  bool operator ==(Object other) => identical(this, other) || other is FileUploaded && other.fileUrl == fileUrl;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (fileUrl.hashCode);
+      // ignore: unnecessary_parenthesis
+      (fileUrl.hashCode);
 
   @override
   String toString() => 'FileUploaded[fileUrl=$fileUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'file_url'] = this.fileUrl;
+    json[r'file_url'] = this.fileUrl;
     return json;
   }
 
@@ -61,7 +60,10 @@ class FileUploaded {
     return null;
   }
 
-  static List<FileUploaded>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<FileUploaded>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <FileUploaded>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -89,12 +91,18 @@ class FileUploaded {
   }
 
   // maps a json object with a list of FileUploaded-objects as value to a dart map
-  static Map<String, List<FileUploaded>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<FileUploaded>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<FileUploaded>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = FileUploaded.listFromJson(entry.value, growable: growable,);
+        final value = FileUploaded.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -108,4 +116,3 @@ class FileUploaded {
     'file_url',
   };
 }
-

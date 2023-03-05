@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class CustomerApi {
   CustomerApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,7 +22,9 @@ class CustomerApi {
   /// Parameters:
   ///
   /// * [PatchedAddress] patchedAddress:
-  Future<Response> customerBillingAddressPartialUpdateWithHttpInfo({ PatchedAddress? patchedAddress, }) async {
+  Future<Response> customerBillingAddressPartialUpdateWithHttpInfo({
+    PatchedAddress? patchedAddress,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/customer/billing_address/';
 
@@ -35,7 +36,6 @@ class CustomerApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -53,8 +53,12 @@ class CustomerApi {
   /// Parameters:
   ///
   /// * [PatchedAddress] patchedAddress:
-  Future<Address?> customerBillingAddressPartialUpdate({ PatchedAddress? patchedAddress, }) async {
-    final response = await customerBillingAddressPartialUpdateWithHttpInfo( patchedAddress: patchedAddress, );
+  Future<Address?> customerBillingAddressPartialUpdate({
+    PatchedAddress? patchedAddress,
+  }) async {
+    final response = await customerBillingAddressPartialUpdateWithHttpInfo(
+      patchedAddress: patchedAddress,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -62,8 +66,10 @@ class CustomerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Address',) as Address;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Address',
+      ) as Address;
     }
     return null;
   }
@@ -83,7 +89,6 @@ class CustomerApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -106,8 +111,10 @@ class CustomerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Address',) as Address;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Address',
+      ) as Address;
     }
     return null;
   }
@@ -119,7 +126,9 @@ class CustomerApi {
   /// Parameters:
   ///
   /// * [Address] address (required):
-  Future<Response> customerBillingAddressUpdateWithHttpInfo(Address address,) async {
+  Future<Response> customerBillingAddressUpdateWithHttpInfo(
+    Address address,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/customer/billing_address/';
 
@@ -131,7 +140,6 @@ class CustomerApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -149,8 +157,12 @@ class CustomerApi {
   /// Parameters:
   ///
   /// * [Address] address (required):
-  Future<Address?> customerBillingAddressUpdate(Address address,) async {
-    final response = await customerBillingAddressUpdateWithHttpInfo(address,);
+  Future<Address?> customerBillingAddressUpdate(
+    Address address,
+  ) async {
+    final response = await customerBillingAddressUpdateWithHttpInfo(
+      address,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -158,8 +170,10 @@ class CustomerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Address',) as Address;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Address',
+      ) as Address;
     }
     return null;
   }
@@ -179,7 +193,6 @@ class CustomerApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -202,8 +215,10 @@ class CustomerApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Customer',) as Customer;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Customer',
+      ) as Customer;
     }
     return null;
   }

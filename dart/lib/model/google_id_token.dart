@@ -19,20 +19,19 @@ class GoogleIdToken {
   String token;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is GoogleIdToken &&
-     other.token == token;
+  bool operator ==(Object other) => identical(this, other) || other is GoogleIdToken && other.token == token;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (token.hashCode);
+      // ignore: unnecessary_parenthesis
+      (token.hashCode);
 
   @override
   String toString() => 'GoogleIdToken[token=$token]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'token'] = this.token;
+    json[r'token'] = this.token;
     return json;
   }
 
@@ -61,7 +60,10 @@ class GoogleIdToken {
     return null;
   }
 
-  static List<GoogleIdToken>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GoogleIdToken>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <GoogleIdToken>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -89,12 +91,18 @@ class GoogleIdToken {
   }
 
   // maps a json object with a list of GoogleIdToken-objects as value to a dart map
-  static Map<String, List<GoogleIdToken>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<GoogleIdToken>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<GoogleIdToken>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GoogleIdToken.listFromJson(entry.value, growable: growable,);
+        final value = GoogleIdToken.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -108,4 +116,3 @@ class GoogleIdToken {
     'token',
   };
 }
-

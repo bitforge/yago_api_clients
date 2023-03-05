@@ -85,38 +85,41 @@ class ProjectUpdate {
   Map<String, Object>? arbuttonConfig;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProjectUpdate &&
-     other.name == name &&
-     other.description == description &&
-     other.website == website &&
-     other.gallery == gallery &&
-     other.translationsDe == translationsDe &&
-     other.translationsEn == translationsEn &&
-     other.translationsFr == translationsFr &&
-     other.translationsIt == translationsIt &&
-     other.backlinkUrls == backlinkUrls &&
-     other.arbuttonConfig == arbuttonConfig;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ProjectUpdate &&
+          other.name == name &&
+          other.description == description &&
+          other.website == website &&
+          other.gallery == gallery &&
+          other.translationsDe == translationsDe &&
+          other.translationsEn == translationsEn &&
+          other.translationsFr == translationsFr &&
+          other.translationsIt == translationsIt &&
+          other.backlinkUrls == backlinkUrls &&
+          other.arbuttonConfig == arbuttonConfig;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (name.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (website == null ? 0 : website!.hashCode) +
-    (gallery == null ? 0 : gallery!.hashCode) +
-    (translationsDe == null ? 0 : translationsDe!.hashCode) +
-    (translationsEn == null ? 0 : translationsEn!.hashCode) +
-    (translationsFr == null ? 0 : translationsFr!.hashCode) +
-    (translationsIt == null ? 0 : translationsIt!.hashCode) +
-    (backlinkUrls == null ? 0 : backlinkUrls!.hashCode) +
-    (arbuttonConfig == null ? 0 : arbuttonConfig!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (name.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (website == null ? 0 : website!.hashCode) +
+      (gallery == null ? 0 : gallery!.hashCode) +
+      (translationsDe == null ? 0 : translationsDe!.hashCode) +
+      (translationsEn == null ? 0 : translationsEn!.hashCode) +
+      (translationsFr == null ? 0 : translationsFr!.hashCode) +
+      (translationsIt == null ? 0 : translationsIt!.hashCode) +
+      (backlinkUrls == null ? 0 : backlinkUrls!.hashCode) +
+      (arbuttonConfig == null ? 0 : arbuttonConfig!.hashCode);
 
   @override
-  String toString() => 'ProjectUpdate[name=$name, description=$description, website=$website, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, arbuttonConfig=$arbuttonConfig]';
+  String toString() =>
+      'ProjectUpdate[name=$name, description=$description, website=$website, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, arbuttonConfig=$arbuttonConfig]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'name'] = this.name;
+    json[r'name'] = this.name;
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
@@ -199,7 +202,10 @@ class ProjectUpdate {
     return null;
   }
 
-  static List<ProjectUpdate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ProjectUpdate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ProjectUpdate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -227,12 +233,18 @@ class ProjectUpdate {
   }
 
   // maps a json object with a list of ProjectUpdate-objects as value to a dart map
-  static Map<String, List<ProjectUpdate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ProjectUpdate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ProjectUpdate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProjectUpdate.listFromJson(entry.value, growable: growable,);
+        final value = ProjectUpdate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -246,4 +258,3 @@ class ProjectUpdate {
     'name',
   };
 }
-

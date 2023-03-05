@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class MembershipsApi {
   MembershipsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,7 +22,9 @@ class MembershipsApi {
   /// Parameters:
   ///
   /// * [Membership] membership (required):
-  Future<Response> membershipsCreateWithHttpInfo(Membership membership,) async {
+  Future<Response> membershipsCreateWithHttpInfo(
+    Membership membership,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/memberships/';
 
@@ -35,7 +36,6 @@ class MembershipsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -53,8 +53,12 @@ class MembershipsApi {
   /// Parameters:
   ///
   /// * [Membership] membership (required):
-  Future<Membership?> membershipsCreate(Membership membership,) async {
-    final response = await membershipsCreateWithHttpInfo(membership,);
+  Future<Membership?> membershipsCreate(
+    Membership membership,
+  ) async {
+    final response = await membershipsCreateWithHttpInfo(
+      membership,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -62,8 +66,10 @@ class MembershipsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Membership',) as Membership;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Membership',
+      ) as Membership;
     }
     return null;
   }
@@ -76,10 +82,11 @@ class MembershipsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Project member.
-  Future<Response> membershipsDestroyWithHttpInfo(String id,) async {
+  Future<Response> membershipsDestroyWithHttpInfo(
+    String id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/memberships/{id}/'
-      .replaceAll('{id}', id);
+    final path = r'/api/memberships/{id}/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -89,7 +96,6 @@ class MembershipsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -108,8 +114,12 @@ class MembershipsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Project member.
-  Future<void> membershipsDestroy(String id,) async {
-    final response = await membershipsDestroyWithHttpInfo(id,);
+  Future<void> membershipsDestroy(
+    String id,
+  ) async {
+    final response = await membershipsDestroyWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -124,7 +134,10 @@ class MembershipsApi {
   /// * [String] project:
   ///
   /// * [String] user:
-  Future<Response> membershipsListWithHttpInfo({ String? project, String? user, }) async {
+  Future<Response> membershipsListWithHttpInfo({
+    String? project,
+    String? user,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/memberships/';
 
@@ -144,7 +157,6 @@ class MembershipsApi {
 
     const contentTypes = <String>[];
 
-
     return apiClient.invokeAPI(
       path,
       'GET',
@@ -163,8 +175,14 @@ class MembershipsApi {
   /// * [String] project:
   ///
   /// * [String] user:
-  Future<List<Membership>?> membershipsList({ String? project, String? user, }) async {
-    final response = await membershipsListWithHttpInfo( project: project, user: user, );
+  Future<List<Membership>?> membershipsList({
+    String? project,
+    String? user,
+  }) async {
+    final response = await membershipsListWithHttpInfo(
+      project: project,
+      user: user,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -173,10 +191,7 @@ class MembershipsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Membership>') as List)
-        .cast<Membership>()
-        .toList();
-
+      return (await apiClient.deserializeAsync(responseBody, 'List<Membership>') as List).cast<Membership>().toList();
     }
     return null;
   }

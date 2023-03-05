@@ -16,10 +16,10 @@ class Project {
     required this.id,
     required this.name,
     this.slug,
-    required this.customerName,
+    this.customerName = '',
     this.image,
-    required this.imageThumb,
-    required this.imagePreview,
+    this.imageThumb = '',
+    this.imagePreview = '',
     this.website,
     this.description,
     this.gallery,
@@ -120,70 +120,73 @@ class Project {
   DateTime modified;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Project &&
-     other.id == id &&
-     other.name == name &&
-     other.slug == slug &&
-     other.customerName == customerName &&
-     other.image == image &&
-     other.imageThumb == imageThumb &&
-     other.imagePreview == imagePreview &&
-     other.website == website &&
-     other.description == description &&
-     other.gallery == gallery &&
-     other.translationsDe == translationsDe &&
-     other.translationsEn == translationsEn &&
-     other.translationsFr == translationsFr &&
-     other.translationsIt == translationsIt &&
-     other.backlinkUrls == backlinkUrls &&
-     other.orders == orders &&
-     other.arbuttonConfig == arbuttonConfig &&
-     other.created == created &&
-     other.modified == modified;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Project &&
+          other.id == id &&
+          other.name == name &&
+          other.slug == slug &&
+          other.customerName == customerName &&
+          other.image == image &&
+          other.imageThumb == imageThumb &&
+          other.imagePreview == imagePreview &&
+          other.website == website &&
+          other.description == description &&
+          other.gallery == gallery &&
+          other.translationsDe == translationsDe &&
+          other.translationsEn == translationsEn &&
+          other.translationsFr == translationsFr &&
+          other.translationsIt == translationsIt &&
+          other.backlinkUrls == backlinkUrls &&
+          other.orders == orders &&
+          other.arbuttonConfig == arbuttonConfig &&
+          other.created == created &&
+          other.modified == modified;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (name.hashCode) +
-    (slug == null ? 0 : slug!.hashCode) +
-    (customerName.hashCode) +
-    (image == null ? 0 : image!.hashCode) +
-    (imageThumb.hashCode) +
-    (imagePreview.hashCode) +
-    (website == null ? 0 : website!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (gallery == null ? 0 : gallery!.hashCode) +
-    (translationsDe == null ? 0 : translationsDe!.hashCode) +
-    (translationsEn == null ? 0 : translationsEn!.hashCode) +
-    (translationsFr == null ? 0 : translationsFr!.hashCode) +
-    (translationsIt == null ? 0 : translationsIt!.hashCode) +
-    (backlinkUrls == null ? 0 : backlinkUrls!.hashCode) +
-    (orders.hashCode) +
-    (arbuttonConfig == null ? 0 : arbuttonConfig!.hashCode) +
-    (created.hashCode) +
-    (modified.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (name.hashCode) +
+      (slug == null ? 0 : slug!.hashCode) +
+      (customerName.hashCode) +
+      (image == null ? 0 : image!.hashCode) +
+      (imageThumb.hashCode) +
+      (imagePreview.hashCode) +
+      (website == null ? 0 : website!.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (gallery == null ? 0 : gallery!.hashCode) +
+      (translationsDe == null ? 0 : translationsDe!.hashCode) +
+      (translationsEn == null ? 0 : translationsEn!.hashCode) +
+      (translationsFr == null ? 0 : translationsFr!.hashCode) +
+      (translationsIt == null ? 0 : translationsIt!.hashCode) +
+      (backlinkUrls == null ? 0 : backlinkUrls!.hashCode) +
+      (orders.hashCode) +
+      (arbuttonConfig == null ? 0 : arbuttonConfig!.hashCode) +
+      (created.hashCode) +
+      (modified.hashCode);
 
   @override
-  String toString() => 'Project[id=$id, name=$name, slug=$slug, customerName=$customerName, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, orders=$orders, arbuttonConfig=$arbuttonConfig, created=$created, modified=$modified]';
+  String toString() =>
+      'Project[id=$id, name=$name, slug=$slug, customerName=$customerName, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, gallery=$gallery, translationsDe=$translationsDe, translationsEn=$translationsEn, translationsFr=$translationsFr, translationsIt=$translationsIt, backlinkUrls=$backlinkUrls, orders=$orders, arbuttonConfig=$arbuttonConfig, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'name'] = this.name;
+    json[r'id'] = this.id;
+    json[r'name'] = this.name;
     if (this.slug != null) {
       json[r'slug'] = this.slug;
     } else {
       json[r'slug'] = null;
     }
-      json[r'customer_name'] = this.customerName;
+    json[r'customer_name'] = this.customerName;
     if (this.image != null) {
       json[r'image'] = this.image;
     } else {
       json[r'image'] = null;
     }
-      json[r'image_thumb'] = this.imageThumb;
-      json[r'image_preview'] = this.imagePreview;
+    json[r'image_thumb'] = this.imageThumb;
+    json[r'image_preview'] = this.imagePreview;
     if (this.website != null) {
       json[r'website'] = this.website;
     } else {
@@ -224,14 +227,14 @@ class Project {
     } else {
       json[r'backlink_urls'] = null;
     }
-      json[r'orders'] = this.orders;
+    json[r'orders'] = this.orders;
     if (this.arbuttonConfig != null) {
       json[r'arbutton_config'] = this.arbuttonConfig;
     } else {
       json[r'arbutton_config'] = null;
     }
-      json[r'created'] = this.created.toUtc().toIso8601String();
-      json[r'modified'] = this.modified.toUtc().toIso8601String();
+    json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'modified'] = this.modified.toUtc().toIso8601String();
     return json;
   }
 
@@ -257,10 +260,10 @@ class Project {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         slug: mapValueOfType<String>(json, r'slug'),
-        customerName: mapValueOfType<String>(json, r'customer_name')!,
+        customerName: mapValueOfType<String>(json, r'customer_name') ?? '',
         image: mapValueOfType<String>(json, r'image'),
-        imageThumb: mapValueOfType<String>(json, r'image_thumb')!,
-        imagePreview: mapValueOfType<String>(json, r'image_preview')!,
+        imageThumb: mapValueOfType<String>(json, r'image_thumb') ?? '',
+        imagePreview: mapValueOfType<String>(json, r'image_preview') ?? '',
         website: mapValueOfType<String>(json, r'website'),
         description: mapValueOfType<String>(json, r'description'),
         gallery: mapValueOfType<bool>(json, r'gallery'),
@@ -269,7 +272,7 @@ class Project {
         translationsFr: mapValueOfType<bool>(json, r'translations_fr'),
         translationsIt: mapValueOfType<bool>(json, r'translations_it'),
         backlinkUrls: mapValueOfType<bool>(json, r'backlink_urls'),
-        orders: ActiveOrder.listFromJson(json[r'orders'])!,
+        orders: ActiveOrder.listFromJson(json[r'orders']) ?? const [],
         arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config') ?? const {},
         created: mapDateTime(json, r'created', '')!,
         modified: mapDateTime(json, r'modified', '')!,
@@ -278,7 +281,10 @@ class Project {
     return null;
   }
 
-  static List<Project>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Project>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <Project>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -306,12 +312,18 @@ class Project {
   }
 
   // maps a json object with a list of Project-objects as value to a dart map
-  static Map<String, List<Project>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<Project>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<Project>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Project.listFromJson(entry.value, growable: growable,);
+        final value = Project.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -324,12 +336,7 @@ class Project {
   static const requiredKeys = <String>{
     'id',
     'name',
-    'customer_name',
-    'image_thumb',
-    'image_preview',
-    'orders',
     'created',
     'modified',
   };
 }
-

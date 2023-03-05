@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class GlobalStatisticsGroupByEnum {
   /// Instantiate a new enum with the provided [value].
   const GlobalStatisticsGroupByEnum._(this.value);
@@ -46,9 +45,13 @@ class GlobalStatisticsGroupByEnum {
     projects,
   ];
 
-  static GlobalStatisticsGroupByEnum? fromJson(dynamic value) => GlobalStatisticsGroupByEnumTypeTransformer().decode(value);
+  static GlobalStatisticsGroupByEnum? fromJson(dynamic value) =>
+      GlobalStatisticsGroupByEnumTypeTransformer().decode(value);
 
-  static List<GlobalStatisticsGroupByEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<GlobalStatisticsGroupByEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <GlobalStatisticsGroupByEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -65,7 +68,8 @@ class GlobalStatisticsGroupByEnum {
 /// Transformation class that can [encode] an instance of [GlobalStatisticsGroupByEnum] to String,
 /// and [decode] dynamic data back to [GlobalStatisticsGroupByEnum].
 class GlobalStatisticsGroupByEnumTypeTransformer {
-  factory GlobalStatisticsGroupByEnumTypeTransformer() => _instance ??= const GlobalStatisticsGroupByEnumTypeTransformer._();
+  factory GlobalStatisticsGroupByEnumTypeTransformer() =>
+      _instance ??= const GlobalStatisticsGroupByEnumTypeTransformer._();
 
   const GlobalStatisticsGroupByEnumTypeTransformer._();
 
@@ -82,15 +86,24 @@ class GlobalStatisticsGroupByEnumTypeTransformer {
   GlobalStatisticsGroupByEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'all': return GlobalStatisticsGroupByEnum.all;
-        case r'events': return GlobalStatisticsGroupByEnum.events;
-        case r'models': return GlobalStatisticsGroupByEnum.models;
-        case r'platforms': return GlobalStatisticsGroupByEnum.platforms;
-        case r'languages': return GlobalStatisticsGroupByEnum.languages;
-        case r'devices': return GlobalStatisticsGroupByEnum.devices;
-        case r'browsers': return GlobalStatisticsGroupByEnum.browsers;
-        case r'countries': return GlobalStatisticsGroupByEnum.countries;
-        case r'projects': return GlobalStatisticsGroupByEnum.projects;
+        case r'all':
+          return GlobalStatisticsGroupByEnum.all;
+        case r'events':
+          return GlobalStatisticsGroupByEnum.events;
+        case r'models':
+          return GlobalStatisticsGroupByEnum.models;
+        case r'platforms':
+          return GlobalStatisticsGroupByEnum.platforms;
+        case r'languages':
+          return GlobalStatisticsGroupByEnum.languages;
+        case r'devices':
+          return GlobalStatisticsGroupByEnum.devices;
+        case r'browsers':
+          return GlobalStatisticsGroupByEnum.browsers;
+        case r'countries':
+          return GlobalStatisticsGroupByEnum.countries;
+        case r'projects':
+          return GlobalStatisticsGroupByEnum.projects;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -103,4 +116,3 @@ class GlobalStatisticsGroupByEnumTypeTransformer {
   /// Singleton [GlobalStatisticsGroupByEnumTypeTransformer] instance.
   static GlobalStatisticsGroupByEnumTypeTransformer? _instance;
 }
-

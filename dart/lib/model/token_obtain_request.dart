@@ -22,23 +22,21 @@ class TokenObtainRequest {
   String password;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TokenObtainRequest &&
-     other.email == email &&
-     other.password == password;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is TokenObtainRequest && other.email == email && other.password == password;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (email.hashCode) +
-    (password.hashCode);
+      // ignore: unnecessary_parenthesis
+      (email.hashCode) + (password.hashCode);
 
   @override
   String toString() => 'TokenObtainRequest[email=$email, password=$password]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'email'] = this.email;
-      json[r'password'] = this.password;
+    json[r'email'] = this.email;
+    json[r'password'] = this.password;
     return json;
   }
 
@@ -68,7 +66,10 @@ class TokenObtainRequest {
     return null;
   }
 
-  static List<TokenObtainRequest>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TokenObtainRequest>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TokenObtainRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +97,18 @@ class TokenObtainRequest {
   }
 
   // maps a json object with a list of TokenObtainRequest-objects as value to a dart map
-  static Map<String, List<TokenObtainRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<TokenObtainRequest>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<TokenObtainRequest>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = TokenObtainRequest.listFromJson(entry.value, growable: growable,);
+        final value = TokenObtainRequest.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,4 +123,3 @@ class TokenObtainRequest {
     'password',
   };
 }
-

@@ -115,54 +115,57 @@ class PatchedModelUpdate {
   bool? verticalPlacement;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PatchedModelUpdate &&
-     other.nameDe == nameDe &&
-     other.nameEn == nameEn &&
-     other.nameFr == nameFr &&
-     other.nameIt == nameIt &&
-     other.status == status &&
-     other.description == description &&
-     other.descriptionDe == descriptionDe &&
-     other.descriptionEn == descriptionEn &&
-     other.descriptionFr == descriptionFr &&
-     other.descriptionIt == descriptionIt &&
-     other.number == number &&
-     other.siteUrlDe == siteUrlDe &&
-     other.siteUrlEn == siteUrlEn &&
-     other.siteUrlFr == siteUrlFr &&
-     other.siteUrlIt == siteUrlIt &&
-     other.scaleable == scaleable &&
-     other.sku == sku &&
-     other.price == price &&
-     other.priceCurrency == priceCurrency &&
-     other.verticalPlacement == verticalPlacement;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PatchedModelUpdate &&
+          other.nameDe == nameDe &&
+          other.nameEn == nameEn &&
+          other.nameFr == nameFr &&
+          other.nameIt == nameIt &&
+          other.status == status &&
+          other.description == description &&
+          other.descriptionDe == descriptionDe &&
+          other.descriptionEn == descriptionEn &&
+          other.descriptionFr == descriptionFr &&
+          other.descriptionIt == descriptionIt &&
+          other.number == number &&
+          other.siteUrlDe == siteUrlDe &&
+          other.siteUrlEn == siteUrlEn &&
+          other.siteUrlFr == siteUrlFr &&
+          other.siteUrlIt == siteUrlIt &&
+          other.scaleable == scaleable &&
+          other.sku == sku &&
+          other.price == price &&
+          other.priceCurrency == priceCurrency &&
+          other.verticalPlacement == verticalPlacement;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (nameDe == null ? 0 : nameDe!.hashCode) +
-    (nameEn == null ? 0 : nameEn!.hashCode) +
-    (nameFr == null ? 0 : nameFr!.hashCode) +
-    (nameIt == null ? 0 : nameIt!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (descriptionDe == null ? 0 : descriptionDe!.hashCode) +
-    (descriptionEn == null ? 0 : descriptionEn!.hashCode) +
-    (descriptionFr == null ? 0 : descriptionFr!.hashCode) +
-    (descriptionIt == null ? 0 : descriptionIt!.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (siteUrlDe == null ? 0 : siteUrlDe!.hashCode) +
-    (siteUrlEn == null ? 0 : siteUrlEn!.hashCode) +
-    (siteUrlFr == null ? 0 : siteUrlFr!.hashCode) +
-    (siteUrlIt == null ? 0 : siteUrlIt!.hashCode) +
-    (scaleable == null ? 0 : scaleable!.hashCode) +
-    (sku == null ? 0 : sku!.hashCode) +
-    (price == null ? 0 : price!.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
-    (verticalPlacement == null ? 0 : verticalPlacement!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (nameDe == null ? 0 : nameDe!.hashCode) +
+      (nameEn == null ? 0 : nameEn!.hashCode) +
+      (nameFr == null ? 0 : nameFr!.hashCode) +
+      (nameIt == null ? 0 : nameIt!.hashCode) +
+      (status == null ? 0 : status!.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (descriptionDe == null ? 0 : descriptionDe!.hashCode) +
+      (descriptionEn == null ? 0 : descriptionEn!.hashCode) +
+      (descriptionFr == null ? 0 : descriptionFr!.hashCode) +
+      (descriptionIt == null ? 0 : descriptionIt!.hashCode) +
+      (number == null ? 0 : number!.hashCode) +
+      (siteUrlDe == null ? 0 : siteUrlDe!.hashCode) +
+      (siteUrlEn == null ? 0 : siteUrlEn!.hashCode) +
+      (siteUrlFr == null ? 0 : siteUrlFr!.hashCode) +
+      (siteUrlIt == null ? 0 : siteUrlIt!.hashCode) +
+      (scaleable == null ? 0 : scaleable!.hashCode) +
+      (sku == null ? 0 : sku!.hashCode) +
+      (price == null ? 0 : price!.hashCode) +
+      (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
+      (verticalPlacement == null ? 0 : verticalPlacement!.hashCode);
 
   @override
-  String toString() => 'PatchedModelUpdate[nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, scaleable=$scaleable, sku=$sku, price=$price, priceCurrency=$priceCurrency, verticalPlacement=$verticalPlacement]';
+  String toString() =>
+      'PatchedModelUpdate[nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, scaleable=$scaleable, sku=$sku, price=$price, priceCurrency=$priceCurrency, verticalPlacement=$verticalPlacement]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -313,7 +316,10 @@ class PatchedModelUpdate {
     return null;
   }
 
-  static List<PatchedModelUpdate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PatchedModelUpdate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PatchedModelUpdate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -341,12 +347,18 @@ class PatchedModelUpdate {
   }
 
   // maps a json object with a list of PatchedModelUpdate-objects as value to a dart map
-  static Map<String, List<PatchedModelUpdate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<PatchedModelUpdate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<PatchedModelUpdate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PatchedModelUpdate.listFromJson(entry.value, growable: growable,);
+        final value = PatchedModelUpdate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -356,7 +368,5 @@ class PatchedModelUpdate {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-

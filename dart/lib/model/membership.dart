@@ -37,36 +37,34 @@ class Membership {
   DateTime created;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Membership &&
-     other.id == id &&
-     other.project == project &&
-     other.user == user &&
-     other.role == role &&
-     other.created == created;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Membership &&
+          other.id == id &&
+          other.project == project &&
+          other.user == user &&
+          other.role == role &&
+          other.created == created;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (project.hashCode) +
-    (user.hashCode) +
-    (role == null ? 0 : role!.hashCode) +
-    (created.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) + (project.hashCode) + (user.hashCode) + (role == null ? 0 : role!.hashCode) + (created.hashCode);
 
   @override
   String toString() => 'Membership[id=$id, project=$project, user=$user, role=$role, created=$created]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'project'] = this.project;
-      json[r'user'] = this.user;
+    json[r'id'] = this.id;
+    json[r'project'] = this.project;
+    json[r'user'] = this.user;
     if (this.role != null) {
       json[r'role'] = this.role;
     } else {
       json[r'role'] = null;
     }
-      json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'created'] = this.created.toUtc().toIso8601String();
     return json;
   }
 
@@ -99,7 +97,10 @@ class Membership {
     return null;
   }
 
-  static List<Membership>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Membership>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <Membership>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -127,12 +128,18 @@ class Membership {
   }
 
   // maps a json object with a list of Membership-objects as value to a dart map
-  static Map<String, List<Membership>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<Membership>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<Membership>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Membership.listFromJson(entry.value, growable: growable,);
+        final value = Membership.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -149,4 +156,3 @@ class Membership {
     'created',
   };
 }
-

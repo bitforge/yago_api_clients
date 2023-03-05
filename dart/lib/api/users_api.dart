@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class UsersApi {
   UsersApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,7 +22,9 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [List<String>] projects:
-  Future<Response> usersListWithHttpInfo({ List<String>? projects, }) async {
+  Future<Response> usersListWithHttpInfo({
+    List<String>? projects,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/';
 
@@ -39,7 +40,6 @@ class UsersApi {
     }
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -57,8 +57,12 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [List<String>] projects:
-  Future<List<User>?> usersList({ List<String>? projects, }) async {
-    final response = await usersListWithHttpInfo( projects: projects, );
+  Future<List<User>?> usersList({
+    List<String>? projects,
+  }) async {
+    final response = await usersListWithHttpInfo(
+      projects: projects,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -67,10 +71,7 @@ class UsersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<User>') as List)
-        .cast<User>()
-        .toList();
-
+      return (await apiClient.deserializeAsync(responseBody, 'List<User>') as List).cast<User>().toList();
     }
     return null;
   }
@@ -90,7 +91,6 @@ class UsersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -113,8 +113,10 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'User',
+      ) as User;
     }
     return null;
   }
@@ -126,7 +128,9 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [User] user:
-  Future<Response> usersMeUpdateWithHttpInfo({ User? user, }) async {
+  Future<Response> usersMeUpdateWithHttpInfo({
+    User? user,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/users/me/';
 
@@ -138,7 +142,6 @@ class UsersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -156,8 +159,12 @@ class UsersApi {
   /// Parameters:
   ///
   /// * [User] user:
-  Future<User?> usersMeUpdate({ User? user, }) async {
-    final response = await usersMeUpdateWithHttpInfo( user: user, );
+  Future<User?> usersMeUpdate({
+    User? user,
+  }) async {
+    final response = await usersMeUpdateWithHttpInfo(
+      user: user,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -165,8 +172,10 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'User',
+      ) as User;
     }
     return null;
   }
@@ -179,10 +188,11 @@ class UsersApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this User.
-  Future<Response> usersRetrieveWithHttpInfo(String id,) async {
+  Future<Response> usersRetrieveWithHttpInfo(
+    String id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/users/{id}/'
-      .replaceAll('{id}', id);
+    final path = r'/api/users/{id}/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -192,7 +202,6 @@ class UsersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -211,8 +220,12 @@ class UsersApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this User.
-  Future<User?> usersRetrieve(String id,) async {
-    final response = await usersRetrieveWithHttpInfo(id,);
+  Future<User?> usersRetrieve(
+    String id,
+  ) async {
+    final response = await usersRetrieveWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -220,8 +233,10 @@ class UsersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'User',) as User;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'User',
+      ) as User;
     }
     return null;
   }

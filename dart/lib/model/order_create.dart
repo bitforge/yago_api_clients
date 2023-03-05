@@ -19,20 +19,19 @@ class OrderCreate {
   String project;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderCreate &&
-     other.project == project;
+  bool operator ==(Object other) => identical(this, other) || other is OrderCreate && other.project == project;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (project.hashCode);
+      // ignore: unnecessary_parenthesis
+      (project.hashCode);
 
   @override
   String toString() => 'OrderCreate[project=$project]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'project'] = this.project;
+    json[r'project'] = this.project;
     return json;
   }
 
@@ -61,7 +60,10 @@ class OrderCreate {
     return null;
   }
 
-  static List<OrderCreate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderCreate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderCreate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -89,12 +91,18 @@ class OrderCreate {
   }
 
   // maps a json object with a list of OrderCreate-objects as value to a dart map
-  static Map<String, List<OrderCreate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderCreate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderCreate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderCreate.listFromJson(entry.value, growable: growable,);
+        final value = OrderCreate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -108,4 +116,3 @@ class OrderCreate {
     'project',
   };
 }
-

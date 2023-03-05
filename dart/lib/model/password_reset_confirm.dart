@@ -28,29 +28,29 @@ class PasswordResetConfirm {
   String token;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PasswordResetConfirm &&
-     other.newPassword1 == newPassword1 &&
-     other.newPassword2 == newPassword2 &&
-     other.uid == uid &&
-     other.token == token;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PasswordResetConfirm &&
+          other.newPassword1 == newPassword1 &&
+          other.newPassword2 == newPassword2 &&
+          other.uid == uid &&
+          other.token == token;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (newPassword1.hashCode) +
-    (newPassword2.hashCode) +
-    (uid.hashCode) +
-    (token.hashCode);
+      // ignore: unnecessary_parenthesis
+      (newPassword1.hashCode) + (newPassword2.hashCode) + (uid.hashCode) + (token.hashCode);
 
   @override
-  String toString() => 'PasswordResetConfirm[newPassword1=$newPassword1, newPassword2=$newPassword2, uid=$uid, token=$token]';
+  String toString() =>
+      'PasswordResetConfirm[newPassword1=$newPassword1, newPassword2=$newPassword2, uid=$uid, token=$token]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'new_password1'] = this.newPassword1;
-      json[r'new_password2'] = this.newPassword2;
-      json[r'uid'] = this.uid;
-      json[r'token'] = this.token;
+    json[r'new_password1'] = this.newPassword1;
+    json[r'new_password2'] = this.newPassword2;
+    json[r'uid'] = this.uid;
+    json[r'token'] = this.token;
     return json;
   }
 
@@ -82,7 +82,10 @@ class PasswordResetConfirm {
     return null;
   }
 
-  static List<PasswordResetConfirm>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PasswordResetConfirm>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PasswordResetConfirm>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -110,12 +113,18 @@ class PasswordResetConfirm {
   }
 
   // maps a json object with a list of PasswordResetConfirm-objects as value to a dart map
-  static Map<String, List<PasswordResetConfirm>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<PasswordResetConfirm>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<PasswordResetConfirm>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PasswordResetConfirm.listFromJson(entry.value, growable: growable,);
+        final value = PasswordResetConfirm.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,4 +141,3 @@ class PasswordResetConfirm {
     'token',
   };
 }
-

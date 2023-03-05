@@ -40,27 +40,29 @@ class Registration {
   String? lastName;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Registration &&
-     other.id == id &&
-     other.email == email &&
-     other.firstName == firstName &&
-     other.lastName == lastName;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Registration &&
+          other.id == id &&
+          other.email == email &&
+          other.firstName == firstName &&
+          other.lastName == lastName;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (email.hashCode) +
-    (firstName == null ? 0 : firstName!.hashCode) +
-    (lastName == null ? 0 : lastName!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (email.hashCode) +
+      (firstName == null ? 0 : firstName!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode);
 
   @override
   String toString() => 'Registration[id=$id, email=$email, firstName=$firstName, lastName=$lastName]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'email'] = this.email;
+    json[r'id'] = this.id;
+    json[r'email'] = this.email;
     if (this.firstName != null) {
       json[r'first_name'] = this.firstName;
     } else {
@@ -102,7 +104,10 @@ class Registration {
     return null;
   }
 
-  static List<Registration>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Registration>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <Registration>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -130,12 +135,18 @@ class Registration {
   }
 
   // maps a json object with a list of Registration-objects as value to a dart map
-  static Map<String, List<Registration>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<Registration>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<Registration>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Registration.listFromJson(entry.value, growable: growable,);
+        final value = Registration.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -150,4 +161,3 @@ class Registration {
     'email',
   };
 }
-

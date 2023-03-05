@@ -28,29 +28,28 @@ class OrderModelComment {
   String comment;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderModelComment &&
-     other.yagoTeam == yagoTeam &&
-     other.userName == userName &&
-     other.date == date &&
-     other.comment == comment;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderModelComment &&
+          other.yagoTeam == yagoTeam &&
+          other.userName == userName &&
+          other.date == date &&
+          other.comment == comment;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (yagoTeam.hashCode) +
-    (userName.hashCode) +
-    (date.hashCode) +
-    (comment.hashCode);
+      // ignore: unnecessary_parenthesis
+      (yagoTeam.hashCode) + (userName.hashCode) + (date.hashCode) + (comment.hashCode);
 
   @override
   String toString() => 'OrderModelComment[yagoTeam=$yagoTeam, userName=$userName, date=$date, comment=$comment]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'yago_team'] = this.yagoTeam;
-      json[r'user_name'] = this.userName;
-      json[r'date'] = this.date.toUtc().toIso8601String();
-      json[r'comment'] = this.comment;
+    json[r'yago_team'] = this.yagoTeam;
+    json[r'user_name'] = this.userName;
+    json[r'date'] = this.date.toUtc().toIso8601String();
+    json[r'comment'] = this.comment;
     return json;
   }
 
@@ -82,7 +81,10 @@ class OrderModelComment {
     return null;
   }
 
-  static List<OrderModelComment>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderModelComment>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderModelComment>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -110,12 +112,18 @@ class OrderModelComment {
   }
 
   // maps a json object with a list of OrderModelComment-objects as value to a dart map
-  static Map<String, List<OrderModelComment>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderModelComment>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderModelComment>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderModelComment.listFromJson(entry.value, growable: growable,);
+        final value = OrderModelComment.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,4 +140,3 @@ class OrderModelComment {
     'comment',
   };
 }
-

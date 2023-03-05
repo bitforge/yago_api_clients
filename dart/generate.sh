@@ -20,6 +20,15 @@ if [[ -f "README.md-e" ]]; then
     rm -f README.md-e
 fi
 
+# Auto format all dart files
+dart format . -l 120
+
+# Workaround for strange code generation bug
+# Only happend in lib/model/summary_stats.dart
+# Not sure if it's a bug in openapi-generator or yago api schema
+echo "Applying 'Object.listFromJson()' fix to dart code"
+sed -i -e "s/Object\.listFromJson/List<Object>\.from/g" lib/model/summary_stats.dart
+
 CLR='\033[0;32m'
 EOC='\033[0m'
 printf "\n${CLR}CLIENT GENERATED SUCCESSFULLY${EOC}\n"

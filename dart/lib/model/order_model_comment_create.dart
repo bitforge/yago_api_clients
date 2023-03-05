@@ -19,20 +19,20 @@ class OrderModelCommentCreate {
   String comment;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderModelCommentCreate &&
-     other.comment == comment;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is OrderModelCommentCreate && other.comment == comment;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (comment.hashCode);
+      // ignore: unnecessary_parenthesis
+      (comment.hashCode);
 
   @override
   String toString() => 'OrderModelCommentCreate[comment=$comment]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'comment'] = this.comment;
+    json[r'comment'] = this.comment;
     return json;
   }
 
@@ -61,7 +61,10 @@ class OrderModelCommentCreate {
     return null;
   }
 
-  static List<OrderModelCommentCreate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderModelCommentCreate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderModelCommentCreate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -89,12 +92,18 @@ class OrderModelCommentCreate {
   }
 
   // maps a json object with a list of OrderModelCommentCreate-objects as value to a dart map
-  static Map<String, List<OrderModelCommentCreate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderModelCommentCreate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderModelCommentCreate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderModelCommentCreate.listFromJson(entry.value, growable: growable,);
+        final value = OrderModelCommentCreate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -108,4 +117,3 @@ class OrderModelCommentCreate {
     'comment',
   };
 }
-

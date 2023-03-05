@@ -25,26 +25,26 @@ class ModelInfo {
   Map<String, Object> qrConfig;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ModelInfo &&
-     other.siteUrl == siteUrl &&
-     other.quicklookLink == quicklookLink &&
-     other.qrConfig == qrConfig;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ModelInfo &&
+          other.siteUrl == siteUrl &&
+          other.quicklookLink == quicklookLink &&
+          other.qrConfig == qrConfig;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (siteUrl.hashCode) +
-    (quicklookLink.hashCode) +
-    (qrConfig.hashCode);
+      // ignore: unnecessary_parenthesis
+      (siteUrl.hashCode) + (quicklookLink.hashCode) + (qrConfig.hashCode);
 
   @override
   String toString() => 'ModelInfo[siteUrl=$siteUrl, quicklookLink=$quicklookLink, qrConfig=$qrConfig]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'site_url'] = this.siteUrl;
-      json[r'quicklook_link'] = this.quicklookLink;
-      json[r'qr_config'] = this.qrConfig;
+    json[r'site_url'] = this.siteUrl;
+    json[r'quicklook_link'] = this.quicklookLink;
+    json[r'qr_config'] = this.qrConfig;
     return json;
   }
 
@@ -75,7 +75,10 @@ class ModelInfo {
     return null;
   }
 
-  static List<ModelInfo>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ModelInfo>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ModelInfo>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +106,18 @@ class ModelInfo {
   }
 
   // maps a json object with a list of ModelInfo-objects as value to a dart map
-  static Map<String, List<ModelInfo>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ModelInfo>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ModelInfo>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ModelInfo.listFromJson(entry.value, growable: growable,);
+        final value = ModelInfo.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,4 +133,3 @@ class ModelInfo {
     'qr_config',
   };
 }
-

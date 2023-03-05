@@ -22,23 +22,21 @@ class ActiveOrder {
   OrderState state;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ActiveOrder &&
-     other.id == id &&
-     other.state == state;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is ActiveOrder && other.id == id && other.state == state;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (state.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) + (state.hashCode);
 
   @override
   String toString() => 'ActiveOrder[id=$id, state=$state]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'state'] = this.state;
+    json[r'id'] = this.id;
+    json[r'state'] = this.state;
     return json;
   }
 
@@ -68,7 +66,10 @@ class ActiveOrder {
     return null;
   }
 
-  static List<ActiveOrder>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ActiveOrder>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ActiveOrder>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +97,18 @@ class ActiveOrder {
   }
 
   // maps a json object with a list of ActiveOrder-objects as value to a dart map
-  static Map<String, List<ActiveOrder>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ActiveOrder>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ActiveOrder>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ActiveOrder.listFromJson(entry.value, growable: growable,);
+        final value = ActiveOrder.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,4 +123,3 @@ class ActiveOrder {
     'state',
   };
 }
-

@@ -47,26 +47,29 @@ class RegistrationCreate {
   String redirectUrl;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RegistrationCreate &&
-     other.customer == customer &&
-     other.email == email &&
-     other.firstName == firstName &&
-     other.lastName == lastName &&
-     other.password == password &&
-     other.redirectUrl == redirectUrl;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RegistrationCreate &&
+          other.customer == customer &&
+          other.email == email &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.password == password &&
+          other.redirectUrl == redirectUrl;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (customer == null ? 0 : customer!.hashCode) +
-    (email.hashCode) +
-    (firstName == null ? 0 : firstName!.hashCode) +
-    (lastName == null ? 0 : lastName!.hashCode) +
-    (password.hashCode) +
-    (redirectUrl.hashCode);
+      // ignore: unnecessary_parenthesis
+      (customer == null ? 0 : customer!.hashCode) +
+      (email.hashCode) +
+      (firstName == null ? 0 : firstName!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode) +
+      (password.hashCode) +
+      (redirectUrl.hashCode);
 
   @override
-  String toString() => 'RegistrationCreate[customer=$customer, email=$email, firstName=$firstName, lastName=$lastName, password=$password, redirectUrl=$redirectUrl]';
+  String toString() =>
+      'RegistrationCreate[customer=$customer, email=$email, firstName=$firstName, lastName=$lastName, password=$password, redirectUrl=$redirectUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -75,7 +78,7 @@ class RegistrationCreate {
     } else {
       json[r'customer'] = null;
     }
-      json[r'email'] = this.email;
+    json[r'email'] = this.email;
     if (this.firstName != null) {
       json[r'first_name'] = this.firstName;
     } else {
@@ -86,8 +89,8 @@ class RegistrationCreate {
     } else {
       json[r'last_name'] = null;
     }
-      json[r'password'] = this.password;
-      json[r'redirect_url'] = this.redirectUrl;
+    json[r'password'] = this.password;
+    json[r'redirect_url'] = this.redirectUrl;
     return json;
   }
 
@@ -121,7 +124,10 @@ class RegistrationCreate {
     return null;
   }
 
-  static List<RegistrationCreate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RegistrationCreate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <RegistrationCreate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -149,12 +155,18 @@ class RegistrationCreate {
   }
 
   // maps a json object with a list of RegistrationCreate-objects as value to a dart map
-  static Map<String, List<RegistrationCreate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<RegistrationCreate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<RegistrationCreate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = RegistrationCreate.listFromJson(entry.value, growable: growable,);
+        final value = RegistrationCreate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -170,4 +182,3 @@ class RegistrationCreate {
     'redirect_url',
   };
 }
-

@@ -27,26 +27,23 @@ class ErrorDescription {
   Map<String, Object> errors;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ErrorDescription &&
-     other.title == title &&
-     other.status == status &&
-     other.errors == errors;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ErrorDescription && other.title == title && other.status == status && other.errors == errors;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (title.hashCode) +
-    (status.hashCode) +
-    (errors.hashCode);
+      // ignore: unnecessary_parenthesis
+      (title.hashCode) + (status.hashCode) + (errors.hashCode);
 
   @override
   String toString() => 'ErrorDescription[title=$title, status=$status, errors=$errors]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'title'] = this.title;
-      json[r'status'] = this.status;
-      json[r'errors'] = this.errors;
+    json[r'title'] = this.title;
+    json[r'status'] = this.status;
+    json[r'errors'] = this.errors;
     return json;
   }
 
@@ -77,7 +74,10 @@ class ErrorDescription {
     return null;
   }
 
-  static List<ErrorDescription>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ErrorDescription>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ErrorDescription>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -105,12 +105,18 @@ class ErrorDescription {
   }
 
   // maps a json object with a list of ErrorDescription-objects as value to a dart map
-  static Map<String, List<ErrorDescription>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ErrorDescription>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ErrorDescription>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ErrorDescription.listFromJson(entry.value, growable: growable,);
+        final value = ErrorDescription.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -126,4 +132,3 @@ class ErrorDescription {
     'errors',
   };
 }
-

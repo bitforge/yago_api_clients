@@ -22,23 +22,21 @@ class AvailableState {
   String target;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AvailableState &&
-     other.action == action &&
-     other.target == target;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is AvailableState && other.action == action && other.target == target;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (action.hashCode) +
-    (target.hashCode);
+      // ignore: unnecessary_parenthesis
+      (action.hashCode) + (target.hashCode);
 
   @override
   String toString() => 'AvailableState[action=$action, target=$target]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'action'] = this.action;
-      json[r'target'] = this.target;
+    json[r'action'] = this.action;
+    json[r'target'] = this.target;
     return json;
   }
 
@@ -68,7 +66,10 @@ class AvailableState {
     return null;
   }
 
-  static List<AvailableState>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AvailableState>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AvailableState>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +97,18 @@ class AvailableState {
   }
 
   // maps a json object with a list of AvailableState-objects as value to a dart map
-  static Map<String, List<AvailableState>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<AvailableState>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<AvailableState>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = AvailableState.listFromJson(entry.value, growable: growable,);
+        final value = AvailableState.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,4 +123,3 @@ class AvailableState {
     'target',
   };
 }
-

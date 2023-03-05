@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class RegistrationApi {
   RegistrationApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,7 +22,9 @@ class RegistrationApi {
   /// Parameters:
   ///
   /// * [RegistrationCreate] registrationCreate (required):
-  Future<Response> registrationCreateWithHttpInfo(RegistrationCreate registrationCreate,) async {
+  Future<Response> registrationCreateWithHttpInfo(
+    RegistrationCreate registrationCreate,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/registration/';
 
@@ -35,7 +36,6 @@ class RegistrationApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -53,8 +53,12 @@ class RegistrationApi {
   /// Parameters:
   ///
   /// * [RegistrationCreate] registrationCreate (required):
-  Future<Registration?> registrationCreate(RegistrationCreate registrationCreate,) async {
-    final response = await registrationCreateWithHttpInfo(registrationCreate,);
+  Future<Registration?> registrationCreate(
+    RegistrationCreate registrationCreate,
+  ) async {
+    final response = await registrationCreateWithHttpInfo(
+      registrationCreate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -62,8 +66,10 @@ class RegistrationApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Registration',) as Registration;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Registration',
+      ) as Registration;
     }
     return null;
   }
@@ -75,10 +81,11 @@ class RegistrationApi {
   /// Parameters:
   ///
   /// * [String] code (required):
-  Future<Response> registrationVerifyCreateWithHttpInfo(String code,) async {
+  Future<Response> registrationVerifyCreateWithHttpInfo(
+    String code,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/registration/verify/{code}/'
-      .replaceAll('{code}', code);
+    final path = r'/api/registration/verify/{code}/'.replaceAll('{code}', code);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -88,7 +95,6 @@ class RegistrationApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -106,8 +112,12 @@ class RegistrationApi {
   /// Parameters:
   ///
   /// * [String] code (required):
-  Future<UserVerified?> registrationVerifyCreate(String code,) async {
-    final response = await registrationVerifyCreateWithHttpInfo(code,);
+  Future<UserVerified?> registrationVerifyCreate(
+    String code,
+  ) async {
+    final response = await registrationVerifyCreateWithHttpInfo(
+      code,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -115,8 +125,10 @@ class RegistrationApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UserVerified',) as UserVerified;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'UserVerified',
+      ) as UserVerified;
     }
     return null;
   }

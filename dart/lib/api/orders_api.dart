@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class OrdersApi {
   OrdersApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -25,10 +24,12 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [OrderCommentCreate] orderCommentCreate (required):
-  Future<Response> ordersCommentsCreateWithHttpInfo(int orderId, OrderCommentCreate orderCommentCreate,) async {
+  Future<Response> ordersCommentsCreateWithHttpInfo(
+    int orderId,
+    OrderCommentCreate orderCommentCreate,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/comments/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/comments/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = orderCommentCreate;
@@ -38,7 +39,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -58,8 +58,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [OrderCommentCreate] orderCommentCreate (required):
-  Future<OrderCommentCreate?> ordersCommentsCreate(int orderId, OrderCommentCreate orderCommentCreate,) async {
-    final response = await ordersCommentsCreateWithHttpInfo(orderId, orderCommentCreate,);
+  Future<OrderCommentCreate?> ordersCommentsCreate(
+    int orderId,
+    OrderCommentCreate orderCommentCreate,
+  ) async {
+    final response = await ordersCommentsCreateWithHttpInfo(
+      orderId,
+      orderCommentCreate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -67,8 +73,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderCommentCreate',) as OrderCommentCreate;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'OrderCommentCreate',
+      ) as OrderCommentCreate;
     }
     return null;
   }
@@ -80,10 +88,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersCommentsListWithHttpInfo(int orderId,) async {
+  Future<Response> ordersCommentsListWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/comments/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/comments/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -93,7 +102,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -111,8 +119,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<List<OrderComment>?> ordersCommentsList(int orderId,) async {
-    final response = await ordersCommentsListWithHttpInfo(orderId,);
+  Future<List<OrderComment>?> ordersCommentsList(
+    int orderId,
+  ) async {
+    final response = await ordersCommentsListWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -122,9 +134,8 @@ class OrdersApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<OrderComment>') as List)
-        .cast<OrderComment>()
-        .toList();
-
+          .cast<OrderComment>()
+          .toList();
     }
     return null;
   }
@@ -136,7 +147,9 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [OrderCreate] orderCreate (required):
-  Future<Response> ordersCreateWithHttpInfo(OrderCreate orderCreate,) async {
+  Future<Response> ordersCreateWithHttpInfo(
+    OrderCreate orderCreate,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/';
 
@@ -148,7 +161,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -166,8 +178,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [OrderCreate] orderCreate (required):
-  Future<Order?> ordersCreate(OrderCreate orderCreate,) async {
-    final response = await ordersCreateWithHttpInfo(orderCreate,);
+  Future<Order?> ordersCreate(
+    OrderCreate orderCreate,
+  ) async {
+    final response = await ordersCreateWithHttpInfo(
+      orderCreate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -175,8 +191,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Order',) as Order;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Order',
+      ) as Order;
     }
     return null;
   }
@@ -189,10 +207,11 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Order.
-  Future<Response> ordersDestroyWithHttpInfo(int id,) async {
+  Future<Response> ordersDestroyWithHttpInfo(
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{id}/'
-      .replaceAll('{id}', id.toString());
+    final path = r'/api/orders/{id}/'.replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -202,7 +221,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -221,8 +239,12 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Order.
-  Future<void> ordersDestroy(int id,) async {
-    final response = await ordersDestroyWithHttpInfo(id,);
+  Future<void> ordersDestroy(
+    int id,
+  ) async {
+    final response = await ordersDestroyWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -235,7 +257,9 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [String] project:
-  Future<Response> ordersListWithHttpInfo({ String? project, }) async {
+  Future<Response> ordersListWithHttpInfo({
+    String? project,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/';
 
@@ -252,7 +276,6 @@ class OrdersApi {
 
     const contentTypes = <String>[];
 
-
     return apiClient.invokeAPI(
       path,
       'GET',
@@ -269,8 +292,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [String] project:
-  Future<List<Order>?> ordersList({ String? project, }) async {
-    final response = await ordersListWithHttpInfo( project: project, );
+  Future<List<Order>?> ordersList({
+    String? project,
+  }) async {
+    final response = await ordersListWithHttpInfo(
+      project: project,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -279,10 +306,7 @@ class OrdersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Order>') as List)
-        .cast<Order>()
-        .toList();
-
+      return (await apiClient.deserializeAsync(responseBody, 'List<Order>') as List).cast<Order>().toList();
     }
     return null;
   }
@@ -298,11 +322,15 @@ class OrdersApi {
   /// * [int] id (required):
   ///
   /// * [OrderModelCommentCreate] orderModelCommentCreate (required):
-  Future<Response> ordersModelsCommentsCreateWithHttpInfo(int orderId, int id, OrderModelCommentCreate orderModelCommentCreate,) async {
+  Future<Response> ordersModelsCommentsCreateWithHttpInfo(
+    int orderId,
+    int id,
+    OrderModelCommentCreate orderModelCommentCreate,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/comments/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = orderModelCommentCreate;
@@ -313,7 +341,6 @@ class OrdersApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -334,8 +361,16 @@ class OrdersApi {
   /// * [int] id (required):
   ///
   /// * [OrderModelCommentCreate] orderModelCommentCreate (required):
-  Future<OrderModelCommentCreate?> ordersModelsCommentsCreate(int orderId, int id, OrderModelCommentCreate orderModelCommentCreate,) async {
-    final response = await ordersModelsCommentsCreateWithHttpInfo(orderId, id, orderModelCommentCreate,);
+  Future<OrderModelCommentCreate?> ordersModelsCommentsCreate(
+    int orderId,
+    int id,
+    OrderModelCommentCreate orderModelCommentCreate,
+  ) async {
+    final response = await ordersModelsCommentsCreateWithHttpInfo(
+      orderId,
+      id,
+      orderModelCommentCreate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -343,8 +378,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderModelCommentCreate',) as OrderModelCommentCreate;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'OrderModelCommentCreate',
+      ) as OrderModelCommentCreate;
     }
     return null;
   }
@@ -358,11 +395,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<Response> ordersModelsCommentsListWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsCommentsListWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/comments/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -372,7 +412,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -392,8 +431,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<List<OrderModelComment>?> ordersModelsCommentsList(int orderId, int id,) async {
-    final response = await ordersModelsCommentsListWithHttpInfo(orderId, id,);
+  Future<List<OrderModelComment>?> ordersModelsCommentsList(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsCommentsListWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -403,9 +448,8 @@ class OrdersApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<OrderModelComment>') as List)
-        .cast<OrderModelComment>()
-        .toList();
-
+          .cast<OrderModelComment>()
+          .toList();
     }
     return null;
   }
@@ -419,10 +463,12 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [OrderModelCreate] orderModelCreate (required):
-  Future<Response> ordersModelsCreateWithHttpInfo(int orderId, OrderModelCreate orderModelCreate,) async {
+  Future<Response> ordersModelsCreateWithHttpInfo(
+    int orderId,
+    OrderModelCreate orderModelCreate,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/models/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/models/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = orderModelCreate;
@@ -432,7 +478,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -452,8 +497,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [OrderModelCreate] orderModelCreate (required):
-  Future<OrderModel?> ordersModelsCreate(int orderId, OrderModelCreate orderModelCreate,) async {
-    final response = await ordersModelsCreateWithHttpInfo(orderId, orderModelCreate,);
+  Future<OrderModel?> ordersModelsCreate(
+    int orderId,
+    OrderModelCreate orderModelCreate,
+  ) async {
+    final response = await ordersModelsCreateWithHttpInfo(
+      orderId,
+      orderModelCreate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -461,8 +512,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderModel',) as OrderModel;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'OrderModel',
+      ) as OrderModel;
     }
     return null;
   }
@@ -477,11 +530,14 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Model.
-  Future<Response> ordersModelsDestroyWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsDestroyWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -491,7 +547,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -512,8 +567,14 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Model.
-  Future<void> ordersModelsDestroy(int orderId, int id,) async {
-    final response = await ordersModelsDestroyWithHttpInfo(orderId, id,);
+  Future<void> ordersModelsDestroy(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsDestroyWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -530,12 +591,16 @@ class OrdersApi {
   /// * [int] id (required):
   ///
   /// * [String] fileId (required):
-  Future<Response> ordersModelsFilesDestroyWithHttpInfo(int orderId, int id, String fileId,) async {
+  Future<Response> ordersModelsFilesDestroyWithHttpInfo(
+    int orderId,
+    int id,
+    String fileId,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/files/{file_id}/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString())
-      .replaceAll('{file_id}', fileId);
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString())
+        .replaceAll('{file_id}', fileId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -545,7 +610,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -567,8 +631,16 @@ class OrdersApi {
   /// * [int] id (required):
   ///
   /// * [String] fileId (required):
-  Future<void> ordersModelsFilesDestroy(int orderId, int id, String fileId,) async {
-    final response = await ordersModelsFilesDestroyWithHttpInfo(orderId, id, fileId,);
+  Future<void> ordersModelsFilesDestroy(
+    int orderId,
+    int id,
+    String fileId,
+  ) async {
+    final response = await ordersModelsFilesDestroyWithHttpInfo(
+      orderId,
+      id,
+      fileId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -583,11 +655,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<Response> ordersModelsFilesListWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsFilesListWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/files/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -597,7 +672,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -617,8 +691,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<List<OrderModelFile>?> ordersModelsFilesList(int orderId, int id,) async {
-    final response = await ordersModelsFilesListWithHttpInfo(orderId, id,);
+  Future<List<OrderModelFile>?> ordersModelsFilesList(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsFilesListWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -628,9 +708,8 @@ class OrdersApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<OrderModelFile>') as List)
-        .cast<OrderModelFile>()
-        .toList();
-
+          .cast<OrderModelFile>()
+          .toList();
     }
     return null;
   }
@@ -649,11 +728,16 @@ class OrdersApi {
   /// * [int] id (required):
   ///
   /// * [MultipartFile] body:
-  Future<Response> ordersModelsFilesUpdateWithHttpInfo(int orderId, String contentDisposition, int id, { MultipartFile? body, }) async {
+  Future<Response> ordersModelsFilesUpdateWithHttpInfo(
+    int orderId,
+    String contentDisposition,
+    int id, {
+    MultipartFile? body,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/files/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = body;
@@ -666,7 +750,6 @@ class OrdersApi {
 
     const contentTypes = <String>['application/octet-stream'];
 
-
     return apiClient.invokeAPI(
       path,
       'PUT',
@@ -690,8 +773,18 @@ class OrdersApi {
   /// * [int] id (required):
   ///
   /// * [MultipartFile] body:
-  Future<FileUploaded?> ordersModelsFilesUpdate(int orderId, String contentDisposition, int id, { MultipartFile? body, }) async {
-    final response = await ordersModelsFilesUpdateWithHttpInfo(orderId, contentDisposition, id,  body: body, );
+  Future<FileUploaded?> ordersModelsFilesUpdate(
+    int orderId,
+    String contentDisposition,
+    int id, {
+    MultipartFile? body,
+  }) async {
+    final response = await ordersModelsFilesUpdateWithHttpInfo(
+      orderId,
+      contentDisposition,
+      id,
+      body: body,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -699,8 +792,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUploaded',) as FileUploaded;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'FileUploaded',
+      ) as FileUploaded;
     }
     return null;
   }
@@ -712,10 +807,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersModelsListWithHttpInfo(int orderId,) async {
+  Future<Response> ordersModelsListWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/models/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/models/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -725,7 +821,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -743,8 +838,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<List<OrderModel>?> ordersModelsList(int orderId,) async {
-    final response = await ordersModelsListWithHttpInfo(orderId,);
+  Future<List<OrderModel>?> ordersModelsList(
+    int orderId,
+  ) async {
+    final response = await ordersModelsListWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -753,10 +852,7 @@ class OrdersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<OrderModel>') as List)
-        .cast<OrderModel>()
-        .toList();
-
+      return (await apiClient.deserializeAsync(responseBody, 'List<OrderModel>') as List).cast<OrderModel>().toList();
     }
     return null;
   }
@@ -771,11 +867,14 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Model.
-  Future<Response> ordersModelsRetrieveWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsRetrieveWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -785,7 +884,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -806,8 +904,14 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Model.
-  Future<OrderModelDetail?> ordersModelsRetrieve(int orderId, int id,) async {
-    final response = await ordersModelsRetrieveWithHttpInfo(orderId, id,);
+  Future<OrderModelDetail?> ordersModelsRetrieve(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsRetrieveWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -815,8 +919,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderModelDetail',) as OrderModelDetail;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'OrderModelDetail',
+      ) as OrderModelDetail;
     }
     return null;
   }
@@ -830,11 +936,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<Response> ordersModelsSubmitToFinishedPartialUpdateWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsSubmitToFinishedPartialUpdateWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/submit_to_finished/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -844,7 +953,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -864,8 +972,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<StateChanged?> ordersModelsSubmitToFinishedPartialUpdate(int orderId, int id,) async {
-    final response = await ordersModelsSubmitToFinishedPartialUpdateWithHttpInfo(orderId, id,);
+  Future<StateChanged?> ordersModelsSubmitToFinishedPartialUpdate(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsSubmitToFinishedPartialUpdateWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -873,8 +987,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -888,11 +1004,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<Response> ordersModelsSubmitToReviewPartialUpdateWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsSubmitToReviewPartialUpdateWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/submit_to_review/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -902,7 +1021,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -922,8 +1040,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<StateChanged?> ordersModelsSubmitToReviewPartialUpdate(int orderId, int id,) async {
-    final response = await ordersModelsSubmitToReviewPartialUpdateWithHttpInfo(orderId, id,);
+  Future<StateChanged?> ordersModelsSubmitToReviewPartialUpdate(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsSubmitToReviewPartialUpdateWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -931,8 +1055,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -946,11 +1072,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<Response> ordersModelsSubmitToReworkPartialUpdateWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsSubmitToReworkPartialUpdateWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/submit_to_rework/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -960,7 +1089,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -980,8 +1108,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<StateChanged?> ordersModelsSubmitToReworkPartialUpdate(int orderId, int id,) async {
-    final response = await ordersModelsSubmitToReworkPartialUpdateWithHttpInfo(orderId, id,);
+  Future<StateChanged?> ordersModelsSubmitToReworkPartialUpdate(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsSubmitToReworkPartialUpdateWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -989,8 +1123,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -1004,11 +1140,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<Response> ordersModelsTransitionsListWithHttpInfo(int orderId, int id,) async {
+  Future<Response> ordersModelsTransitionsListWithHttpInfo(
+    int orderId,
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/transitions/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1018,7 +1157,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1038,8 +1176,14 @@ class OrdersApi {
   /// * [int] orderId (required):
   ///
   /// * [int] id (required):
-  Future<List<AvailableState>?> ordersModelsTransitionsList(int orderId, int id,) async {
-    final response = await ordersModelsTransitionsListWithHttpInfo(orderId, id,);
+  Future<List<AvailableState>?> ordersModelsTransitionsList(
+    int orderId,
+    int id,
+  ) async {
+    final response = await ordersModelsTransitionsListWithHttpInfo(
+      orderId,
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1049,9 +1193,8 @@ class OrdersApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<AvailableState>') as List)
-        .cast<AvailableState>()
-        .toList();
-
+          .cast<AvailableState>()
+          .toList();
     }
     return null;
   }
@@ -1068,11 +1211,15 @@ class OrdersApi {
   ///   A unique integer value identifying this Model.
   ///
   /// * [OrderModelUpdate] orderModelUpdate (required):
-  Future<Response> ordersModelsUpdateWithHttpInfo(int orderId, int id, OrderModelUpdate orderModelUpdate,) async {
+  Future<Response> ordersModelsUpdateWithHttpInfo(
+    int orderId,
+    int id,
+    OrderModelUpdate orderModelUpdate,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/orders/{order_id}/models/{id}/'
-      .replaceAll('{order_id}', orderId.toString())
-      .replaceAll('{id}', id.toString());
+        .replaceAll('{order_id}', orderId.toString())
+        .replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = orderModelUpdate;
@@ -1083,7 +1230,6 @@ class OrdersApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'PUT',
@@ -1105,8 +1251,16 @@ class OrdersApi {
   ///   A unique integer value identifying this Model.
   ///
   /// * [OrderModelUpdate] orderModelUpdate (required):
-  Future<OrderModelUpdate?> ordersModelsUpdate(int orderId, int id, OrderModelUpdate orderModelUpdate,) async {
-    final response = await ordersModelsUpdateWithHttpInfo(orderId, id, orderModelUpdate,);
+  Future<OrderModelUpdate?> ordersModelsUpdate(
+    int orderId,
+    int id,
+    OrderModelUpdate orderModelUpdate,
+  ) async {
+    final response = await ordersModelsUpdateWithHttpInfo(
+      orderId,
+      id,
+      orderModelUpdate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1114,8 +1268,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderModelUpdate',) as OrderModelUpdate;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'OrderModelUpdate',
+      ) as OrderModelUpdate;
     }
     return null;
   }
@@ -1128,10 +1284,11 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Order.
-  Future<Response> ordersRetrieveWithHttpInfo(int id,) async {
+  Future<Response> ordersRetrieveWithHttpInfo(
+    int id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{id}/'
-      .replaceAll('{id}', id.toString());
+    final path = r'/api/orders/{id}/'.replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1141,7 +1298,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1160,8 +1316,12 @@ class OrdersApi {
   ///
   /// * [int] id (required):
   ///   A unique integer value identifying this Order.
-  Future<OrderDetail?> ordersRetrieve(int id,) async {
-    final response = await ordersRetrieveWithHttpInfo(id,);
+  Future<OrderDetail?> ordersRetrieve(
+    int id,
+  ) async {
+    final response = await ordersRetrieveWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1169,8 +1329,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderDetail',) as OrderDetail;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'OrderDetail',
+      ) as OrderDetail;
     }
     return null;
   }
@@ -1182,10 +1344,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersSubmitToEstimationPartialUpdateWithHttpInfo(int orderId,) async {
+  Future<Response> ordersSubmitToEstimationPartialUpdateWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/submit_to_estimation/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/submit_to_estimation/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1195,7 +1358,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1213,8 +1375,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<StateChanged?> ordersSubmitToEstimationPartialUpdate(int orderId,) async {
-    final response = await ordersSubmitToEstimationPartialUpdateWithHttpInfo(orderId,);
+  Future<StateChanged?> ordersSubmitToEstimationPartialUpdate(
+    int orderId,
+  ) async {
+    final response = await ordersSubmitToEstimationPartialUpdateWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1222,8 +1388,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -1235,10 +1403,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersSubmitToFinishedPartialUpdateWithHttpInfo(int orderId,) async {
+  Future<Response> ordersSubmitToFinishedPartialUpdateWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/submit_to_finished/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/submit_to_finished/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1248,7 +1417,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1266,8 +1434,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<StateChanged?> ordersSubmitToFinishedPartialUpdate(int orderId,) async {
-    final response = await ordersSubmitToFinishedPartialUpdateWithHttpInfo(orderId,);
+  Future<StateChanged?> ordersSubmitToFinishedPartialUpdate(
+    int orderId,
+  ) async {
+    final response = await ordersSubmitToFinishedPartialUpdateWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1275,8 +1447,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -1288,10 +1462,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersSubmitToPaymentPartialUpdateWithHttpInfo(int orderId,) async {
+  Future<Response> ordersSubmitToPaymentPartialUpdateWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/submit_to_payment/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/submit_to_payment/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1301,7 +1476,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1319,8 +1493,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<StateChanged?> ordersSubmitToPaymentPartialUpdate(int orderId,) async {
-    final response = await ordersSubmitToPaymentPartialUpdateWithHttpInfo(orderId,);
+  Future<StateChanged?> ordersSubmitToPaymentPartialUpdate(
+    int orderId,
+  ) async {
+    final response = await ordersSubmitToPaymentPartialUpdateWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1328,8 +1506,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -1341,10 +1521,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersSubmitToProgressPartialUpdateWithHttpInfo(int orderId,) async {
+  Future<Response> ordersSubmitToProgressPartialUpdateWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/submit_to_progress/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/submit_to_progress/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1354,7 +1535,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1372,8 +1552,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<StateChanged?> ordersSubmitToProgressPartialUpdate(int orderId,) async {
-    final response = await ordersSubmitToProgressPartialUpdateWithHttpInfo(orderId,);
+  Future<StateChanged?> ordersSubmitToProgressPartialUpdate(
+    int orderId,
+  ) async {
+    final response = await ordersSubmitToProgressPartialUpdateWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1381,8 +1565,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -1394,10 +1580,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersSubmitToReviewPartialUpdateWithHttpInfo(int orderId,) async {
+  Future<Response> ordersSubmitToReviewPartialUpdateWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/submit_to_review/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/submit_to_review/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1407,7 +1594,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1425,8 +1611,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<StateChanged?> ordersSubmitToReviewPartialUpdate(int orderId,) async {
-    final response = await ordersSubmitToReviewPartialUpdateWithHttpInfo(orderId,);
+  Future<StateChanged?> ordersSubmitToReviewPartialUpdate(
+    int orderId,
+  ) async {
+    final response = await ordersSubmitToReviewPartialUpdateWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1434,8 +1624,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'StateChanged',) as StateChanged;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'StateChanged',
+      ) as StateChanged;
     }
     return null;
   }
@@ -1447,10 +1639,11 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<Response> ordersTransitionsListWithHttpInfo(int orderId,) async {
+  Future<Response> ordersTransitionsListWithHttpInfo(
+    int orderId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{order_id}/transitions/'
-      .replaceAll('{order_id}', orderId.toString());
+    final path = r'/api/orders/{order_id}/transitions/'.replaceAll('{order_id}', orderId.toString());
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -1460,7 +1653,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1478,8 +1670,12 @@ class OrdersApi {
   /// Parameters:
   ///
   /// * [int] orderId (required):
-  Future<List<AvailableState>?> ordersTransitionsList(int orderId,) async {
-    final response = await ordersTransitionsListWithHttpInfo(orderId,);
+  Future<List<AvailableState>?> ordersTransitionsList(
+    int orderId,
+  ) async {
+    final response = await ordersTransitionsListWithHttpInfo(
+      orderId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1489,9 +1685,8 @@ class OrdersApi {
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<AvailableState>') as List)
-        .cast<AvailableState>()
-        .toList();
-
+          .cast<AvailableState>()
+          .toList();
     }
     return null;
   }
@@ -1506,10 +1701,12 @@ class OrdersApi {
   ///   A unique integer value identifying this Order.
   ///
   /// * [OrderUpdate] orderUpdate (required):
-  Future<Response> ordersUpdateWithHttpInfo(int id, OrderUpdate orderUpdate,) async {
+  Future<Response> ordersUpdateWithHttpInfo(
+    int id,
+    OrderUpdate orderUpdate,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/orders/{id}/'
-      .replaceAll('{id}', id.toString());
+    final path = r'/api/orders/{id}/'.replaceAll('{id}', id.toString());
 
     // ignore: prefer_final_locals
     Object? postBody = orderUpdate;
@@ -1519,7 +1716,6 @@ class OrdersApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -1540,8 +1736,14 @@ class OrdersApi {
   ///   A unique integer value identifying this Order.
   ///
   /// * [OrderUpdate] orderUpdate (required):
-  Future<OrderUpdate?> ordersUpdate(int id, OrderUpdate orderUpdate,) async {
-    final response = await ordersUpdateWithHttpInfo(id, orderUpdate,);
+  Future<OrderUpdate?> ordersUpdate(
+    int id,
+    OrderUpdate orderUpdate,
+  ) async {
+    final response = await ordersUpdateWithHttpInfo(
+      id,
+      orderUpdate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -1549,8 +1751,10 @@ class OrdersApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OrderUpdate',) as OrderUpdate;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'OrderUpdate',
+      ) as OrderUpdate;
     }
     return null;
   }

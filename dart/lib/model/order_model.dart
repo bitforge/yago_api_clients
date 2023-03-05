@@ -50,43 +50,46 @@ class OrderModel {
   DateTime modified;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderModel &&
-     other.id == id &&
-     other.name == name &&
-     other.order == order &&
-     other.state == state &&
-     other.website == website &&
-     other.widthMm == widthMm &&
-     other.heightMm == heightMm &&
-     other.depthMm == depthMm &&
-     other.model == model &&
-     other.created == created &&
-     other.modified == modified;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderModel &&
+          other.id == id &&
+          other.name == name &&
+          other.order == order &&
+          other.state == state &&
+          other.website == website &&
+          other.widthMm == widthMm &&
+          other.heightMm == heightMm &&
+          other.depthMm == depthMm &&
+          other.model == model &&
+          other.created == created &&
+          other.modified == modified;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (name.hashCode) +
-    (order.hashCode) +
-    (state.hashCode) +
-    (website == null ? 0 : website!.hashCode) +
-    (widthMm == null ? 0 : widthMm!.hashCode) +
-    (heightMm == null ? 0 : heightMm!.hashCode) +
-    (depthMm == null ? 0 : depthMm!.hashCode) +
-    (model == null ? 0 : model!.hashCode) +
-    (created.hashCode) +
-    (modified.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (name.hashCode) +
+      (order.hashCode) +
+      (state.hashCode) +
+      (website == null ? 0 : website!.hashCode) +
+      (widthMm == null ? 0 : widthMm!.hashCode) +
+      (heightMm == null ? 0 : heightMm!.hashCode) +
+      (depthMm == null ? 0 : depthMm!.hashCode) +
+      (model == null ? 0 : model!.hashCode) +
+      (created.hashCode) +
+      (modified.hashCode);
 
   @override
-  String toString() => 'OrderModel[id=$id, name=$name, order=$order, state=$state, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm, model=$model, created=$created, modified=$modified]';
+  String toString() =>
+      'OrderModel[id=$id, name=$name, order=$order, state=$state, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm, model=$model, created=$created, modified=$modified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'name'] = this.name;
-      json[r'order'] = this.order;
-      json[r'state'] = this.state;
+    json[r'id'] = this.id;
+    json[r'name'] = this.name;
+    json[r'order'] = this.order;
+    json[r'state'] = this.state;
     if (this.website != null) {
       json[r'website'] = this.website;
     } else {
@@ -112,8 +115,8 @@ class OrderModel {
     } else {
       json[r'model'] = null;
     }
-      json[r'created'] = this.created.toUtc().toIso8601String();
-      json[r'modified'] = this.modified.toUtc().toIso8601String();
+    json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'modified'] = this.modified.toUtc().toIso8601String();
     return json;
   }
 
@@ -152,7 +155,10 @@ class OrderModel {
     return null;
   }
 
-  static List<OrderModel>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderModel>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderModel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -180,12 +186,18 @@ class OrderModel {
   }
 
   // maps a json object with a list of OrderModel-objects as value to a dart map
-  static Map<String, List<OrderModel>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderModel>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderModel>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderModel.listFromJson(entry.value, growable: growable,);
+        final value = OrderModel.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -205,4 +217,3 @@ class OrderModel {
     'modified',
   };
 }
-

@@ -18,11 +18,11 @@ class PricingPlan {
     required this.price,
     this.priceOnRequest,
     this.priceHint,
-    required this.projectQuotas,
+    this.projectQuotas = 0,
     this.projectQuotasDisabled,
-    required this.modelQuotas,
+    this.modelQuotas = '0',
     this.modelQuotasDisabled,
-    required this.viewQuotas,
+    this.viewQuotas = 0,
     this.viewQuotasDisabled,
     this.seoOptimization,
     this.viewReporting,
@@ -49,10 +49,6 @@ class PricingPlan {
   /// Comment for price, shown in product page.
   String? priceHint;
 
-  /// How many projects are included in this plan.
-  ///
-  /// Minimum value: 0
-  /// Maximum value: 9223372036854775807
   int projectQuotas;
 
   /// Disable quota check for this plan.
@@ -64,11 +60,7 @@ class PricingPlan {
   ///
   bool? projectQuotasDisabled;
 
-  /// How many models are included in this plan.
-  ///
-  /// Minimum value: 0
-  /// Maximum value: 9223372036854775807
-  int modelQuotas;
+  String modelQuotas;
 
   /// Disable quota check for models.
   ///
@@ -79,10 +71,6 @@ class PricingPlan {
   ///
   bool? modelQuotasDisabled;
 
-  /// How many AR views are included in this plan.
-  ///
-  /// Minimum value: 0
-  /// Maximum value: 9223372036854775807
   int viewQuotas;
 
   /// Disable quota check for this plan.
@@ -131,50 +119,53 @@ class PricingPlan {
   bool? scenesApp;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PricingPlan &&
-     other.key == key &&
-     other.name == name &&
-     other.price == price &&
-     other.priceOnRequest == priceOnRequest &&
-     other.priceHint == priceHint &&
-     other.projectQuotas == projectQuotas &&
-     other.projectQuotasDisabled == projectQuotasDisabled &&
-     other.modelQuotas == modelQuotas &&
-     other.modelQuotasDisabled == modelQuotasDisabled &&
-     other.viewQuotas == viewQuotas &&
-     other.viewQuotasDisabled == viewQuotasDisabled &&
-     other.seoOptimization == seoOptimization &&
-     other.viewReporting == viewReporting &&
-     other.customQrCodes == customQrCodes &&
-     other.scenesApp == scenesApp;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PricingPlan &&
+          other.key == key &&
+          other.name == name &&
+          other.price == price &&
+          other.priceOnRequest == priceOnRequest &&
+          other.priceHint == priceHint &&
+          other.projectQuotas == projectQuotas &&
+          other.projectQuotasDisabled == projectQuotasDisabled &&
+          other.modelQuotas == modelQuotas &&
+          other.modelQuotasDisabled == modelQuotasDisabled &&
+          other.viewQuotas == viewQuotas &&
+          other.viewQuotasDisabled == viewQuotasDisabled &&
+          other.seoOptimization == seoOptimization &&
+          other.viewReporting == viewReporting &&
+          other.customQrCodes == customQrCodes &&
+          other.scenesApp == scenesApp;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (key.hashCode) +
-    (name.hashCode) +
-    (price.hashCode) +
-    (priceOnRequest == null ? 0 : priceOnRequest!.hashCode) +
-    (priceHint == null ? 0 : priceHint!.hashCode) +
-    (projectQuotas.hashCode) +
-    (projectQuotasDisabled == null ? 0 : projectQuotasDisabled!.hashCode) +
-    (modelQuotas.hashCode) +
-    (modelQuotasDisabled == null ? 0 : modelQuotasDisabled!.hashCode) +
-    (viewQuotas.hashCode) +
-    (viewQuotasDisabled == null ? 0 : viewQuotasDisabled!.hashCode) +
-    (seoOptimization == null ? 0 : seoOptimization!.hashCode) +
-    (viewReporting == null ? 0 : viewReporting!.hashCode) +
-    (customQrCodes == null ? 0 : customQrCodes!.hashCode) +
-    (scenesApp == null ? 0 : scenesApp!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (key.hashCode) +
+      (name.hashCode) +
+      (price.hashCode) +
+      (priceOnRequest == null ? 0 : priceOnRequest!.hashCode) +
+      (priceHint == null ? 0 : priceHint!.hashCode) +
+      (projectQuotas.hashCode) +
+      (projectQuotasDisabled == null ? 0 : projectQuotasDisabled!.hashCode) +
+      (modelQuotas.hashCode) +
+      (modelQuotasDisabled == null ? 0 : modelQuotasDisabled!.hashCode) +
+      (viewQuotas.hashCode) +
+      (viewQuotasDisabled == null ? 0 : viewQuotasDisabled!.hashCode) +
+      (seoOptimization == null ? 0 : seoOptimization!.hashCode) +
+      (viewReporting == null ? 0 : viewReporting!.hashCode) +
+      (customQrCodes == null ? 0 : customQrCodes!.hashCode) +
+      (scenesApp == null ? 0 : scenesApp!.hashCode);
 
   @override
-  String toString() => 'PricingPlan[key=$key, name=$name, price=$price, priceOnRequest=$priceOnRequest, priceHint=$priceHint, projectQuotas=$projectQuotas, projectQuotasDisabled=$projectQuotasDisabled, modelQuotas=$modelQuotas, modelQuotasDisabled=$modelQuotasDisabled, viewQuotas=$viewQuotas, viewQuotasDisabled=$viewQuotasDisabled, seoOptimization=$seoOptimization, viewReporting=$viewReporting, customQrCodes=$customQrCodes, scenesApp=$scenesApp]';
+  String toString() =>
+      'PricingPlan[key=$key, name=$name, price=$price, priceOnRequest=$priceOnRequest, priceHint=$priceHint, projectQuotas=$projectQuotas, projectQuotasDisabled=$projectQuotasDisabled, modelQuotas=$modelQuotas, modelQuotasDisabled=$modelQuotasDisabled, viewQuotas=$viewQuotas, viewQuotasDisabled=$viewQuotasDisabled, seoOptimization=$seoOptimization, viewReporting=$viewReporting, customQrCodes=$customQrCodes, scenesApp=$scenesApp]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'key'] = this.key;
-      json[r'name'] = this.name;
-      json[r'price'] = this.price;
+    json[r'key'] = this.key;
+    json[r'name'] = this.name;
+    json[r'price'] = this.price;
     if (this.priceOnRequest != null) {
       json[r'price_on_request'] = this.priceOnRequest;
     } else {
@@ -185,19 +176,19 @@ class PricingPlan {
     } else {
       json[r'price_hint'] = null;
     }
-      json[r'project_quotas'] = this.projectQuotas;
+    json[r'project_quotas'] = this.projectQuotas;
     if (this.projectQuotasDisabled != null) {
       json[r'project_quotas_disabled'] = this.projectQuotasDisabled;
     } else {
       json[r'project_quotas_disabled'] = null;
     }
-      json[r'model_quotas'] = this.modelQuotas;
+    json[r'model_quotas'] = this.modelQuotas;
     if (this.modelQuotasDisabled != null) {
       json[r'model_quotas_disabled'] = this.modelQuotasDisabled;
     } else {
       json[r'model_quotas_disabled'] = null;
     }
-      json[r'view_quotas'] = this.viewQuotas;
+    json[r'view_quotas'] = this.viewQuotas;
     if (this.viewQuotasDisabled != null) {
       json[r'view_quotas_disabled'] = this.viewQuotasDisabled;
     } else {
@@ -250,11 +241,11 @@ class PricingPlan {
         price: mapValueOfType<double>(json, r'price')!,
         priceOnRequest: mapValueOfType<bool>(json, r'price_on_request'),
         priceHint: mapValueOfType<String>(json, r'price_hint'),
-        projectQuotas: mapValueOfType<int>(json, r'project_quotas')!,
+        projectQuotas: mapValueOfType<int>(json, r'project_quotas') ?? 0,
         projectQuotasDisabled: mapValueOfType<bool>(json, r'project_quotas_disabled'),
-        modelQuotas: mapValueOfType<int>(json, r'model_quotas')!,
+        modelQuotas: mapValueOfType<String>(json, r'model_quotas') ?? '0',
         modelQuotasDisabled: mapValueOfType<bool>(json, r'model_quotas_disabled'),
-        viewQuotas: mapValueOfType<int>(json, r'view_quotas')!,
+        viewQuotas: mapValueOfType<int>(json, r'view_quotas') ?? 0,
         viewQuotasDisabled: mapValueOfType<bool>(json, r'view_quotas_disabled'),
         seoOptimization: mapValueOfType<bool>(json, r'seo_optimization'),
         viewReporting: mapValueOfType<bool>(json, r'view_reporting'),
@@ -265,7 +256,10 @@ class PricingPlan {
     return null;
   }
 
-  static List<PricingPlan>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PricingPlan>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PricingPlan>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -293,12 +287,18 @@ class PricingPlan {
   }
 
   // maps a json object with a list of PricingPlan-objects as value to a dart map
-  static Map<String, List<PricingPlan>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<PricingPlan>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<PricingPlan>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PricingPlan.listFromJson(entry.value, growable: growable,);
+        final value = PricingPlan.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -312,9 +312,5 @@ class PricingPlan {
     'key',
     'name',
     'price',
-    'project_quotas',
-    'model_quotas',
-    'view_quotas',
   };
 }
-

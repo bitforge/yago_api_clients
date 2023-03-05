@@ -19,20 +19,19 @@ class PasswordReset {
   String email;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PasswordReset &&
-     other.email == email;
+  bool operator ==(Object other) => identical(this, other) || other is PasswordReset && other.email == email;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (email.hashCode);
+      // ignore: unnecessary_parenthesis
+      (email.hashCode);
 
   @override
   String toString() => 'PasswordReset[email=$email]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'email'] = this.email;
+    json[r'email'] = this.email;
     return json;
   }
 
@@ -61,7 +60,10 @@ class PasswordReset {
     return null;
   }
 
-  static List<PasswordReset>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PasswordReset>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PasswordReset>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -89,12 +91,18 @@ class PasswordReset {
   }
 
   // maps a json object with a list of PasswordReset-objects as value to a dart map
-  static Map<String, List<PasswordReset>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<PasswordReset>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<PasswordReset>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PasswordReset.listFromJson(entry.value, growable: growable,);
+        final value = PasswordReset.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -108,4 +116,3 @@ class PasswordReset {
     'email',
   };
 }
-

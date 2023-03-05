@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class PriceCurrencyEnum {
   /// Instantiate a new enum with the provided [value].
   const PriceCurrencyEnum._(this.value);
@@ -38,7 +37,10 @@ class PriceCurrencyEnum {
 
   static PriceCurrencyEnum? fromJson(dynamic value) => PriceCurrencyEnumTypeTransformer().decode(value);
 
-  static List<PriceCurrencyEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PriceCurrencyEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PriceCurrencyEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -72,10 +74,14 @@ class PriceCurrencyEnumTypeTransformer {
   PriceCurrencyEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'CHF': return PriceCurrencyEnum.CHF;
-        case r'EUR': return PriceCurrencyEnum.EUR;
-        case r'GBP': return PriceCurrencyEnum.GBP;
-        case r'USD': return PriceCurrencyEnum.USD;
+        case r'CHF':
+          return PriceCurrencyEnum.CHF;
+        case r'EUR':
+          return PriceCurrencyEnum.EUR;
+        case r'GBP':
+          return PriceCurrencyEnum.GBP;
+        case r'USD':
+          return PriceCurrencyEnum.USD;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -88,4 +94,3 @@ class PriceCurrencyEnumTypeTransformer {
   /// Singleton [PriceCurrencyEnumTypeTransformer] instance.
   static PriceCurrencyEnumTypeTransformer? _instance;
 }
-

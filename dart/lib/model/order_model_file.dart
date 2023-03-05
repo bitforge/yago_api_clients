@@ -28,29 +28,24 @@ class OrderModelFile {
   DateTime created;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderModelFile &&
-     other.id == id &&
-     other.name == name &&
-     other.file == file &&
-     other.created == created;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderModelFile && other.id == id && other.name == name && other.file == file && other.created == created;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (name.hashCode) +
-    (file.hashCode) +
-    (created.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) + (name.hashCode) + (file.hashCode) + (created.hashCode);
 
   @override
   String toString() => 'OrderModelFile[id=$id, name=$name, file=$file, created=$created]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'name'] = this.name;
-      json[r'file'] = this.file;
-      json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'id'] = this.id;
+    json[r'name'] = this.name;
+    json[r'file'] = this.file;
+    json[r'created'] = this.created.toUtc().toIso8601String();
     return json;
   }
 
@@ -82,7 +77,10 @@ class OrderModelFile {
     return null;
   }
 
-  static List<OrderModelFile>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderModelFile>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderModelFile>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -110,12 +108,18 @@ class OrderModelFile {
   }
 
   // maps a json object with a list of OrderModelFile-objects as value to a dart map
-  static Map<String, List<OrderModelFile>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderModelFile>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderModelFile>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderModelFile.listFromJson(entry.value, growable: growable,);
+        final value = OrderModelFile.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -132,4 +136,3 @@ class OrderModelFile {
     'created',
   };
 }
-

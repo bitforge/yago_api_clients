@@ -25,26 +25,23 @@ class ChronicStats {
   int total;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ChronicStats &&
-     other.label == label &&
-     other.data == data &&
-     other.total == total;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ChronicStats && other.label == label && other.data == data && other.total == total;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (label.hashCode) +
-    (data.hashCode) +
-    (total.hashCode);
+      // ignore: unnecessary_parenthesis
+      (label.hashCode) + (data.hashCode) + (total.hashCode);
 
   @override
   String toString() => 'ChronicStats[label=$label, data=$data, total=$total]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'label'] = this.label;
-      json[r'data'] = this.data;
-      json[r'total'] = this.total;
+    json[r'label'] = this.label;
+    json[r'data'] = this.data;
+    json[r'total'] = this.total;
     return json;
   }
 
@@ -75,7 +72,10 @@ class ChronicStats {
     return null;
   }
 
-  static List<ChronicStats>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ChronicStats>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ChronicStats>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -103,12 +103,18 @@ class ChronicStats {
   }
 
   // maps a json object with a list of ChronicStats-objects as value to a dart map
-  static Map<String, List<ChronicStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ChronicStats>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ChronicStats>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ChronicStats.listFromJson(entry.value, growable: growable,);
+        final value = ChronicStats.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,4 +130,3 @@ class ChronicStats {
     'total',
   };
 }
-

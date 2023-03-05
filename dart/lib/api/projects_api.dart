@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class ProjectsApi {
   ProjectsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -23,7 +22,9 @@ class ProjectsApi {
   /// Parameters:
   ///
   /// * [ProjectCreate] projectCreate (required):
-  Future<Response> projectsCreateWithHttpInfo(ProjectCreate projectCreate,) async {
+  Future<Response> projectsCreateWithHttpInfo(
+    ProjectCreate projectCreate,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/projects/';
 
@@ -35,7 +36,6 @@ class ProjectsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -53,8 +53,12 @@ class ProjectsApi {
   /// Parameters:
   ///
   /// * [ProjectCreate] projectCreate (required):
-  Future<Project?> projectsCreate(ProjectCreate projectCreate,) async {
-    final response = await projectsCreateWithHttpInfo(projectCreate,);
+  Future<Project?> projectsCreate(
+    ProjectCreate projectCreate,
+  ) async {
+    final response = await projectsCreateWithHttpInfo(
+      projectCreate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -62,8 +66,10 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Project',) as Project;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Project',
+      ) as Project;
     }
     return null;
   }
@@ -76,10 +82,11 @@ class ProjectsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Project.
-  Future<Response> projectsDestroyWithHttpInfo(String id,) async {
+  Future<Response> projectsDestroyWithHttpInfo(
+    String id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/projects/{id}/'
-      .replaceAll('{id}', id);
+    final path = r'/api/projects/{id}/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -89,7 +96,6 @@ class ProjectsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -108,8 +114,12 @@ class ProjectsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Project.
-  Future<void> projectsDestroy(String id,) async {
-    final response = await projectsDestroyWithHttpInfo(id,);
+  Future<void> projectsDestroy(
+    String id,
+  ) async {
+    final response = await projectsDestroyWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -122,10 +132,11 @@ class ProjectsApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<Response> projectsImageDestroyWithHttpInfo(String id,) async {
+  Future<Response> projectsImageDestroyWithHttpInfo(
+    String id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/projects/{id}/image/'
-      .replaceAll('{id}', id);
+    final path = r'/api/projects/{id}/image/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -135,7 +146,6 @@ class ProjectsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -153,8 +163,12 @@ class ProjectsApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<void> projectsImageDestroy(String id,) async {
-    final response = await projectsImageDestroyWithHttpInfo(id,);
+  Future<void> projectsImageDestroy(
+    String id,
+  ) async {
+    final response = await projectsImageDestroyWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -173,10 +187,13 @@ class ProjectsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<Response> projectsImageUpdateWithHttpInfo(String contentDisposition, String id, { MultipartFile? body, }) async {
+  Future<Response> projectsImageUpdateWithHttpInfo(
+    String contentDisposition,
+    String id, {
+    MultipartFile? body,
+  }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/projects/{id}/image/'
-      .replaceAll('{id}', id);
+    final path = r'/api/projects/{id}/image/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody = body;
@@ -188,7 +205,6 @@ class ProjectsApi {
     headerParams[r'Content-Disposition'] = parameterToString(contentDisposition);
 
     const contentTypes = <String>['image/*'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -212,8 +228,16 @@ class ProjectsApi {
   ///   A UUID identifying this object.
   ///
   /// * [MultipartFile] body:
-  Future<FileUpload?> projectsImageUpdate(String contentDisposition, String id, { MultipartFile? body, }) async {
-    final response = await projectsImageUpdateWithHttpInfo(contentDisposition, id,  body: body, );
+  Future<FileUpload?> projectsImageUpdate(
+    String contentDisposition,
+    String id, {
+    MultipartFile? body,
+  }) async {
+    final response = await projectsImageUpdateWithHttpInfo(
+      contentDisposition,
+      id,
+      body: body,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -221,8 +245,10 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileUpload',) as FileUpload;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'FileUpload',
+      ) as FileUpload;
     }
     return null;
   }
@@ -242,7 +268,6 @@ class ProjectsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -266,10 +291,7 @@ class ProjectsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Project>') as List)
-        .cast<Project>()
-        .toList();
-
+      return (await apiClient.deserializeAsync(responseBody, 'List<Project>') as List).cast<Project>().toList();
     }
     return null;
   }
@@ -284,10 +306,12 @@ class ProjectsApi {
   ///   A UUID string identifying this Project.
   ///
   /// * [PatchedProjectUpdate] patchedProjectUpdate:
-  Future<Response> projectsPartialUpdateWithHttpInfo(String id, { PatchedProjectUpdate? patchedProjectUpdate, }) async {
+  Future<Response> projectsPartialUpdateWithHttpInfo(
+    String id, {
+    PatchedProjectUpdate? patchedProjectUpdate,
+  }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/projects/{id}/'
-      .replaceAll('{id}', id);
+    final path = r'/api/projects/{id}/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody = patchedProjectUpdate;
@@ -297,7 +321,6 @@ class ProjectsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -318,8 +341,14 @@ class ProjectsApi {
   ///   A UUID string identifying this Project.
   ///
   /// * [PatchedProjectUpdate] patchedProjectUpdate:
-  Future<ProjectUpdate?> projectsPartialUpdate(String id, { PatchedProjectUpdate? patchedProjectUpdate, }) async {
-    final response = await projectsPartialUpdateWithHttpInfo(id,  patchedProjectUpdate: patchedProjectUpdate, );
+  Future<ProjectUpdate?> projectsPartialUpdate(
+    String id, {
+    PatchedProjectUpdate? patchedProjectUpdate,
+  }) async {
+    final response = await projectsPartialUpdateWithHttpInfo(
+      id,
+      patchedProjectUpdate: patchedProjectUpdate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -327,8 +356,10 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectUpdate',) as ProjectUpdate;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'ProjectUpdate',
+      ) as ProjectUpdate;
     }
     return null;
   }
@@ -341,10 +372,11 @@ class ProjectsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Project.
-  Future<Response> projectsRetrieveWithHttpInfo(String id,) async {
+  Future<Response> projectsRetrieveWithHttpInfo(
+    String id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/projects/{id}/'
-      .replaceAll('{id}', id);
+    final path = r'/api/projects/{id}/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -354,7 +386,6 @@ class ProjectsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -373,8 +404,12 @@ class ProjectsApi {
   ///
   /// * [String] id (required):
   ///   A UUID string identifying this Project.
-  Future<Project?> projectsRetrieve(String id,) async {
-    final response = await projectsRetrieveWithHttpInfo(id,);
+  Future<Project?> projectsRetrieve(
+    String id,
+  ) async {
+    final response = await projectsRetrieveWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -382,8 +417,10 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Project',) as Project;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Project',
+      ) as Project;
     }
     return null;
   }
@@ -398,10 +435,12 @@ class ProjectsApi {
   ///   A UUID string identifying this Project.
   ///
   /// * [ProjectUpdate] projectUpdate (required):
-  Future<Response> projectsUpdateWithHttpInfo(String id, ProjectUpdate projectUpdate,) async {
+  Future<Response> projectsUpdateWithHttpInfo(
+    String id,
+    ProjectUpdate projectUpdate,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/projects/{id}/'
-      .replaceAll('{id}', id);
+    final path = r'/api/projects/{id}/'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody = projectUpdate;
@@ -411,7 +450,6 @@ class ProjectsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -432,8 +470,14 @@ class ProjectsApi {
   ///   A UUID string identifying this Project.
   ///
   /// * [ProjectUpdate] projectUpdate (required):
-  Future<ProjectUpdate?> projectsUpdate(String id, ProjectUpdate projectUpdate,) async {
-    final response = await projectsUpdateWithHttpInfo(id, projectUpdate,);
+  Future<ProjectUpdate?> projectsUpdate(
+    String id,
+    ProjectUpdate projectUpdate,
+  ) async {
+    final response = await projectsUpdateWithHttpInfo(
+      id,
+      projectUpdate,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -441,8 +485,10 @@ class ProjectsApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProjectUpdate',) as ProjectUpdate;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'ProjectUpdate',
+      ) as ProjectUpdate;
     }
     return null;
   }

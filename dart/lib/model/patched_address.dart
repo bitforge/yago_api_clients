@@ -71,34 +71,37 @@ class PatchedAddress {
   CountryEnum? country;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is PatchedAddress &&
-     other.id == id &&
-     other.name == name &&
-     other.email == email &&
-     other.phone == phone &&
-     other.line1 == line1 &&
-     other.line2 == line2 &&
-     other.postalCode == postalCode &&
-     other.city == city &&
-     other.state == state &&
-     other.country == country;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PatchedAddress &&
+          other.id == id &&
+          other.name == name &&
+          other.email == email &&
+          other.phone == phone &&
+          other.line1 == line1 &&
+          other.line2 == line2 &&
+          other.postalCode == postalCode &&
+          other.city == city &&
+          other.state == state &&
+          other.country == country;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id == null ? 0 : id!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (email == null ? 0 : email!.hashCode) +
-    (phone == null ? 0 : phone!.hashCode) +
-    (line1 == null ? 0 : line1!.hashCode) +
-    (line2 == null ? 0 : line2!.hashCode) +
-    (postalCode == null ? 0 : postalCode!.hashCode) +
-    (city == null ? 0 : city!.hashCode) +
-    (state == null ? 0 : state!.hashCode) +
-    (country == null ? 0 : country!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id == null ? 0 : id!.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (email == null ? 0 : email!.hashCode) +
+      (phone == null ? 0 : phone!.hashCode) +
+      (line1 == null ? 0 : line1!.hashCode) +
+      (line2 == null ? 0 : line2!.hashCode) +
+      (postalCode == null ? 0 : postalCode!.hashCode) +
+      (city == null ? 0 : city!.hashCode) +
+      (state == null ? 0 : state!.hashCode) +
+      (country == null ? 0 : country!.hashCode);
 
   @override
-  String toString() => 'PatchedAddress[id=$id, name=$name, email=$email, phone=$phone, line1=$line1, line2=$line2, postalCode=$postalCode, city=$city, state=$state, country=$country]';
+  String toString() =>
+      'PatchedAddress[id=$id, name=$name, email=$email, phone=$phone, line1=$line1, line2=$line2, postalCode=$postalCode, city=$city, state=$state, country=$country]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -189,7 +192,10 @@ class PatchedAddress {
     return null;
   }
 
-  static List<PatchedAddress>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PatchedAddress>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PatchedAddress>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -217,12 +223,18 @@ class PatchedAddress {
   }
 
   // maps a json object with a list of PatchedAddress-objects as value to a dart map
-  static Map<String, List<PatchedAddress>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<PatchedAddress>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<PatchedAddress>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = PatchedAddress.listFromJson(entry.value, growable: growable,);
+        final value = PatchedAddress.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -232,7 +244,5 @@ class PatchedAddress {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-

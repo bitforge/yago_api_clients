@@ -22,23 +22,21 @@ class SummaryStats {
   Map<String, Object> datasets;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SummaryStats &&
-     other.labels == labels &&
-     other.datasets == datasets;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is SummaryStats && other.labels == labels && other.datasets == datasets;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (labels.hashCode) +
-    (datasets.hashCode);
+      // ignore: unnecessary_parenthesis
+      (labels.hashCode) + (datasets.hashCode);
 
   @override
   String toString() => 'SummaryStats[labels=$labels, datasets=$datasets]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'labels'] = this.labels;
-      json[r'datasets'] = this.datasets;
+    json[r'labels'] = this.labels;
+    json[r'datasets'] = this.datasets;
     return json;
   }
 
@@ -61,14 +59,17 @@ class SummaryStats {
       }());
 
       return SummaryStats(
-        labels: Object.listFromJson(json[r'labels'])!,
+        labels: List<Object>.from(json[r'labels'])!,
         datasets: mapCastOfType<String, Object>(json, r'datasets')!,
       );
     }
     return null;
   }
 
-  static List<SummaryStats>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SummaryStats>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SummaryStats>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +97,18 @@ class SummaryStats {
   }
 
   // maps a json object with a list of SummaryStats-objects as value to a dart map
-  static Map<String, List<SummaryStats>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SummaryStats>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SummaryStats>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = SummaryStats.listFromJson(entry.value, growable: growable,);
+        final value = SummaryStats.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,4 +123,3 @@ class SummaryStats {
     'datasets',
   };
 }
-

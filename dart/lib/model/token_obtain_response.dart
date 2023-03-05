@@ -22,23 +22,21 @@ class TokenObtainResponse {
   String refresh;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TokenObtainResponse &&
-     other.access == access &&
-     other.refresh == refresh;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is TokenObtainResponse && other.access == access && other.refresh == refresh;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (access.hashCode) +
-    (refresh.hashCode);
+      // ignore: unnecessary_parenthesis
+      (access.hashCode) + (refresh.hashCode);
 
   @override
   String toString() => 'TokenObtainResponse[access=$access, refresh=$refresh]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'access'] = this.access;
-      json[r'refresh'] = this.refresh;
+    json[r'access'] = this.access;
+    json[r'refresh'] = this.refresh;
     return json;
   }
 
@@ -68,7 +66,10 @@ class TokenObtainResponse {
     return null;
   }
 
-  static List<TokenObtainResponse>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TokenObtainResponse>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TokenObtainResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -96,12 +97,18 @@ class TokenObtainResponse {
   }
 
   // maps a json object with a list of TokenObtainResponse-objects as value to a dart map
-  static Map<String, List<TokenObtainResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<TokenObtainResponse>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<TokenObtainResponse>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = TokenObtainResponse.listFromJson(entry.value, growable: growable,);
+        final value = TokenObtainResponse.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -116,4 +123,3 @@ class TokenObtainResponse {
     'refresh',
   };
 }
-

@@ -22,24 +22,24 @@ class Model {
     this.nameIt,
     this.slug,
     this.image,
-    required this.imageThumb,
-    required this.imagePreview,
+    this.imageThumb = '',
+    this.imagePreview = '',
     this.preview,
     this.status,
-    required this.description,
+    this.description = '',
     this.descriptionDe,
     this.descriptionEn,
     this.descriptionFr,
     this.descriptionIt,
     this.number,
-    required this.siteUrl,
+    this.siteUrl = '',
     this.siteUrlDe,
     this.siteUrlEn,
     this.siteUrlFr,
     this.siteUrlIt,
     this.sku,
     this.price,
-    required this.priceCurrency,
+    this.priceCurrency = 'CHF',
     this.scaleable,
     this.glb,
     this.usdz,
@@ -137,7 +137,7 @@ class Model {
   /// Display price. The effective price is determined by the external webstore.
   double? price;
 
-  String? priceCurrency;
+  String priceCurrency;
 
   /// Let's the user scale the model in AR when enabled.
   ///
@@ -173,90 +173,93 @@ class Model {
   bool? verticalPlacement;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Model &&
-     other.id == id &&
-     other.project == project &&
-     other.name == name &&
-     other.nameDe == nameDe &&
-     other.nameEn == nameEn &&
-     other.nameFr == nameFr &&
-     other.nameIt == nameIt &&
-     other.slug == slug &&
-     other.image == image &&
-     other.imageThumb == imageThumb &&
-     other.imagePreview == imagePreview &&
-     other.preview == preview &&
-     other.status == status &&
-     other.description == description &&
-     other.descriptionDe == descriptionDe &&
-     other.descriptionEn == descriptionEn &&
-     other.descriptionFr == descriptionFr &&
-     other.descriptionIt == descriptionIt &&
-     other.number == number &&
-     other.siteUrl == siteUrl &&
-     other.siteUrlDe == siteUrlDe &&
-     other.siteUrlEn == siteUrlEn &&
-     other.siteUrlFr == siteUrlFr &&
-     other.siteUrlIt == siteUrlIt &&
-     other.sku == sku &&
-     other.price == price &&
-     other.priceCurrency == priceCurrency &&
-     other.scaleable == scaleable &&
-     other.glb == glb &&
-     other.usdz == usdz &&
-     other.model == model &&
-     other.arbuttonConfig == arbuttonConfig &&
-     other.created == created &&
-     other.modified == modified &&
-     other.verticalPlacement == verticalPlacement;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Model &&
+          other.id == id &&
+          other.project == project &&
+          other.name == name &&
+          other.nameDe == nameDe &&
+          other.nameEn == nameEn &&
+          other.nameFr == nameFr &&
+          other.nameIt == nameIt &&
+          other.slug == slug &&
+          other.image == image &&
+          other.imageThumb == imageThumb &&
+          other.imagePreview == imagePreview &&
+          other.preview == preview &&
+          other.status == status &&
+          other.description == description &&
+          other.descriptionDe == descriptionDe &&
+          other.descriptionEn == descriptionEn &&
+          other.descriptionFr == descriptionFr &&
+          other.descriptionIt == descriptionIt &&
+          other.number == number &&
+          other.siteUrl == siteUrl &&
+          other.siteUrlDe == siteUrlDe &&
+          other.siteUrlEn == siteUrlEn &&
+          other.siteUrlFr == siteUrlFr &&
+          other.siteUrlIt == siteUrlIt &&
+          other.sku == sku &&
+          other.price == price &&
+          other.priceCurrency == priceCurrency &&
+          other.scaleable == scaleable &&
+          other.glb == glb &&
+          other.usdz == usdz &&
+          other.model == model &&
+          other.arbuttonConfig == arbuttonConfig &&
+          other.created == created &&
+          other.modified == modified &&
+          other.verticalPlacement == verticalPlacement;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (project.hashCode) +
-    (name.hashCode) +
-    (nameDe == null ? 0 : nameDe!.hashCode) +
-    (nameEn == null ? 0 : nameEn!.hashCode) +
-    (nameFr == null ? 0 : nameFr!.hashCode) +
-    (nameIt == null ? 0 : nameIt!.hashCode) +
-    (slug == null ? 0 : slug!.hashCode) +
-    (image == null ? 0 : image!.hashCode) +
-    (imageThumb.hashCode) +
-    (imagePreview.hashCode) +
-    (preview == null ? 0 : preview!.hashCode) +
-    (status == null ? 0 : status!.hashCode) +
-    (description.hashCode) +
-    (descriptionDe == null ? 0 : descriptionDe!.hashCode) +
-    (descriptionEn == null ? 0 : descriptionEn!.hashCode) +
-    (descriptionFr == null ? 0 : descriptionFr!.hashCode) +
-    (descriptionIt == null ? 0 : descriptionIt!.hashCode) +
-    (number == null ? 0 : number!.hashCode) +
-    (siteUrl.hashCode) +
-    (siteUrlDe == null ? 0 : siteUrlDe!.hashCode) +
-    (siteUrlEn == null ? 0 : siteUrlEn!.hashCode) +
-    (siteUrlFr == null ? 0 : siteUrlFr!.hashCode) +
-    (siteUrlIt == null ? 0 : siteUrlIt!.hashCode) +
-    (sku == null ? 0 : sku!.hashCode) +
-    (price == null ? 0 : price!.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
-    (scaleable == null ? 0 : scaleable!.hashCode) +
-    (glb == null ? 0 : glb!.hashCode) +
-    (usdz == null ? 0 : usdz!.hashCode) +
-    (model == null ? 0 : model!.hashCode) +
-    (arbuttonConfig.hashCode) +
-    (created.hashCode) +
-    (modified.hashCode) +
-    (verticalPlacement == null ? 0 : verticalPlacement!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (project.hashCode) +
+      (name.hashCode) +
+      (nameDe == null ? 0 : nameDe!.hashCode) +
+      (nameEn == null ? 0 : nameEn!.hashCode) +
+      (nameFr == null ? 0 : nameFr!.hashCode) +
+      (nameIt == null ? 0 : nameIt!.hashCode) +
+      (slug == null ? 0 : slug!.hashCode) +
+      (image == null ? 0 : image!.hashCode) +
+      (imageThumb.hashCode) +
+      (imagePreview.hashCode) +
+      (preview == null ? 0 : preview!.hashCode) +
+      (status == null ? 0 : status!.hashCode) +
+      (description.hashCode) +
+      (descriptionDe == null ? 0 : descriptionDe!.hashCode) +
+      (descriptionEn == null ? 0 : descriptionEn!.hashCode) +
+      (descriptionFr == null ? 0 : descriptionFr!.hashCode) +
+      (descriptionIt == null ? 0 : descriptionIt!.hashCode) +
+      (number == null ? 0 : number!.hashCode) +
+      (siteUrl.hashCode) +
+      (siteUrlDe == null ? 0 : siteUrlDe!.hashCode) +
+      (siteUrlEn == null ? 0 : siteUrlEn!.hashCode) +
+      (siteUrlFr == null ? 0 : siteUrlFr!.hashCode) +
+      (siteUrlIt == null ? 0 : siteUrlIt!.hashCode) +
+      (sku == null ? 0 : sku!.hashCode) +
+      (price == null ? 0 : price!.hashCode) +
+      (priceCurrency.hashCode) +
+      (scaleable == null ? 0 : scaleable!.hashCode) +
+      (glb == null ? 0 : glb!.hashCode) +
+      (usdz == null ? 0 : usdz!.hashCode) +
+      (model == null ? 0 : model!.hashCode) +
+      (arbuttonConfig.hashCode) +
+      (created.hashCode) +
+      (modified.hashCode) +
+      (verticalPlacement == null ? 0 : verticalPlacement!.hashCode);
 
   @override
-  String toString() => 'Model[id=$id, project=$project, name=$name, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, preview=$preview, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrl=$siteUrl, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, sku=$sku, price=$price, priceCurrency=$priceCurrency, scaleable=$scaleable, glb=$glb, usdz=$usdz, model=$model, arbuttonConfig=$arbuttonConfig, created=$created, modified=$modified, verticalPlacement=$verticalPlacement]';
+  String toString() =>
+      'Model[id=$id, project=$project, name=$name, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, preview=$preview, status=$status, description=$description, descriptionDe=$descriptionDe, descriptionEn=$descriptionEn, descriptionFr=$descriptionFr, descriptionIt=$descriptionIt, number=$number, siteUrl=$siteUrl, siteUrlDe=$siteUrlDe, siteUrlEn=$siteUrlEn, siteUrlFr=$siteUrlFr, siteUrlIt=$siteUrlIt, sku=$sku, price=$price, priceCurrency=$priceCurrency, scaleable=$scaleable, glb=$glb, usdz=$usdz, model=$model, arbuttonConfig=$arbuttonConfig, created=$created, modified=$modified, verticalPlacement=$verticalPlacement]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'project'] = this.project;
-      json[r'name'] = this.name;
+    json[r'id'] = this.id;
+    json[r'project'] = this.project;
+    json[r'name'] = this.name;
     if (this.nameDe != null) {
       json[r'name_de'] = this.nameDe;
     } else {
@@ -287,8 +290,8 @@ class Model {
     } else {
       json[r'image'] = null;
     }
-      json[r'image_thumb'] = this.imageThumb;
-      json[r'image_preview'] = this.imagePreview;
+    json[r'image_thumb'] = this.imageThumb;
+    json[r'image_preview'] = this.imagePreview;
     if (this.preview != null) {
       json[r'preview'] = this.preview;
     } else {
@@ -299,7 +302,7 @@ class Model {
     } else {
       json[r'status'] = null;
     }
-      json[r'description'] = this.description;
+    json[r'description'] = this.description;
     if (this.descriptionDe != null) {
       json[r'description_de'] = this.descriptionDe;
     } else {
@@ -325,7 +328,7 @@ class Model {
     } else {
       json[r'number'] = null;
     }
-      json[r'site_url'] = this.siteUrl;
+    json[r'site_url'] = this.siteUrl;
     if (this.siteUrlDe != null) {
       json[r'site_url_de'] = this.siteUrlDe;
     } else {
@@ -356,11 +359,7 @@ class Model {
     } else {
       json[r'price'] = null;
     }
-    if (this.priceCurrency != null) {
-      json[r'price_currency'] = this.priceCurrency;
-    } else {
-      json[r'price_currency'] = null;
-    }
+    json[r'price_currency'] = this.priceCurrency;
     if (this.scaleable != null) {
       json[r'scaleable'] = this.scaleable;
     } else {
@@ -381,9 +380,9 @@ class Model {
     } else {
       json[r'model'] = null;
     }
-      json[r'arbutton_config'] = this.arbuttonConfig;
-      json[r'created'] = this.created.toUtc().toIso8601String();
-      json[r'modified'] = this.modified.toUtc().toIso8601String();
+    json[r'arbutton_config'] = this.arbuttonConfig;
+    json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'modified'] = this.modified.toUtc().toIso8601String();
     if (this.verticalPlacement != null) {
       json[r'vertical_placement'] = this.verticalPlacement;
     } else {
@@ -420,29 +419,29 @@ class Model {
         nameIt: mapValueOfType<String>(json, r'name_it'),
         slug: mapValueOfType<String>(json, r'slug'),
         image: mapValueOfType<String>(json, r'image'),
-        imageThumb: mapValueOfType<String>(json, r'image_thumb')!,
-        imagePreview: mapValueOfType<String>(json, r'image_preview')!,
+        imageThumb: mapValueOfType<String>(json, r'image_thumb') ?? '',
+        imagePreview: mapValueOfType<String>(json, r'image_preview') ?? '',
         preview: mapValueOfType<bool>(json, r'preview'),
         status: ModelStatus.fromJson(json[r'status']),
-        description: mapValueOfType<String>(json, r'description')!,
+        description: mapValueOfType<String>(json, r'description') ?? '',
         descriptionDe: mapValueOfType<String>(json, r'description_de'),
         descriptionEn: mapValueOfType<String>(json, r'description_en'),
         descriptionFr: mapValueOfType<String>(json, r'description_fr'),
         descriptionIt: mapValueOfType<String>(json, r'description_it'),
         number: mapValueOfType<int>(json, r'number'),
-        siteUrl: mapValueOfType<String>(json, r'site_url')!,
+        siteUrl: mapValueOfType<String>(json, r'site_url') ?? '',
         siteUrlDe: mapValueOfType<String>(json, r'site_url_de'),
         siteUrlEn: mapValueOfType<String>(json, r'site_url_en'),
         siteUrlFr: mapValueOfType<String>(json, r'site_url_fr'),
         siteUrlIt: mapValueOfType<String>(json, r'site_url_it'),
         sku: mapValueOfType<String>(json, r'sku'),
         price: mapValueOfType<double>(json, r'price'),
-        priceCurrency: mapValueOfType<String>(json, r'price_currency'),
+        priceCurrency: mapValueOfType<String>(json, r'price_currency') ?? 'CHF',
         scaleable: mapValueOfType<bool>(json, r'scaleable'),
         glb: mapValueOfType<String>(json, r'glb'),
         usdz: mapValueOfType<String>(json, r'usdz'),
         model: mapValueOfType<String>(json, r'model'),
-        arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config')!,
+        arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config') ?? const {},
         created: mapDateTime(json, r'created', '')!,
         modified: mapDateTime(json, r'modified', '')!,
         verticalPlacement: mapValueOfType<bool>(json, r'vertical_placement'),
@@ -451,7 +450,10 @@ class Model {
     return null;
   }
 
-  static List<Model>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Model>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <Model>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -479,12 +481,18 @@ class Model {
   }
 
   // maps a json object with a list of Model-objects as value to a dart map
-  static Map<String, List<Model>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<Model>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<Model>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Model.listFromJson(entry.value, growable: growable,);
+        final value = Model.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -498,14 +506,7 @@ class Model {
     'id',
     'project',
     'name',
-    'image_thumb',
-    'image_preview',
-    'description',
-    'site_url',
-    'price_currency',
-    'arbutton_config',
     'created',
     'modified',
   };
 }
-

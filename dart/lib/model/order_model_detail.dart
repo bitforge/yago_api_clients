@@ -53,44 +53,47 @@ class OrderModelDetail {
   List<OrderModelComment> comments;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderModelDetail &&
-     other.id == id &&
-     other.name == name &&
-     other.state == state &&
-     other.website == website &&
-     other.widthMm == widthMm &&
-     other.heightMm == heightMm &&
-     other.depthMm == depthMm &&
-     other.model == model &&
-     other.created == created &&
-     other.modified == modified &&
-     other.files == files &&
-     other.comments == comments;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderModelDetail &&
+          other.id == id &&
+          other.name == name &&
+          other.state == state &&
+          other.website == website &&
+          other.widthMm == widthMm &&
+          other.heightMm == heightMm &&
+          other.depthMm == depthMm &&
+          other.model == model &&
+          other.created == created &&
+          other.modified == modified &&
+          other.files == files &&
+          other.comments == comments;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (name.hashCode) +
-    (state.hashCode) +
-    (website == null ? 0 : website!.hashCode) +
-    (widthMm == null ? 0 : widthMm!.hashCode) +
-    (heightMm == null ? 0 : heightMm!.hashCode) +
-    (depthMm == null ? 0 : depthMm!.hashCode) +
-    (model == null ? 0 : model!.hashCode) +
-    (created.hashCode) +
-    (modified.hashCode) +
-    (files.hashCode) +
-    (comments.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (name.hashCode) +
+      (state.hashCode) +
+      (website == null ? 0 : website!.hashCode) +
+      (widthMm == null ? 0 : widthMm!.hashCode) +
+      (heightMm == null ? 0 : heightMm!.hashCode) +
+      (depthMm == null ? 0 : depthMm!.hashCode) +
+      (model == null ? 0 : model!.hashCode) +
+      (created.hashCode) +
+      (modified.hashCode) +
+      (files.hashCode) +
+      (comments.hashCode);
 
   @override
-  String toString() => 'OrderModelDetail[id=$id, name=$name, state=$state, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm, model=$model, created=$created, modified=$modified, files=$files, comments=$comments]';
+  String toString() =>
+      'OrderModelDetail[id=$id, name=$name, state=$state, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm, model=$model, created=$created, modified=$modified, files=$files, comments=$comments]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'name'] = this.name;
-      json[r'state'] = this.state;
+    json[r'id'] = this.id;
+    json[r'name'] = this.name;
+    json[r'state'] = this.state;
     if (this.website != null) {
       json[r'website'] = this.website;
     } else {
@@ -116,10 +119,10 @@ class OrderModelDetail {
     } else {
       json[r'model'] = null;
     }
-      json[r'created'] = this.created.toUtc().toIso8601String();
-      json[r'modified'] = this.modified.toUtc().toIso8601String();
-      json[r'files'] = this.files;
-      json[r'comments'] = this.comments;
+    json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'modified'] = this.modified.toUtc().toIso8601String();
+    json[r'files'] = this.files;
+    json[r'comments'] = this.comments;
     return json;
   }
 
@@ -159,7 +162,10 @@ class OrderModelDetail {
     return null;
   }
 
-  static List<OrderModelDetail>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderModelDetail>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderModelDetail>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -187,12 +193,18 @@ class OrderModelDetail {
   }
 
   // maps a json object with a list of OrderModelDetail-objects as value to a dart map
-  static Map<String, List<OrderModelDetail>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderModelDetail>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderModelDetail>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderModelDetail.listFromJson(entry.value, growable: growable,);
+        final value = OrderModelDetail.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -213,4 +225,3 @@ class OrderModelDetail {
     'comments',
   };
 }
-

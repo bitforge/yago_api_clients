@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class OrderState {
   /// Instantiate a new enum with the provided [value].
   const OrderState._(this.value);
@@ -44,7 +43,10 @@ class OrderState {
 
   static OrderState? fromJson(dynamic value) => OrderStateTypeTransformer().decode(value);
 
-  static List<OrderState>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderState>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderState>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -78,13 +80,20 @@ class OrderStateTypeTransformer {
   OrderState? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'PREPARING': return OrderState.PREPARING;
-        case r'ESTIMATING': return OrderState.ESTIMATING;
-        case r'READY_TO_PAY': return OrderState.READY_TO_PAY;
-        case r'IN_PROGRESS': return OrderState.IN_PROGRESS;
-        case r'IN_REVIEW': return OrderState.IN_REVIEW;
-        case r'FINISHED': return OrderState.FINISHED;
-        case r'RAGE_QUIT': return OrderState.RAGE_QUIT;
+        case r'PREPARING':
+          return OrderState.PREPARING;
+        case r'ESTIMATING':
+          return OrderState.ESTIMATING;
+        case r'READY_TO_PAY':
+          return OrderState.READY_TO_PAY;
+        case r'IN_PROGRESS':
+          return OrderState.IN_PROGRESS;
+        case r'IN_REVIEW':
+          return OrderState.IN_REVIEW;
+        case r'FINISHED':
+          return OrderState.FINISHED;
+        case r'RAGE_QUIT':
+          return OrderState.RAGE_QUIT;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -97,4 +106,3 @@ class OrderStateTypeTransformer {
   /// Singleton [OrderStateTypeTransformer] instance.
   static OrderStateTypeTransformer? _instance;
 }
-

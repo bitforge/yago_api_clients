@@ -62,39 +62,42 @@ class User {
   bool isContractor;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is User &&
-     other.id == id &&
-     other.email == email &&
-     other.firstName == firstName &&
-     other.lastName == lastName &&
-     other.customerName == customerName &&
-     other.dateJoined == dateJoined &&
-     other.isActive == isActive &&
-     other.isStaff == isStaff &&
-     other.isSuperuser == isSuperuser &&
-     other.isContractor == isContractor;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is User &&
+          other.id == id &&
+          other.email == email &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.customerName == customerName &&
+          other.dateJoined == dateJoined &&
+          other.isActive == isActive &&
+          other.isStaff == isStaff &&
+          other.isSuperuser == isSuperuser &&
+          other.isContractor == isContractor;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (email.hashCode) +
-    (firstName == null ? 0 : firstName!.hashCode) +
-    (lastName == null ? 0 : lastName!.hashCode) +
-    (customerName.hashCode) +
-    (dateJoined.hashCode) +
-    (isActive.hashCode) +
-    (isStaff.hashCode) +
-    (isSuperuser.hashCode) +
-    (isContractor.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (email.hashCode) +
+      (firstName == null ? 0 : firstName!.hashCode) +
+      (lastName == null ? 0 : lastName!.hashCode) +
+      (customerName.hashCode) +
+      (dateJoined.hashCode) +
+      (isActive.hashCode) +
+      (isStaff.hashCode) +
+      (isSuperuser.hashCode) +
+      (isContractor.hashCode);
 
   @override
-  String toString() => 'User[id=$id, email=$email, firstName=$firstName, lastName=$lastName, customerName=$customerName, dateJoined=$dateJoined, isActive=$isActive, isStaff=$isStaff, isSuperuser=$isSuperuser, isContractor=$isContractor]';
+  String toString() =>
+      'User[id=$id, email=$email, firstName=$firstName, lastName=$lastName, customerName=$customerName, dateJoined=$dateJoined, isActive=$isActive, isStaff=$isStaff, isSuperuser=$isSuperuser, isContractor=$isContractor]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'email'] = this.email;
+    json[r'id'] = this.id;
+    json[r'email'] = this.email;
     if (this.firstName != null) {
       json[r'first_name'] = this.firstName;
     } else {
@@ -105,12 +108,12 @@ class User {
     } else {
       json[r'last_name'] = null;
     }
-      json[r'customer_name'] = this.customerName;
-      json[r'date_joined'] = this.dateJoined.toUtc().toIso8601String();
-      json[r'is_active'] = this.isActive;
-      json[r'is_staff'] = this.isStaff;
-      json[r'is_superuser'] = this.isSuperuser;
-      json[r'is_contractor'] = this.isContractor;
+    json[r'customer_name'] = this.customerName;
+    json[r'date_joined'] = this.dateJoined.toUtc().toIso8601String();
+    json[r'is_active'] = this.isActive;
+    json[r'is_staff'] = this.isStaff;
+    json[r'is_superuser'] = this.isSuperuser;
+    json[r'is_contractor'] = this.isContractor;
     return json;
   }
 
@@ -148,7 +151,10 @@ class User {
     return null;
   }
 
-  static List<User>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<User>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <User>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -176,12 +182,18 @@ class User {
   }
 
   // maps a json object with a list of User-objects as value to a dart map
-  static Map<String, List<User>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<User>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<User>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = User.listFromJson(entry.value, growable: growable,);
+        final value = User.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -202,4 +214,3 @@ class User {
     'is_contractor',
   };
 }
-

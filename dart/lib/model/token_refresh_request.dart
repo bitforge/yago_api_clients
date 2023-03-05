@@ -19,20 +19,19 @@ class TokenRefreshRequest {
   String refresh;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TokenRefreshRequest &&
-     other.refresh == refresh;
+  bool operator ==(Object other) => identical(this, other) || other is TokenRefreshRequest && other.refresh == refresh;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (refresh.hashCode);
+      // ignore: unnecessary_parenthesis
+      (refresh.hashCode);
 
   @override
   String toString() => 'TokenRefreshRequest[refresh=$refresh]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'refresh'] = this.refresh;
+    json[r'refresh'] = this.refresh;
     return json;
   }
 
@@ -61,7 +60,10 @@ class TokenRefreshRequest {
     return null;
   }
 
-  static List<TokenRefreshRequest>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TokenRefreshRequest>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TokenRefreshRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -89,12 +91,18 @@ class TokenRefreshRequest {
   }
 
   // maps a json object with a list of TokenRefreshRequest-objects as value to a dart map
-  static Map<String, List<TokenRefreshRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<TokenRefreshRequest>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<TokenRefreshRequest>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = TokenRefreshRequest.listFromJson(entry.value, growable: growable,);
+        final value = TokenRefreshRequest.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -108,4 +116,3 @@ class TokenRefreshRequest {
     'refresh',
   };
 }
-

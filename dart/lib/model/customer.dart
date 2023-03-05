@@ -18,14 +18,14 @@ class Customer {
     this.plan,
     required this.slug,
     this.image,
-    required this.imageThumb,
-    required this.imagePreview,
+    this.imageThumb = '',
+    this.imagePreview = '',
     this.website,
     this.description,
     this.contactAddress,
     this.billingAddress,
     this.paymentMethod,
-    required this.modelsCount,
+    this.modelsCount = 0,
   });
 
   String id;
@@ -65,58 +65,61 @@ class Customer {
   int modelsCount;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Customer &&
-     other.id == id &&
-     other.name == name &&
-     other.plan == plan &&
-     other.slug == slug &&
-     other.image == image &&
-     other.imageThumb == imageThumb &&
-     other.imagePreview == imagePreview &&
-     other.website == website &&
-     other.description == description &&
-     other.contactAddress == contactAddress &&
-     other.billingAddress == billingAddress &&
-     other.paymentMethod == paymentMethod &&
-     other.modelsCount == modelsCount;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Customer &&
+          other.id == id &&
+          other.name == name &&
+          other.plan == plan &&
+          other.slug == slug &&
+          other.image == image &&
+          other.imageThumb == imageThumb &&
+          other.imagePreview == imagePreview &&
+          other.website == website &&
+          other.description == description &&
+          other.contactAddress == contactAddress &&
+          other.billingAddress == billingAddress &&
+          other.paymentMethod == paymentMethod &&
+          other.modelsCount == modelsCount;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (name.hashCode) +
-    (plan == null ? 0 : plan!.hashCode) +
-    (slug.hashCode) +
-    (image == null ? 0 : image!.hashCode) +
-    (imageThumb.hashCode) +
-    (imagePreview.hashCode) +
-    (website == null ? 0 : website!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (contactAddress == null ? 0 : contactAddress!.hashCode) +
-    (billingAddress == null ? 0 : billingAddress!.hashCode) +
-    (paymentMethod == null ? 0 : paymentMethod!.hashCode) +
-    (modelsCount.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (name.hashCode) +
+      (plan == null ? 0 : plan!.hashCode) +
+      (slug.hashCode) +
+      (image == null ? 0 : image!.hashCode) +
+      (imageThumb.hashCode) +
+      (imagePreview.hashCode) +
+      (website == null ? 0 : website!.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (contactAddress == null ? 0 : contactAddress!.hashCode) +
+      (billingAddress == null ? 0 : billingAddress!.hashCode) +
+      (paymentMethod == null ? 0 : paymentMethod!.hashCode) +
+      (modelsCount.hashCode);
 
   @override
-  String toString() => 'Customer[id=$id, name=$name, plan=$plan, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, contactAddress=$contactAddress, billingAddress=$billingAddress, paymentMethod=$paymentMethod, modelsCount=$modelsCount]';
+  String toString() =>
+      'Customer[id=$id, name=$name, plan=$plan, slug=$slug, image=$image, imageThumb=$imageThumb, imagePreview=$imagePreview, website=$website, description=$description, contactAddress=$contactAddress, billingAddress=$billingAddress, paymentMethod=$paymentMethod, modelsCount=$modelsCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'name'] = this.name;
+    json[r'id'] = this.id;
+    json[r'name'] = this.name;
     if (this.plan != null) {
       json[r'plan'] = this.plan;
     } else {
       json[r'plan'] = null;
     }
-      json[r'slug'] = this.slug;
+    json[r'slug'] = this.slug;
     if (this.image != null) {
       json[r'image'] = this.image;
     } else {
       json[r'image'] = null;
     }
-      json[r'image_thumb'] = this.imageThumb;
-      json[r'image_preview'] = this.imagePreview;
+    json[r'image_thumb'] = this.imageThumb;
+    json[r'image_preview'] = this.imagePreview;
     if (this.website != null) {
       json[r'website'] = this.website;
     } else {
@@ -142,7 +145,7 @@ class Customer {
     } else {
       json[r'payment_method'] = null;
     }
-      json[r'models_count'] = this.modelsCount;
+    json[r'models_count'] = this.modelsCount;
     return json;
   }
 
@@ -170,20 +173,23 @@ class Customer {
         plan: mapValueOfType<String>(json, r'plan'),
         slug: mapValueOfType<String>(json, r'slug')!,
         image: mapValueOfType<String>(json, r'image'),
-        imageThumb: mapValueOfType<String>(json, r'image_thumb')!,
-        imagePreview: mapValueOfType<String>(json, r'image_preview')!,
+        imageThumb: mapValueOfType<String>(json, r'image_thumb') ?? '',
+        imagePreview: mapValueOfType<String>(json, r'image_preview') ?? '',
         website: mapValueOfType<String>(json, r'website'),
         description: mapValueOfType<String>(json, r'description'),
         contactAddress: mapValueOfType<String>(json, r'contact_address'),
         billingAddress: mapValueOfType<String>(json, r'billing_address'),
         paymentMethod: PaymentMethodEnum.fromJson(json[r'payment_method']),
-        modelsCount: mapValueOfType<int>(json, r'models_count')!,
+        modelsCount: mapValueOfType<int>(json, r'models_count') ?? 0,
       );
     }
     return null;
   }
 
-  static List<Customer>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Customer>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <Customer>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -211,12 +217,18 @@ class Customer {
   }
 
   // maps a json object with a list of Customer-objects as value to a dart map
-  static Map<String, List<Customer>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<Customer>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<Customer>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Customer.listFromJson(entry.value, growable: growable,);
+        final value = Customer.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -230,9 +242,5 @@ class Customer {
     'id',
     'name',
     'slug',
-    'image_thumb',
-    'image_preview',
-    'models_count',
   };
 }
-

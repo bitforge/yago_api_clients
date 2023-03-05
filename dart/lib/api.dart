@@ -101,7 +101,6 @@ part 'model/token_verify.dart';
 part 'model/user.dart';
 part 'model/user_verified.dart';
 
-
 const _delimiters = {'csv': ',', 'ssv': ' ', 'tsv': '\t', 'pipes': '|'};
 const _dateEpochMarker = 'epoch';
 final _dateFormatter = DateFormat('yyyy-MM-dd');

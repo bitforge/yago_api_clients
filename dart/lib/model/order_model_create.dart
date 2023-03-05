@@ -31,28 +31,31 @@ class OrderModelCreate {
   double? depthMm;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderModelCreate &&
-     other.name == name &&
-     other.website == website &&
-     other.widthMm == widthMm &&
-     other.heightMm == heightMm &&
-     other.depthMm == depthMm;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderModelCreate &&
+          other.name == name &&
+          other.website == website &&
+          other.widthMm == widthMm &&
+          other.heightMm == heightMm &&
+          other.depthMm == depthMm;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (name.hashCode) +
-    (website == null ? 0 : website!.hashCode) +
-    (widthMm == null ? 0 : widthMm!.hashCode) +
-    (heightMm == null ? 0 : heightMm!.hashCode) +
-    (depthMm == null ? 0 : depthMm!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (name.hashCode) +
+      (website == null ? 0 : website!.hashCode) +
+      (widthMm == null ? 0 : widthMm!.hashCode) +
+      (heightMm == null ? 0 : heightMm!.hashCode) +
+      (depthMm == null ? 0 : depthMm!.hashCode);
 
   @override
-  String toString() => 'OrderModelCreate[name=$name, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm]';
+  String toString() =>
+      'OrderModelCreate[name=$name, website=$website, widthMm=$widthMm, heightMm=$heightMm, depthMm=$depthMm]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'name'] = this.name;
+    json[r'name'] = this.name;
     if (this.website != null) {
       json[r'website'] = this.website;
     } else {
@@ -105,7 +108,10 @@ class OrderModelCreate {
     return null;
   }
 
-  static List<OrderModelCreate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderModelCreate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderModelCreate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -133,12 +139,18 @@ class OrderModelCreate {
   }
 
   // maps a json object with a list of OrderModelCreate-objects as value to a dart map
-  static Map<String, List<OrderModelCreate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OrderModelCreate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OrderModelCreate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = OrderModelCreate.listFromJson(entry.value, growable: growable,);
+        final value = OrderModelCreate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -152,4 +164,3 @@ class OrderModelCreate {
     'name',
   };
 }
-

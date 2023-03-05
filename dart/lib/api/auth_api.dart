@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class AuthApi {
   AuthApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -31,7 +30,6 @@ class AuthApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -59,7 +57,9 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [GoogleIdToken] googleIdToken (required):
-  Future<Response> authGoogleCreateWithHttpInfo(GoogleIdToken googleIdToken,) async {
+  Future<Response> authGoogleCreateWithHttpInfo(
+    GoogleIdToken googleIdToken,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/auth/google/';
 
@@ -71,7 +71,6 @@ class AuthApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -89,8 +88,12 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [GoogleIdToken] googleIdToken (required):
-  Future<TokenObtainResponse?> authGoogleCreate(GoogleIdToken googleIdToken,) async {
-    final response = await authGoogleCreateWithHttpInfo(googleIdToken,);
+  Future<TokenObtainResponse?> authGoogleCreate(
+    GoogleIdToken googleIdToken,
+  ) async {
+    final response = await authGoogleCreateWithHttpInfo(
+      googleIdToken,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -98,8 +101,10 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TokenObtainResponse',) as TokenObtainResponse;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'TokenObtainResponse',
+      ) as TokenObtainResponse;
     }
     return null;
   }
@@ -111,7 +116,9 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [TokenObtainRequest] tokenObtainRequest (required):
-  Future<Response> authLoginCreateWithHttpInfo(TokenObtainRequest tokenObtainRequest,) async {
+  Future<Response> authLoginCreateWithHttpInfo(
+    TokenObtainRequest tokenObtainRequest,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/auth/login/';
 
@@ -124,7 +131,6 @@ class AuthApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -141,8 +147,12 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [TokenObtainRequest] tokenObtainRequest (required):
-  Future<TokenObtainResponse?> authLoginCreate(TokenObtainRequest tokenObtainRequest,) async {
-    final response = await authLoginCreateWithHttpInfo(tokenObtainRequest,);
+  Future<TokenObtainResponse?> authLoginCreate(
+    TokenObtainRequest tokenObtainRequest,
+  ) async {
+    final response = await authLoginCreateWithHttpInfo(
+      tokenObtainRequest,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -150,8 +160,10 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TokenObtainResponse',) as TokenObtainResponse;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'TokenObtainResponse',
+      ) as TokenObtainResponse;
     }
     return null;
   }
@@ -163,7 +175,9 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [PasswordChange] passwordChange (required):
-  Future<Response> authPasswordChangeCreateWithHttpInfo(PasswordChange passwordChange,) async {
+  Future<Response> authPasswordChangeCreateWithHttpInfo(
+    PasswordChange passwordChange,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/auth/password/change/';
 
@@ -176,7 +190,6 @@ class AuthApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -193,8 +206,12 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [PasswordChange] passwordChange (required):
-  Future<PasswordChange?> authPasswordChangeCreate(PasswordChange passwordChange,) async {
-    final response = await authPasswordChangeCreateWithHttpInfo(passwordChange,);
+  Future<PasswordChange?> authPasswordChangeCreate(
+    PasswordChange passwordChange,
+  ) async {
+    final response = await authPasswordChangeCreateWithHttpInfo(
+      passwordChange,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -202,8 +219,10 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasswordChange',) as PasswordChange;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'PasswordChange',
+      ) as PasswordChange;
     }
     return null;
   }
@@ -215,7 +234,9 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [PasswordResetConfirm] passwordResetConfirm (required):
-  Future<Response> authPasswordResetConfirmCreateWithHttpInfo(PasswordResetConfirm passwordResetConfirm,) async {
+  Future<Response> authPasswordResetConfirmCreateWithHttpInfo(
+    PasswordResetConfirm passwordResetConfirm,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/auth/password/reset/confirm/';
 
@@ -228,7 +249,6 @@ class AuthApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -245,8 +265,12 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [PasswordResetConfirm] passwordResetConfirm (required):
-  Future<PasswordResetConfirm?> authPasswordResetConfirmCreate(PasswordResetConfirm passwordResetConfirm,) async {
-    final response = await authPasswordResetConfirmCreateWithHttpInfo(passwordResetConfirm,);
+  Future<PasswordResetConfirm?> authPasswordResetConfirmCreate(
+    PasswordResetConfirm passwordResetConfirm,
+  ) async {
+    final response = await authPasswordResetConfirmCreateWithHttpInfo(
+      passwordResetConfirm,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -254,8 +278,10 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasswordResetConfirm',) as PasswordResetConfirm;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'PasswordResetConfirm',
+      ) as PasswordResetConfirm;
     }
     return null;
   }
@@ -267,7 +293,9 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [PasswordReset] passwordReset (required):
-  Future<Response> authPasswordResetCreateWithHttpInfo(PasswordReset passwordReset,) async {
+  Future<Response> authPasswordResetCreateWithHttpInfo(
+    PasswordReset passwordReset,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/auth/password/reset/';
 
@@ -280,7 +308,6 @@ class AuthApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -297,8 +324,12 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [PasswordReset] passwordReset (required):
-  Future<PasswordReset?> authPasswordResetCreate(PasswordReset passwordReset,) async {
-    final response = await authPasswordResetCreateWithHttpInfo(passwordReset,);
+  Future<PasswordReset?> authPasswordResetCreate(
+    PasswordReset passwordReset,
+  ) async {
+    final response = await authPasswordResetCreateWithHttpInfo(
+      passwordReset,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -306,8 +337,10 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'PasswordReset',) as PasswordReset;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'PasswordReset',
+      ) as PasswordReset;
     }
     return null;
   }
@@ -319,7 +352,9 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [TokenRefreshRequest] tokenRefreshRequest (required):
-  Future<Response> authRefreshCreateWithHttpInfo(TokenRefreshRequest tokenRefreshRequest,) async {
+  Future<Response> authRefreshCreateWithHttpInfo(
+    TokenRefreshRequest tokenRefreshRequest,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/auth/refresh/';
 
@@ -332,7 +367,6 @@ class AuthApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -349,8 +383,12 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [TokenRefreshRequest] tokenRefreshRequest (required):
-  Future<TokenRefreshResponse?> authRefreshCreate(TokenRefreshRequest tokenRefreshRequest,) async {
-    final response = await authRefreshCreateWithHttpInfo(tokenRefreshRequest,);
+  Future<TokenRefreshResponse?> authRefreshCreate(
+    TokenRefreshRequest tokenRefreshRequest,
+  ) async {
+    final response = await authRefreshCreateWithHttpInfo(
+      tokenRefreshRequest,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -358,8 +396,10 @@ class AuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TokenRefreshResponse',) as TokenRefreshResponse;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'TokenRefreshResponse',
+      ) as TokenRefreshResponse;
     }
     return null;
   }
@@ -371,7 +411,9 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [TokenVerify] tokenVerify (required):
-  Future<Response> authVerifyCreateWithHttpInfo(TokenVerify tokenVerify,) async {
+  Future<Response> authVerifyCreateWithHttpInfo(
+    TokenVerify tokenVerify,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/api/auth/verify/';
 
@@ -383,7 +425,6 @@ class AuthApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -401,8 +442,12 @@ class AuthApi {
   /// Parameters:
   ///
   /// * [TokenVerify] tokenVerify (required):
-  Future<void> authVerifyCreate(TokenVerify tokenVerify,) async {
-    final response = await authVerifyCreateWithHttpInfo(tokenVerify,);
+  Future<void> authVerifyCreate(
+    TokenVerify tokenVerify,
+  ) async {
+    final response = await authVerifyCreateWithHttpInfo(
+      tokenVerify,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

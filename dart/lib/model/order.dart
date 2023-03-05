@@ -41,36 +41,39 @@ class Order {
   int modelCount;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is Order &&
-     other.id == id &&
-     other.project == project &&
-     other.state == state &&
-     other.price == price &&
-     other.priceCurrency == priceCurrency &&
-     other.created == created &&
-     other.modified == modified &&
-     other.modelCount == modelCount;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Order &&
+          other.id == id &&
+          other.project == project &&
+          other.state == state &&
+          other.price == price &&
+          other.priceCurrency == priceCurrency &&
+          other.created == created &&
+          other.modified == modified &&
+          other.modelCount == modelCount;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (project.hashCode) +
-    (state.hashCode) +
-    (price == null ? 0 : price!.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
-    (created.hashCode) +
-    (modified.hashCode) +
-    (modelCount.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (project.hashCode) +
+      (state.hashCode) +
+      (price == null ? 0 : price!.hashCode) +
+      (priceCurrency == null ? 0 : priceCurrency!.hashCode) +
+      (created.hashCode) +
+      (modified.hashCode) +
+      (modelCount.hashCode);
 
   @override
-  String toString() => 'Order[id=$id, project=$project, state=$state, price=$price, priceCurrency=$priceCurrency, created=$created, modified=$modified, modelCount=$modelCount]';
+  String toString() =>
+      'Order[id=$id, project=$project, state=$state, price=$price, priceCurrency=$priceCurrency, created=$created, modified=$modified, modelCount=$modelCount]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'project'] = this.project;
-      json[r'state'] = this.state;
+    json[r'id'] = this.id;
+    json[r'project'] = this.project;
+    json[r'state'] = this.state;
     if (this.price != null) {
       json[r'price'] = this.price;
     } else {
@@ -81,9 +84,9 @@ class Order {
     } else {
       json[r'price_currency'] = null;
     }
-      json[r'created'] = this.created.toUtc().toIso8601String();
-      json[r'modified'] = this.modified.toUtc().toIso8601String();
-      json[r'model_count'] = this.modelCount;
+    json[r'created'] = this.created.toUtc().toIso8601String();
+    json[r'modified'] = this.modified.toUtc().toIso8601String();
+    json[r'model_count'] = this.modelCount;
     return json;
   }
 
@@ -119,7 +122,10 @@ class Order {
     return null;
   }
 
-  static List<Order>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Order>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <Order>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -147,12 +153,18 @@ class Order {
   }
 
   // maps a json object with a list of Order-objects as value to a dart map
-  static Map<String, List<Order>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<Order>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<Order>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Order.listFromJson(entry.value, growable: growable,);
+        final value = Order.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -172,4 +184,3 @@ class Order {
     'model_count',
   };
 }
-

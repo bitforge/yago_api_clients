@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class RoleEnum {
   /// Instantiate a new enum with the provided [value].
   const RoleEnum._(this.value);
@@ -38,7 +37,10 @@ class RoleEnum {
 
   static RoleEnum? fromJson(dynamic value) => RoleEnumTypeTransformer().decode(value);
 
-  static List<RoleEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RoleEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <RoleEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -72,10 +74,14 @@ class RoleEnumTypeTransformer {
   RoleEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'OWNER': return RoleEnum.OWNER;
-        case r'MEMBER': return RoleEnum.MEMBER;
-        case r'MANAGER': return RoleEnum.MANAGER;
-        case r'DESIGNER': return RoleEnum.DESIGNER;
+        case r'OWNER':
+          return RoleEnum.OWNER;
+        case r'MEMBER':
+          return RoleEnum.MEMBER;
+        case r'MANAGER':
+          return RoleEnum.MANAGER;
+        case r'DESIGNER':
+          return RoleEnum.DESIGNER;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -88,4 +94,3 @@ class RoleEnumTypeTransformer {
   /// Singleton [RoleEnumTypeTransformer] instance.
   static RoleEnumTypeTransformer? _instance;
 }
-

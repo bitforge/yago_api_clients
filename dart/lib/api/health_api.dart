@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class HealthApi {
   HealthApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -31,7 +30,6 @@ class HealthApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -54,8 +52,10 @@ class HealthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'HealthStatus',) as HealthStatus;
-    
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'HealthStatus',
+      ) as HealthStatus;
     }
     return null;
   }

@@ -19,20 +19,19 @@ class ProjectCreate {
   String name;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProjectCreate &&
-     other.name == name;
+  bool operator ==(Object other) => identical(this, other) || other is ProjectCreate && other.name == name;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (name.hashCode);
+      // ignore: unnecessary_parenthesis
+      (name.hashCode);
 
   @override
   String toString() => 'ProjectCreate[name=$name]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'name'] = this.name;
+    json[r'name'] = this.name;
     return json;
   }
 
@@ -61,7 +60,10 @@ class ProjectCreate {
     return null;
   }
 
-  static List<ProjectCreate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ProjectCreate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ProjectCreate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -89,12 +91,18 @@ class ProjectCreate {
   }
 
   // maps a json object with a list of ProjectCreate-objects as value to a dart map
-  static Map<String, List<ProjectCreate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ProjectCreate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ProjectCreate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProjectCreate.listFromJson(entry.value, growable: growable,);
+        final value = ProjectCreate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -108,4 +116,3 @@ class ProjectCreate {
     'name',
   };
 }
-

@@ -43,33 +43,36 @@ class ModelCreate {
   String slug;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ModelCreate &&
-     other.id == id &&
-     other.project == project &&
-     other.nameDe == nameDe &&
-     other.nameEn == nameEn &&
-     other.nameFr == nameFr &&
-     other.nameIt == nameIt &&
-     other.slug == slug;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ModelCreate &&
+          other.id == id &&
+          other.project == project &&
+          other.nameDe == nameDe &&
+          other.nameEn == nameEn &&
+          other.nameFr == nameFr &&
+          other.nameIt == nameIt &&
+          other.slug == slug;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (id.hashCode) +
-    (project.hashCode) +
-    (nameDe == null ? 0 : nameDe!.hashCode) +
-    (nameEn == null ? 0 : nameEn!.hashCode) +
-    (nameFr == null ? 0 : nameFr!.hashCode) +
-    (nameIt == null ? 0 : nameIt!.hashCode) +
-    (slug.hashCode);
+      // ignore: unnecessary_parenthesis
+      (id.hashCode) +
+      (project.hashCode) +
+      (nameDe == null ? 0 : nameDe!.hashCode) +
+      (nameEn == null ? 0 : nameEn!.hashCode) +
+      (nameFr == null ? 0 : nameFr!.hashCode) +
+      (nameIt == null ? 0 : nameIt!.hashCode) +
+      (slug.hashCode);
 
   @override
-  String toString() => 'ModelCreate[id=$id, project=$project, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug]';
+  String toString() =>
+      'ModelCreate[id=$id, project=$project, nameDe=$nameDe, nameEn=$nameEn, nameFr=$nameFr, nameIt=$nameIt, slug=$slug]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
-      json[r'project'] = this.project;
+    json[r'id'] = this.id;
+    json[r'project'] = this.project;
     if (this.nameDe != null) {
       json[r'name_de'] = this.nameDe;
     } else {
@@ -90,7 +93,7 @@ class ModelCreate {
     } else {
       json[r'name_it'] = null;
     }
-      json[r'slug'] = this.slug;
+    json[r'slug'] = this.slug;
     return json;
   }
 
@@ -125,7 +128,10 @@ class ModelCreate {
     return null;
   }
 
-  static List<ModelCreate>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ModelCreate>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ModelCreate>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -153,12 +159,18 @@ class ModelCreate {
   }
 
   // maps a json object with a list of ModelCreate-objects as value to a dart map
-  static Map<String, List<ModelCreate>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ModelCreate>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ModelCreate>>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ModelCreate.listFromJson(entry.value, growable: growable,);
+        final value = ModelCreate.listFromJson(
+          entry.value,
+          growable: growable,
+        );
         if (value != null) {
           map[entry.key] = value;
         }
@@ -174,4 +186,3 @@ class ModelCreate {
     'slug',
   };
 }
-

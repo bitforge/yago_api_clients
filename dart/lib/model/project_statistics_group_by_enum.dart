@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class ProjectStatisticsGroupByEnum {
   /// Instantiate a new enum with the provided [value].
   const ProjectStatisticsGroupByEnum._(this.value);
@@ -44,9 +43,13 @@ class ProjectStatisticsGroupByEnum {
     countries,
   ];
 
-  static ProjectStatisticsGroupByEnum? fromJson(dynamic value) => ProjectStatisticsGroupByEnumTypeTransformer().decode(value);
+  static ProjectStatisticsGroupByEnum? fromJson(dynamic value) =>
+      ProjectStatisticsGroupByEnumTypeTransformer().decode(value);
 
-  static List<ProjectStatisticsGroupByEnum>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ProjectStatisticsGroupByEnum>? listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ProjectStatisticsGroupByEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -63,7 +66,8 @@ class ProjectStatisticsGroupByEnum {
 /// Transformation class that can [encode] an instance of [ProjectStatisticsGroupByEnum] to String,
 /// and [decode] dynamic data back to [ProjectStatisticsGroupByEnum].
 class ProjectStatisticsGroupByEnumTypeTransformer {
-  factory ProjectStatisticsGroupByEnumTypeTransformer() => _instance ??= const ProjectStatisticsGroupByEnumTypeTransformer._();
+  factory ProjectStatisticsGroupByEnumTypeTransformer() =>
+      _instance ??= const ProjectStatisticsGroupByEnumTypeTransformer._();
 
   const ProjectStatisticsGroupByEnumTypeTransformer._();
 
@@ -80,14 +84,22 @@ class ProjectStatisticsGroupByEnumTypeTransformer {
   ProjectStatisticsGroupByEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'all': return ProjectStatisticsGroupByEnum.all;
-        case r'events': return ProjectStatisticsGroupByEnum.events;
-        case r'models': return ProjectStatisticsGroupByEnum.models;
-        case r'platforms': return ProjectStatisticsGroupByEnum.platforms;
-        case r'languages': return ProjectStatisticsGroupByEnum.languages;
-        case r'devices': return ProjectStatisticsGroupByEnum.devices;
-        case r'browsers': return ProjectStatisticsGroupByEnum.browsers;
-        case r'countries': return ProjectStatisticsGroupByEnum.countries;
+        case r'all':
+          return ProjectStatisticsGroupByEnum.all;
+        case r'events':
+          return ProjectStatisticsGroupByEnum.events;
+        case r'models':
+          return ProjectStatisticsGroupByEnum.models;
+        case r'platforms':
+          return ProjectStatisticsGroupByEnum.platforms;
+        case r'languages':
+          return ProjectStatisticsGroupByEnum.languages;
+        case r'devices':
+          return ProjectStatisticsGroupByEnum.devices;
+        case r'browsers':
+          return ProjectStatisticsGroupByEnum.browsers;
+        case r'countries':
+          return ProjectStatisticsGroupByEnum.countries;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -100,4 +112,3 @@ class ProjectStatisticsGroupByEnumTypeTransformer {
   /// Singleton [ProjectStatisticsGroupByEnumTypeTransformer] instance.
   static ProjectStatisticsGroupByEnumTypeTransformer? _instance;
 }
-
