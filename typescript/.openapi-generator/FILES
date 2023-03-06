@@ -8,6 +8,7 @@ src/apis/PlansApi.ts
 src/apis/ProjectsApi.ts
 src/apis/RegistrationApi.ts
 src/apis/StatsApi.ts
+src/apis/SubscriptionApi.ts
 src/apis/UsersApi.ts
 src/apis/index.ts
 src/index.ts
@@ -31,6 +32,8 @@ src/models/ModelCreate.ts
 src/models/ModelInfo.ts
 src/models/ModelStatus.ts
 src/models/ModelUpdate.ts
+src/models/NewSubscription.ts
+src/models/NewSubscriptionCreate.ts
 src/models/Order.ts
 src/models/OrderComment.ts
 src/models/OrderCommentCreate.ts
@@ -63,6 +66,7 @@ src/models/Registration.ts
 src/models/RegistrationCreate.ts
 src/models/RoleEnum.ts
 src/models/StateChanged.ts
+src/models/Subscription.ts
 src/models/SummaryStats.ts
 src/models/TimeRangeEnum.ts
 src/models/TokenObtainRequest.ts

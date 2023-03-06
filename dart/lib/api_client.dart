@@ -254,6 +254,10 @@ class ApiClient {
           return ModelStatusTypeTransformer().decode(value);
         case 'ModelUpdate':
           return ModelUpdate.fromJson(value);
+        case 'NewSubscription':
+          return NewSubscription.fromJson(value);
+        case 'NewSubscriptionCreate':
+          return NewSubscriptionCreate.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderComment':
@@ -318,6 +322,8 @@ class ApiClient {
           return RoleEnumTypeTransformer().decode(value);
         case 'StateChanged':
           return StateChanged.fromJson(value);
+        case 'Subscription':
+          return Subscription.fromJson(value);
         case 'SummaryStats':
           return SummaryStats.fromJson(value);
         case 'TimeRangeEnum':

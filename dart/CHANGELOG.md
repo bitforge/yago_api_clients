@@ -1,3 +1,7 @@
+# 1.2.1
+
+- Add subscription management back again
+
 # 1.2.0
 
 - Align with typescript version
