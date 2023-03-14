@@ -23,9 +23,16 @@ listProjects() async {
     final projectList = await projectsApi.projectsList();
     projectList!.sort((project, other) => project.modified.compareTo(other.modified));
 
-    print('# YAGO PROJECTS LIST');
+    print('## Yago projects list');
     for (final project in projectList) {
       print('- ${project.name}');
+    }
+
+    print('## Yago models list');
+    final modelsApi = ModelsApi(apiClient);
+    final modelsList = await modelsApi.modelsList(project: projectList.first.id);
+    for (final model in modelsList ?? []) {
+      print('- ${model.name}');
     }
   } on ApiException catch (error) {
     log('Login Failed: ', error: error);
