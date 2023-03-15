@@ -1,3 +1,7 @@
+# 1.2.2
+
+- Update README on pub.dev
+
 # 1.2.1
 
 - Add subscription management back again
