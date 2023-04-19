@@ -81,6 +81,16 @@ export interface ProjectUpdate {
     arbuttonConfig?: { [key: string]: any } | null;
 }
 
+/**
+ * Check if a given object implements the ProjectUpdate interface.
+ */
+export function instanceOfProjectUpdate(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'name' in value;
+
+    return isInstance;
+}
+
 export function ProjectUpdateFromJSON(json: any): ProjectUpdate {
     return ProjectUpdateFromJSONTyped(json, false);
 }

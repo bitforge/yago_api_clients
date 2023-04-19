@@ -27,6 +27,16 @@ export interface TokenRefreshRequest {
     refresh: string;
 }
 
+/**
+ * Check if a given object implements the TokenRefreshRequest interface.
+ */
+export function instanceOfTokenRefreshRequest(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'refresh' in value;
+
+    return isInstance;
+}
+
 export function TokenRefreshRequestFromJSON(json: any): TokenRefreshRequest {
     return TokenRefreshRequestFromJSONTyped(json, false);
 }

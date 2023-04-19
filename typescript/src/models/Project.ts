@@ -13,7 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import { ActiveOrder, ActiveOrderFromJSON, ActiveOrderFromJSONTyped, ActiveOrderToJSON } from './ActiveOrder';
+import type { ActiveOrder } from './ActiveOrder';
+import { ActiveOrderFromJSON, ActiveOrderFromJSONTyped, ActiveOrderToJSON } from './ActiveOrder';
 
 /**
  *
@@ -135,6 +136,19 @@ export interface Project {
      * @memberof Project
      */
     readonly modified: Date;
+}
+
+/**
+ * Check if a given object implements the Project interface.
+ */
+export function instanceOfProject(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'id' in value;
+    isInstance = isInstance && 'name' in value;
+    isInstance = isInstance && 'created' in value;
+    isInstance = isInstance && 'modified' in value;
+
+    return isInstance;
 }
 
 export function ProjectFromJSON(json: any): Project {

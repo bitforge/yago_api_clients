@@ -13,19 +13,25 @@
  */
 
 /**
- *
+ * * `PREPARING` - Preparing
+ * * `ESTIMATING` - Estimating
+ * * `READY_TO_PAY` - Ready to pay
+ * * `IN_PROGRESS` - In Progress
+ * * `IN_REVIEW` - In Review
+ * * `FINISHED` - Finished
+ * * `RAGE_QUIT` - Rage Quit
  * @export
- * @enum {string}
  */
-export enum OrderState {
-    Preparing = 'PREPARING',
-    Estimating = 'ESTIMATING',
-    ReadyToPay = 'READY_TO_PAY',
-    InProgress = 'IN_PROGRESS',
-    InReview = 'IN_REVIEW',
-    Finished = 'FINISHED',
-    RageQuit = 'RAGE_QUIT',
-}
+export const OrderState = {
+    Preparing: 'PREPARING',
+    Estimating: 'ESTIMATING',
+    ReadyToPay: 'READY_TO_PAY',
+    InProgress: 'IN_PROGRESS',
+    InReview: 'IN_REVIEW',
+    Finished: 'FINISHED',
+    RageQuit: 'RAGE_QUIT',
+} as const;
+export type OrderState = (typeof OrderState)[keyof typeof OrderState];
 
 export function OrderStateFromJSON(json: any): OrderState {
     return OrderStateFromJSONTyped(json, false);

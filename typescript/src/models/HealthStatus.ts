@@ -39,6 +39,18 @@ export interface HealthStatus {
     cacheUp: boolean;
 }
 
+/**
+ * Check if a given object implements the HealthStatus interface.
+ */
+export function instanceOfHealthStatus(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'dbUp' in value;
+    isInstance = isInstance && 'storageUp' in value;
+    isInstance = isInstance && 'cacheUp' in value;
+
+    return isInstance;
+}
+
 export function HealthStatusFromJSON(json: any): HealthStatus {
     return HealthStatusFromJSONTyped(json, false);
 }

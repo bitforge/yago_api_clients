@@ -13,7 +13,8 @@
  */
 
 import * as runtime from '../runtime';
-import { HealthStatus, HealthStatusFromJSON, HealthStatusToJSON } from '../models';
+import type { HealthStatus } from '../models';
+import { HealthStatusFromJSON, HealthStatusToJSON } from '../models';
 
 /**
  *
@@ -22,7 +23,9 @@ export class HealthApi extends runtime.BaseAPI {
     /**
      * Check health status of required subsystems.
      */
-    async healthRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<HealthStatus>> {
+    async healthRetrieveRaw(
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
+    ): Promise<runtime.ApiResponse<HealthStatus>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -43,7 +46,7 @@ export class HealthApi extends runtime.BaseAPI {
     /**
      * Check health status of required subsystems.
      */
-    async healthRetrieve(initOverrides?: RequestInit): Promise<HealthStatus> {
+    async healthRetrieve(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<HealthStatus> {
         const response = await this.healthRetrieveRaw(initOverrides);
         return await response.value();
     }

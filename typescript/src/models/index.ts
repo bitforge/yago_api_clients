@@ -2,6 +2,7 @@
 /* eslint-disable */
 export * from './ActiveOrder';
 export * from './Address';
+export * from './AnchorToken';
 export * from './AvailableState';
 export * from './ChronicStats';
 export * from './CountryEnum';

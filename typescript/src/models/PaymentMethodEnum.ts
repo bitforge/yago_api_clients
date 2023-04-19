@@ -13,15 +13,17 @@
  */
 
 /**
- *
+ * * `NONE` - None (Not subscribed)
+ * * `STRIPE` - Credit card (stripe)
+ * * `BILL` - Pay by bill
  * @export
- * @enum {string}
  */
-export enum PaymentMethodEnum {
-    None = 'NONE',
-    Stripe = 'STRIPE',
-    Bill = 'BILL',
-}
+export const PaymentMethodEnum = {
+    None: 'NONE',
+    Stripe: 'STRIPE',
+    Bill: 'BILL',
+} as const;
+export type PaymentMethodEnum = (typeof PaymentMethodEnum)[keyof typeof PaymentMethodEnum];
 
 export function PaymentMethodEnumFromJSON(json: any): PaymentMethodEnum {
     return PaymentMethodEnumFromJSONTyped(json, false);

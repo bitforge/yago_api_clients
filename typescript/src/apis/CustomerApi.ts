@@ -13,14 +13,12 @@
  */
 
 import * as runtime from '../runtime';
+import type { Address, Customer, PatchedAddress } from '../models';
 import {
-    Address,
     AddressFromJSON,
     AddressToJSON,
-    Customer,
     CustomerFromJSON,
     CustomerToJSON,
-    PatchedAddress,
     PatchedAddressFromJSON,
     PatchedAddressToJSON,
 } from '../models';
@@ -42,13 +40,17 @@ export class CustomerApi extends runtime.BaseAPI {
      */
     async customerBillingAddressPartialUpdateRaw(
         requestParameters: CustomerBillingAddressPartialUpdateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<Address>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -58,10 +60,6 @@ export class CustomerApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/customer/billing_address/`,
@@ -81,7 +79,7 @@ export class CustomerApi extends runtime.BaseAPI {
      */
     async customerBillingAddressPartialUpdate(
         requestParameters: CustomerBillingAddressPartialUpdateRequest = {},
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<Address> {
         const response = await this.customerBillingAddressPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -90,10 +88,16 @@ export class CustomerApi extends runtime.BaseAPI {
     /**
      * Manage customer billing address. Required prior to subscribing to Yago services.
      */
-    async customerBillingAddressRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Address>> {
+    async customerBillingAddressRetrieveRaw(
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
+    ): Promise<runtime.ApiResponse<Address>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -103,10 +107,6 @@ export class CustomerApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/customer/billing_address/`,
@@ -123,7 +123,7 @@ export class CustomerApi extends runtime.BaseAPI {
     /**
      * Manage customer billing address. Required prior to subscribing to Yago services.
      */
-    async customerBillingAddressRetrieve(initOverrides?: RequestInit): Promise<Address> {
+    async customerBillingAddressRetrieve(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Address> {
         const response = await this.customerBillingAddressRetrieveRaw(initOverrides);
         return await response.value();
     }
@@ -133,7 +133,7 @@ export class CustomerApi extends runtime.BaseAPI {
      */
     async customerBillingAddressUpdateRaw(
         requestParameters: CustomerBillingAddressUpdateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<Address>> {
         if (requestParameters.address === null || requestParameters.address === undefined) {
             throw new runtime.RequiredError(
@@ -148,6 +148,10 @@ export class CustomerApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -156,10 +160,6 @@ export class CustomerApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/customer/billing_address/`,
@@ -179,7 +179,7 @@ export class CustomerApi extends runtime.BaseAPI {
      */
     async customerBillingAddressUpdate(
         requestParameters: CustomerBillingAddressUpdateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<Address> {
         const response = await this.customerBillingAddressUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -188,10 +188,16 @@ export class CustomerApi extends runtime.BaseAPI {
     /**
      * Returns the customer associated with the current user account.
      */
-    async customerRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Customer>> {
+    async customerRetrieveRaw(
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
+    ): Promise<runtime.ApiResponse<Customer>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -201,10 +207,6 @@ export class CustomerApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/customer/`,
@@ -221,7 +223,7 @@ export class CustomerApi extends runtime.BaseAPI {
     /**
      * Returns the customer associated with the current user account.
      */
-    async customerRetrieve(initOverrides?: RequestInit): Promise<Customer> {
+    async customerRetrieve(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Customer> {
         const response = await this.customerRetrieveRaw(initOverrides);
         return await response.value();
     }

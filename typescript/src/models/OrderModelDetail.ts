@@ -13,19 +13,16 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { OrderModelComment } from './OrderModelComment';
 import {
-    OrderModelComment,
     OrderModelCommentFromJSON,
     OrderModelCommentFromJSONTyped,
     OrderModelCommentToJSON,
 } from './OrderModelComment';
-import {
-    OrderModelFile,
-    OrderModelFileFromJSON,
-    OrderModelFileFromJSONTyped,
-    OrderModelFileToJSON,
-} from './OrderModelFile';
-import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
+import type { OrderModelFile } from './OrderModelFile';
+import { OrderModelFileFromJSON, OrderModelFileFromJSONTyped, OrderModelFileToJSON } from './OrderModelFile';
+import type { OrderState } from './OrderState';
+import { OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
  *
@@ -50,7 +47,7 @@ export interface OrderModelDetail {
      * @type {OrderState}
      * @memberof OrderModelDetail
      */
-    readonly state: OrderState | null;
+    readonly state: OrderState;
     /**
      *
      * @type {string}
@@ -105,6 +102,23 @@ export interface OrderModelDetail {
      * @memberof OrderModelDetail
      */
     comments: Array<OrderModelComment>;
+}
+
+/**
+ * Check if a given object implements the OrderModelDetail interface.
+ */
+export function instanceOfOrderModelDetail(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'id' in value;
+    isInstance = isInstance && 'name' in value;
+    isInstance = isInstance && 'state' in value;
+    isInstance = isInstance && 'model' in value;
+    isInstance = isInstance && 'created' in value;
+    isInstance = isInstance && 'modified' in value;
+    isInstance = isInstance && 'files' in value;
+    isInstance = isInstance && 'comments' in value;
+
+    return isInstance;
 }
 
 export function OrderModelDetailFromJSON(json: any): OrderModelDetail {

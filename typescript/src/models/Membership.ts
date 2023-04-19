@@ -13,7 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import { RoleEnum, RoleEnumFromJSON, RoleEnumFromJSONTyped, RoleEnumToJSON } from './RoleEnum';
+import type { RoleEnum } from './RoleEnum';
+import { RoleEnumFromJSON, RoleEnumFromJSONTyped, RoleEnumToJSON } from './RoleEnum';
 
 /**
  *
@@ -51,6 +52,19 @@ export interface Membership {
      * @memberof Membership
      */
     readonly created: Date;
+}
+
+/**
+ * Check if a given object implements the Membership interface.
+ */
+export function instanceOfMembership(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'id' in value;
+    isInstance = isInstance && 'project' in value;
+    isInstance = isInstance && 'user' in value;
+    isInstance = isInstance && 'created' in value;
+
+    return isInstance;
 }
 
 export function MembershipFromJSON(json: any): Membership {

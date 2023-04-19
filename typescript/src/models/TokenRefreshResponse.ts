@@ -33,6 +33,17 @@ export interface TokenRefreshResponse {
     refresh: string;
 }
 
+/**
+ * Check if a given object implements the TokenRefreshResponse interface.
+ */
+export function instanceOfTokenRefreshResponse(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'access' in value;
+    isInstance = isInstance && 'refresh' in value;
+
+    return isInstance;
+}
+
 export function TokenRefreshResponseFromJSON(json: any): TokenRefreshResponse {
     return TokenRefreshResponseFromJSONTyped(json, false);
 }

@@ -13,7 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import { ModelStatus, ModelStatusFromJSON, ModelStatusFromJSONTyped, ModelStatusToJSON } from './ModelStatus';
+import type { ModelStatus } from './ModelStatus';
+import { ModelStatusFromJSON, ModelStatusFromJSONTyped, ModelStatusToJSON } from './ModelStatus';
 
 /**
  *
@@ -46,11 +47,11 @@ export interface PatchedModelUpdate {
      */
     nameIt?: string | null;
     /**
-     * DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
+     *
      * @type {ModelStatus}
      * @memberof PatchedModelUpdate
      */
-    status?: ModelStatus | null;
+    status?: ModelStatus;
     /**
      *
      * @type {string}
@@ -141,6 +142,15 @@ export interface PatchedModelUpdate {
      * @memberof PatchedModelUpdate
      */
     verticalPlacement?: boolean;
+}
+
+/**
+ * Check if a given object implements the PatchedModelUpdate interface.
+ */
+export function instanceOfPatchedModelUpdate(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function PatchedModelUpdateFromJSON(json: any): PatchedModelUpdate {

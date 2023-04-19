@@ -33,6 +33,17 @@ export interface TokenObtainResponse {
     refresh: string;
 }
 
+/**
+ * Check if a given object implements the TokenObtainResponse interface.
+ */
+export function instanceOfTokenObtainResponse(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'access' in value;
+    isInstance = isInstance && 'refresh' in value;
+
+    return isInstance;
+}
+
 export function TokenObtainResponseFromJSON(json: any): TokenObtainResponse {
     return TokenObtainResponseFromJSONTyped(json, false);
 }

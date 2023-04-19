@@ -51,6 +51,16 @@ export interface OrderModelUpdate {
     depthMm?: number | null;
 }
 
+/**
+ * Check if a given object implements the OrderModelUpdate interface.
+ */
+export function instanceOfOrderModelUpdate(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'name' in value;
+
+    return isInstance;
+}
+
 export function OrderModelUpdateFromJSON(json: any): OrderModelUpdate {
     return OrderModelUpdateFromJSONTyped(json, false);
 }

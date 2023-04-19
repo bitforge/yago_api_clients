@@ -14,6 +14,7 @@ src/apis/index.ts
 src/index.ts
 src/models/ActiveOrder.ts
 src/models/Address.ts
+src/models/AnchorToken.ts
 src/models/AvailableState.ts
 src/models/ChronicStats.ts
 src/models/CountryEnum.ts

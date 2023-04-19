@@ -33,6 +33,17 @@ export interface SummaryStats {
     datasets: { [key: string]: any };
 }
 
+/**
+ * Check if a given object implements the SummaryStats interface.
+ */
+export function instanceOfSummaryStats(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'labels' in value;
+    isInstance = isInstance && 'datasets' in value;
+
+    return isInstance;
+}
+
 export function SummaryStatsFromJSON(json: any): SummaryStats {
     return SummaryStatsFromJSONTyped(json, false);
 }

@@ -27,6 +27,16 @@ export interface TokenVerify {
     token: string;
 }
 
+/**
+ * Check if a given object implements the TokenVerify interface.
+ */
+export function instanceOfTokenVerify(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'token' in value;
+
+    return isInstance;
+}
+
 export function TokenVerifyFromJSON(json: any): TokenVerify {
     return TokenVerifyFromJSONTyped(json, false);
 }

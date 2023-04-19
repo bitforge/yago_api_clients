@@ -13,14 +13,12 @@
  */
 
 import * as runtime from '../runtime';
+import type { Registration, RegistrationCreate, UserVerified } from '../models';
 import {
-    Registration,
     RegistrationFromJSON,
     RegistrationToJSON,
-    RegistrationCreate,
     RegistrationCreateFromJSON,
     RegistrationCreateToJSON,
-    UserVerified,
     UserVerifiedFromJSON,
     UserVerifiedToJSON,
 } from '../models';
@@ -42,7 +40,7 @@ export class RegistrationApi extends runtime.BaseAPI {
      */
     async registrationCreateRaw(
         requestParameters: RegistrationCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<Registration>> {
         if (requestParameters.registrationCreate === null || requestParameters.registrationCreate === undefined) {
             throw new runtime.RequiredError(
@@ -76,7 +74,7 @@ export class RegistrationApi extends runtime.BaseAPI {
      */
     async registrationCreate(
         requestParameters: RegistrationCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<Registration> {
         const response = await this.registrationCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -87,7 +85,7 @@ export class RegistrationApi extends runtime.BaseAPI {
      */
     async registrationVerifyCreateRaw(
         requestParameters: RegistrationVerifyCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<UserVerified>> {
         if (requestParameters.code === null || requestParameters.code === undefined) {
             throw new runtime.RequiredError(
@@ -121,7 +119,7 @@ export class RegistrationApi extends runtime.BaseAPI {
      */
     async registrationVerifyCreate(
         requestParameters: RegistrationVerifyCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<UserVerified> {
         const response = await this.registrationVerifyCreateRaw(requestParameters, initOverrides);
         return await response.value();

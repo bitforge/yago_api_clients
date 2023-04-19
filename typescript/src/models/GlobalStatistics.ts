@@ -13,19 +13,16 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { FilterEventsEnum } from './FilterEventsEnum';
+import { FilterEventsEnumFromJSON, FilterEventsEnumFromJSONTyped, FilterEventsEnumToJSON } from './FilterEventsEnum';
+import type { GlobalStatisticsGroupByEnum } from './GlobalStatisticsGroupByEnum';
 import {
-    FilterEventsEnum,
-    FilterEventsEnumFromJSON,
-    FilterEventsEnumFromJSONTyped,
-    FilterEventsEnumToJSON,
-} from './FilterEventsEnum';
-import {
-    GlobalStatisticsGroupByEnum,
     GlobalStatisticsGroupByEnumFromJSON,
     GlobalStatisticsGroupByEnumFromJSONTyped,
     GlobalStatisticsGroupByEnumToJSON,
 } from './GlobalStatisticsGroupByEnum';
-import { TimeRangeEnum, TimeRangeEnumFromJSON, TimeRangeEnumFromJSONTyped, TimeRangeEnumToJSON } from './TimeRangeEnum';
+import type { TimeRangeEnum } from './TimeRangeEnum';
+import { TimeRangeEnumFromJSON, TimeRangeEnumFromJSONTyped, TimeRangeEnumToJSON } from './TimeRangeEnum';
 
 /**
  *
@@ -57,6 +54,18 @@ export interface GlobalStatistics {
      * @memberof GlobalStatistics
      */
     groupBy: GlobalStatisticsGroupByEnum;
+}
+
+/**
+ * Check if a given object implements the GlobalStatistics interface.
+ */
+export function instanceOfGlobalStatistics(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'timeRange' in value;
+    isInstance = isInstance && 'filterEvents' in value;
+    isInstance = isInstance && 'groupBy' in value;
+
+    return isInstance;
 }
 
 export function GlobalStatisticsFromJSON(json: any): GlobalStatistics {

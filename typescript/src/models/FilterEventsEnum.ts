@@ -13,15 +13,17 @@
  */
 
 /**
- *
+ * * `all` - Alle
+ * * `ar` - AR Views
+ * * `model` - Model Views
  * @export
- * @enum {string}
  */
-export enum FilterEventsEnum {
-    All = 'all',
-    Ar = 'ar',
-    Model = 'model',
-}
+export const FilterEventsEnum = {
+    All: 'all',
+    Ar: 'ar',
+    Model: 'model',
+} as const;
+export type FilterEventsEnum = (typeof FilterEventsEnum)[keyof typeof FilterEventsEnum];
 
 export function FilterEventsEnumFromJSON(json: any): FilterEventsEnum {
     return FilterEventsEnumFromJSONTyped(json, false);

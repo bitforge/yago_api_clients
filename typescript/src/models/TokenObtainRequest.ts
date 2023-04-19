@@ -33,6 +33,17 @@ export interface TokenObtainRequest {
     password: string;
 }
 
+/**
+ * Check if a given object implements the TokenObtainRequest interface.
+ */
+export function instanceOfTokenObtainRequest(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'email' in value;
+    isInstance = isInstance && 'password' in value;
+
+    return isInstance;
+}
+
 export function TokenObtainRequestFromJSON(json: any): TokenObtainRequest {
     return TokenObtainRequestFromJSONTyped(json, false);
 }

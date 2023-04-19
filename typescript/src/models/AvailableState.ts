@@ -33,6 +33,17 @@ export interface AvailableState {
     readonly target: string;
 }
 
+/**
+ * Check if a given object implements the AvailableState interface.
+ */
+export function instanceOfAvailableState(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'action' in value;
+    isInstance = isInstance && 'target' in value;
+
+    return isInstance;
+}
+
 export function AvailableStateFromJSON(json: any): AvailableState {
     return AvailableStateFromJSONTyped(json, false);
 }

@@ -27,6 +27,16 @@ export interface ProjectCreate {
     name: string;
 }
 
+/**
+ * Check if a given object implements the ProjectCreate interface.
+ */
+export function instanceOfProjectCreate(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'name' in value;
+
+    return isInstance;
+}
+
 export function ProjectCreateFromJSON(json: any): ProjectCreate {
     return ProjectCreateFromJSONTyped(json, false);
 }

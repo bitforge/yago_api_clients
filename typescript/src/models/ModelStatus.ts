@@ -13,15 +13,17 @@
  */
 
 /**
- *
+ * * `DRAFT` - Draft
+ * * `READY` - Ready
+ * * `ONLINE` - Online
  * @export
- * @enum {string}
  */
-export enum ModelStatus {
-    Draft = 'DRAFT',
-    Ready = 'READY',
-    Online = 'ONLINE',
-}
+export const ModelStatus = {
+    Draft: 'DRAFT',
+    Ready: 'READY',
+    Online: 'ONLINE',
+} as const;
+export type ModelStatus = (typeof ModelStatus)[keyof typeof ModelStatus];
 
 export function ModelStatusFromJSON(json: any): ModelStatus {
     return ModelStatusFromJSONTyped(json, false);

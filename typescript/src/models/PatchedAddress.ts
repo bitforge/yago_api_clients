@@ -13,7 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import { CountryEnum, CountryEnumFromJSON, CountryEnumFromJSONTyped, CountryEnumToJSON } from './CountryEnum';
+import type { CountryEnum } from './CountryEnum';
+import { CountryEnumFromJSON, CountryEnumFromJSONTyped, CountryEnumToJSON } from './CountryEnum';
 
 /**
  *
@@ -81,6 +82,15 @@ export interface PatchedAddress {
      * @memberof PatchedAddress
      */
     country?: CountryEnum;
+}
+
+/**
+ * Check if a given object implements the PatchedAddress interface.
+ */
+export function instanceOfPatchedAddress(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function PatchedAddressFromJSON(json: any): PatchedAddress {

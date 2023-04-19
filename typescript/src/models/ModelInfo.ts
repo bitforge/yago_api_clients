@@ -39,6 +39,18 @@ export interface ModelInfo {
     qrConfig: { [key: string]: any };
 }
 
+/**
+ * Check if a given object implements the ModelInfo interface.
+ */
+export function instanceOfModelInfo(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'siteUrl' in value;
+    isInstance = isInstance && 'quicklookLink' in value;
+    isInstance = isInstance && 'qrConfig' in value;
+
+    return isInstance;
+}
+
 export function ModelInfoFromJSON(json: any): ModelInfo {
     return ModelInfoFromJSONTyped(json, false);
 }

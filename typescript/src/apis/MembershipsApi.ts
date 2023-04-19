@@ -13,7 +13,8 @@
  */
 
 import * as runtime from '../runtime';
-import { Membership, MembershipFromJSON, MembershipToJSON } from '../models';
+import type { Membership } from '../models';
+import { MembershipFromJSON, MembershipToJSON } from '../models';
 
 export interface MembershipsCreateRequest {
     membership: Membership;
@@ -37,7 +38,7 @@ export class MembershipsApi extends runtime.BaseAPI {
      */
     async membershipsCreateRaw(
         requestParameters: MembershipsCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<Membership>> {
         if (requestParameters.membership === null || requestParameters.membership === undefined) {
             throw new runtime.RequiredError(
@@ -52,6 +53,10 @@ export class MembershipsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -60,10 +65,6 @@ export class MembershipsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/memberships/`,
@@ -83,7 +84,7 @@ export class MembershipsApi extends runtime.BaseAPI {
      */
     async membershipsCreate(
         requestParameters: MembershipsCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<Membership> {
         const response = await this.membershipsCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -94,7 +95,7 @@ export class MembershipsApi extends runtime.BaseAPI {
      */
     async membershipsDestroyRaw(
         requestParameters: MembershipsDestroyRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -107,6 +108,10 @@ export class MembershipsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -115,10 +120,6 @@ export class MembershipsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/memberships/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -135,7 +136,10 @@ export class MembershipsApi extends runtime.BaseAPI {
     /**
      * Remove a project member. Only OWNERS can do this.
      */
-    async membershipsDestroy(requestParameters: MembershipsDestroyRequest, initOverrides?: RequestInit): Promise<void> {
+    async membershipsDestroy(
+        requestParameters: MembershipsDestroyRequest,
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
+    ): Promise<void> {
         await this.membershipsDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -144,7 +148,7 @@ export class MembershipsApi extends runtime.BaseAPI {
      */
     async membershipsListRaw(
         requestParameters: MembershipsListRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<Array<Membership>>> {
         const queryParameters: any = {};
 
@@ -158,6 +162,10 @@ export class MembershipsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -166,10 +174,6 @@ export class MembershipsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/memberships/`,
@@ -188,7 +192,7 @@ export class MembershipsApi extends runtime.BaseAPI {
      */
     async membershipsList(
         requestParameters: MembershipsListRequest = {},
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<Array<Membership>> {
         const response = await this.membershipsListRaw(requestParameters, initOverrides);
         return await response.value();

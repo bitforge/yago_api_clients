@@ -27,6 +27,16 @@ export interface OrderCreate {
     project: string;
 }
 
+/**
+ * Check if a given object implements the OrderCreate interface.
+ */
+export function instanceOfOrderCreate(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'project' in value;
+
+    return isInstance;
+}
+
 export function OrderCreateFromJSON(json: any): OrderCreate {
     return OrderCreateFromJSONTyped(json, false);
 }

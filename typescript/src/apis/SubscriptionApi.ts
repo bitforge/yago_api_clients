@@ -13,14 +13,12 @@
  */
 
 import * as runtime from '../runtime';
+import type { NewSubscription, NewSubscriptionCreate, Subscription } from '../models';
 import {
-    NewSubscription,
     NewSubscriptionFromJSON,
     NewSubscriptionToJSON,
-    NewSubscriptionCreate,
     NewSubscriptionCreateFromJSON,
     NewSubscriptionCreateToJSON,
-    Subscription,
     SubscriptionFromJSON,
     SubscriptionToJSON,
 } from '../models';
@@ -38,7 +36,7 @@ export class SubscriptionApi extends runtime.BaseAPI {
      */
     async subscriptionCreateRaw(
         requestParameters: SubscriptionCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<runtime.ApiResponse<NewSubscription>> {
         if (requestParameters.newSubscriptionCreate === null || requestParameters.newSubscriptionCreate === undefined) {
             throw new runtime.RequiredError(
@@ -53,6 +51,10 @@ export class SubscriptionApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -61,10 +63,6 @@ export class SubscriptionApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/subscription/`,
@@ -84,7 +82,7 @@ export class SubscriptionApi extends runtime.BaseAPI {
      */
     async subscriptionCreate(
         requestParameters: SubscriptionCreateRequest,
-        initOverrides?: RequestInit
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
     ): Promise<NewSubscription> {
         const response = await this.subscriptionCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -93,10 +91,16 @@ export class SubscriptionApi extends runtime.BaseAPI {
     /**
      * Cancel current subscription.
      */
-    async subscriptionDestroyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async subscriptionDestroyRaw(
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
+    ): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -106,10 +110,6 @@ export class SubscriptionApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/subscription/`,
@@ -126,17 +126,23 @@ export class SubscriptionApi extends runtime.BaseAPI {
     /**
      * Cancel current subscription.
      */
-    async subscriptionDestroy(initOverrides?: RequestInit): Promise<void> {
+    async subscriptionDestroy(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.subscriptionDestroyRaw(initOverrides);
     }
 
     /**
      * Get details of active subscription if customer is signed up.
      */
-    async subscriptionRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Subscription>> {
+    async subscriptionRetrieveRaw(
+        initOverrides?: RequestInit | runtime.InitOverrideFunction
+    ): Promise<runtime.ApiResponse<Subscription>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -146,10 +152,6 @@ export class SubscriptionApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         const response = await this.request(
             {
                 path: `/api/subscription/`,
@@ -166,7 +168,7 @@ export class SubscriptionApi extends runtime.BaseAPI {
     /**
      * Get details of active subscription if customer is signed up.
      */
-    async subscriptionRetrieve(initOverrides?: RequestInit): Promise<Subscription> {
+    async subscriptionRetrieve(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Subscription> {
         const response = await this.subscriptionRetrieveRaw(initOverrides);
         return await response.value();
     }

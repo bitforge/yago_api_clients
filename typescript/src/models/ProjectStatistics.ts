@@ -13,19 +13,16 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { FilterEventsEnum } from './FilterEventsEnum';
+import { FilterEventsEnumFromJSON, FilterEventsEnumFromJSONTyped, FilterEventsEnumToJSON } from './FilterEventsEnum';
+import type { ProjectStatisticsGroupByEnum } from './ProjectStatisticsGroupByEnum';
 import {
-    FilterEventsEnum,
-    FilterEventsEnumFromJSON,
-    FilterEventsEnumFromJSONTyped,
-    FilterEventsEnumToJSON,
-} from './FilterEventsEnum';
-import {
-    ProjectStatisticsGroupByEnum,
     ProjectStatisticsGroupByEnumFromJSON,
     ProjectStatisticsGroupByEnumFromJSONTyped,
     ProjectStatisticsGroupByEnumToJSON,
 } from './ProjectStatisticsGroupByEnum';
-import { TimeRangeEnum, TimeRangeEnumFromJSON, TimeRangeEnumFromJSONTyped, TimeRangeEnumToJSON } from './TimeRangeEnum';
+import type { TimeRangeEnum } from './TimeRangeEnum';
+import { TimeRangeEnumFromJSON, TimeRangeEnumFromJSONTyped, TimeRangeEnumToJSON } from './TimeRangeEnum';
 
 /**
  *
@@ -51,6 +48,18 @@ export interface ProjectStatistics {
      * @memberof ProjectStatistics
      */
     groupBy: ProjectStatisticsGroupByEnum;
+}
+
+/**
+ * Check if a given object implements the ProjectStatistics interface.
+ */
+export function instanceOfProjectStatistics(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && 'timeRange' in value;
+    isInstance = isInstance && 'filterEvents' in value;
+    isInstance = isInstance && 'groupBy' in value;
+
+    return isInstance;
 }
 
 export function ProjectStatisticsFromJSON(json: any): ProjectStatistics {
