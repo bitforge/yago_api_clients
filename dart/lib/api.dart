@@ -42,6 +42,7 @@ part 'api/users_api.dart';
 
 part 'model/active_order.dart';
 part 'model/address.dart';
+part 'model/anchor_token.dart';
 part 'model/available_state.dart';
 part 'model/chronic_stats.dart';
 part 'model/country_enum.dart';

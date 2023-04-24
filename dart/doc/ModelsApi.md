@@ -443,7 +443,7 @@ import 'package:yago_cloud/api.dart';
 
 final api_instance = ModelsApi();
 final project = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-final status = status_example; // String | DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
+final status = status_example; // String | DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
 
 try {
     final result = api_instance.modelsList(project, status);
@@ -458,7 +458,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project** | **String**|  | [optional] 
- **status** | **String**| DRAFT=In development, READY=Modelling complete, ONLINE=Active use. | [optional] 
+ **status** | **String**| DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online | [optional] 
 
 ### Return type
 

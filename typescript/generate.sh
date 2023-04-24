@@ -14,7 +14,7 @@ npx @openapitools/openapi-generator-cli generate \
     --additional-properties=npmName=yago-api-client
 
 # Fix annoying typescript error in generated source
-sed -i -e 's/this\.configuration\.fetchApi/this\.configuration\.fetchApi\!/g' src/runtime.ts
+#sed -i -e 's/this\.configuration\.fetchApi/this\.configuration\.fetchApi\!/g' src/runtime.ts
 
 # Auto format files with prettier
 echo "Auto formatting files with prettier"

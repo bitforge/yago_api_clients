@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `all` - - * `events` - Events * `models` - Modelle * `platforms` - Plattformen * `languages` - Sprachen * `devices` - Gerätehersteller * `browsers` - Browser * `countries` - Länder
 class ProjectStatisticsGroupByEnum {
   /// Instantiate a new enum with the provided [value].
   const ProjectStatisticsGroupByEnum._(this.value);

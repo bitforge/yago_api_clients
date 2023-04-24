@@ -3,6 +3,7 @@
 analysis_options.yaml
 doc/ActiveOrder.md
 doc/Address.md
+doc/AnchorToken.md
 doc/AuthApi.md
 doc/AvailableState.md
 doc/ChronicStats.md
@@ -101,6 +102,7 @@ lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
 lib/model/active_order.dart
 lib/model/address.dart
+lib/model/anchor_token.dart
 lib/model/available_state.dart
 lib/model/chronic_stats.dart
 lib/model/country_enum.dart
@@ -165,6 +167,7 @@ lib/model/user.dart
 lib/model/user_verified.dart
 test/active_order_test.dart
 test/address_test.dart
+test/anchor_token_test.dart
 test/auth_api_test.dart
 test/available_state_test.dart
 test/chronic_stats_test.dart

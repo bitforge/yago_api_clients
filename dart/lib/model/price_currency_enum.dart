@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `CHF` - CHF 🇨🇭 * `EUR` - EUR 🇪🇺 * `GBP` - GBP 🇬🇧 * `USD` - USD 🇺🇸
 class PriceCurrencyEnum {
   /// Instantiate a new enum with the provided [value].
   const PriceCurrencyEnum._(this.value);

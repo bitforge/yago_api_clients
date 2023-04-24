@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **customerName** | **String** |  | [readonly] 
 **dateJoined** | [**DateTime**](DateTime.md) |  | [readonly] 
 **isActive** | **bool** | Deactivated users cannot login. | [readonly] 
-**isStaff** | **bool** | Allow login to Yago Admin. For Admins only. | [readonly] 
+**isStaff** | **bool** | Allow login to Yago Admin. For Bitforge employees and power users. | [readonly] 
 **isSuperuser** | **bool** | User can see and change anything. Only for Bitforge employees. | [readonly] 
 **isContractor** | **bool** | User can manage model orders. For designers & customer project managers. | [readonly] 
 

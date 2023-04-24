@@ -449,7 +449,7 @@ class ModelsApi {
   /// * [String] project:
   ///
   /// * [String] status:
-  ///   DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
+  ///   DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
   Future<Response> modelsListWithHttpInfo({
     String? project,
     String? status,
@@ -491,7 +491,7 @@ class ModelsApi {
   /// * [String] project:
   ///
   /// * [String] status:
-  ///   DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
+  ///   DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
   Future<List<Model>?> modelsList({
     String? project,
     String? status,

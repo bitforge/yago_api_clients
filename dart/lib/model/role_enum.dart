@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `OWNER` - Owner * `MEMBER` - Member * `MANAGER` - Manager * `DESIGNER` - Designer
 class RoleEnum {
   /// Instantiate a new enum with the provided [value].
   const RoleEnum._(this.value);

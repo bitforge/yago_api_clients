@@ -43,11 +43,21 @@ class AuthApi {
   }
 
   /// Create a new anchor token.
-  Future<void> authAnchorTokenRetrieve() async {
+  Future<AnchorToken?> authAnchorTokenRetrieve() async {
     final response = await authAnchorTokenRetrieveWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'AnchorToken',
+      ) as AnchorToken;
+    }
+    return null;
   }
 
   /// Takes a Google ID token and returns an access and refresh token for this API. If token is valid and user does not already exist, a new Yago user will be created.

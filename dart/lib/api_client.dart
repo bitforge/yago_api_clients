@@ -218,6 +218,8 @@ class ApiClient {
           return ActiveOrder.fromJson(value);
         case 'Address':
           return Address.fromJson(value);
+        case 'AnchorToken':
+          return AnchorToken.fromJson(value);
         case 'AvailableState':
           return AvailableState.fromJson(value);
         case 'ChronicStats':

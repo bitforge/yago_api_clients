@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **authAnchorTokenRetrieve**
-> authAnchorTokenRetrieve()
+> AnchorToken authAnchorTokenRetrieve()
 
 
 
@@ -47,7 +47,8 @@ import 'package:yago_cloud/api.dart';
 final api_instance = AuthApi();
 
 try {
-    api_instance.authAnchorTokenRetrieve();
+    final result = api_instance.authAnchorTokenRetrieve();
+    print(result);
 } catch (e) {
     print('Exception when calling AuthApi->authAnchorTokenRetrieve: $e\n');
 }
@@ -58,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**AnchorToken**](AnchorToken.md)
 
 ### Authorization
 
@@ -67,7 +68,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

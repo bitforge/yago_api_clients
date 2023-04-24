@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `all` - Alle * `ar` - AR Views * `model` - Model Views
 class FilterEventsEnum {
   /// Instantiate a new enum with the provided [value].
   const FilterEventsEnum._(this.value);

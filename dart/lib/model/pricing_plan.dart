@@ -17,17 +17,15 @@ class PricingPlan {
     required this.name,
     required this.price,
     this.priceOnRequest,
-    this.priceHint,
     this.projectQuotas = 0,
     this.projectQuotasDisabled,
     this.modelQuotas = '0',
     this.modelQuotasDisabled,
-    this.viewQuotas = 0,
-    this.viewQuotasDisabled,
     this.seoOptimization,
     this.viewReporting,
     this.customQrCodes,
     this.scenesApp,
+    this.hidden,
   });
 
   String key;
@@ -45,9 +43,6 @@ class PricingPlan {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? priceOnRequest;
-
-  /// Comment for price, shown in product page.
-  String? priceHint;
 
   int projectQuotas;
 
@@ -70,17 +65,6 @@ class PricingPlan {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   bool? modelQuotasDisabled;
-
-  int viewQuotas;
-
-  /// Disable quota check for this plan.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? viewQuotasDisabled;
 
   /// Enables SEO tags and sharing previews.
   ///
@@ -118,6 +102,14 @@ class PricingPlan {
   ///
   bool? scenesApp;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? hidden;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -126,17 +118,15 @@ class PricingPlan {
           other.name == name &&
           other.price == price &&
           other.priceOnRequest == priceOnRequest &&
-          other.priceHint == priceHint &&
           other.projectQuotas == projectQuotas &&
           other.projectQuotasDisabled == projectQuotasDisabled &&
           other.modelQuotas == modelQuotas &&
           other.modelQuotasDisabled == modelQuotasDisabled &&
-          other.viewQuotas == viewQuotas &&
-          other.viewQuotasDisabled == viewQuotasDisabled &&
           other.seoOptimization == seoOptimization &&
           other.viewReporting == viewReporting &&
           other.customQrCodes == customQrCodes &&
-          other.scenesApp == scenesApp;
+          other.scenesApp == scenesApp &&
+          other.hidden == hidden;
 
   @override
   int get hashCode =>
@@ -145,21 +135,19 @@ class PricingPlan {
       (name.hashCode) +
       (price.hashCode) +
       (priceOnRequest == null ? 0 : priceOnRequest!.hashCode) +
-      (priceHint == null ? 0 : priceHint!.hashCode) +
       (projectQuotas.hashCode) +
       (projectQuotasDisabled == null ? 0 : projectQuotasDisabled!.hashCode) +
       (modelQuotas.hashCode) +
       (modelQuotasDisabled == null ? 0 : modelQuotasDisabled!.hashCode) +
-      (viewQuotas.hashCode) +
-      (viewQuotasDisabled == null ? 0 : viewQuotasDisabled!.hashCode) +
       (seoOptimization == null ? 0 : seoOptimization!.hashCode) +
       (viewReporting == null ? 0 : viewReporting!.hashCode) +
       (customQrCodes == null ? 0 : customQrCodes!.hashCode) +
-      (scenesApp == null ? 0 : scenesApp!.hashCode);
+      (scenesApp == null ? 0 : scenesApp!.hashCode) +
+      (hidden == null ? 0 : hidden!.hashCode);
 
   @override
   String toString() =>
-      'PricingPlan[key=$key, name=$name, price=$price, priceOnRequest=$priceOnRequest, priceHint=$priceHint, projectQuotas=$projectQuotas, projectQuotasDisabled=$projectQuotasDisabled, modelQuotas=$modelQuotas, modelQuotasDisabled=$modelQuotasDisabled, viewQuotas=$viewQuotas, viewQuotasDisabled=$viewQuotasDisabled, seoOptimization=$seoOptimization, viewReporting=$viewReporting, customQrCodes=$customQrCodes, scenesApp=$scenesApp]';
+      'PricingPlan[key=$key, name=$name, price=$price, priceOnRequest=$priceOnRequest, projectQuotas=$projectQuotas, projectQuotasDisabled=$projectQuotasDisabled, modelQuotas=$modelQuotas, modelQuotasDisabled=$modelQuotasDisabled, seoOptimization=$seoOptimization, viewReporting=$viewReporting, customQrCodes=$customQrCodes, scenesApp=$scenesApp, hidden=$hidden]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -170,11 +158,6 @@ class PricingPlan {
       json[r'price_on_request'] = this.priceOnRequest;
     } else {
       json[r'price_on_request'] = null;
-    }
-    if (this.priceHint != null) {
-      json[r'price_hint'] = this.priceHint;
-    } else {
-      json[r'price_hint'] = null;
     }
     json[r'project_quotas'] = this.projectQuotas;
     if (this.projectQuotasDisabled != null) {
@@ -187,12 +170,6 @@ class PricingPlan {
       json[r'model_quotas_disabled'] = this.modelQuotasDisabled;
     } else {
       json[r'model_quotas_disabled'] = null;
-    }
-    json[r'view_quotas'] = this.viewQuotas;
-    if (this.viewQuotasDisabled != null) {
-      json[r'view_quotas_disabled'] = this.viewQuotasDisabled;
-    } else {
-      json[r'view_quotas_disabled'] = null;
     }
     if (this.seoOptimization != null) {
       json[r'seo_optimization'] = this.seoOptimization;
@@ -213,6 +190,11 @@ class PricingPlan {
       json[r'scenes_app'] = this.scenesApp;
     } else {
       json[r'scenes_app'] = null;
+    }
+    if (this.hidden != null) {
+      json[r'hidden'] = this.hidden;
+    } else {
+      json[r'hidden'] = null;
     }
     return json;
   }
@@ -240,17 +222,15 @@ class PricingPlan {
         name: mapValueOfType<String>(json, r'name')!,
         price: mapValueOfType<double>(json, r'price')!,
         priceOnRequest: mapValueOfType<bool>(json, r'price_on_request'),
-        priceHint: mapValueOfType<String>(json, r'price_hint'),
         projectQuotas: mapValueOfType<int>(json, r'project_quotas') ?? 0,
         projectQuotasDisabled: mapValueOfType<bool>(json, r'project_quotas_disabled'),
         modelQuotas: mapValueOfType<String>(json, r'model_quotas') ?? '0',
         modelQuotasDisabled: mapValueOfType<bool>(json, r'model_quotas_disabled'),
-        viewQuotas: mapValueOfType<int>(json, r'view_quotas') ?? 0,
-        viewQuotasDisabled: mapValueOfType<bool>(json, r'view_quotas_disabled'),
         seoOptimization: mapValueOfType<bool>(json, r'seo_optimization'),
         viewReporting: mapValueOfType<bool>(json, r'view_reporting'),
         customQrCodes: mapValueOfType<bool>(json, r'custom_qr_codes'),
         scenesApp: mapValueOfType<bool>(json, r'scenes_app'),
+        hidden: mapValueOfType<bool>(json, r'hidden'),
       );
     }
     return null;

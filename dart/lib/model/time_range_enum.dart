@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `24h` - Letzter Tag * `48h` - Letzte 2 Tage * `7d` - Letzte Woche * `14d` - Letzte 2 Wochen * `1m` - Letzter Monat * `2m` - Letzte 2 Monate * `3m` - Letzte 3 Monate * `6m` - Letzte 6 Monate * `1y` - Letztes Jahr * `2y` - Letzte 2 Jahre
 class TimeRangeEnum {
   /// Instantiate a new enum with the provided [value].
   const TimeRangeEnum._(this.value);

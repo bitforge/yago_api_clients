@@ -1,0 +1,20 @@
+# yago_cloud.model.AnchorToken
+
+## Load the model package
+```dart
+import 'package:yago_cloud/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**iss** | **String** |  | 
+**sub** | **String** |  | 
+**iat** | **int** |  | 
+**exp** | **int** |  | 
+**aud** | **String** |  | 
+**uid** | **String** |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

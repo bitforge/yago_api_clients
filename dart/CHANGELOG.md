@@ -1,3 +1,7 @@
+# 1.2.3
+
+- Update to Yago Api OpenAPI Spec @ 2023.04.24
+
 # 1.2.2
 
 - Update README on pub.dev

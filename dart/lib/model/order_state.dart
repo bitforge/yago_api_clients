@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `PREPARING` - Preparing * `ESTIMATING` - Estimating * `READY_TO_PAY` - Ready to pay * `IN_PROGRESS` - In Progress * `IN_REVIEW` - In Review * `FINISHED` - Finished * `RAGE_QUIT` - Rage Quit
 class OrderState {
   /// Instantiate a new enum with the provided [value].
   const OrderState._(this.value);

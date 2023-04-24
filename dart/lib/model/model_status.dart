@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
 class ModelStatus {
   /// Instantiate a new enum with the provided [value].
   const ModelStatus._(this.value);

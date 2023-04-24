@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **priceCurrency** | **String** |  | [readonly] 
 **created** | [**DateTime**](DateTime.md) |  | [readonly] 
 **modified** | [**DateTime**](DateTime.md) |  | [readonly] 
-**modelCount** | **int** |  | [readonly] 
+**modelCount** | **int** | Returns the number of Models this order has. | [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

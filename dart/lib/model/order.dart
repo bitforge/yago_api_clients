@@ -38,6 +38,7 @@ class Order {
 
   DateTime modified;
 
+  /// Returns the number of Models this order has.
   int modelCount;
 
   @override

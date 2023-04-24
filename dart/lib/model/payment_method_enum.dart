@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+/// * `NONE` - None (Not subscribed) * `STRIPE` - Credit card (stripe) * `BILL` - Pay by bill
 class PaymentMethodEnum {
   /// Instantiate a new enum with the provided [value].
   const PaymentMethodEnum._(this.value);

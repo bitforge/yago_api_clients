@@ -52,7 +52,7 @@ class User {
   /// Deactivated users cannot login.
   bool isActive;
 
-  /// Allow login to Yago Admin. For Admins only.
+  /// Allow login to Yago Admin. For Bitforge employees and power users.
   bool isStaff;
 
   /// User can see and change anything. Only for Bitforge employees.

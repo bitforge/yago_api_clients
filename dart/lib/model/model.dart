@@ -94,7 +94,7 @@ class Model {
   ///
   bool? preview;
 
-  /// DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
+  /// DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
   ModelStatus? status;
 
   String description;
