@@ -13,8 +13,7 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { CountryEnum } from './CountryEnum';
-import { CountryEnumFromJSON, CountryEnumFromJSONTyped, CountryEnumToJSON } from './CountryEnum';
+import { CountryEnum, CountryEnumFromJSON, CountryEnumFromJSONTyped, CountryEnumToJSON } from './CountryEnum';
 
 /**
  *
@@ -82,17 +81,6 @@ export interface Address {
      * @memberof Address
      */
     country?: CountryEnum;
-}
-
-/**
- * Check if a given object implements the Address interface.
- */
-export function instanceOfAddress(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'name' in value;
-
-    return isInstance;
 }
 
 export function AddressFromJSON(json: any): Address {

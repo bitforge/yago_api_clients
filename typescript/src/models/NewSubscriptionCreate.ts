@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { PaymentMethodEnum } from './PaymentMethodEnum';
 import {
+    PaymentMethodEnum,
     PaymentMethodEnumFromJSON,
     PaymentMethodEnumFromJSONTyped,
     PaymentMethodEnumToJSON,
@@ -44,18 +44,6 @@ export interface NewSubscriptionCreate {
      * @memberof NewSubscriptionCreate
      */
     tosAccepted: boolean;
-}
-
-/**
- * Check if a given object implements the NewSubscriptionCreate interface.
- */
-export function instanceOfNewSubscriptionCreate(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'plan' in value;
-    isInstance = isInstance && 'paymentMethod' in value;
-    isInstance = isInstance && 'tosAccepted' in value;
-
-    return isInstance;
 }
 
 export function NewSubscriptionCreateFromJSON(json: any): NewSubscriptionCreate {

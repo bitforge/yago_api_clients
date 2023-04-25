@@ -81,23 +81,6 @@ export interface User {
     readonly isContractor: boolean;
 }
 
-/**
- * Check if a given object implements the User interface.
- */
-export function instanceOfUser(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'email' in value;
-    isInstance = isInstance && 'customerName' in value;
-    isInstance = isInstance && 'dateJoined' in value;
-    isInstance = isInstance && 'isActive' in value;
-    isInstance = isInstance && 'isStaff' in value;
-    isInstance = isInstance && 'isSuperuser' in value;
-    isInstance = isInstance && 'isContractor' in value;
-
-    return isInstance;
-}
-
 export function UserFromJSON(json: any): User {
     return UserFromJSONTyped(json, false);
 }

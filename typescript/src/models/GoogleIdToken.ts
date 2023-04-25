@@ -27,16 +27,6 @@ export interface GoogleIdToken {
     token: string;
 }
 
-/**
- * Check if a given object implements the GoogleIdToken interface.
- */
-export function instanceOfGoogleIdToken(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'token' in value;
-
-    return isInstance;
-}
-
 export function GoogleIdTokenFromJSON(json: any): GoogleIdToken {
     return GoogleIdTokenFromJSONTyped(json, false);
 }

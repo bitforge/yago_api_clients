@@ -45,17 +45,6 @@ export interface Registration {
     lastName?: string;
 }
 
-/**
- * Check if a given object implements the Registration interface.
- */
-export function instanceOfRegistration(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'email' in value;
-
-    return isInstance;
-}
-
 export function RegistrationFromJSON(json: any): Registration {
     return RegistrationFromJSONTyped(json, false);
 }

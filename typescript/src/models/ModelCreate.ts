@@ -63,18 +63,6 @@ export interface ModelCreate {
     readonly slug: string;
 }
 
-/**
- * Check if a given object implements the ModelCreate interface.
- */
-export function instanceOfModelCreate(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'project' in value;
-    isInstance = isInstance && 'slug' in value;
-
-    return isInstance;
-}
-
 export function ModelCreateFromJSON(json: any): ModelCreate {
     return ModelCreateFromJSONTyped(json, false);
 }

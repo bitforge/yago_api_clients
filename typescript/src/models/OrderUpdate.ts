@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { PriceCurrencyEnum } from './PriceCurrencyEnum';
 import {
+    PriceCurrencyEnum,
     PriceCurrencyEnumFromJSON,
     PriceCurrencyEnumFromJSONTyped,
     PriceCurrencyEnumToJSON,
@@ -38,16 +38,6 @@ export interface OrderUpdate {
      * @memberof OrderUpdate
      */
     priceCurrency?: PriceCurrencyEnum;
-}
-
-/**
- * Check if a given object implements the OrderUpdate interface.
- */
-export function instanceOfOrderUpdate(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'price' in value;
-
-    return isInstance;
 }
 
 export function OrderUpdateFromJSON(json: any): OrderUpdate {

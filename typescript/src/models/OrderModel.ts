@@ -13,8 +13,7 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { OrderState } from './OrderState';
-import { OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
  *
@@ -45,7 +44,7 @@ export interface OrderModel {
      * @type {OrderState}
      * @memberof OrderModel
      */
-    readonly state: OrderState;
+    readonly state: OrderState | null;
     /**
      *
      * @type {string}
@@ -88,22 +87,6 @@ export interface OrderModel {
      * @memberof OrderModel
      */
     readonly modified: Date;
-}
-
-/**
- * Check if a given object implements the OrderModel interface.
- */
-export function instanceOfOrderModel(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'name' in value;
-    isInstance = isInstance && 'order' in value;
-    isInstance = isInstance && 'state' in value;
-    isInstance = isInstance && 'model' in value;
-    isInstance = isInstance && 'created' in value;
-    isInstance = isInstance && 'modified' in value;
-
-    return isInstance;
 }
 
 export function OrderModelFromJSON(json: any): OrderModel {

@@ -39,18 +39,6 @@ export interface ChronicStats {
     total: number;
 }
 
-/**
- * Check if a given object implements the ChronicStats interface.
- */
-export function instanceOfChronicStats(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'label' in value;
-    isInstance = isInstance && 'data' in value;
-    isInstance = isInstance && 'total' in value;
-
-    return isInstance;
-}
-
 export function ChronicStatsFromJSON(json: any): ChronicStats {
     return ChronicStatsFromJSONTyped(json, false);
 }

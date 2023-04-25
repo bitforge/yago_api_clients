@@ -13,58 +13,56 @@
  */
 
 import * as runtime from '../runtime';
-import type {
-    AvailableState,
-    ErrorDescription,
-    FileUploaded,
-    Order,
-    OrderComment,
-    OrderCommentCreate,
-    OrderCreate,
-    OrderDetail,
-    OrderModel,
-    OrderModelComment,
-    OrderModelCommentCreate,
-    OrderModelCreate,
-    OrderModelDetail,
-    OrderModelFile,
-    OrderModelUpdate,
-    OrderUpdate,
-    StateChanged,
-} from '../models';
 import {
+    AvailableState,
     AvailableStateFromJSON,
     AvailableStateToJSON,
+    ErrorDescription,
     ErrorDescriptionFromJSON,
     ErrorDescriptionToJSON,
+    FileUploaded,
     FileUploadedFromJSON,
     FileUploadedToJSON,
+    Order,
     OrderFromJSON,
     OrderToJSON,
+    OrderComment,
     OrderCommentFromJSON,
     OrderCommentToJSON,
+    OrderCommentCreate,
     OrderCommentCreateFromJSON,
     OrderCommentCreateToJSON,
+    OrderCreate,
     OrderCreateFromJSON,
     OrderCreateToJSON,
+    OrderDetail,
     OrderDetailFromJSON,
     OrderDetailToJSON,
+    OrderModel,
     OrderModelFromJSON,
     OrderModelToJSON,
+    OrderModelComment,
     OrderModelCommentFromJSON,
     OrderModelCommentToJSON,
+    OrderModelCommentCreate,
     OrderModelCommentCreateFromJSON,
     OrderModelCommentCreateToJSON,
+    OrderModelCreate,
     OrderModelCreateFromJSON,
     OrderModelCreateToJSON,
+    OrderModelDetail,
     OrderModelDetailFromJSON,
     OrderModelDetailToJSON,
+    OrderModelFile,
     OrderModelFileFromJSON,
     OrderModelFileToJSON,
+    OrderModelUpdate,
     OrderModelUpdateFromJSON,
     OrderModelUpdateToJSON,
+    OrderUpdate,
     OrderUpdateFromJSON,
     OrderUpdateToJSON,
+    StateChanged,
     StateChangedFromJSON,
     StateChangedToJSON,
 } from '../models';
@@ -206,7 +204,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersCommentsCreateRaw(
         requestParameters: OrdersCommentsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<OrderCommentCreate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -228,10 +226,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -240,6 +234,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/comments/`.replace(
@@ -262,7 +260,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersCommentsCreate(
         requestParameters: OrdersCommentsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<OrderCommentCreate> {
         const response = await this.ordersCommentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -273,7 +271,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersCommentsListRaw(
         requestParameters: OrdersCommentsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<OrderComment>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -286,10 +284,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -298,6 +292,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/comments/`.replace(
@@ -319,7 +317,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersCommentsList(
         requestParameters: OrdersCommentsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<OrderComment>> {
         const response = await this.ordersCommentsListRaw(requestParameters, initOverrides);
         return await response.value();
@@ -330,7 +328,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersCreateRaw(
         requestParameters: OrdersCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Order>> {
         if (requestParameters.orderCreate === null || requestParameters.orderCreate === undefined) {
             throw new runtime.RequiredError(
@@ -345,10 +343,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -357,6 +351,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/`,
@@ -374,10 +372,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Add a new order.
      */
-    async ordersCreate(
-        requestParameters: OrdersCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<Order> {
+    async ordersCreate(requestParameters: OrdersCreateRequest, initOverrides?: RequestInit): Promise<Order> {
         const response = await this.ordersCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -387,7 +382,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersDestroyRaw(
         requestParameters: OrdersDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -400,10 +395,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -412,6 +403,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -428,10 +423,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Delete order.
      */
-    async ordersDestroy(
-        requestParameters: OrdersDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async ordersDestroy(requestParameters: OrdersDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.ordersDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -440,7 +432,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersListRaw(
         requestParameters: OrdersListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<Order>>> {
         const queryParameters: any = {};
 
@@ -450,10 +442,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -462,6 +450,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/`,
@@ -478,10 +470,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Lists all orders of customer.
      */
-    async ordersList(
-        requestParameters: OrdersListRequest = {},
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<Array<Order>> {
+    async ordersList(requestParameters: OrdersListRequest = {}, initOverrides?: RequestInit): Promise<Array<Order>> {
         const response = await this.ordersListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -491,7 +480,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsCommentsCreateRaw(
         requestParameters: OrdersModelsCommentsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<OrderModelCommentCreate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -523,10 +512,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -535,6 +520,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/comments/`
@@ -556,7 +545,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsCommentsCreate(
         requestParameters: OrdersModelsCommentsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<OrderModelCommentCreate> {
         const response = await this.ordersModelsCommentsCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -567,7 +556,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsCommentsListRaw(
         requestParameters: OrdersModelsCommentsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<OrderModelComment>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -587,10 +576,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -599,6 +584,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/comments/`
@@ -619,7 +608,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsCommentsList(
         requestParameters: OrdersModelsCommentsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<OrderModelComment>> {
         const response = await this.ordersModelsCommentsListRaw(requestParameters, initOverrides);
         return await response.value();
@@ -630,7 +619,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsCreateRaw(
         requestParameters: OrdersModelsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<OrderModel>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -652,10 +641,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -664,6 +649,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/`.replace(
@@ -686,7 +675,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsCreate(
         requestParameters: OrdersModelsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<OrderModel> {
         const response = await this.ordersModelsCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -697,7 +686,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsDestroyRaw(
         requestParameters: OrdersModelsDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -717,10 +706,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -729,6 +714,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/`
@@ -749,7 +738,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsDestroy(
         requestParameters: OrdersModelsDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<void> {
         await this.ordersModelsDestroyRaw(requestParameters, initOverrides);
     }
@@ -759,7 +748,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsFilesDestroyRaw(
         requestParameters: OrdersModelsFilesDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -786,10 +775,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -798,6 +783,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/files/{file_id}/`
@@ -819,7 +808,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsFilesDestroy(
         requestParameters: OrdersModelsFilesDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<void> {
         await this.ordersModelsFilesDestroyRaw(requestParameters, initOverrides);
     }
@@ -829,7 +818,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsFilesListRaw(
         requestParameters: OrdersModelsFilesListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<OrderModelFile>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -849,10 +838,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -861,6 +846,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/files/`
@@ -881,7 +870,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsFilesList(
         requestParameters: OrdersModelsFilesListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<OrderModelFile>> {
         const response = await this.ordersModelsFilesListRaw(requestParameters, initOverrides);
         return await response.value();
@@ -892,7 +881,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsFilesUpdateRaw(
         requestParameters: OrdersModelsFilesUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<FileUploaded>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -925,10 +914,6 @@ export class OrdersApi extends runtime.BaseAPI {
             headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
         }
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -937,6 +922,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/files/`
@@ -958,7 +947,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsFilesUpdate(
         requestParameters: OrdersModelsFilesUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<FileUploaded> {
         const response = await this.ordersModelsFilesUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -969,7 +958,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsListRaw(
         requestParameters: OrdersModelsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<OrderModel>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -982,10 +971,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -994,6 +979,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/`.replace(
@@ -1015,7 +1004,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsList(
         requestParameters: OrdersModelsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<OrderModel>> {
         const response = await this.ordersModelsListRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1026,7 +1015,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsRetrieveRaw(
         requestParameters: OrdersModelsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<OrderModelDetail>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1046,10 +1035,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1058,6 +1043,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/`
@@ -1078,7 +1067,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsRetrieve(
         requestParameters: OrdersModelsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<OrderModelDetail> {
         const response = await this.ordersModelsRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1089,7 +1078,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsSubmitToFinishedPartialUpdateRaw(
         requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1109,10 +1098,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1121,6 +1106,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/submit_to_finished/`
@@ -1141,7 +1130,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsSubmitToFinishedPartialUpdate(
         requestParameters: OrdersModelsSubmitToFinishedPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersModelsSubmitToFinishedPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1152,7 +1141,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsSubmitToReviewPartialUpdateRaw(
         requestParameters: OrdersModelsSubmitToReviewPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1172,10 +1161,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1184,6 +1169,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/submit_to_review/`
@@ -1204,7 +1193,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsSubmitToReviewPartialUpdate(
         requestParameters: OrdersModelsSubmitToReviewPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersModelsSubmitToReviewPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1215,7 +1204,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsSubmitToReworkPartialUpdateRaw(
         requestParameters: OrdersModelsSubmitToReworkPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1235,10 +1224,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1247,6 +1232,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/submit_to_rework/`
@@ -1267,7 +1256,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsSubmitToReworkPartialUpdate(
         requestParameters: OrdersModelsSubmitToReworkPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersModelsSubmitToReworkPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1278,7 +1267,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsTransitionsListRaw(
         requestParameters: OrdersModelsTransitionsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<AvailableState>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1298,10 +1287,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1310,6 +1295,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/transitions/`
@@ -1330,7 +1319,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsTransitionsList(
         requestParameters: OrdersModelsTransitionsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<AvailableState>> {
         const response = await this.ordersModelsTransitionsListRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1341,7 +1330,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsUpdateRaw(
         requestParameters: OrdersModelsUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<OrderModelUpdate>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1370,10 +1359,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1382,6 +1367,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/models/{id}/`
@@ -1403,7 +1392,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersModelsUpdate(
         requestParameters: OrdersModelsUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<OrderModelUpdate> {
         const response = await this.ordersModelsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1414,7 +1403,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersRetrieveRaw(
         requestParameters: OrdersRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<OrderDetail>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -1427,10 +1416,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1439,6 +1424,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -1455,10 +1444,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Details of a single order.
      */
-    async ordersRetrieve(
-        requestParameters: OrdersRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<OrderDetail> {
+    async ordersRetrieve(requestParameters: OrdersRetrieveRequest, initOverrides?: RequestInit): Promise<OrderDetail> {
         const response = await this.ordersRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -1468,7 +1454,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToEstimationPartialUpdateRaw(
         requestParameters: OrdersSubmitToEstimationPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1481,10 +1467,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1493,6 +1475,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/submit_to_estimation/`.replace(
@@ -1514,7 +1500,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToEstimationPartialUpdate(
         requestParameters: OrdersSubmitToEstimationPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersSubmitToEstimationPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1525,7 +1511,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToFinishedPartialUpdateRaw(
         requestParameters: OrdersSubmitToFinishedPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1538,10 +1524,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1550,6 +1532,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/submit_to_finished/`.replace(
@@ -1571,7 +1557,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToFinishedPartialUpdate(
         requestParameters: OrdersSubmitToFinishedPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersSubmitToFinishedPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1582,7 +1568,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToPaymentPartialUpdateRaw(
         requestParameters: OrdersSubmitToPaymentPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1595,10 +1581,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1607,6 +1589,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/submit_to_payment/`.replace(
@@ -1628,7 +1614,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToPaymentPartialUpdate(
         requestParameters: OrdersSubmitToPaymentPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersSubmitToPaymentPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1639,7 +1625,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToProgressPartialUpdateRaw(
         requestParameters: OrdersSubmitToProgressPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1652,10 +1638,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1664,6 +1646,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/submit_to_progress/`.replace(
@@ -1685,7 +1671,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToProgressPartialUpdate(
         requestParameters: OrdersSubmitToProgressPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersSubmitToProgressPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1696,7 +1682,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToReviewPartialUpdateRaw(
         requestParameters: OrdersSubmitToReviewPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<StateChanged>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1709,10 +1695,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1721,6 +1703,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/submit_to_review/`.replace(
@@ -1742,7 +1728,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersSubmitToReviewPartialUpdate(
         requestParameters: OrdersSubmitToReviewPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<StateChanged> {
         const response = await this.ordersSubmitToReviewPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1753,7 +1739,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersTransitionsListRaw(
         requestParameters: OrdersTransitionsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<AvailableState>>> {
         if (requestParameters.orderId === null || requestParameters.orderId === undefined) {
             throw new runtime.RequiredError(
@@ -1766,10 +1752,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1778,6 +1760,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{order_id}/transitions/`.replace(
@@ -1799,7 +1785,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersTransitionsList(
         requestParameters: OrdersTransitionsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<AvailableState>> {
         const response = await this.ordersTransitionsListRaw(requestParameters, initOverrides);
         return await response.value();
@@ -1810,7 +1796,7 @@ export class OrdersApi extends runtime.BaseAPI {
      */
     async ordersUpdateRaw(
         requestParameters: OrdersUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<OrderUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -1832,10 +1818,6 @@ export class OrdersApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -1844,6 +1826,10 @@ export class OrdersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/orders/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -1861,10 +1847,7 @@ export class OrdersApi extends runtime.BaseAPI {
     /**
      * Update order price estimation.
      */
-    async ordersUpdate(
-        requestParameters: OrdersUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<OrderUpdate> {
+    async ordersUpdate(requestParameters: OrdersUpdateRequest, initOverrides?: RequestInit): Promise<OrderUpdate> {
         const response = await this.ordersUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }

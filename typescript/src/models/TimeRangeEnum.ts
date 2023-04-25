@@ -24,20 +24,20 @@
  * * `1y` - Letztes Jahr
  * * `2y` - Letzte 2 Jahre
  * @export
+ * @enum {string}
  */
-export const TimeRangeEnum = {
-    _24h: '24h',
-    _48h: '48h',
-    _7d: '7d',
-    _14d: '14d',
-    _1m: '1m',
-    _2m: '2m',
-    _3m: '3m',
-    _6m: '6m',
-    _1y: '1y',
-    _2y: '2y',
-} as const;
-export type TimeRangeEnum = (typeof TimeRangeEnum)[keyof typeof TimeRangeEnum];
+export enum TimeRangeEnum {
+    _24h = '24h',
+    _48h = '48h',
+    _7d = '7d',
+    _14d = '14d',
+    _1m = '1m',
+    _2m = '2m',
+    _3m = '3m',
+    _6m = '6m',
+    _1y = '1y',
+    _2y = '2y',
+}
 
 export function TimeRangeEnumFromJSON(json: any): TimeRangeEnum {
     return TimeRangeEnumFromJSONTyped(json, false);

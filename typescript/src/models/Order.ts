@@ -13,8 +13,7 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { OrderState } from './OrderState';
-import { OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
  *
@@ -39,7 +38,7 @@ export interface Order {
      * @type {OrderState}
      * @memberof Order
      */
-    readonly state: OrderState;
+    readonly state: OrderState | null;
     /**
      * Estimation of order in CHF including taxes. Payment price for User before starting production.
      * @type {string}
@@ -70,22 +69,6 @@ export interface Order {
      * @memberof Order
      */
     readonly modelCount: number;
-}
-
-/**
- * Check if a given object implements the Order interface.
- */
-export function instanceOfOrder(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'project' in value;
-    isInstance = isInstance && 'state' in value;
-    isInstance = isInstance && 'priceCurrency' in value;
-    isInstance = isInstance && 'created' in value;
-    isInstance = isInstance && 'modified' in value;
-    isInstance = isInstance && 'modelCount' in value;
-
-    return isInstance;
 }
 
 export function OrderFromJSON(json: any): Order {

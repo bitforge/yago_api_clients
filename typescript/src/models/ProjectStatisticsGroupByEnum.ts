@@ -22,19 +22,18 @@
  * * `browsers` - Browser
  * * `countries` - Länder
  * @export
+ * @enum {string}
  */
-export const ProjectStatisticsGroupByEnum = {
-    All: 'all',
-    Events: 'events',
-    Models: 'models',
-    Platforms: 'platforms',
-    Languages: 'languages',
-    Devices: 'devices',
-    Browsers: 'browsers',
-    Countries: 'countries',
-} as const;
-export type ProjectStatisticsGroupByEnum =
-    (typeof ProjectStatisticsGroupByEnum)[keyof typeof ProjectStatisticsGroupByEnum];
+export enum ProjectStatisticsGroupByEnum {
+    All = 'all',
+    Events = 'events',
+    Models = 'models',
+    Platforms = 'platforms',
+    Languages = 'languages',
+    Devices = 'devices',
+    Browsers = 'browsers',
+    Countries = 'countries',
+}
 
 export function ProjectStatisticsGroupByEnumFromJSON(json: any): ProjectStatisticsGroupByEnum {
     return ProjectStatisticsGroupByEnumFromJSONTyped(json, false);

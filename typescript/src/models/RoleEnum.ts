@@ -18,14 +18,14 @@
  * * `MANAGER` - Manager
  * * `DESIGNER` - Designer
  * @export
+ * @enum {string}
  */
-export const RoleEnum = {
-    Owner: 'OWNER',
-    Member: 'MEMBER',
-    Manager: 'MANAGER',
-    Designer: 'DESIGNER',
-} as const;
-export type RoleEnum = (typeof RoleEnum)[keyof typeof RoleEnum];
+export enum RoleEnum {
+    Owner = 'OWNER',
+    Member = 'MEMBER',
+    Manager = 'MANAGER',
+    Designer = 'DESIGNER',
+}
 
 export function RoleEnumFromJSON(json: any): RoleEnum {
     return RoleEnumFromJSONTyped(json, false);

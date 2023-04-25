@@ -39,18 +39,6 @@ export interface PasswordChange {
     newPassword2: string;
 }
 
-/**
- * Check if a given object implements the PasswordChange interface.
- */
-export function instanceOfPasswordChange(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'oldPassword' in value;
-    isInstance = isInstance && 'newPassword1' in value;
-    isInstance = isInstance && 'newPassword2' in value;
-
-    return isInstance;
-}
-
 export function PasswordChangeFromJSON(json: any): PasswordChange {
     return PasswordChangeFromJSONTyped(json, false);
 }

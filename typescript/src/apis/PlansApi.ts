@@ -13,8 +13,7 @@
  */
 
 import * as runtime from '../runtime';
-import type { PricingPlan } from '../models';
-import { PricingPlanFromJSON, PricingPlanToJSON } from '../models';
+import { PricingPlan, PricingPlanFromJSON, PricingPlanToJSON } from '../models';
 
 /**
  *
@@ -23,9 +22,7 @@ export class PlansApi extends runtime.BaseAPI {
     /**
      * List all available pricing plans
      */
-    async plansListRaw(
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<runtime.ApiResponse<Array<PricingPlan>>> {
+    async plansListRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<PricingPlan>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -46,7 +43,7 @@ export class PlansApi extends runtime.BaseAPI {
     /**
      * List all available pricing plans
      */
-    async plansList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PricingPlan>> {
+    async plansList(initOverrides?: RequestInit): Promise<Array<PricingPlan>> {
         const response = await this.plansListRaw(initOverrides);
         return await response.value();
     }

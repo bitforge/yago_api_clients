@@ -13,14 +13,17 @@
  */
 
 import * as runtime from '../runtime';
-import type { ChronicStats, GlobalStatistics, ProjectStatistics, SummaryStats } from '../models';
 import {
+    ChronicStats,
     ChronicStatsFromJSON,
     ChronicStatsToJSON,
+    GlobalStatistics,
     GlobalStatisticsFromJSON,
     GlobalStatisticsToJSON,
+    ProjectStatistics,
     ProjectStatisticsFromJSON,
     ProjectStatisticsToJSON,
+    SummaryStats,
     SummaryStatsFromJSON,
     SummaryStatsToJSON,
 } from '../models';
@@ -52,7 +55,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsGlobalChronicCreateRaw(
         requestParameters: StatsGlobalChronicCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<ChronicStats>>> {
         if (requestParameters.globalStatistics === null || requestParameters.globalStatistics === undefined) {
             throw new runtime.RequiredError(
@@ -67,10 +70,6 @@ export class StatsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -79,6 +78,10 @@ export class StatsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/stats/global/chronic/`,
@@ -98,7 +101,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsGlobalChronicCreate(
         requestParameters: StatsGlobalChronicCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<ChronicStats>> {
         const response = await this.statsGlobalChronicCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -109,7 +112,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsGlobalSummaryCreateRaw(
         requestParameters: StatsGlobalSummaryCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<SummaryStats>> {
         if (requestParameters.globalStatistics === null || requestParameters.globalStatistics === undefined) {
             throw new runtime.RequiredError(
@@ -124,10 +127,6 @@ export class StatsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -136,6 +135,10 @@ export class StatsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/stats/global/summary/`,
@@ -155,7 +158,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsGlobalSummaryCreate(
         requestParameters: StatsGlobalSummaryCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<SummaryStats> {
         const response = await this.statsGlobalSummaryCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -166,7 +169,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsProjectChronicCreateRaw(
         requestParameters: StatsProjectChronicCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<ChronicStats>>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -188,10 +191,6 @@ export class StatsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -200,6 +199,10 @@ export class StatsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/stats/project/{id}/chronic/`.replace(
@@ -222,7 +225,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsProjectChronicCreate(
         requestParameters: StatsProjectChronicCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<Array<ChronicStats>> {
         const response = await this.statsProjectChronicCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -233,7 +236,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsProjectSummaryCreateRaw(
         requestParameters: StatsProjectSummaryCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<SummaryStats>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -255,10 +258,6 @@ export class StatsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -267,6 +266,10 @@ export class StatsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/stats/project/{id}/summary/`.replace(
@@ -289,7 +292,7 @@ export class StatsApi extends runtime.BaseAPI {
      */
     async statsProjectSummaryCreate(
         requestParameters: StatsProjectSummaryCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<SummaryStats> {
         const response = await this.statsProjectSummaryCreateRaw(requestParameters, initOverrides);
         return await response.value();

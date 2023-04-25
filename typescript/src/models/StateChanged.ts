@@ -39,18 +39,6 @@ export interface StateChanged {
     readonly modified: Date;
 }
 
-/**
- * Check if a given object implements the StateChanged interface.
- */
-export function instanceOfStateChanged(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'oldState' in value;
-    isInstance = isInstance && 'newState' in value;
-    isInstance = isInstance && 'modified' in value;
-
-    return isInstance;
-}
-
 export function StateChangedFromJSON(json: any): StateChanged {
     return StateChangedFromJSONTyped(json, false);
 }

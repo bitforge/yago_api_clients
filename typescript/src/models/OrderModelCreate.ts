@@ -51,16 +51,6 @@ export interface OrderModelCreate {
     depthMm?: number | null;
 }
 
-/**
- * Check if a given object implements the OrderModelCreate interface.
- */
-export function instanceOfOrderModelCreate(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'name' in value;
-
-    return isInstance;
-}
-
 export function OrderModelCreateFromJSON(json: any): OrderModelCreate {
     return OrderModelCreateFromJSONTyped(json, false);
 }

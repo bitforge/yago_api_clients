@@ -57,21 +57,6 @@ export interface AnchorToken {
     uid: string;
 }
 
-/**
- * Check if a given object implements the AnchorToken interface.
- */
-export function instanceOfAnchorToken(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'iss' in value;
-    isInstance = isInstance && 'sub' in value;
-    isInstance = isInstance && 'iat' in value;
-    isInstance = isInstance && 'exp' in value;
-    isInstance = isInstance && 'aud' in value;
-    isInstance = isInstance && 'uid' in value;
-
-    return isInstance;
-}
-
 export function AnchorTokenFromJSON(json: any): AnchorToken {
     return AnchorTokenFromJSONTyped(json, false);
 }

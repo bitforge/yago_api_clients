@@ -45,19 +45,6 @@ export interface OrderModelFile {
     readonly created: Date;
 }
 
-/**
- * Check if a given object implements the OrderModelFile interface.
- */
-export function instanceOfOrderModelFile(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'name' in value;
-    isInstance = isInstance && 'file' in value;
-    isInstance = isInstance && 'created' in value;
-
-    return isInstance;
-}
-
 export function OrderModelFileFromJSON(json: any): OrderModelFile {
     return OrderModelFileFromJSONTyped(json, false);
 }

@@ -13,8 +13,7 @@
  */
 
 import * as runtime from '../runtime';
-import type { User } from '../models';
-import { UserFromJSON, UserToJSON } from '../models';
+import { User, UserFromJSON, UserToJSON } from '../models';
 
 export interface UsersListRequest {
     projects?: Array<string>;
@@ -37,7 +36,7 @@ export class UsersApi extends runtime.BaseAPI {
      */
     async usersListRaw(
         requestParameters: UsersListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<User>>> {
         const queryParameters: any = {};
 
@@ -47,10 +46,6 @@ export class UsersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -59,6 +54,10 @@ export class UsersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/users/`,
@@ -75,10 +74,7 @@ export class UsersApi extends runtime.BaseAPI {
     /**
      * Lists all users that are members in the same projects.
      */
-    async usersList(
-        requestParameters: UsersListRequest = {},
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<Array<User>> {
+    async usersList(requestParameters: UsersListRequest = {}, initOverrides?: RequestInit): Promise<Array<User>> {
         const response = await this.usersListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -86,16 +82,10 @@ export class UsersApi extends runtime.BaseAPI {
     /**
      * Get or update current user details.
      */
-    async usersMeRetrieveRaw(
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<runtime.ApiResponse<User>> {
+    async usersMeRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<User>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -105,6 +95,10 @@ export class UsersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/users/me/`,
@@ -121,7 +115,7 @@ export class UsersApi extends runtime.BaseAPI {
     /**
      * Get or update current user details.
      */
-    async usersMeRetrieve(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<User> {
+    async usersMeRetrieve(initOverrides?: RequestInit): Promise<User> {
         const response = await this.usersMeRetrieveRaw(initOverrides);
         return await response.value();
     }
@@ -131,17 +125,13 @@ export class UsersApi extends runtime.BaseAPI {
      */
     async usersMeUpdateRaw(
         requestParameters: UsersMeUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<User>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -151,6 +141,10 @@ export class UsersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/users/me/`,
@@ -168,10 +162,7 @@ export class UsersApi extends runtime.BaseAPI {
     /**
      * Get or update current user details.
      */
-    async usersMeUpdate(
-        requestParameters: UsersMeUpdateRequest = {},
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<User> {
+    async usersMeUpdate(requestParameters: UsersMeUpdateRequest = {}, initOverrides?: RequestInit): Promise<User> {
         const response = await this.usersMeUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -181,7 +172,7 @@ export class UsersApi extends runtime.BaseAPI {
      */
     async usersRetrieveRaw(
         requestParameters: UsersRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<User>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -194,10 +185,6 @@ export class UsersApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -206,6 +193,10 @@ export class UsersApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/users/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -222,10 +213,7 @@ export class UsersApi extends runtime.BaseAPI {
     /**
      * Details of a single user.
      */
-    async usersRetrieve(
-        requestParameters: UsersRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<User> {
+    async usersRetrieve(requestParameters: UsersRetrieveRequest, initOverrides?: RequestInit): Promise<User> {
         const response = await this.usersRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }

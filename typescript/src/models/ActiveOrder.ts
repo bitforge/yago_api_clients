@@ -13,8 +13,7 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { OrderState } from './OrderState';
-import { OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
  *
@@ -33,18 +32,7 @@ export interface ActiveOrder {
      * @type {OrderState}
      * @memberof ActiveOrder
      */
-    readonly state: OrderState;
-}
-
-/**
- * Check if a given object implements the ActiveOrder interface.
- */
-export function instanceOfActiveOrder(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'state' in value;
-
-    return isInstance;
+    readonly state: OrderState | null;
 }
 
 export function ActiveOrderFromJSON(json: any): ActiveOrder {

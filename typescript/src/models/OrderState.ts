@@ -21,17 +21,17 @@
  * * `FINISHED` - Finished
  * * `RAGE_QUIT` - Rage Quit
  * @export
+ * @enum {string}
  */
-export const OrderState = {
-    Preparing: 'PREPARING',
-    Estimating: 'ESTIMATING',
-    ReadyToPay: 'READY_TO_PAY',
-    InProgress: 'IN_PROGRESS',
-    InReview: 'IN_REVIEW',
-    Finished: 'FINISHED',
-    RageQuit: 'RAGE_QUIT',
-} as const;
-export type OrderState = (typeof OrderState)[keyof typeof OrderState];
+export enum OrderState {
+    Preparing = 'PREPARING',
+    Estimating = 'ESTIMATING',
+    ReadyToPay = 'READY_TO_PAY',
+    InProgress = 'IN_PROGRESS',
+    InReview = 'IN_REVIEW',
+    Finished = 'FINISHED',
+    RageQuit = 'RAGE_QUIT',
+}
 
 export function OrderStateFromJSON(json: any): OrderState {
     return OrderStateFromJSONTyped(json, false);

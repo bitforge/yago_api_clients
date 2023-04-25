@@ -27,16 +27,6 @@ export interface OrderModelCommentCreate {
     comment: string;
 }
 
-/**
- * Check if a given object implements the OrderModelCommentCreate interface.
- */
-export function instanceOfOrderModelCommentCreate(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'comment' in value;
-
-    return isInstance;
-}
-
 export function OrderModelCommentCreateFromJSON(json: any): OrderModelCommentCreate {
     return OrderModelCommentCreateFromJSONTyped(json, false);
 }

@@ -13,16 +13,20 @@
  */
 
 import * as runtime from '../runtime';
-import type { FileUpload, PatchedProjectUpdate, Project, ProjectCreate, ProjectUpdate } from '../models';
 import {
+    FileUpload,
     FileUploadFromJSON,
     FileUploadToJSON,
+    PatchedProjectUpdate,
     PatchedProjectUpdateFromJSON,
     PatchedProjectUpdateToJSON,
+    Project,
     ProjectFromJSON,
     ProjectToJSON,
+    ProjectCreate,
     ProjectCreateFromJSON,
     ProjectCreateToJSON,
+    ProjectUpdate,
     ProjectUpdateFromJSON,
     ProjectUpdateToJSON,
 } from '../models';
@@ -68,7 +72,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsCreateRaw(
         requestParameters: ProjectsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Project>> {
         if (requestParameters.projectCreate === null || requestParameters.projectCreate === undefined) {
             throw new runtime.RequiredError(
@@ -83,10 +87,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -95,6 +95,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/`,
@@ -112,10 +116,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Add a new project. Change details later via PUT or PATCH.
      */
-    async projectsCreate(
-        requestParameters: ProjectsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<Project> {
+    async projectsCreate(requestParameters: ProjectsCreateRequest, initOverrides?: RequestInit): Promise<Project> {
         const response = await this.projectsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -125,7 +126,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsDestroyRaw(
         requestParameters: ProjectsDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -138,10 +139,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -150,6 +147,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -166,10 +167,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Remove a project. Only members with role OWNER can do this.
      */
-    async projectsDestroy(
-        requestParameters: ProjectsDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async projectsDestroy(requestParameters: ProjectsDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.projectsDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -178,7 +176,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsImageDestroyRaw(
         requestParameters: ProjectsImageDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -191,10 +189,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -203,6 +197,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/{id}/image/`.replace(
@@ -224,7 +222,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsImageDestroy(
         requestParameters: ProjectsImageDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<void> {
         await this.projectsImageDestroyRaw(requestParameters, initOverrides);
     }
@@ -234,7 +232,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsImageUpdateRaw(
         requestParameters: ProjectsImageUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<FileUpload>> {
         if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
             throw new runtime.RequiredError(
@@ -254,14 +252,10 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        headerParameters['Content-Type'] = 'image/*';
+        headerParameters['Content-Type'] = 'image/_*';
 
         if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
             headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -272,6 +266,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/{id}/image/`.replace(
@@ -294,7 +292,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsImageUpdate(
         requestParameters: ProjectsImageUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<FileUpload> {
         const response = await this.projectsImageUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -303,16 +301,10 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Lists all projects the user is a member of.
      */
-    async projectsListRaw(
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<runtime.ApiResponse<Array<Project>>> {
+    async projectsListRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<Project>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -322,6 +314,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/`,
@@ -338,7 +334,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Lists all projects the user is a member of.
      */
-    async projectsList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Project>> {
+    async projectsList(initOverrides?: RequestInit): Promise<Array<Project>> {
         const response = await this.projectsListRaw(initOverrides);
         return await response.value();
     }
@@ -348,7 +344,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsPartialUpdateRaw(
         requestParameters: ProjectsPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<ProjectUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -363,10 +359,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -375,6 +367,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -394,7 +390,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsPartialUpdate(
         requestParameters: ProjectsPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<ProjectUpdate> {
         const response = await this.projectsPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -405,7 +401,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsRetrieveRaw(
         requestParameters: ProjectsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Project>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -418,10 +414,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -430,6 +422,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -446,10 +442,7 @@ export class ProjectsApi extends runtime.BaseAPI {
     /**
      * Details of a single project.
      */
-    async projectsRetrieve(
-        requestParameters: ProjectsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<Project> {
+    async projectsRetrieve(requestParameters: ProjectsRetrieveRequest, initOverrides?: RequestInit): Promise<Project> {
         const response = await this.projectsRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -459,7 +452,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsUpdateRaw(
         requestParameters: ProjectsUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<ProjectUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -481,10 +474,6 @@ export class ProjectsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -493,6 +482,10 @@ export class ProjectsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/projects/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -512,7 +505,7 @@ export class ProjectsApi extends runtime.BaseAPI {
      */
     async projectsUpdate(
         requestParameters: ProjectsUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<ProjectUpdate> {
         const response = await this.projectsUpdateRaw(requestParameters, initOverrides);
         return await response.value();

@@ -57,18 +57,6 @@ export interface RegistrationCreate {
     redirectUrl: string;
 }
 
-/**
- * Check if a given object implements the RegistrationCreate interface.
- */
-export function instanceOfRegistrationCreate(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'email' in value;
-    isInstance = isInstance && 'password' in value;
-    isInstance = isInstance && 'redirectUrl' in value;
-
-    return isInstance;
-}
-
 export function RegistrationCreateFromJSON(json: any): RegistrationCreate {
     return RegistrationCreateFromJSONTyped(json, false);
 }

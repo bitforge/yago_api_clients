@@ -63,19 +63,6 @@ export interface UserVerified {
     readonly refresh: string;
 }
 
-/**
- * Check if a given object implements the UserVerified interface.
- */
-export function instanceOfUserVerified(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'email' in value;
-    isInstance = isInstance && 'access' in value;
-    isInstance = isInstance && 'refresh' in value;
-
-    return isInstance;
-}
-
 export function UserVerifiedFromJSON(json: any): UserVerified {
     return UserVerifiedFromJSONTyped(json, false);
 }

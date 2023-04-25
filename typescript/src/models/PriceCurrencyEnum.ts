@@ -18,14 +18,14 @@
  * * `GBP` - GBP 🇬🇧
  * * `USD` - USD 🇺🇸
  * @export
+ * @enum {string}
  */
-export const PriceCurrencyEnum = {
-    Chf: 'CHF',
-    Eur: 'EUR',
-    Gbp: 'GBP',
-    Usd: 'USD',
-} as const;
-export type PriceCurrencyEnum = (typeof PriceCurrencyEnum)[keyof typeof PriceCurrencyEnum];
+export enum PriceCurrencyEnum {
+    Chf = 'CHF',
+    Eur = 'EUR',
+    Gbp = 'GBP',
+    Usd = 'USD',
+}
 
 export function PriceCurrencyEnumFromJSON(json: any): PriceCurrencyEnum {
     return PriceCurrencyEnumFromJSONTyped(json, false);

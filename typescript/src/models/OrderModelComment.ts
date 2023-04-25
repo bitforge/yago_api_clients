@@ -45,19 +45,6 @@ export interface OrderModelComment {
     comment: string;
 }
 
-/**
- * Check if a given object implements the OrderModelComment interface.
- */
-export function instanceOfOrderModelComment(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'yagoTeam' in value;
-    isInstance = isInstance && 'userName' in value;
-    isInstance = isInstance && 'date' in value;
-    isInstance = isInstance && 'comment' in value;
-
-    return isInstance;
-}
-
 export function OrderModelCommentFromJSON(json: any): OrderModelComment {
     return OrderModelCommentFromJSONTyped(json, false);
 }

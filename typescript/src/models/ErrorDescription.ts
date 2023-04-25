@@ -39,18 +39,6 @@ export interface ErrorDescription {
     readonly errors: { [key: string]: any };
 }
 
-/**
- * Check if a given object implements the ErrorDescription interface.
- */
-export function instanceOfErrorDescription(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'title' in value;
-    isInstance = isInstance && 'status' in value;
-    isInstance = isInstance && 'errors' in value;
-
-    return isInstance;
-}
-
 export function ErrorDescriptionFromJSON(json: any): ErrorDescription {
     return ErrorDescriptionFromJSONTyped(json, false);
 }

@@ -13,8 +13,7 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { ModelStatus } from './ModelStatus';
-import { ModelStatusFromJSON, ModelStatusFromJSONTyped, ModelStatusToJSON } from './ModelStatus';
+import { ModelStatus, ModelStatusFromJSON, ModelStatusFromJSONTyped, ModelStatusToJSON } from './ModelStatus';
 
 /**
  *
@@ -95,11 +94,15 @@ export interface Model {
      */
     preview?: boolean;
     /**
+     * DRAFT=In development, READY=Modelling complete, ONLINE=Active use.
      *
+     * * `DRAFT` - Draft
+     * * `READY` - Ready
+     * * `ONLINE` - Online
      * @type {ModelStatus}
      * @memberof Model
      */
-    status?: ModelStatus;
+    status?: ModelStatus | null;
     /**
      *
      * @type {string}
@@ -232,20 +235,6 @@ export interface Model {
      * @memberof Model
      */
     verticalPlacement?: boolean;
-}
-
-/**
- * Check if a given object implements the Model interface.
- */
-export function instanceOfModel(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'project' in value;
-    isInstance = isInstance && 'name' in value;
-    isInstance = isInstance && 'created' in value;
-    isInstance = isInstance && 'modified' in value;
-
-    return isInstance;
 }
 
 export function ModelFromJSON(json: any): Model {

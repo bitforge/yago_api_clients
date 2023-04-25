@@ -13,37 +13,35 @@
  */
 
 import * as runtime from '../runtime';
-import type {
-    AnchorToken,
-    GoogleIdToken,
-    PasswordChange,
-    PasswordReset,
-    PasswordResetConfirm,
-    TokenObtainRequest,
-    TokenObtainResponse,
-    TokenRefreshRequest,
-    TokenRefreshResponse,
-    TokenVerify,
-} from '../models';
 import {
+    AnchorToken,
     AnchorTokenFromJSON,
     AnchorTokenToJSON,
+    GoogleIdToken,
     GoogleIdTokenFromJSON,
     GoogleIdTokenToJSON,
+    PasswordChange,
     PasswordChangeFromJSON,
     PasswordChangeToJSON,
+    PasswordReset,
     PasswordResetFromJSON,
     PasswordResetToJSON,
+    PasswordResetConfirm,
     PasswordResetConfirmFromJSON,
     PasswordResetConfirmToJSON,
+    TokenObtainRequest,
     TokenObtainRequestFromJSON,
     TokenObtainRequestToJSON,
+    TokenObtainResponse,
     TokenObtainResponseFromJSON,
     TokenObtainResponseToJSON,
+    TokenRefreshRequest,
     TokenRefreshRequestFromJSON,
     TokenRefreshRequestToJSON,
+    TokenRefreshResponse,
     TokenRefreshResponseFromJSON,
     TokenRefreshResponseToJSON,
+    TokenVerify,
     TokenVerifyFromJSON,
     TokenVerifyToJSON,
 } from '../models';
@@ -83,16 +81,10 @@ export class AuthApi extends runtime.BaseAPI {
     /**
      * Create a new anchor token.
      */
-    async authAnchorTokenRetrieveRaw(
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<runtime.ApiResponse<AnchorToken>> {
+    async authAnchorTokenRetrieveRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<AnchorToken>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -102,6 +94,10 @@ export class AuthApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/auth/anchor_token/`,
@@ -118,7 +114,7 @@ export class AuthApi extends runtime.BaseAPI {
     /**
      * Create a new anchor token.
      */
-    async authAnchorTokenRetrieve(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AnchorToken> {
+    async authAnchorTokenRetrieve(initOverrides?: RequestInit): Promise<AnchorToken> {
         const response = await this.authAnchorTokenRetrieveRaw(initOverrides);
         return await response.value();
     }
@@ -128,7 +124,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authGoogleCreateRaw(
         requestParameters: AuthGoogleCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<TokenObtainResponse>> {
         if (requestParameters.googleIdToken === null || requestParameters.googleIdToken === undefined) {
             throw new runtime.RequiredError(
@@ -162,7 +158,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authGoogleCreate(
         requestParameters: AuthGoogleCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<TokenObtainResponse> {
         const response = await this.authGoogleCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -173,7 +169,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authLoginCreateRaw(
         requestParameters: AuthLoginCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<TokenObtainResponse>> {
         if (requestParameters.tokenObtainRequest === null || requestParameters.tokenObtainRequest === undefined) {
             throw new runtime.RequiredError(
@@ -207,7 +203,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authLoginCreate(
         requestParameters: AuthLoginCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<TokenObtainResponse> {
         const response = await this.authLoginCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -218,7 +214,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authPasswordChangeCreateRaw(
         requestParameters: AuthPasswordChangeCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<PasswordChange>> {
         if (requestParameters.passwordChange === null || requestParameters.passwordChange === undefined) {
             throw new runtime.RequiredError(
@@ -233,10 +229,6 @@ export class AuthApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -245,6 +237,10 @@ export class AuthApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/auth/password/change/`,
@@ -264,7 +260,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authPasswordChangeCreate(
         requestParameters: AuthPasswordChangeCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<PasswordChange> {
         const response = await this.authPasswordChangeCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -275,7 +271,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authPasswordResetConfirmCreateRaw(
         requestParameters: AuthPasswordResetConfirmCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<PasswordResetConfirm>> {
         if (requestParameters.passwordResetConfirm === null || requestParameters.passwordResetConfirm === undefined) {
             throw new runtime.RequiredError(
@@ -309,7 +305,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authPasswordResetConfirmCreate(
         requestParameters: AuthPasswordResetConfirmCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<PasswordResetConfirm> {
         const response = await this.authPasswordResetConfirmCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -320,7 +316,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authPasswordResetCreateRaw(
         requestParameters: AuthPasswordResetCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<PasswordReset>> {
         if (requestParameters.passwordReset === null || requestParameters.passwordReset === undefined) {
             throw new runtime.RequiredError(
@@ -354,7 +350,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authPasswordResetCreate(
         requestParameters: AuthPasswordResetCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<PasswordReset> {
         const response = await this.authPasswordResetCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -365,7 +361,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authRefreshCreateRaw(
         requestParameters: AuthRefreshCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<TokenRefreshResponse>> {
         if (requestParameters.tokenRefreshRequest === null || requestParameters.tokenRefreshRequest === undefined) {
             throw new runtime.RequiredError(
@@ -399,7 +395,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authRefreshCreate(
         requestParameters: AuthRefreshCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<TokenRefreshResponse> {
         const response = await this.authRefreshCreateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -410,7 +406,7 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async authVerifyCreateRaw(
         requestParameters: AuthVerifyCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.tokenVerify === null || requestParameters.tokenVerify === undefined) {
             throw new runtime.RequiredError(
@@ -442,10 +438,7 @@ export class AuthApi extends runtime.BaseAPI {
     /**
      * Takes a token and indicates if it is valid.  This view provides no information about a token\'s fitness for a particular use.
      */
-    async authVerifyCreate(
-        requestParameters: AuthVerifyCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async authVerifyCreate(requestParameters: AuthVerifyCreateRequest, initOverrides?: RequestInit): Promise<void> {
         await this.authVerifyCreateRaw(requestParameters, initOverrides);
     }
 }

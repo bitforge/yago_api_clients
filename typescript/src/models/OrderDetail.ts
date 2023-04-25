@@ -13,12 +13,9 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { OrderComment } from './OrderComment';
-import { OrderCommentFromJSON, OrderCommentFromJSONTyped, OrderCommentToJSON } from './OrderComment';
-import type { OrderModel } from './OrderModel';
-import { OrderModelFromJSON, OrderModelFromJSONTyped, OrderModelToJSON } from './OrderModel';
-import type { OrderState } from './OrderState';
-import { OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
+import { OrderComment, OrderCommentFromJSON, OrderCommentFromJSONTyped, OrderCommentToJSON } from './OrderComment';
+import { OrderModel, OrderModelFromJSON, OrderModelFromJSONTyped, OrderModelToJSON } from './OrderModel';
+import { OrderState, OrderStateFromJSON, OrderStateFromJSONTyped, OrderStateToJSON } from './OrderState';
 
 /**
  *
@@ -43,7 +40,7 @@ export interface OrderDetail {
      * @type {OrderState}
      * @memberof OrderDetail
      */
-    readonly state: OrderState;
+    readonly state: OrderState | null;
     /**
      * Estimation of order in CHF including taxes. Payment price for User before starting production.
      * @type {string}
@@ -80,23 +77,6 @@ export interface OrderDetail {
      * @memberof OrderDetail
      */
     comments: Array<OrderComment>;
-}
-
-/**
- * Check if a given object implements the OrderDetail interface.
- */
-export function instanceOfOrderDetail(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'project' in value;
-    isInstance = isInstance && 'state' in value;
-    isInstance = isInstance && 'priceCurrency' in value;
-    isInstance = isInstance && 'created' in value;
-    isInstance = isInstance && 'modified' in value;
-    isInstance = isInstance && 'models' in value;
-    isInstance = isInstance && 'comments' in value;
-
-    return isInstance;
 }
 
 export function OrderDetailFromJSON(json: any): OrderDetail {

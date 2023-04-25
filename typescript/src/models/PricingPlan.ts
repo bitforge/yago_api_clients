@@ -99,18 +99,6 @@ export interface PricingPlan {
     hidden?: boolean;
 }
 
-/**
- * Check if a given object implements the PricingPlan interface.
- */
-export function instanceOfPricingPlan(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'key' in value;
-    isInstance = isInstance && 'name' in value;
-    isInstance = isInstance && 'price' in value;
-
-    return isInstance;
-}
-
 export function PricingPlanFromJSON(json: any): PricingPlan {
     return PricingPlanFromJSONTyped(json, false);
 }

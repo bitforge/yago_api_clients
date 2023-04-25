@@ -27,16 +27,6 @@ export interface FileUpload {
     fileUrl: string;
 }
 
-/**
- * Check if a given object implements the FileUpload interface.
- */
-export function instanceOfFileUpload(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'fileUrl' in value;
-
-    return isInstance;
-}
-
 export function FileUploadFromJSON(json: any): FileUpload {
     return FileUploadFromJSONTyped(json, false);
 }

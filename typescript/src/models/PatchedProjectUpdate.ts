@@ -81,15 +81,6 @@ export interface PatchedProjectUpdate {
     arbuttonConfig?: { [key: string]: any } | null;
 }
 
-/**
- * Check if a given object implements the PatchedProjectUpdate interface.
- */
-export function instanceOfPatchedProjectUpdate(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
-}
-
 export function PatchedProjectUpdateFromJSON(json: any): PatchedProjectUpdate {
     return PatchedProjectUpdateFromJSONTyped(json, false);
 }

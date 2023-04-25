@@ -45,19 +45,6 @@ export interface PasswordResetConfirm {
     token: string;
 }
 
-/**
- * Check if a given object implements the PasswordResetConfirm interface.
- */
-export function instanceOfPasswordResetConfirm(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'newPassword1' in value;
-    isInstance = isInstance && 'newPassword2' in value;
-    isInstance = isInstance && 'uid' in value;
-    isInstance = isInstance && 'token' in value;
-
-    return isInstance;
-}
-
 export function PasswordResetConfirmFromJSON(json: any): PasswordResetConfirm {
     return PasswordResetConfirmFromJSONTyped(json, false);
 }

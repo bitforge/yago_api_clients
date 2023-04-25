@@ -13,18 +13,23 @@
  */
 
 import * as runtime from '../runtime';
-import type { FileUpload, Model, ModelCreate, ModelInfo, ModelUpdate, PatchedModelUpdate } from '../models';
 import {
+    FileUpload,
     FileUploadFromJSON,
     FileUploadToJSON,
+    Model,
     ModelFromJSON,
     ModelToJSON,
+    ModelCreate,
     ModelCreateFromJSON,
     ModelCreateToJSON,
+    ModelInfo,
     ModelInfoFromJSON,
     ModelInfoToJSON,
+    ModelUpdate,
     ModelUpdateFromJSON,
     ModelUpdateToJSON,
+    PatchedModelUpdate,
     PatchedModelUpdateFromJSON,
     PatchedModelUpdateToJSON,
 } from '../models';
@@ -109,7 +114,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsCreateRaw(
         requestParameters: ModelsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<ModelCreate>> {
         if (requestParameters.modelCreate === null || requestParameters.modelCreate === undefined) {
             throw new runtime.RequiredError(
@@ -124,10 +129,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -136,6 +137,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/`,
@@ -153,10 +158,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Add a new model. Change details and translations later via PUT or PATCH.
      */
-    async modelsCreate(
-        requestParameters: ModelsCreateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<ModelCreate> {
+    async modelsCreate(requestParameters: ModelsCreateRequest, initOverrides?: RequestInit): Promise<ModelCreate> {
         const response = await this.modelsCreateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -166,7 +168,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsDestroyRaw(
         requestParameters: ModelsDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -179,10 +181,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -191,6 +189,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -207,10 +209,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Remove a model. Be cautious, this is permanent!
      */
-    async modelsDestroy(
-        requestParameters: ModelsDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async modelsDestroy(requestParameters: ModelsDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.modelsDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -219,7 +218,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsEmbedOptionsRetrieveRaw(
         requestParameters: ModelsEmbedOptionsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<ModelInfo>> {
         if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new runtime.RequiredError(
@@ -253,7 +252,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsEmbedOptionsRetrieve(
         requestParameters: ModelsEmbedOptionsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<ModelInfo> {
         const response = await this.modelsEmbedOptionsRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
@@ -264,7 +263,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsGlbDestroyRaw(
         requestParameters: ModelsGlbDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -277,10 +276,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -289,6 +284,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/glb/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -305,10 +304,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Delete a file.
      */
-    async modelsGlbDestroy(
-        requestParameters: ModelsGlbDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async modelsGlbDestroy(requestParameters: ModelsGlbDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.modelsGlbDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -317,7 +313,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsGlbUpdateRaw(
         requestParameters: ModelsGlbUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<FileUpload>> {
         if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
             throw new runtime.RequiredError(
@@ -343,10 +339,6 @@ export class ModelsApi extends runtime.BaseAPI {
             headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
         }
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -355,6 +347,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/glb/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -372,10 +368,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Upload a file. Max size 30MB. Filename is required!
      */
-    async modelsGlbUpdate(
-        requestParameters: ModelsGlbUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<FileUpload> {
+    async modelsGlbUpdate(requestParameters: ModelsGlbUpdateRequest, initOverrides?: RequestInit): Promise<FileUpload> {
         const response = await this.modelsGlbUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -385,7 +378,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsImageDestroyRaw(
         requestParameters: ModelsImageDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -398,10 +391,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -410,6 +399,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/image/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -426,10 +419,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Delete an image.
      */
-    async modelsImageDestroy(
-        requestParameters: ModelsImageDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async modelsImageDestroy(requestParameters: ModelsImageDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.modelsImageDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -438,7 +428,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsImageUpdateRaw(
         requestParameters: ModelsImageUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<FileUpload>> {
         if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
             throw new runtime.RequiredError(
@@ -458,14 +448,10 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        headerParameters['Content-Type'] = 'image/*';
+        headerParameters['Content-Type'] = 'image/_*';
 
         if (requestParameters.contentDisposition !== undefined && requestParameters.contentDisposition !== null) {
             headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -476,6 +462,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/image/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -495,7 +485,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsImageUpdate(
         requestParameters: ModelsImageUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<FileUpload> {
         const response = await this.modelsImageUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -506,7 +496,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsListRaw(
         requestParameters: ModelsListRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Array<Model>>> {
         const queryParameters: any = {};
 
@@ -520,10 +510,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -532,6 +518,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/`,
@@ -548,10 +538,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Lists all models for all projects the user is a member of. Can be filtered by `project`.
      */
-    async modelsList(
-        requestParameters: ModelsListRequest = {},
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<Array<Model>> {
+    async modelsList(requestParameters: ModelsListRequest = {}, initOverrides?: RequestInit): Promise<Array<Model>> {
         const response = await this.modelsListRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -561,7 +548,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsModelDestroyRaw(
         requestParameters: ModelsModelDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -574,10 +561,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -586,6 +569,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/model/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -602,10 +589,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Delete a file.
      */
-    async modelsModelDestroy(
-        requestParameters: ModelsModelDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async modelsModelDestroy(requestParameters: ModelsModelDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.modelsModelDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -614,7 +598,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsModelUpdateRaw(
         requestParameters: ModelsModelUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<FileUpload>> {
         if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
             throw new runtime.RequiredError(
@@ -640,10 +624,6 @@ export class ModelsApi extends runtime.BaseAPI {
             headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
         }
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -652,6 +632,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/model/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -671,7 +655,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsModelUpdate(
         requestParameters: ModelsModelUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<FileUpload> {
         const response = await this.modelsModelUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -682,7 +666,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsPartialUpdateRaw(
         requestParameters: ModelsPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<ModelUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -697,10 +681,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -709,6 +689,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -728,7 +712,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsPartialUpdate(
         requestParameters: ModelsPartialUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<ModelUpdate> {
         const response = await this.modelsPartialUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -739,7 +723,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsRetrieveRaw(
         requestParameters: ModelsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<Model>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -752,10 +736,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -764,6 +744,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -780,10 +764,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Details of a single model.
      */
-    async modelsRetrieve(
-        requestParameters: ModelsRetrieveRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<Model> {
+    async modelsRetrieve(requestParameters: ModelsRetrieveRequest, initOverrides?: RequestInit): Promise<Model> {
         const response = await this.modelsRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -793,7 +774,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsUpdateRaw(
         requestParameters: ModelsUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<ModelUpdate>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -808,10 +789,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -820,6 +797,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -837,10 +818,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Change model details. Translated field are all optional expcet for `name_de`.
      */
-    async modelsUpdate(
-        requestParameters: ModelsUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<ModelUpdate> {
+    async modelsUpdate(requestParameters: ModelsUpdateRequest, initOverrides?: RequestInit): Promise<ModelUpdate> {
         const response = await this.modelsUpdateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -850,7 +828,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsUsdzDestroyRaw(
         requestParameters: ModelsUsdzDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError(
@@ -863,10 +841,6 @@ export class ModelsApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -875,6 +849,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/usdz/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -891,10 +869,7 @@ export class ModelsApi extends runtime.BaseAPI {
     /**
      * Delete a file.
      */
-    async modelsUsdzDestroy(
-        requestParameters: ModelsUsdzDestroyRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
-    ): Promise<void> {
+    async modelsUsdzDestroy(requestParameters: ModelsUsdzDestroyRequest, initOverrides?: RequestInit): Promise<void> {
         await this.modelsUsdzDestroyRaw(requestParameters, initOverrides);
     }
 
@@ -903,7 +878,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsUsdzUpdateRaw(
         requestParameters: ModelsUsdzUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<runtime.ApiResponse<FileUpload>> {
         if (requestParameters.contentDisposition === null || requestParameters.contentDisposition === undefined) {
             throw new runtime.RequiredError(
@@ -929,10 +904,6 @@ export class ModelsApi extends runtime.BaseAPI {
             headerParameters['Content-Disposition'] = String(requestParameters.contentDisposition);
         }
 
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
-        }
-
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token('jwtAuth', []);
@@ -941,6 +912,10 @@ export class ModelsApi extends runtime.BaseAPI {
                 headerParameters['Authorization'] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters['Authorization'] = this.configuration.apiKey('Authorization'); // tokenAuth authentication
+        }
+
         const response = await this.request(
             {
                 path: `/api/models/{id}/usdz/`.replace(`{${'id'}}`, encodeURIComponent(String(requestParameters.id))),
@@ -960,7 +935,7 @@ export class ModelsApi extends runtime.BaseAPI {
      */
     async modelsUsdzUpdate(
         requestParameters: ModelsUsdzUpdateRequest,
-        initOverrides?: RequestInit | runtime.InitOverrideFunction
+        initOverrides?: RequestInit
     ): Promise<FileUpload> {
         const response = await this.modelsUsdzUpdateRaw(requestParameters, initOverrides);
         return await response.value();
@@ -969,10 +944,10 @@ export class ModelsApi extends runtime.BaseAPI {
 
 /**
  * @export
+ * @enum {string}
  */
-export const ModelsListStatusEnum = {
-    Draft: 'DRAFT',
-    Online: 'ONLINE',
-    Ready: 'READY',
-} as const;
-export type ModelsListStatusEnum = (typeof ModelsListStatusEnum)[keyof typeof ModelsListStatusEnum];
+export enum ModelsListStatusEnum {
+    Draft = 'DRAFT',
+    Online = 'ONLINE',
+    Ready = 'READY',
+}

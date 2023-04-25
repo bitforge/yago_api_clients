@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { PaymentMethodEnum } from './PaymentMethodEnum';
 import {
+    PaymentMethodEnum,
     PaymentMethodEnumFromJSON,
     PaymentMethodEnumFromJSONTyped,
     PaymentMethodEnumToJSON,
@@ -104,18 +104,6 @@ export interface Customer {
      * @memberof Customer
      */
     modelsCount?: number;
-}
-
-/**
- * Check if a given object implements the Customer interface.
- */
-export function instanceOfCustomer(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && 'id' in value;
-    isInstance = isInstance && 'name' in value;
-    isInstance = isInstance && 'slug' in value;
-
-    return isInstance;
 }
 
 export function CustomerFromJSON(json: any): Customer {
