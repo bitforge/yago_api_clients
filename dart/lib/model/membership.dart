@@ -91,13 +91,13 @@ class Membership {
         project: mapValueOfType<String>(json, r'project')!,
         user: mapValueOfType<String>(json, r'user')!,
         role: RoleEnum.fromJson(json[r'role']),
-        created: mapDateTime(json, r'created', '')!,
+        created: mapDateTime(json, r'created', r'')!,
       );
     }
     return null;
   }
 
-  static List<Membership>? listFromJson(
+  static List<Membership> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -134,15 +134,13 @@ class Membership {
   }) {
     final map = <String, List<Membership>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Membership.listFromJson(
+        map[entry.key] = Membership.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

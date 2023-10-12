@@ -53,7 +53,9 @@ class PlansApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<PricingPlan>') as List).cast<PricingPlan>().toList();
+      return (await apiClient.deserializeAsync(responseBody, 'List<PricingPlan>') as List)
+          .cast<PricingPlan>()
+          .toList(growable: false);
     }
     return null;
   }

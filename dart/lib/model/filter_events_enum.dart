@@ -36,7 +36,7 @@ class FilterEventsEnum {
 
   static FilterEventsEnum? fromJson(dynamic value) => FilterEventsEnumTypeTransformer().decode(value);
 
-  static List<FilterEventsEnum>? listFromJson(
+  static List<FilterEventsEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

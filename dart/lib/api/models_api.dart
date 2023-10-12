@@ -508,7 +508,9 @@ class ModelsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Model>') as List).cast<Model>().toList();
+      return (await apiClient.deserializeAsync(responseBody, 'List<Model>') as List)
+          .cast<Model>()
+          .toList(growable: false);
     }
     return null;
   }

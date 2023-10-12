@@ -66,13 +66,13 @@ class StateChanged {
       return StateChanged(
         oldState: mapValueOfType<String>(json, r'old_state')!,
         newState: mapValueOfType<String>(json, r'new_state')!,
-        modified: mapDateTime(json, r'modified', '')!,
+        modified: mapDateTime(json, r'modified', r'')!,
       );
     }
     return null;
   }
 
-  static List<StateChanged>? listFromJson(
+  static List<StateChanged> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -109,15 +109,13 @@ class StateChanged {
   }) {
     final map = <String, List<StateChanged>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = StateChanged.listFromJson(
+        map[entry.key] = StateChanged.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

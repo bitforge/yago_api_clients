@@ -36,7 +36,7 @@ class PaymentMethodEnum {
 
   static PaymentMethodEnum? fromJson(dynamic value) => PaymentMethodEnumTypeTransformer().decode(value);
 
-  static List<PaymentMethodEnum>? listFromJson(
+  static List<PaymentMethodEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

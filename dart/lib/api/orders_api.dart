@@ -135,7 +135,7 @@ class OrdersApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<OrderComment>') as List)
           .cast<OrderComment>()
-          .toList();
+          .toList(growable: false);
     }
     return null;
   }
@@ -306,7 +306,9 @@ class OrdersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Order>') as List).cast<Order>().toList();
+      return (await apiClient.deserializeAsync(responseBody, 'List<Order>') as List)
+          .cast<Order>()
+          .toList(growable: false);
     }
     return null;
   }
@@ -449,7 +451,7 @@ class OrdersApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<OrderModelComment>') as List)
           .cast<OrderModelComment>()
-          .toList();
+          .toList(growable: false);
     }
     return null;
   }
@@ -709,7 +711,7 @@ class OrdersApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<OrderModelFile>') as List)
           .cast<OrderModelFile>()
-          .toList();
+          .toList(growable: false);
     }
     return null;
   }
@@ -852,7 +854,9 @@ class OrdersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<OrderModel>') as List).cast<OrderModel>().toList();
+      return (await apiClient.deserializeAsync(responseBody, 'List<OrderModel>') as List)
+          .cast<OrderModel>()
+          .toList(growable: false);
     }
     return null;
   }
@@ -1194,7 +1198,7 @@ class OrdersApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<AvailableState>') as List)
           .cast<AvailableState>()
-          .toList();
+          .toList(growable: false);
     }
     return null;
   }
@@ -1686,7 +1690,7 @@ class OrdersApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<AvailableState>') as List)
           .cast<AvailableState>()
-          .toList();
+          .toList(growable: false);
     }
     return null;
   }

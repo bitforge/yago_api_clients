@@ -60,7 +60,7 @@ class TokenRefreshRequest {
     return null;
   }
 
-  static List<TokenRefreshRequest>? listFromJson(
+  static List<TokenRefreshRequest> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -97,15 +97,13 @@ class TokenRefreshRequest {
   }) {
     final map = <String, List<TokenRefreshRequest>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = TokenRefreshRequest.listFromJson(
+        map[entry.key] = TokenRefreshRequest.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

@@ -71,13 +71,13 @@ class OrderModelFile {
         id: mapValueOfType<String>(json, r'id')!,
         name: mapValueOfType<String>(json, r'name')!,
         file: mapValueOfType<String>(json, r'file')!,
-        created: mapDateTime(json, r'created', '')!,
+        created: mapDateTime(json, r'created', r'')!,
       );
     }
     return null;
   }
 
-  static List<OrderModelFile>? listFromJson(
+  static List<OrderModelFile> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -114,15 +114,13 @@ class OrderModelFile {
   }) {
     final map = <String, List<OrderModelFile>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = OrderModelFile.listFromJson(
+        map[entry.key] = OrderModelFile.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

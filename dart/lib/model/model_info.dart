@@ -30,7 +30,7 @@ class ModelInfo {
       other is ModelInfo &&
           other.siteUrl == siteUrl &&
           other.quicklookLink == quicklookLink &&
-          other.qrConfig == qrConfig;
+          _deepEquality.equals(other.qrConfig, qrConfig);
 
   @override
   int get hashCode =>
@@ -75,7 +75,7 @@ class ModelInfo {
     return null;
   }
 
-  static List<ModelInfo>? listFromJson(
+  static List<ModelInfo> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -112,15 +112,13 @@ class ModelInfo {
   }) {
     final map = <String, List<ModelInfo>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ModelInfo.listFromJson(
+        map[entry.key] = ModelInfo.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

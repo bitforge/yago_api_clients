@@ -115,15 +115,15 @@ class Order {
         state: OrderState.fromJson(json[r'state'])!,
         price: mapValueOfType<double>(json, r'price'),
         priceCurrency: mapValueOfType<String>(json, r'price_currency'),
-        created: mapDateTime(json, r'created', '')!,
-        modified: mapDateTime(json, r'modified', '')!,
+        created: mapDateTime(json, r'created', r'')!,
+        modified: mapDateTime(json, r'modified', r'')!,
         modelCount: mapValueOfType<int>(json, r'model_count')!,
       );
     }
     return null;
   }
 
-  static List<Order>? listFromJson(
+  static List<Order> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -160,15 +160,13 @@ class Order {
   }) {
     final map = <String, List<Order>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Order.listFromJson(
+        map[entry.key] = Order.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

@@ -192,7 +192,7 @@ class PatchedAddress {
     return null;
   }
 
-  static List<PatchedAddress>? listFromJson(
+  static List<PatchedAddress> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -229,15 +229,13 @@ class PatchedAddress {
   }) {
     final map = <String, List<PatchedAddress>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = PatchedAddress.listFromJson(
+        map[entry.key] = PatchedAddress.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

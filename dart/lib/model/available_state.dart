@@ -66,7 +66,7 @@ class AvailableState {
     return null;
   }
 
-  static List<AvailableState>? listFromJson(
+  static List<AvailableState> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -103,15 +103,13 @@ class AvailableState {
   }) {
     final map = <String, List<AvailableState>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = AvailableState.listFromJson(
+        map[entry.key] = AvailableState.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

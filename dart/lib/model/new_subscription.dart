@@ -129,7 +129,7 @@ class NewSubscription {
     return null;
   }
 
-  static List<NewSubscription>? listFromJson(
+  static List<NewSubscription> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -166,15 +166,13 @@ class NewSubscription {
   }) {
     final map = <String, List<NewSubscription>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = NewSubscription.listFromJson(
+        map[entry.key] = NewSubscription.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

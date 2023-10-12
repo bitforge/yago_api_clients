@@ -74,14 +74,14 @@ class OrderComment {
       return OrderComment(
         yagoTeam: mapValueOfType<bool>(json, r'yago_team')!,
         userName: mapValueOfType<String>(json, r'user_name')!,
-        date: mapDateTime(json, r'date', '')!,
+        date: mapDateTime(json, r'date', r'')!,
         comment: mapValueOfType<String>(json, r'comment')!,
       );
     }
     return null;
   }
 
-  static List<OrderComment>? listFromJson(
+  static List<OrderComment> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -118,15 +118,13 @@ class OrderComment {
   }) {
     final map = <String, List<OrderComment>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = OrderComment.listFromJson(
+        map[entry.key] = OrderComment.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

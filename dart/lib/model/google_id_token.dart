@@ -60,7 +60,7 @@ class GoogleIdToken {
     return null;
   }
 
-  static List<GoogleIdToken>? listFromJson(
+  static List<GoogleIdToken> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -97,15 +97,13 @@ class GoogleIdToken {
   }) {
     final map = <String, List<GoogleIdToken>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GoogleIdToken.listFromJson(
+        map[entry.key] = GoogleIdToken.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

@@ -47,7 +47,12 @@ class ModelUpdate {
   /// Name will be visible in Android as title.
   String? nameIt;
 
-  /// DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   ModelStatus? status;
 
   String description;
@@ -306,7 +311,7 @@ class ModelUpdate {
     return null;
   }
 
-  static List<ModelUpdate>? listFromJson(
+  static List<ModelUpdate> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -343,15 +348,13 @@ class ModelUpdate {
   }) {
     final map = <String, List<ModelUpdate>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ModelUpdate.listFromJson(
+        map[entry.key] = ModelUpdate.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

@@ -141,7 +141,7 @@ class User {
         firstName: mapValueOfType<String>(json, r'first_name'),
         lastName: mapValueOfType<String>(json, r'last_name'),
         customerName: mapValueOfType<String>(json, r'customer_name')!,
-        dateJoined: mapDateTime(json, r'date_joined', '')!,
+        dateJoined: mapDateTime(json, r'date_joined', r'')!,
         isActive: mapValueOfType<bool>(json, r'is_active')!,
         isStaff: mapValueOfType<bool>(json, r'is_staff')!,
         isSuperuser: mapValueOfType<bool>(json, r'is_superuser')!,
@@ -151,7 +151,7 @@ class User {
     return null;
   }
 
-  static List<User>? listFromJson(
+  static List<User> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -188,15 +188,13 @@ class User {
   }) {
     final map = <String, List<User>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = User.listFromJson(
+        map[entry.key] = User.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

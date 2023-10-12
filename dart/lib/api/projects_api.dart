@@ -291,7 +291,9 @@ class ProjectsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Project>') as List).cast<Project>().toList();
+      return (await apiClient.deserializeAsync(responseBody, 'List<Project>') as List)
+          .cast<Project>()
+          .toList(growable: false);
     }
     return null;
   }

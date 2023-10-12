@@ -60,7 +60,7 @@ class ProjectCreate {
     return null;
   }
 
-  static List<ProjectCreate>? listFromJson(
+  static List<ProjectCreate> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -97,15 +97,13 @@ class ProjectCreate {
   }) {
     final map = <String, List<ProjectCreate>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ProjectCreate.listFromJson(
+        map[entry.key] = ProjectCreate.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

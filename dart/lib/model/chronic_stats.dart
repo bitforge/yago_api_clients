@@ -27,7 +27,7 @@ class ChronicStats {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ChronicStats && other.label == label && other.data == data && other.total == total;
+      other is ChronicStats && other.label == label && _deepEquality.equals(other.data, data) && other.total == total;
 
   @override
   int get hashCode =>
@@ -72,7 +72,7 @@ class ChronicStats {
     return null;
   }
 
-  static List<ChronicStats>? listFromJson(
+  static List<ChronicStats> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -109,15 +109,13 @@ class ChronicStats {
   }) {
     final map = <String, List<ChronicStats>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ChronicStats.listFromJson(
+        map[entry.key] = ChronicStats.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

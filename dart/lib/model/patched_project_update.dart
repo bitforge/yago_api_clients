@@ -103,7 +103,7 @@ class PatchedProjectUpdate {
           other.translationsFr == translationsFr &&
           other.translationsIt == translationsIt &&
           other.backlinkUrls == backlinkUrls &&
-          other.arbuttonConfig == arbuttonConfig;
+          _deepEquality.equals(other.arbuttonConfig, arbuttonConfig);
 
   @override
   int get hashCode =>
@@ -212,7 +212,7 @@ class PatchedProjectUpdate {
     return null;
   }
 
-  static List<PatchedProjectUpdate>? listFromJson(
+  static List<PatchedProjectUpdate> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -249,15 +249,13 @@ class PatchedProjectUpdate {
   }) {
     final map = <String, List<PatchedProjectUpdate>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = PatchedProjectUpdate.listFromJson(
+        map[entry.key] = PatchedProjectUpdate.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

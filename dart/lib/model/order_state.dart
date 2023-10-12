@@ -44,7 +44,7 @@ class OrderState {
 
   static OrderState? fromJson(dynamic value) => OrderStateTypeTransformer().decode(value);
 
-  static List<OrderState>? listFromJson(
+  static List<OrderState> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

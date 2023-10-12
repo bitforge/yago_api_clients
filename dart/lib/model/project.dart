@@ -138,8 +138,8 @@ class Project {
           other.translationsFr == translationsFr &&
           other.translationsIt == translationsIt &&
           other.backlinkUrls == backlinkUrls &&
-          other.orders == orders &&
-          other.arbuttonConfig == arbuttonConfig &&
+          _deepEquality.equals(other.orders, orders) &&
+          _deepEquality.equals(other.arbuttonConfig, arbuttonConfig) &&
           other.created == created &&
           other.modified == modified;
 
@@ -272,16 +272,16 @@ class Project {
         translationsFr: mapValueOfType<bool>(json, r'translations_fr'),
         translationsIt: mapValueOfType<bool>(json, r'translations_it'),
         backlinkUrls: mapValueOfType<bool>(json, r'backlink_urls'),
-        orders: ActiveOrder.listFromJson(json[r'orders']) ?? const [],
+        orders: ActiveOrder.listFromJson(json[r'orders']),
         arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config') ?? const {},
-        created: mapDateTime(json, r'created', '')!,
-        modified: mapDateTime(json, r'modified', '')!,
+        created: mapDateTime(json, r'created', r'')!,
+        modified: mapDateTime(json, r'modified', r'')!,
       );
     }
     return null;
   }
 
-  static List<Project>? listFromJson(
+  static List<Project> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -318,15 +318,13 @@ class Project {
   }) {
     final map = <String, List<Project>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Project.listFromJson(
+        map[entry.key] = Project.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

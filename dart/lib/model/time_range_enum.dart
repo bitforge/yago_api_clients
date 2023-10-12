@@ -50,7 +50,7 @@ class TimeRangeEnum {
 
   static TimeRangeEnum? fromJson(dynamic value) => TimeRangeEnumTypeTransformer().decode(value);
 
-  static List<TimeRangeEnum>? listFromJson(
+  static List<TimeRangeEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

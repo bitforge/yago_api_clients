@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **imageThumb** | **String** |  | [optional] [default to '']
 **imagePreview** | **String** |  | [optional] [default to '']
 **preview** | **bool** | True when model is in order and work is still in progress. False when order is completed. | [optional] 
-**status** | [**ModelStatus**](ModelStatus.md) | DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online | [optional] 
+**status** | [**ModelStatus**](ModelStatus.md) |  | [optional] 
 **description** | **String** |  | [optional] [default to '']
 **descriptionDe** | **String** | Used when shared as link and for SEO. | [optional] 
 **descriptionEn** | **String** | Used when shared as link and for SEO. | [optional] 

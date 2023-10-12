@@ -54,8 +54,8 @@ class OrderDetail {
           other.priceCurrency == priceCurrency &&
           other.created == created &&
           other.modified == modified &&
-          other.models == models &&
-          other.comments == comments;
+          _deepEquality.equals(other.models, models) &&
+          _deepEquality.equals(other.comments, comments);
 
   @override
   int get hashCode =>
@@ -120,16 +120,16 @@ class OrderDetail {
         state: OrderState.fromJson(json[r'state'])!,
         price: mapValueOfType<double>(json, r'price'),
         priceCurrency: mapValueOfType<String>(json, r'price_currency'),
-        created: mapDateTime(json, r'created', '')!,
-        modified: mapDateTime(json, r'modified', '')!,
-        models: OrderModel.listFromJson(json[r'models'])!,
-        comments: OrderComment.listFromJson(json[r'comments'])!,
+        created: mapDateTime(json, r'created', r'')!,
+        modified: mapDateTime(json, r'modified', r'')!,
+        models: OrderModel.listFromJson(json[r'models']),
+        comments: OrderComment.listFromJson(json[r'comments']),
       );
     }
     return null;
   }
 
-  static List<OrderDetail>? listFromJson(
+  static List<OrderDetail> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -166,15 +166,13 @@ class OrderDetail {
   }) {
     final map = <String, List<OrderDetail>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = OrderDetail.listFromJson(
+        map[entry.key] = OrderDetail.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

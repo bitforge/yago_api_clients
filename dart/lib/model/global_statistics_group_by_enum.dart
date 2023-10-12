@@ -49,7 +49,7 @@ class GlobalStatisticsGroupByEnum {
   static GlobalStatisticsGroupByEnum? fromJson(dynamic value) =>
       GlobalStatisticsGroupByEnumTypeTransformer().decode(value);
 
-  static List<GlobalStatisticsGroupByEnum>? listFromJson(
+  static List<GlobalStatisticsGroupByEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

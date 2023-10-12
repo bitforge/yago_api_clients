@@ -60,7 +60,7 @@ class OrderCreate {
     return null;
   }
 
-  static List<OrderCreate>? listFromJson(
+  static List<OrderCreate> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -97,15 +97,13 @@ class OrderCreate {
   }) {
     final map = <String, List<OrderCreate>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = OrderCreate.listFromJson(
+        map[entry.key] = OrderCreate.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

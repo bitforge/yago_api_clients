@@ -60,7 +60,7 @@ class FileUploaded {
     return null;
   }
 
-  static List<FileUploaded>? listFromJson(
+  static List<FileUploaded> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -97,15 +97,13 @@ class FileUploaded {
   }) {
     final map = <String, List<FileUploaded>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = FileUploaded.listFromJson(
+        map[entry.key] = FileUploaded.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

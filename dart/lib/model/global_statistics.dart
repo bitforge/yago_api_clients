@@ -95,7 +95,7 @@ class GlobalStatistics {
     return null;
   }
 
-  static List<GlobalStatistics>? listFromJson(
+  static List<GlobalStatistics> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -132,15 +132,13 @@ class GlobalStatistics {
   }) {
     final map = <String, List<GlobalStatistics>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = GlobalStatistics.listFromJson(
+        map[entry.key] = GlobalStatistics.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

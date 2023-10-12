@@ -38,7 +38,7 @@ class RoleEnum {
 
   static RoleEnum? fromJson(dynamic value) => RoleEnumTypeTransformer().decode(value);
 
-  static List<RoleEnum>? listFromJson(
+  static List<RoleEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

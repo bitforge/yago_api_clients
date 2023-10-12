@@ -69,7 +69,7 @@ class StatsApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<ChronicStats>') as List)
           .cast<ChronicStats>()
-          .toList();
+          .toList(growable: false);
     }
     return null;
   }
@@ -194,7 +194,7 @@ class StatsApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<ChronicStats>') as List)
           .cast<ChronicStats>()
-          .toList();
+          .toList(growable: false);
     }
     return null;
   }

@@ -82,7 +82,7 @@ class PasswordResetConfirm {
     return null;
   }
 
-  static List<PasswordResetConfirm>? listFromJson(
+  static List<PasswordResetConfirm> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -119,15 +119,13 @@ class PasswordResetConfirm {
   }) {
     final map = <String, List<PasswordResetConfirm>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = PasswordResetConfirm.listFromJson(
+        map[entry.key] = PasswordResetConfirm.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

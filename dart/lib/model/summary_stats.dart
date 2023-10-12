@@ -23,7 +23,10 @@ class SummaryStats {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is SummaryStats && other.labels == labels && other.datasets == datasets;
+      identical(this, other) ||
+      other is SummaryStats &&
+          _deepEquality.equals(other.labels, labels) &&
+          _deepEquality.equals(other.datasets, datasets);
 
   @override
   int get hashCode =>
@@ -66,7 +69,7 @@ class SummaryStats {
     return null;
   }
 
-  static List<SummaryStats>? listFromJson(
+  static List<SummaryStats> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -103,15 +106,13 @@ class SummaryStats {
   }) {
     final map = <String, List<SummaryStats>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = SummaryStats.listFromJson(
+        map[entry.key] = SummaryStats.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

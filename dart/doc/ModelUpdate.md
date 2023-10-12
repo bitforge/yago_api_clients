@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **nameEn** | **String** | Name will be visible in Android as title. | [optional] 
 **nameFr** | **String** | Name will be visible in Android as title. | [optional] 
 **nameIt** | **String** | Name will be visible in Android as title. | [optional] 
-**status** | [**ModelStatus**](ModelStatus.md) | DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online | [optional] 
+**status** | [**ModelStatus**](ModelStatus.md) |  | [optional] 
 **description** | **String** |  | [readonly] 
 **descriptionDe** | **String** | Used when shared as link and for SEO. | [optional] 
 **descriptionEn** | **String** | Used when shared as link and for SEO. | [optional] 

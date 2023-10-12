@@ -124,7 +124,7 @@ class RegistrationCreate {
     return null;
   }
 
-  static List<RegistrationCreate>? listFromJson(
+  static List<RegistrationCreate> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -161,15 +161,13 @@ class RegistrationCreate {
   }) {
     final map = <String, List<RegistrationCreate>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = RegistrationCreate.listFromJson(
+        map[entry.key] = RegistrationCreate.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

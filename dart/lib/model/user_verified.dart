@@ -128,7 +128,7 @@ class UserVerified {
         email: mapValueOfType<String>(json, r'email')!,
         firstName: mapValueOfType<String>(json, r'first_name'),
         lastName: mapValueOfType<String>(json, r'last_name'),
-        dateJoined: mapDateTime(json, r'date_joined', ''),
+        dateJoined: mapDateTime(json, r'date_joined', r''),
         access: mapValueOfType<String>(json, r'access')!,
         refresh: mapValueOfType<String>(json, r'refresh')!,
       );
@@ -136,7 +136,7 @@ class UserVerified {
     return null;
   }
 
-  static List<UserVerified>? listFromJson(
+  static List<UserVerified> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -173,15 +173,13 @@ class UserVerified {
   }) {
     final map = <String, List<UserVerified>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = UserVerified.listFromJson(
+        map[entry.key] = UserVerified.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

@@ -186,7 +186,7 @@ class Customer {
     return null;
   }
 
-  static List<Customer>? listFromJson(
+  static List<Customer> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -223,15 +223,13 @@ class Customer {
   }) {
     final map = <String, List<Customer>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Customer.listFromJson(
+        map[entry.key] = Customer.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

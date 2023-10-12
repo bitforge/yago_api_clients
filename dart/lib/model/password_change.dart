@@ -76,7 +76,7 @@ class PasswordChange {
     return null;
   }
 
-  static List<PasswordChange>? listFromJson(
+  static List<PasswordChange> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -113,15 +113,13 @@ class PasswordChange {
   }) {
     final map = <String, List<PasswordChange>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = PasswordChange.listFromJson(
+        map[entry.key] = PasswordChange.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

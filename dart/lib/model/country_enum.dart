@@ -528,7 +528,7 @@ class CountryEnum {
 
   static CountryEnum? fromJson(dynamic value) => CountryEnumTypeTransformer().decode(value);
 
-  static List<CountryEnum>? listFromJson(
+  static List<CountryEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

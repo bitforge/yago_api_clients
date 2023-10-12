@@ -75,7 +75,7 @@ class ProjectStatistics {
     return null;
   }
 
-  static List<ProjectStatistics>? listFromJson(
+  static List<ProjectStatistics> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -112,15 +112,13 @@ class ProjectStatistics {
   }) {
     final map = <String, List<ProjectStatistics>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ProjectStatistics.listFromJson(
+        map[entry.key] = ProjectStatistics.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

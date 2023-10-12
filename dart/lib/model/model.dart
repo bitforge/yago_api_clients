@@ -94,7 +94,12 @@ class Model {
   ///
   bool? preview;
 
-  /// DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   ModelStatus? status;
 
   String description;
@@ -207,7 +212,7 @@ class Model {
           other.glb == glb &&
           other.usdz == usdz &&
           other.model == model &&
-          other.arbuttonConfig == arbuttonConfig &&
+          _deepEquality.equals(other.arbuttonConfig, arbuttonConfig) &&
           other.created == created &&
           other.modified == modified &&
           other.verticalPlacement == verticalPlacement;
@@ -442,15 +447,15 @@ class Model {
         usdz: mapValueOfType<String>(json, r'usdz'),
         model: mapValueOfType<String>(json, r'model'),
         arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config') ?? const {},
-        created: mapDateTime(json, r'created', '')!,
-        modified: mapDateTime(json, r'modified', '')!,
+        created: mapDateTime(json, r'created', r'')!,
+        modified: mapDateTime(json, r'modified', r'')!,
         verticalPlacement: mapValueOfType<bool>(json, r'vertical_placement'),
       );
     }
     return null;
   }
 
-  static List<Model>? listFromJson(
+  static List<Model> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -487,15 +492,13 @@ class Model {
   }) {
     final map = <String, List<Model>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Model.listFromJson(
+        map[entry.key] = Model.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

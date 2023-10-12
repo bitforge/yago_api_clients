@@ -36,7 +36,7 @@ class ModelStatus {
 
   static ModelStatus? fromJson(dynamic value) => ModelStatusTypeTransformer().decode(value);
 
-  static List<ModelStatus>? listFromJson(
+  static List<ModelStatus> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

@@ -29,7 +29,10 @@ class ErrorDescription {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ErrorDescription && other.title == title && other.status == status && other.errors == errors;
+      other is ErrorDescription &&
+          other.title == title &&
+          other.status == status &&
+          _deepEquality.equals(other.errors, errors);
 
   @override
   int get hashCode =>
@@ -74,7 +77,7 @@ class ErrorDescription {
     return null;
   }
 
-  static List<ErrorDescription>? listFromJson(
+  static List<ErrorDescription> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -111,15 +114,13 @@ class ErrorDescription {
   }) {
     final map = <String, List<ErrorDescription>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ErrorDescription.listFromJson(
+        map[entry.key] = ErrorDescription.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

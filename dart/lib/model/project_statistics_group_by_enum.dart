@@ -47,7 +47,7 @@ class ProjectStatisticsGroupByEnum {
   static ProjectStatisticsGroupByEnum? fromJson(dynamic value) =>
       ProjectStatisticsGroupByEnumTypeTransformer().decode(value);
 
-  static List<ProjectStatisticsGroupByEnum>? listFromJson(
+  static List<ProjectStatisticsGroupByEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {

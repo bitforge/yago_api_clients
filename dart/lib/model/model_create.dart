@@ -128,7 +128,7 @@ class ModelCreate {
     return null;
   }
 
-  static List<ModelCreate>? listFromJson(
+  static List<ModelCreate> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -165,15 +165,13 @@ class ModelCreate {
   }) {
     final map = <String, List<ModelCreate>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = ModelCreate.listFromJson(
+        map[entry.key] = ModelCreate.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

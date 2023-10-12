@@ -66,7 +66,7 @@ class TokenObtainRequest {
     return null;
   }
 
-  static List<TokenObtainRequest>? listFromJson(
+  static List<TokenObtainRequest> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -103,15 +103,13 @@ class TokenObtainRequest {
   }) {
     final map = <String, List<TokenObtainRequest>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = TokenObtainRequest.listFromJson(
+        map[entry.key] = TokenObtainRequest.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

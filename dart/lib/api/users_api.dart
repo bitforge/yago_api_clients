@@ -71,7 +71,9 @@ class UsersApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<User>') as List).cast<User>().toList();
+      return (await apiClient.deserializeAsync(responseBody, 'List<User>') as List)
+          .cast<User>()
+          .toList(growable: false);
     }
     return null;
   }

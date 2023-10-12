@@ -148,14 +148,14 @@ class OrderModel {
         heightMm: mapValueOfType<double>(json, r'height_mm'),
         depthMm: mapValueOfType<double>(json, r'depth_mm'),
         model: mapValueOfType<String>(json, r'model'),
-        created: mapDateTime(json, r'created', '')!,
-        modified: mapDateTime(json, r'modified', '')!,
+        created: mapDateTime(json, r'created', r'')!,
+        modified: mapDateTime(json, r'modified', r'')!,
       );
     }
     return null;
   }
 
-  static List<OrderModel>? listFromJson(
+  static List<OrderModel> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
@@ -192,15 +192,13 @@ class OrderModel {
   }) {
     final map = <String, List<OrderModel>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = OrderModel.listFromJson(
+        map[entry.key] = OrderModel.listFromJson(
           entry.value,
           growable: growable,
         );
-        if (value != null) {
-          map[entry.key] = value;
-        }
       }
     }
     return map;

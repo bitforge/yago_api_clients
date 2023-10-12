@@ -38,7 +38,7 @@ class PriceCurrencyEnum {
 
   static PriceCurrencyEnum? fromJson(dynamic value) => PriceCurrencyEnumTypeTransformer().decode(value);
 
-  static List<PriceCurrencyEnum>? listFromJson(
+  static List<PriceCurrencyEnum> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
