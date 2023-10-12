@@ -1,3 +1,11 @@
+# 1.2.5
+
+- Update to Yago Api OpenAPI Spec @ 2023.10.12
+
+# 1.2.5
+
+- Update to Yago Api OpenAPI Spec @ 2023.06.15
+
 # 1.2.3
 
 - Update to Yago Api OpenAPI Spec @ 2023.04.24
