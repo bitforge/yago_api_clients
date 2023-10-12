@@ -1,3 +1,7 @@
+# 1.2.6
+
+- Fix Flutter compatibility
+
 # 1.2.5
 
 - Update to Yago Api OpenAPI Spec @ 2023.10.12
