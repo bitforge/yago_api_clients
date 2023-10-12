@@ -23,12 +23,12 @@ Check health status of required subsystems.
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = HealthApi();
+final api = YagoCloud().getHealthApi();
 
 try {
-    final result = api_instance.healthRetrieve();
-    print(result);
-} catch (e) {
+    final response = api.healthRetrieve();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling HealthApi->healthRetrieve: $e\n');
 }
 ```

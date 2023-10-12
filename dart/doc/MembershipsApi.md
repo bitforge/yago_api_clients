@@ -32,20 +32,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = MembershipsApi();
-final membership = Membership(); // Membership | 
+final api = YagoCloud().getMembershipsApi();
+final Membership membership = ; // Membership | 
 
 try {
-    final result = api_instance.membershipsCreate(membership);
-    print(result);
-} catch (e) {
+    final response = api.membershipsCreate(membership);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling MembershipsApi->membershipsCreate: $e\n');
 }
 ```
@@ -89,19 +83,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = MembershipsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project member.
+final api = YagoCloud().getMembershipsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project member.
 
 try {
-    api_instance.membershipsDestroy(id);
-} catch (e) {
+    api.membershipsDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling MembershipsApi->membershipsDestroy: $e\n');
 }
 ```
@@ -145,21 +133,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = MembershipsApi();
-final project = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-final user = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getMembershipsApi();
+final String project = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final String user = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    final result = api_instance.membershipsList(project, user);
-    print(result);
-} catch (e) {
+    final response = api.membershipsList(project, user);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling MembershipsApi->membershipsList: $e\n');
 }
 ```
@@ -173,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<Membership>**](Membership.md)
+[**List&lt;Membership&gt;**](Membership.md)
 
 ### Authorization
 

@@ -33,20 +33,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = UsersApi();
-final projects = []; // List<String> | 
+final api = YagoCloud().getUsersApi();
+final List<String> projects = ; // List<String> | 
 
 try {
-    final result = api_instance.usersList(projects);
-    print(result);
-} catch (e) {
+    final response = api.usersList(projects);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling UsersApi->usersList: $e\n');
 }
 ```
@@ -55,11 +49,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projects** | [**List<String>**](String.md)|  | [optional] [default to const []]
+ **projects** | [**List&lt;String&gt;**](String.md)|  | [optional] 
 
 ### Return type
 
-[**List<User>**](User.md)
+[**List&lt;User&gt;**](User.md)
 
 ### Authorization
 
@@ -90,19 +84,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = UsersApi();
+final api = YagoCloud().getUsersApi();
 
 try {
-    final result = api_instance.usersMeRetrieve();
-    print(result);
-} catch (e) {
+    final response = api.usersMeRetrieve();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling UsersApi->usersMeRetrieve: $e\n');
 }
 ```
@@ -143,20 +131,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = UsersApi();
-final user = User(); // User | 
+final api = YagoCloud().getUsersApi();
+final User user = ; // User | 
 
 try {
-    final result = api_instance.usersMeUpdate(user);
-    print(result);
-} catch (e) {
+    final response = api.usersMeUpdate(user);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling UsersApi->usersMeUpdate: $e\n');
 }
 ```
@@ -200,20 +182,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = UsersApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this User.
+final api = YagoCloud().getUsersApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this User.
 
 try {
-    final result = api_instance.usersRetrieve(id);
-    print(result);
-} catch (e) {
+    final response = api.usersRetrieve(id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling UsersApi->usersRetrieve: $e\n');
 }
 ```

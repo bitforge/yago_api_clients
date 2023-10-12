@@ -8,15 +8,15 @@ import 'package:yago_cloud/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [readonly] 
+**id** | **int** |  | 
 **project** | **String** |  | 
-**state** | [**OrderState**](OrderState.md) |  | [readonly] 
+**state** | [**OrderState**](OrderState.md) |  | 
 **price** | **double** | Estimation of order in CHF including taxes. Payment price for User before starting production. | [optional] 
-**priceCurrency** | **String** |  | [readonly] 
-**created** | [**DateTime**](DateTime.md) |  | [readonly] 
-**modified** | [**DateTime**](DateTime.md) |  | [readonly] 
-**models** | [**List<OrderModel>**](OrderModel.md) |  | [default to const []]
-**comments** | [**List<OrderComment>**](OrderComment.md) |  | [default to const []]
+**priceCurrency** | **String** |  | 
+**created** | [**DateTime**](DateTime.md) |  | 
+**modified** | [**DateTime**](DateTime.md) |  | 
+**models** | [**List&lt;OrderModel&gt;**](OrderModel.md) |  | 
+**comments** | [**List&lt;OrderComment&gt;**](OrderComment.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

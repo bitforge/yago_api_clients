@@ -24,13 +24,13 @@ Create a new registeration and sends out an activation email.
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = RegistrationApi();
-final registrationCreate = RegistrationCreate(); // RegistrationCreate | 
+final api = YagoCloud().getRegistrationApi();
+final RegistrationCreate registrationCreate = ; // RegistrationCreate | 
 
 try {
-    final result = api_instance.registrationCreate(registrationCreate);
-    print(result);
-} catch (e) {
+    final response = api.registrationCreate(registrationCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling RegistrationApi->registrationCreate: $e\n');
 }
 ```
@@ -67,13 +67,13 @@ Verifiy registration email, create user and return login token
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = RegistrationApi();
-final code = code_example; // String | 
+final api = YagoCloud().getRegistrationApi();
+final String code = code_example; // String | 
 
 try {
-    final result = api_instance.registrationVerifyCreate(code);
-    print(result);
-} catch (e) {
+    final response = api.registrationVerifyCreate(code);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling RegistrationApi->registrationVerifyCreate: $e\n');
 }
 ```

@@ -37,19 +37,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = AuthApi();
+final api = YagoCloud().getAuthApi();
 
 try {
-    final result = api_instance.authAnchorTokenRetrieve();
-    print(result);
-} catch (e) {
+    final response = api.authAnchorTokenRetrieve();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authAnchorTokenRetrieve: $e\n');
 }
 ```
@@ -83,13 +77,13 @@ Takes a Google ID token and returns an access and refresh token for this API. If
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = AuthApi();
-final googleIdToken = GoogleIdToken(); // GoogleIdToken | 
+final api = YagoCloud().getAuthApi();
+final GoogleIdToken googleIdToken = ; // GoogleIdToken | 
 
 try {
-    final result = api_instance.authGoogleCreate(googleIdToken);
-    print(result);
-} catch (e) {
+    final response = api.authGoogleCreate(googleIdToken);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authGoogleCreate: $e\n');
 }
 ```
@@ -126,13 +120,13 @@ Takes a set of user credentials and returns an access and refresh JSON web token
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = AuthApi();
-final tokenObtainRequest = TokenObtainRequest(); // TokenObtainRequest | 
+final api = YagoCloud().getAuthApi();
+final TokenObtainRequest tokenObtainRequest = ; // TokenObtainRequest | 
 
 try {
-    final result = api_instance.authLoginCreate(tokenObtainRequest);
-    print(result);
-} catch (e) {
+    final response = api.authLoginCreate(tokenObtainRequest);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authLoginCreate: $e\n');
 }
 ```
@@ -176,20 +170,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = AuthApi();
-final passwordChange = PasswordChange(); // PasswordChange | 
+final api = YagoCloud().getAuthApi();
+final PasswordChange passwordChange = ; // PasswordChange | 
 
 try {
-    final result = api_instance.authPasswordChangeCreate(passwordChange);
-    print(result);
-} catch (e) {
+    final response = api.authPasswordChangeCreate(passwordChange);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authPasswordChangeCreate: $e\n');
 }
 ```
@@ -226,13 +214,13 @@ Password reset e-mail link is confirmed, reset the user's password.
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = AuthApi();
-final passwordResetConfirm = PasswordResetConfirm(); // PasswordResetConfirm | 
+final api = YagoCloud().getAuthApi();
+final PasswordResetConfirm passwordResetConfirm = ; // PasswordResetConfirm | 
 
 try {
-    final result = api_instance.authPasswordResetConfirmCreate(passwordResetConfirm);
-    print(result);
-} catch (e) {
+    final response = api.authPasswordResetConfirmCreate(passwordResetConfirm);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authPasswordResetConfirmCreate: $e\n');
 }
 ```
@@ -269,13 +257,13 @@ Request password reset. Send an email to the user first.
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = AuthApi();
-final passwordReset = PasswordReset(); // PasswordReset | 
+final api = YagoCloud().getAuthApi();
+final PasswordReset passwordReset = ; // PasswordReset | 
 
 try {
-    final result = api_instance.authPasswordResetCreate(passwordReset);
-    print(result);
-} catch (e) {
+    final response = api.authPasswordResetCreate(passwordReset);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authPasswordResetCreate: $e\n');
 }
 ```
@@ -312,13 +300,13 @@ Takes a refresh type JSON web token and returns an access type JSON web token if
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = AuthApi();
-final tokenRefreshRequest = TokenRefreshRequest(); // TokenRefreshRequest | 
+final api = YagoCloud().getAuthApi();
+final TokenRefreshRequest tokenRefreshRequest = ; // TokenRefreshRequest | 
 
 try {
-    final result = api_instance.authRefreshCreate(tokenRefreshRequest);
-    print(result);
-} catch (e) {
+    final response = api.authRefreshCreate(tokenRefreshRequest);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authRefreshCreate: $e\n');
 }
 ```
@@ -355,12 +343,12 @@ Takes a token and indicates if it is valid.  This view provides no information a
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = AuthApi();
-final tokenVerify = TokenVerify(); // TokenVerify | 
+final api = YagoCloud().getAuthApi();
+final TokenVerify tokenVerify = ; // TokenVerify | 
 
 try {
-    api_instance.authVerifyCreate(tokenVerify);
-} catch (e) {
+    api.authVerifyCreate(tokenVerify);
+} catch on DioException (e) {
     print('Exception when calling AuthApi->authVerifyCreate: $e\n');
 }
 ```

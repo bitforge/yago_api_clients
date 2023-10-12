@@ -9,7 +9,7 @@ A generated Yago Cloud API Client for Flutter & Dart.
 
 ## Requirements
 
-Dart 2.12 or later
+Dart 2.15 or later
 
 ## Installation & Usage
 

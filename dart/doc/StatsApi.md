@@ -33,20 +33,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = StatsApi();
-final globalStatistics = GlobalStatistics(); // GlobalStatistics | 
+final api = YagoCloud().getStatsApi();
+final GlobalStatistics globalStatistics = ; // GlobalStatistics | 
 
 try {
-    final result = api_instance.statsGlobalChronicCreate(globalStatistics);
-    print(result);
-} catch (e) {
+    final response = api.statsGlobalChronicCreate(globalStatistics);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling StatsApi->statsGlobalChronicCreate: $e\n');
 }
 ```
@@ -59,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<ChronicStats>**](ChronicStats.md)
+[**List&lt;ChronicStats&gt;**](ChronicStats.md)
 
 ### Authorization
 
@@ -90,20 +84,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = StatsApi();
-final globalStatistics = GlobalStatistics(); // GlobalStatistics | 
+final api = YagoCloud().getStatsApi();
+final GlobalStatistics globalStatistics = ; // GlobalStatistics | 
 
 try {
-    final result = api_instance.statsGlobalSummaryCreate(globalStatistics);
-    print(result);
-} catch (e) {
+    final response = api.statsGlobalSummaryCreate(globalStatistics);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling StatsApi->statsGlobalSummaryCreate: $e\n');
 }
 ```
@@ -147,21 +135,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = StatsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-final projectStatistics = ProjectStatistics(); // ProjectStatistics | 
+final api = YagoCloud().getStatsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final ProjectStatistics projectStatistics = ; // ProjectStatistics | 
 
 try {
-    final result = api_instance.statsProjectChronicCreate(id, projectStatistics);
-    print(result);
-} catch (e) {
+    final response = api.statsProjectChronicCreate(id, projectStatistics);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling StatsApi->statsProjectChronicCreate: $e\n');
 }
 ```
@@ -175,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<ChronicStats>**](ChronicStats.md)
+[**List&lt;ChronicStats&gt;**](ChronicStats.md)
 
 ### Authorization
 
@@ -206,21 +188,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = StatsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-final projectStatistics = ProjectStatistics(); // ProjectStatistics | 
+final api = YagoCloud().getStatsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final ProjectStatistics projectStatistics = ; // ProjectStatistics | 
 
 try {
-    final result = api_instance.statsProjectSummaryCreate(id, projectStatistics);
-    print(result);
-} catch (e) {
+    final response = api.statsProjectSummaryCreate(id, projectStatistics);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling StatsApi->statsProjectSummaryCreate: $e\n');
 }
 ```

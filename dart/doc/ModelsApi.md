@@ -44,20 +44,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final modelCreate = ModelCreate(); // ModelCreate | 
+final api = YagoCloud().getModelsApi();
+final ModelCreate modelCreate = ; // ModelCreate | 
 
 try {
-    final result = api_instance.modelsCreate(modelCreate);
-    print(result);
-} catch (e) {
+    final response = api.modelsCreate(modelCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsCreate: $e\n');
 }
 ```
@@ -101,19 +95,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
 
 try {
-    api_instance.modelsDestroy(id);
-} catch (e) {
+    api.modelsDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsDestroy: $e\n');
 }
 ```
@@ -150,13 +138,13 @@ Model infos for embedding. Loaded by <ar-button> web component.
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = ModelsApi();
-final slug = slug_example; // String | 
+final api = YagoCloud().getModelsApi();
+final String slug = slug_example; // String | 
 
 try {
-    final result = api_instance.modelsEmbedOptionsRetrieve(slug);
-    print(result);
-} catch (e) {
+    final response = api.modelsEmbedOptionsRetrieve(slug);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsEmbedOptionsRetrieve: $e\n');
 }
 ```
@@ -200,19 +188,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    api_instance.modelsGlbDestroy(id);
-} catch (e) {
+    api.modelsGlbDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsGlbDestroy: $e\n');
 }
 ```
@@ -256,22 +238,16 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final contentDisposition = contentDisposition_example; // String | The original filename.
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
-final body = MultipartFile(); // MultipartFile | 
+final api = YagoCloud().getModelsApi();
+final String contentDisposition = contentDisposition_example; // String | The original filename.
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
+final MultipartFile body = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    final result = api_instance.modelsGlbUpdate(contentDisposition, id, body);
-    print(result);
-} catch (e) {
+    final response = api.modelsGlbUpdate(contentDisposition, id, body);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsGlbUpdate: $e\n');
 }
 ```
@@ -317,19 +293,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    api_instance.modelsImageDestroy(id);
-} catch (e) {
+    api.modelsImageDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsImageDestroy: $e\n');
 }
 ```
@@ -373,22 +343,16 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final contentDisposition = contentDisposition_example; // String | The original filename.
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
-final body = MultipartFile(); // MultipartFile | 
+final api = YagoCloud().getModelsApi();
+final String contentDisposition = contentDisposition_example; // String | The original filename.
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
+final MultipartFile body = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    final result = api_instance.modelsImageUpdate(contentDisposition, id, body);
-    print(result);
-} catch (e) {
+    final response = api.modelsImageUpdate(contentDisposition, id, body);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsImageUpdate: $e\n');
 }
 ```
@@ -434,21 +398,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final project = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
-final status = status_example; // String | DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
+final api = YagoCloud().getModelsApi();
+final String project = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final String status = status_example; // String | DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
 
 try {
-    final result = api_instance.modelsList(project, status);
-    print(result);
-} catch (e) {
+    final response = api.modelsList(project, status);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsList: $e\n');
 }
 ```
@@ -462,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<Model>**](Model.md)
+[**List&lt;Model&gt;**](Model.md)
 
 ### Authorization
 
@@ -493,19 +451,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    api_instance.modelsModelDestroy(id);
-} catch (e) {
+    api.modelsModelDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsModelDestroy: $e\n');
 }
 ```
@@ -549,22 +501,16 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final contentDisposition = contentDisposition_example; // String | The original filename.
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
-final body = MultipartFile(); // MultipartFile | 
+final api = YagoCloud().getModelsApi();
+final String contentDisposition = contentDisposition_example; // String | The original filename.
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
+final MultipartFile body = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    final result = api_instance.modelsModelUpdate(contentDisposition, id, body);
-    print(result);
-} catch (e) {
+    final response = api.modelsModelUpdate(contentDisposition, id, body);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsModelUpdate: $e\n');
 }
 ```
@@ -610,21 +556,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
-final patchedModelUpdate = PatchedModelUpdate(); // PatchedModelUpdate | 
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
+final PatchedModelUpdate patchedModelUpdate = ; // PatchedModelUpdate | 
 
 try {
-    final result = api_instance.modelsPartialUpdate(id, patchedModelUpdate);
-    print(result);
-} catch (e) {
+    final response = api.modelsPartialUpdate(id, patchedModelUpdate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsPartialUpdate: $e\n');
 }
 ```
@@ -669,20 +609,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
 
 try {
-    final result = api_instance.modelsRetrieve(id);
-    print(result);
-} catch (e) {
+    final response = api.modelsRetrieve(id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsRetrieve: $e\n');
 }
 ```
@@ -726,21 +660,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
-final modelUpdate = ModelUpdate(); // ModelUpdate | 
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Model.
+final ModelUpdate modelUpdate = ; // ModelUpdate | 
 
 try {
-    final result = api_instance.modelsUpdate(id, modelUpdate);
-    print(result);
-} catch (e) {
+    final response = api.modelsUpdate(id, modelUpdate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsUpdate: $e\n');
 }
 ```
@@ -785,19 +713,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getModelsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    api_instance.modelsUsdzDestroy(id);
-} catch (e) {
+    api.modelsUsdzDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsUsdzDestroy: $e\n');
 }
 ```
@@ -841,22 +763,16 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ModelsApi();
-final contentDisposition = contentDisposition_example; // String | The original filename.
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
-final body = MultipartFile(); // MultipartFile | 
+final api = YagoCloud().getModelsApi();
+final String contentDisposition = contentDisposition_example; // String | The original filename.
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
+final MultipartFile body = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    final result = api_instance.modelsUsdzUpdate(contentDisposition, id, body);
-    print(result);
-} catch (e) {
+    final response = api.modelsUsdzUpdate(contentDisposition, id, body);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ModelsApi->modelsUsdzUpdate: $e\n');
 }
 ```

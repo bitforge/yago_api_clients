@@ -56,21 +56,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final orderCommentCreate = OrderCommentCreate(); // OrderCommentCreate | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final OrderCommentCreate orderCommentCreate = ; // OrderCommentCreate | 
 
 try {
-    final result = api_instance.ordersCommentsCreate(orderId, orderCommentCreate);
-    print(result);
-} catch (e) {
+    final response = api.ordersCommentsCreate(orderId, orderCommentCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersCommentsCreate: $e\n');
 }
 ```
@@ -115,20 +109,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersCommentsList(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersCommentsList(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersCommentsList: $e\n');
 }
 ```
@@ -141,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<OrderComment>**](OrderComment.md)
+[**List&lt;OrderComment&gt;**](OrderComment.md)
 
 ### Authorization
 
@@ -172,20 +160,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderCreate = OrderCreate(); // OrderCreate | 
+final api = YagoCloud().getOrdersApi();
+final OrderCreate orderCreate = ; // OrderCreate | 
 
 try {
-    final result = api_instance.ordersCreate(orderCreate);
-    print(result);
-} catch (e) {
+    final response = api.ordersCreate(orderCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersCreate: $e\n');
 }
 ```
@@ -229,19 +211,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final id = 56; // int | A unique integer value identifying this Order.
+final api = YagoCloud().getOrdersApi();
+final int id = 56; // int | A unique integer value identifying this Order.
 
 try {
-    api_instance.ordersDestroy(id);
-} catch (e) {
+    api.ordersDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersDestroy: $e\n');
 }
 ```
@@ -285,20 +261,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final project = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getOrdersApi();
+final String project = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    final result = api_instance.ordersList(project);
-    print(result);
-} catch (e) {
+    final response = api.ordersList(project);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersList: $e\n');
 }
 ```
@@ -311,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<Order>**](Order.md)
+[**List&lt;Order&gt;**](Order.md)
 
 ### Authorization
 
@@ -342,22 +312,16 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
-final orderModelCommentCreate = OrderModelCommentCreate(); // OrderModelCommentCreate | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
+final OrderModelCommentCreate orderModelCommentCreate = ; // OrderModelCommentCreate | 
 
 try {
-    final result = api_instance.ordersModelsCommentsCreate(orderId, id, orderModelCommentCreate);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsCommentsCreate(orderId, id, orderModelCommentCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsCommentsCreate: $e\n');
 }
 ```
@@ -403,21 +367,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
 
 try {
-    final result = api_instance.ordersModelsCommentsList(orderId, id);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsCommentsList(orderId, id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsCommentsList: $e\n');
 }
 ```
@@ -431,7 +389,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<OrderModelComment>**](OrderModelComment.md)
+[**List&lt;OrderModelComment&gt;**](OrderModelComment.md)
 
 ### Authorization
 
@@ -462,21 +420,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final orderModelCreate = OrderModelCreate(); // OrderModelCreate | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final OrderModelCreate orderModelCreate = ; // OrderModelCreate | 
 
 try {
-    final result = api_instance.ordersModelsCreate(orderId, orderModelCreate);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsCreate(orderId, orderModelCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsCreate: $e\n');
 }
 ```
@@ -521,20 +473,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | A unique integer value identifying this Model.
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | A unique integer value identifying this Model.
 
 try {
-    api_instance.ordersModelsDestroy(orderId, id);
-} catch (e) {
+    api.ordersModelsDestroy(orderId, id);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsDestroy: $e\n');
 }
 ```
@@ -579,21 +525,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
-final fileId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
+final String fileId = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    api_instance.ordersModelsFilesDestroy(orderId, id, fileId);
-} catch (e) {
+    api.ordersModelsFilesDestroy(orderId, id, fileId);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsFilesDestroy: $e\n');
 }
 ```
@@ -639,21 +579,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
 
 try {
-    final result = api_instance.ordersModelsFilesList(orderId, id);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsFilesList(orderId, id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsFilesList: $e\n');
 }
 ```
@@ -667,7 +601,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<OrderModelFile>**](OrderModelFile.md)
+[**List&lt;OrderModelFile&gt;**](OrderModelFile.md)
 
 ### Authorization
 
@@ -698,23 +632,17 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final contentDisposition = contentDisposition_example; // String | The original filename.
-final id = 56; // int | 
-final body = MultipartFile(); // MultipartFile | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final String contentDisposition = contentDisposition_example; // String | The original filename.
+final int id = 56; // int | 
+final MultipartFile body = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    final result = api_instance.ordersModelsFilesUpdate(orderId, contentDisposition, id, body);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsFilesUpdate(orderId, contentDisposition, id, body);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsFilesUpdate: $e\n');
 }
 ```
@@ -761,20 +689,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersModelsList(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsList(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsList: $e\n');
 }
 ```
@@ -787,7 +709,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<OrderModel>**](OrderModel.md)
+[**List&lt;OrderModel&gt;**](OrderModel.md)
 
 ### Authorization
 
@@ -818,21 +740,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | A unique integer value identifying this Model.
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | A unique integer value identifying this Model.
 
 try {
-    final result = api_instance.ordersModelsRetrieve(orderId, id);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsRetrieve(orderId, id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsRetrieve: $e\n');
 }
 ```
@@ -877,21 +793,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
 
 try {
-    final result = api_instance.ordersModelsSubmitToFinishedPartialUpdate(orderId, id);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsSubmitToFinishedPartialUpdate(orderId, id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsSubmitToFinishedPartialUpdate: $e\n');
 }
 ```
@@ -936,21 +846,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
 
 try {
-    final result = api_instance.ordersModelsSubmitToReviewPartialUpdate(orderId, id);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsSubmitToReviewPartialUpdate(orderId, id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsSubmitToReviewPartialUpdate: $e\n');
 }
 ```
@@ -995,21 +899,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
 
 try {
-    final result = api_instance.ordersModelsSubmitToReworkPartialUpdate(orderId, id);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsSubmitToReworkPartialUpdate(orderId, id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsSubmitToReworkPartialUpdate: $e\n');
 }
 ```
@@ -1054,21 +952,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | 
 
 try {
-    final result = api_instance.ordersModelsTransitionsList(orderId, id);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsTransitionsList(orderId, id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsTransitionsList: $e\n');
 }
 ```
@@ -1082,7 +974,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<AvailableState>**](AvailableState.md)
+[**List&lt;AvailableState&gt;**](AvailableState.md)
 
 ### Authorization
 
@@ -1113,22 +1005,16 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
-final id = 56; // int | A unique integer value identifying this Model.
-final orderModelUpdate = OrderModelUpdate(); // OrderModelUpdate | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
+final int id = 56; // int | A unique integer value identifying this Model.
+final OrderModelUpdate orderModelUpdate = ; // OrderModelUpdate | 
 
 try {
-    final result = api_instance.ordersModelsUpdate(orderId, id, orderModelUpdate);
-    print(result);
-} catch (e) {
+    final response = api.ordersModelsUpdate(orderId, id, orderModelUpdate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersModelsUpdate: $e\n');
 }
 ```
@@ -1174,20 +1060,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final id = 56; // int | A unique integer value identifying this Order.
+final api = YagoCloud().getOrdersApi();
+final int id = 56; // int | A unique integer value identifying this Order.
 
 try {
-    final result = api_instance.ordersRetrieve(id);
-    print(result);
-} catch (e) {
+    final response = api.ordersRetrieve(id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersRetrieve: $e\n');
 }
 ```
@@ -1231,20 +1111,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersSubmitToEstimationPartialUpdate(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersSubmitToEstimationPartialUpdate(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersSubmitToEstimationPartialUpdate: $e\n');
 }
 ```
@@ -1288,20 +1162,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersSubmitToFinishedPartialUpdate(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersSubmitToFinishedPartialUpdate(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersSubmitToFinishedPartialUpdate: $e\n');
 }
 ```
@@ -1345,20 +1213,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersSubmitToPaymentPartialUpdate(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersSubmitToPaymentPartialUpdate(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersSubmitToPaymentPartialUpdate: $e\n');
 }
 ```
@@ -1402,20 +1264,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersSubmitToProgressPartialUpdate(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersSubmitToProgressPartialUpdate(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersSubmitToProgressPartialUpdate: $e\n');
 }
 ```
@@ -1459,20 +1315,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersSubmitToReviewPartialUpdate(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersSubmitToReviewPartialUpdate(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersSubmitToReviewPartialUpdate: $e\n');
 }
 ```
@@ -1516,20 +1366,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final orderId = 56; // int | 
+final api = YagoCloud().getOrdersApi();
+final int orderId = 56; // int | 
 
 try {
-    final result = api_instance.ordersTransitionsList(orderId);
-    print(result);
-} catch (e) {
+    final response = api.ordersTransitionsList(orderId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersTransitionsList: $e\n');
 }
 ```
@@ -1542,7 +1386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<AvailableState>**](AvailableState.md)
+[**List&lt;AvailableState&gt;**](AvailableState.md)
 
 ### Authorization
 
@@ -1573,21 +1417,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = OrdersApi();
-final id = 56; // int | A unique integer value identifying this Order.
-final orderUpdate = OrderUpdate(); // OrderUpdate | 
+final api = YagoCloud().getOrdersApi();
+final int id = 56; // int | A unique integer value identifying this Order.
+final OrderUpdate orderUpdate = ; // OrderUpdate | 
 
 try {
-    final result = api_instance.ordersUpdate(id, orderUpdate);
-    print(result);
-} catch (e) {
+    final response = api.ordersUpdate(id, orderUpdate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling OrdersApi->ordersUpdate: $e\n');
 }
 ```

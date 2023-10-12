@@ -8,7 +8,7 @@ import 'package:yago_cloud/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [readonly] 
+**id** | **String** |  | 
 **name** | **String** | Name will be visible as title in gallery. | 
 **plan** | **String** | Defines the number of available models and AR views. <a href=\"mailto:info@bitforge.ch\">Contact us</a> to upgrade your plan. | [optional] 
 **slug** | **String** | Only for internal use | 

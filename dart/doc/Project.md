@@ -8,7 +8,7 @@ import 'package:yago_cloud/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [readonly] 
+**id** | **String** |  | 
 **name** | **String** | Name will be visible as title in gallery. | 
 **slug** | **String** | Will be part of asset urls. Cannot be changed once created. | [optional] 
 **customerName** | **String** |  | [optional] [default to '']
@@ -23,10 +23,10 @@ Name | Type | Description | Notes
 **translationsFr** | **bool** |  | [optional] 
 **translationsIt** | **bool** |  | [optional] 
 **backlinkUrls** | **bool** | Enable urls to the product on your site. Required when using standalone QR codes (e.g. Print). | [optional] 
-**orders** | [**List<ActiveOrder>**](ActiveOrder.md) |  | [optional] [default to const []]
-**arbuttonConfig** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
-**created** | [**DateTime**](DateTime.md) |  | [readonly] 
-**modified** | [**DateTime**](DateTime.md) |  | [readonly] 
+**orders** | [**List&lt;ActiveOrder&gt;**](ActiveOrder.md) |  | [optional] 
+**arbuttonConfig** | **Map&lt;String, Object&gt;** |  | [optional] 
+**created** | [**DateTime**](DateTime.md) |  | 
+**modified** | [**DateTime**](DateTime.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

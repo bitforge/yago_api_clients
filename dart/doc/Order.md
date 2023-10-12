@@ -8,14 +8,14 @@ import 'package:yago_cloud/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [readonly] 
+**id** | **int** |  | 
 **project** | **String** |  | 
-**state** | [**OrderState**](OrderState.md) |  | [readonly] 
+**state** | [**OrderState**](OrderState.md) |  | 
 **price** | **double** | Estimation of order in CHF including taxes. Payment price for User before starting production. | [optional] 
-**priceCurrency** | **String** |  | [readonly] 
-**created** | [**DateTime**](DateTime.md) |  | [readonly] 
-**modified** | [**DateTime**](DateTime.md) |  | [readonly] 
-**modelCount** | **int** | Returns the number of Models this order has. | [readonly] 
+**priceCurrency** | **String** |  | 
+**created** | [**DateTime**](DateTime.md) |  | 
+**modified** | [**DateTime**](DateTime.md) |  | 
+**modelCount** | **int** | Returns the number of Models this order has. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

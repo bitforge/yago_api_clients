@@ -37,20 +37,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
-final projectCreate = ProjectCreate(); // ProjectCreate | 
+final api = YagoCloud().getProjectsApi();
+final ProjectCreate projectCreate = ; // ProjectCreate | 
 
 try {
-    final result = api_instance.projectsCreate(projectCreate);
-    print(result);
-} catch (e) {
+    final response = api.projectsCreate(projectCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsCreate: $e\n');
 }
 ```
@@ -94,19 +88,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
+final api = YagoCloud().getProjectsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
 
 try {
-    api_instance.projectsDestroy(id);
-} catch (e) {
+    api.projectsDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsDestroy: $e\n');
 }
 ```
@@ -150,19 +138,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final api = YagoCloud().getProjectsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
-    api_instance.projectsImageDestroy(id);
-} catch (e) {
+    api.projectsImageDestroy(id);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsImageDestroy: $e\n');
 }
 ```
@@ -206,22 +188,16 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
-final contentDisposition = contentDisposition_example; // String | The original filename.
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
-final body = MultipartFile(); // MultipartFile | 
+final api = YagoCloud().getProjectsApi();
+final String contentDisposition = contentDisposition_example; // String | The original filename.
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID identifying this object.
+final MultipartFile body = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    final result = api_instance.projectsImageUpdate(contentDisposition, id, body);
-    print(result);
-} catch (e) {
+    final response = api.projectsImageUpdate(contentDisposition, id, body);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsImageUpdate: $e\n');
 }
 ```
@@ -267,19 +243,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
+final api = YagoCloud().getProjectsApi();
 
 try {
-    final result = api_instance.projectsList();
-    print(result);
-} catch (e) {
+    final response = api.projectsList();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsList: $e\n');
 }
 ```
@@ -289,7 +259,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<Project>**](Project.md)
+[**List&lt;Project&gt;**](Project.md)
 
 ### Authorization
 
@@ -320,21 +290,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
-final patchedProjectUpdate = PatchedProjectUpdate(); // PatchedProjectUpdate | 
+final api = YagoCloud().getProjectsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
+final PatchedProjectUpdate patchedProjectUpdate = ; // PatchedProjectUpdate | 
 
 try {
-    final result = api_instance.projectsPartialUpdate(id, patchedProjectUpdate);
-    print(result);
-} catch (e) {
+    final response = api.projectsPartialUpdate(id, patchedProjectUpdate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsPartialUpdate: $e\n');
 }
 ```
@@ -379,20 +343,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
+final api = YagoCloud().getProjectsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
 
 try {
-    final result = api_instance.projectsRetrieve(id);
-    print(result);
-} catch (e) {
+    final response = api.projectsRetrieve(id);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsRetrieve: $e\n');
 }
 ```
@@ -436,21 +394,15 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProjectsApi();
-final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
-final projectUpdate = ProjectUpdate(); // ProjectUpdate | 
+final api = YagoCloud().getProjectsApi();
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | A UUID string identifying this Project.
+final ProjectUpdate projectUpdate = ; // ProjectUpdate | 
 
 try {
-    final result = api_instance.projectsUpdate(id, projectUpdate);
-    print(result);
-} catch (e) {
+    final response = api.projectsUpdate(id, projectUpdate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling ProjectsApi->projectsUpdate: $e\n');
 }
 ```

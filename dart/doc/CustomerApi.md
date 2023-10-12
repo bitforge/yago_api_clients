@@ -33,20 +33,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CustomerApi();
-final patchedAddress = PatchedAddress(); // PatchedAddress | 
+final api = YagoCloud().getCustomerApi();
+final PatchedAddress patchedAddress = ; // PatchedAddress | 
 
 try {
-    final result = api_instance.customerBillingAddressPartialUpdate(patchedAddress);
-    print(result);
-} catch (e) {
+    final response = api.customerBillingAddressPartialUpdate(patchedAddress);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CustomerApi->customerBillingAddressPartialUpdate: $e\n');
 }
 ```
@@ -90,19 +84,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CustomerApi();
+final api = YagoCloud().getCustomerApi();
 
 try {
-    final result = api_instance.customerBillingAddressRetrieve();
-    print(result);
-} catch (e) {
+    final response = api.customerBillingAddressRetrieve();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CustomerApi->customerBillingAddressRetrieve: $e\n');
 }
 ```
@@ -143,20 +131,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CustomerApi();
-final address = Address(); // Address | 
+final api = YagoCloud().getCustomerApi();
+final Address address = ; // Address | 
 
 try {
-    final result = api_instance.customerBillingAddressUpdate(address);
-    print(result);
-} catch (e) {
+    final response = api.customerBillingAddressUpdate(address);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CustomerApi->customerBillingAddressUpdate: $e\n');
 }
 ```
@@ -200,19 +182,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = CustomerApi();
+final api = YagoCloud().getCustomerApi();
 
 try {
-    final result = api_instance.customerRetrieve();
-    print(result);
-} catch (e) {
+    final response = api.customerRetrieve();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling CustomerApi->customerRetrieve: $e\n');
 }
 ```

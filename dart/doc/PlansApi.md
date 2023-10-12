@@ -23,12 +23,12 @@ List all available pricing plans
 ```dart
 import 'package:yago_cloud/api.dart';
 
-final api_instance = PlansApi();
+final api = YagoCloud().getPlansApi();
 
 try {
-    final result = api_instance.plansList();
-    print(result);
-} catch (e) {
+    final response = api.plansList();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling PlansApi->plansList: $e\n');
 }
 ```
@@ -38,7 +38,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<PricingPlan>**](PricingPlan.md)
+[**List&lt;PricingPlan&gt;**](PricingPlan.md)
 
 ### Authorization
 

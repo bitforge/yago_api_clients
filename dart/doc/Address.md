@@ -8,7 +8,7 @@ import 'package:yago_cloud/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [readonly] 
+**id** | **String** |  | 
 **name** | **String** | Full person name. | 
 **email** | **String** |  | [optional] 
 **phone** | **String** | CH or international format (e.g 079 123 45 67 / +41791234567) | [optional] 

@@ -32,20 +32,14 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SubscriptionApi();
-final newSubscriptionCreate = NewSubscriptionCreate(); // NewSubscriptionCreate | 
+final api = YagoCloud().getSubscriptionApi();
+final NewSubscriptionCreate newSubscriptionCreate = ; // NewSubscriptionCreate | 
 
 try {
-    final result = api_instance.subscriptionCreate(newSubscriptionCreate);
-    print(result);
-} catch (e) {
+    final response = api.subscriptionCreate(newSubscriptionCreate);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling SubscriptionApi->subscriptionCreate: $e\n');
 }
 ```
@@ -89,18 +83,12 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SubscriptionApi();
+final api = YagoCloud().getSubscriptionApi();
 
 try {
-    api_instance.subscriptionDestroy();
-} catch (e) {
+    api.subscriptionDestroy();
+} catch on DioException (e) {
     print('Exception when calling SubscriptionApi->subscriptionDestroy: $e\n');
 }
 ```
@@ -141,19 +129,13 @@ import 'package:yago_cloud/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('tokenAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP Bearer authorization: jwtAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('jwtAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SubscriptionApi();
+final api = YagoCloud().getSubscriptionApi();
 
 try {
-    final result = api_instance.subscriptionRetrieve();
-    print(result);
-} catch (e) {
+    final response = api.subscriptionRetrieve();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling SubscriptionApi->subscriptionRetrieve: $e\n');
 }
 ```

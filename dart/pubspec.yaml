@@ -4,12 +4,14 @@ description: "Yago Cloud API Client for Flutter & Dart"
 homepage: https://yago.cloud/
 repository: https://github.com/bitforge/yago_api_clients
 documentation: https://yago.cloud/api/doc
+
 environment:
-  sdk: ">=2.18.0 <4.0.0"
+  sdk: ">=2.15.0 <3.0.0"
+
 dependencies:
-  collection: "^1.17.2"
-  http: ">=0.13.0 <0.14.0"
-  intl: "^0.17.0"
-  meta: "^1.1.8"
+  dio: "^5.2.0"
+  json_annotation: "^4.4.0"
+
 dev_dependencies:
-  test: ">=1.16.0 <1.18.0"
+  build_runner: any
+  json_serializable: "^6.1.5"

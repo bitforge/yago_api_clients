@@ -8,9 +8,9 @@ import 'package:yago_cloud/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [readonly] 
+**id** | **String** |  | 
 **project** | **String** | The project this model belongs to. Cannot be changed once created. | 
-**name** | **String** |  | [readonly] 
+**name** | **String** |  | 
 **nameDe** | **String** | Name will be visible in Android as title. | [optional] 
 **nameEn** | **String** | Name will be visible in Android as title. | [optional] 
 **nameFr** | **String** | Name will be visible in Android as title. | [optional] 
@@ -39,9 +39,9 @@ Name | Type | Description | Notes
 **glb** | **String** | Must be a binary glTF file according to the Khronos Group standard. | [optional] 
 **usdz** | **String** | Must be a USDZ or Reality Composer file. | [optional] 
 **model** | **String** | Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files. | [optional] 
-**arbuttonConfig** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
-**created** | [**DateTime**](DateTime.md) |  | [readonly] 
-**modified** | [**DateTime**](DateTime.md) |  | [readonly] 
+**arbuttonConfig** | **Map&lt;String, Object&gt;** |  | [optional] [default to {}]
+**created** | [**DateTime**](DateTime.md) |  | 
+**modified** | [**DateTime**](DateTime.md) |  | 
 **verticalPlacement** | **bool** | When set to true, users will be able to place the model on a vertical surface. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
