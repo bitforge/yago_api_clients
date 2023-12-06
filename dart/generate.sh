@@ -8,7 +8,10 @@ rm -rf src
 npx @openapitools/openapi-generator-cli generate \
     -i http://yago.cloud/api/schema/?lang=en \
     -g dart \
-    --additional-properties=pubName="yago_cloud"
+    --additional-properties=legacyDiscriminatorBehavior=false \
+    --additional-properties=pubLibrary="yago" \
+    --additional-properties=pubName="yago_cloud" \
+    --additional-properties=pubAuthor="Bitforge" \
 
 # Remove empty tests
 rm -rf test

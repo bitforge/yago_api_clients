@@ -1,5 +1,5 @@
 name: "yago_cloud"
-version: "1.2.6"
+version: "1.3.0"
 description: "Yago Cloud API Client for Flutter & Dart"
 homepage: https://yago.cloud/
 repository: https://github.com/bitforge/yago_api_clients
@@ -8,8 +8,8 @@ environment:
   sdk: ">=2.18.0 <4.0.0"
 dependencies:
   collection: "^1.17.2"
-  http: ">=0.13.0 <0.14.0"
-  intl: "^0.17.0"
+  http: ^1.1.2
+  intl: ^0.18.1
   meta: "^1.1.8"
 dev_dependencies:
-  test: ">=1.16.0 <1.18.0"
+  test: ^1.24.9

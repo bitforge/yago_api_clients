@@ -1,3 +1,8 @@
+# 1.3.0
+
+- Updated openapi-generator
+- Change library name to yago
+
 # 1.2.6
 
 - Fix Flutter compatibility

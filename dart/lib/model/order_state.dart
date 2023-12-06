@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of yago;
 
 /// * `PREPARING` - Preparing * `ESTIMATING` - Estimating * `READY_TO_PAY` - Ready to pay * `IN_PROGRESS` - In Progress * `IN_REVIEW` - In Review * `FINISHED` - Finished * `RAGE_QUIT` - Rage Quit
 class OrderState {
