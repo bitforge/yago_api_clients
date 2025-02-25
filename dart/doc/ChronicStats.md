@@ -9,7 +9,7 @@ import 'package:yago_cloud/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **String** |  | 
-**data** | [**Map<String, Object>**](Object.md) |  | [default to const {}]
+**data** | [**Object**](.md) |  | 
 **total** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -27,8 +27,6 @@ doc/ModelInfo.md
 doc/ModelStatus.md
 doc/ModelUpdate.md
 doc/ModelsApi.md
-doc/NewSubscription.md
-doc/NewSubscriptionCreate.md
 doc/Order.md
 doc/OrderComment.md
 doc/OrderCommentCreate.md
@@ -66,8 +64,6 @@ doc/RegistrationCreate.md
 doc/RoleEnum.md
 doc/StateChanged.md
 doc/StatsApi.md
-doc/Subscription.md
-doc/SubscriptionApi.md
 doc/SummaryStats.md
 doc/TimeRangeEnum.md
 doc/TokenObtainRequest.md
@@ -90,7 +86,6 @@ lib/api/plans_api.dart
 lib/api/projects_api.dart
 lib/api/registration_api.dart
 lib/api/stats_api.dart
-lib/api/subscription_api.dart
 lib/api/users_api.dart
 lib/api_client.dart
 lib/api_exception.dart
@@ -121,8 +116,6 @@ lib/model/model_create.dart
 lib/model/model_info.dart
 lib/model/model_status.dart
 lib/model/model_update.dart
-lib/model/new_subscription.dart
-lib/model/new_subscription_create.dart
 lib/model/order.dart
 lib/model/order_comment.dart
 lib/model/order_comment_create.dart
@@ -155,7 +148,6 @@ lib/model/registration.dart
 lib/model/registration_create.dart
 lib/model/role_enum.dart
 lib/model/state_changed.dart
-lib/model/subscription.dart
 lib/model/summary_stats.dart
 lib/model/time_range_enum.dart
 lib/model/token_obtain_request.dart
@@ -191,8 +183,6 @@ test/model_status_test.dart
 test/model_test.dart
 test/model_update_test.dart
 test/models_api_test.dart
-test/new_subscription_create_test.dart
-test/new_subscription_test.dart
 test/order_comment_create_test.dart
 test/order_comment_test.dart
 test/order_create_test.dart
@@ -230,8 +220,6 @@ test/registration_test.dart
 test/role_enum_test.dart
 test/state_changed_test.dart
 test/stats_api_test.dart
-test/subscription_api_test.dart
-test/subscription_test.dart
 test/summary_stats_test.dart
 test/time_range_enum_test.dart
 test/token_obtain_request_test.dart

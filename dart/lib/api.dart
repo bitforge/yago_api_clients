@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -38,7 +38,6 @@ part 'api/plans_api.dart';
 part 'api/projects_api.dart';
 part 'api/registration_api.dart';
 part 'api/stats_api.dart';
-part 'api/subscription_api.dart';
 part 'api/users_api.dart';
 
 part 'model/active_order.dart';
@@ -62,8 +61,6 @@ part 'model/model_create.dart';
 part 'model/model_info.dart';
 part 'model/model_status.dart';
 part 'model/model_update.dart';
-part 'model/new_subscription.dart';
-part 'model/new_subscription_create.dart';
 part 'model/order.dart';
 part 'model/order_comment.dart';
 part 'model/order_comment_create.dart';
@@ -96,7 +93,6 @@ part 'model/registration.dart';
 part 'model/registration_create.dart';
 part 'model/role_enum.dart';
 part 'model/state_changed.dart';
-part 'model/subscription.dart';
 part 'model/summary_stats.dart';
 part 'model/time_range_enum.dart';
 part 'model/token_obtain_request.dart';

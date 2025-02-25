@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -10,7 +10,7 @@
 
 part of yago;
 
-/// * `24h` - Letzter Tag * `48h` - Letzte 2 Tage * `7d` - Letzte Woche * `14d` - Letzte 2 Wochen * `1m` - Letzter Monat * `2m` - Letzte 2 Monate * `3m` - Letzte 3 Monate * `6m` - Letzte 6 Monate * `1y` - Letztes Jahr * `2y` - Letzte 2 Jahre
+/// * `24h` - Letzter Tag * `48h` - Letzte 2 Tage * `7d` - Letzte Woche * `14d` - Letzte 2 Wochen * `1m` - Letzter Monat * `2m` - Letzte 2 Monate * `3m` - Letzte 3 Monate * `6m` - Letzte 6 Monate * `1y` - Letztes Jahr * `2y` - Letzte 2 Jahre * `all` - Alle
 class TimeRangeEnum {
   /// Instantiate a new enum with the provided [value].
   const TimeRangeEnum._(this.value);
@@ -33,6 +33,7 @@ class TimeRangeEnum {
   static const n6m = TimeRangeEnum._(r'6m');
   static const n1y = TimeRangeEnum._(r'1y');
   static const n2y = TimeRangeEnum._(r'2y');
+  static const all = TimeRangeEnum._(r'all');
 
   /// List of all possible values in this [enum][TimeRangeEnum].
   static const values = <TimeRangeEnum>[
@@ -46,6 +47,7 @@ class TimeRangeEnum {
     n6m,
     n1y,
     n2y,
+    all,
   ];
 
   static TimeRangeEnum? fromJson(dynamic value) => TimeRangeEnumTypeTransformer().decode(value);
@@ -107,6 +109,8 @@ class TimeRangeEnumTypeTransformer {
           return TimeRangeEnum.n1y;
         case r'2y':
           return TimeRangeEnum.n2y;
+        case r'all':
+          return TimeRangeEnum.all;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** |  | [readonly] 
 **status** | **int** |  | [readonly] 
-**errors** | [**Map<String, Object>**](Object.md) |  | [readonly] [default to const {}]
+**errors** | [**Object**](.md) |  | [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

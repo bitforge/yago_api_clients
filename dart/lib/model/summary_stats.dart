@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,24 +14,22 @@ class SummaryStats {
   /// Returns a new [SummaryStats] instance.
   SummaryStats({
     this.labels = const [],
-    this.datasets = const {},
+    required this.datasets,
   });
 
   List<Object> labels;
 
-  Map<String, Object> datasets;
+  Object? datasets;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SummaryStats &&
-          _deepEquality.equals(other.labels, labels) &&
-          _deepEquality.equals(other.datasets, datasets);
+      other is SummaryStats && _deepEquality.equals(other.labels, labels) && other.datasets == datasets;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (labels.hashCode) + (datasets.hashCode);
+      (labels.hashCode) + (datasets == null ? 0 : datasets!.hashCode);
 
   @override
   String toString() => 'SummaryStats[labels=$labels, datasets=$datasets]';
@@ -39,7 +37,11 @@ class SummaryStats {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'labels'] = this.labels;
-    json[r'datasets'] = this.datasets;
+    if (this.datasets != null) {
+      json[r'datasets'] = this.datasets;
+    } else {
+      json[r'datasets'] = null;
+    }
     return json;
   }
 
@@ -63,7 +65,7 @@ class SummaryStats {
 
       return SummaryStats(
         labels: List<Object>.from(json[r'labels']),
-        datasets: mapCastOfType<String, Object>(json, r'datasets')!,
+        datasets: mapValueOfType<Object>(json, r'datasets'),
       );
     }
     return null;

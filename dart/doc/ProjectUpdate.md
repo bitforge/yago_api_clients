@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **translationsFr** | **bool** |  | [optional] 
 **translationsIt** | **bool** |  | [optional] 
 **backlinkUrls** | **bool** | Enable urls to the product on your site. Required when using standalone QR codes (e.g. Print). | [optional] 
-**arbuttonConfig** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
+**arbuttonConfig** | [**Object**](.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -15,14 +15,14 @@ class ModelInfo {
   ModelInfo({
     required this.siteUrl,
     required this.quicklookLink,
-    this.qrConfig = const {},
+    required this.qrConfig,
   });
 
   String siteUrl;
 
   String quicklookLink;
 
-  Map<String, Object> qrConfig;
+  Object? qrConfig;
 
   @override
   bool operator ==(Object other) =>
@@ -30,12 +30,12 @@ class ModelInfo {
       other is ModelInfo &&
           other.siteUrl == siteUrl &&
           other.quicklookLink == quicklookLink &&
-          _deepEquality.equals(other.qrConfig, qrConfig);
+          other.qrConfig == qrConfig;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (siteUrl.hashCode) + (quicklookLink.hashCode) + (qrConfig.hashCode);
+      (siteUrl.hashCode) + (quicklookLink.hashCode) + (qrConfig == null ? 0 : qrConfig!.hashCode);
 
   @override
   String toString() => 'ModelInfo[siteUrl=$siteUrl, quicklookLink=$quicklookLink, qrConfig=$qrConfig]';
@@ -44,7 +44,11 @@ class ModelInfo {
     final json = <String, dynamic>{};
     json[r'site_url'] = this.siteUrl;
     json[r'quicklook_link'] = this.quicklookLink;
-    json[r'qr_config'] = this.qrConfig;
+    if (this.qrConfig != null) {
+      json[r'qr_config'] = this.qrConfig;
+    } else {
+      json[r'qr_config'] = null;
+    }
     return json;
   }
 
@@ -69,7 +73,7 @@ class ModelInfo {
       return ModelInfo(
         siteUrl: mapValueOfType<String>(json, r'site_url')!,
         quicklookLink: mapValueOfType<String>(json, r'quicklook_link')!,
-        qrConfig: mapCastOfType<String, Object>(json, r'qr_config')!,
+        qrConfig: mapValueOfType<Object>(json, r'qr_config'),
       );
     }
     return null;

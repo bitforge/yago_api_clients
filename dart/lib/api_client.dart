@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -261,10 +261,6 @@ class ApiClient {
           return ModelStatusTypeTransformer().decode(value);
         case 'ModelUpdate':
           return ModelUpdate.fromJson(value);
-        case 'NewSubscription':
-          return NewSubscription.fromJson(value);
-        case 'NewSubscriptionCreate':
-          return NewSubscriptionCreate.fromJson(value);
         case 'Order':
           return Order.fromJson(value);
         case 'OrderComment':
@@ -329,8 +325,6 @@ class ApiClient {
           return RoleEnumTypeTransformer().decode(value);
         case 'StateChanged':
           return StateChanged.fromJson(value);
-        case 'Subscription':
-          return Subscription.fromJson(value);
         case 'SummaryStats':
           return SummaryStats.fromJson(value);
         case 'TimeRangeEnum':

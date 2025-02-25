@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -15,7 +15,7 @@ class ErrorDescription {
   ErrorDescription({
     required this.title,
     required this.status,
-    this.errors = const {},
+    required this.errors,
   });
 
   String title;
@@ -24,20 +24,17 @@ class ErrorDescription {
   /// Maximum value: 599
   int status;
 
-  Map<String, Object> errors;
+  Object? errors;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ErrorDescription &&
-          other.title == title &&
-          other.status == status &&
-          _deepEquality.equals(other.errors, errors);
+      other is ErrorDescription && other.title == title && other.status == status && other.errors == errors;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (title.hashCode) + (status.hashCode) + (errors.hashCode);
+      (title.hashCode) + (status.hashCode) + (errors == null ? 0 : errors!.hashCode);
 
   @override
   String toString() => 'ErrorDescription[title=$title, status=$status, errors=$errors]';
@@ -46,7 +43,11 @@ class ErrorDescription {
     final json = <String, dynamic>{};
     json[r'title'] = this.title;
     json[r'status'] = this.status;
-    json[r'errors'] = this.errors;
+    if (this.errors != null) {
+      json[r'errors'] = this.errors;
+    } else {
+      json[r'errors'] = null;
+    }
     return json;
   }
 
@@ -71,7 +72,7 @@ class ErrorDescription {
       return ErrorDescription(
         title: mapValueOfType<String>(json, r'title')!,
         status: mapValueOfType<int>(json, r'status')!,
-        errors: mapCastOfType<String, Object>(json, r'errors')!,
+        errors: mapValueOfType<Object>(json, r'errors'),
       );
     }
     return null;

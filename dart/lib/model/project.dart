@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -29,7 +29,7 @@ class Project {
     this.translationsIt,
     this.backlinkUrls,
     this.orders = const [],
-    this.arbuttonConfig = const {},
+    this.arbuttonConfig,
     required this.created,
     required this.modified,
   });
@@ -113,7 +113,7 @@ class Project {
 
   List<ActiveOrder> orders;
 
-  Map<String, Object>? arbuttonConfig;
+  Object? arbuttonConfig;
 
   DateTime created;
 
@@ -139,7 +139,7 @@ class Project {
           other.translationsIt == translationsIt &&
           other.backlinkUrls == backlinkUrls &&
           _deepEquality.equals(other.orders, orders) &&
-          _deepEquality.equals(other.arbuttonConfig, arbuttonConfig) &&
+          other.arbuttonConfig == arbuttonConfig &&
           other.created == created &&
           other.modified == modified;
 
@@ -273,7 +273,7 @@ class Project {
         translationsIt: mapValueOfType<bool>(json, r'translations_it'),
         backlinkUrls: mapValueOfType<bool>(json, r'backlink_urls'),
         orders: ActiveOrder.listFromJson(json[r'orders']),
-        arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config') ?? const {},
+        arbuttonConfig: mapValueOfType<Object>(json, r'arbutton_config'),
         created: mapDateTime(json, r'created', r'')!,
         modified: mapDateTime(json, r'modified', r'')!,
       );

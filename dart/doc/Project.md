@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **translationsIt** | **bool** |  | [optional] 
 **backlinkUrls** | **bool** | Enable urls to the product on your site. Required when using standalone QR codes (e.g. Print). | [optional] 
 **orders** | [**List<ActiveOrder>**](ActiveOrder.md) |  | [optional] [default to const []]
-**arbuttonConfig** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
+**arbuttonConfig** | [**Object**](.md) |  | [optional] 
 **created** | [**DateTime**](DateTime.md) |  | [readonly] 
 **modified** | [**DateTime**](DateTime.md) |  | [readonly] 
 

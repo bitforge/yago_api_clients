@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -44,7 +44,7 @@ class Model {
     this.glb,
     this.usdz,
     this.model,
-    this.arbuttonConfig = const {},
+    this.arbuttonConfig = null,
     required this.created,
     required this.modified,
     this.verticalPlacement,
@@ -94,6 +94,7 @@ class Model {
   ///
   bool? preview;
 
+  /// DRAFT=In development, READY=Modelling complete, ONLINE=Active use.  * `DRAFT` - Draft * `READY` - Ready * `ONLINE` - Online
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -162,7 +163,7 @@ class Model {
   /// Source of 3D Model (Blender, Maya, Cinema 4D, CAD etc,). Use archive for multiple files.
   String? model;
 
-  Map<String, Object> arbuttonConfig;
+  Object? arbuttonConfig;
 
   DateTime created;
 
@@ -212,7 +213,7 @@ class Model {
           other.glb == glb &&
           other.usdz == usdz &&
           other.model == model &&
-          _deepEquality.equals(other.arbuttonConfig, arbuttonConfig) &&
+          other.arbuttonConfig == arbuttonConfig &&
           other.created == created &&
           other.modified == modified &&
           other.verticalPlacement == verticalPlacement;
@@ -251,7 +252,7 @@ class Model {
       (glb == null ? 0 : glb!.hashCode) +
       (usdz == null ? 0 : usdz!.hashCode) +
       (model == null ? 0 : model!.hashCode) +
-      (arbuttonConfig.hashCode) +
+      (arbuttonConfig == null ? 0 : arbuttonConfig!.hashCode) +
       (created.hashCode) +
       (modified.hashCode) +
       (verticalPlacement == null ? 0 : verticalPlacement!.hashCode);
@@ -385,7 +386,11 @@ class Model {
     } else {
       json[r'model'] = null;
     }
-    json[r'arbutton_config'] = this.arbuttonConfig;
+    if (this.arbuttonConfig != null) {
+      json[r'arbutton_config'] = this.arbuttonConfig;
+    } else {
+      json[r'arbutton_config'] = null;
+    }
     json[r'created'] = this.created.toUtc().toIso8601String();
     json[r'modified'] = this.modified.toUtc().toIso8601String();
     if (this.verticalPlacement != null) {
@@ -446,7 +451,7 @@ class Model {
         glb: mapValueOfType<String>(json, r'glb'),
         usdz: mapValueOfType<String>(json, r'usdz'),
         model: mapValueOfType<String>(json, r'model'),
-        arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config') ?? const {},
+        arbuttonConfig: mapValueOfType<Object>(json, r'arbutton_config') ?? {},
         created: mapDateTime(json, r'created', r'')!,
         modified: mapDateTime(json, r'modified', r'')!,
         verticalPlacement: mapValueOfType<bool>(json, r'vertical_placement'),

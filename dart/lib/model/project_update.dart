@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -22,7 +22,7 @@ class ProjectUpdate {
     this.translationsFr,
     this.translationsIt,
     this.backlinkUrls,
-    this.arbuttonConfig = const {},
+    this.arbuttonConfig,
   });
 
   /// Name will be visible as title in gallery.
@@ -82,7 +82,7 @@ class ProjectUpdate {
   ///
   bool? backlinkUrls;
 
-  Map<String, Object>? arbuttonConfig;
+  Object? arbuttonConfig;
 
   @override
   bool operator ==(Object other) =>
@@ -97,7 +97,7 @@ class ProjectUpdate {
           other.translationsFr == translationsFr &&
           other.translationsIt == translationsIt &&
           other.backlinkUrls == backlinkUrls &&
-          _deepEquality.equals(other.arbuttonConfig, arbuttonConfig);
+          other.arbuttonConfig == arbuttonConfig;
 
   @override
   int get hashCode =>
@@ -196,7 +196,7 @@ class ProjectUpdate {
         translationsFr: mapValueOfType<bool>(json, r'translations_fr'),
         translationsIt: mapValueOfType<bool>(json, r'translations_it'),
         backlinkUrls: mapValueOfType<bool>(json, r'backlink_urls'),
-        arbuttonConfig: mapCastOfType<String, Object>(json, r'arbutton_config') ?? const {},
+        arbuttonConfig: mapValueOfType<Object>(json, r'arbutton_config'),
       );
     }
     return null;

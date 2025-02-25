@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,25 +14,25 @@ class ChronicStats {
   /// Returns a new [ChronicStats] instance.
   ChronicStats({
     required this.label,
-    this.data = const {},
+    required this.data,
     required this.total,
   });
 
   String label;
 
-  Map<String, Object> data;
+  Object? data;
 
   int total;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ChronicStats && other.label == label && _deepEquality.equals(other.data, data) && other.total == total;
+      other is ChronicStats && other.label == label && other.data == data && other.total == total;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (label.hashCode) + (data.hashCode) + (total.hashCode);
+      (label.hashCode) + (data == null ? 0 : data!.hashCode) + (total.hashCode);
 
   @override
   String toString() => 'ChronicStats[label=$label, data=$data, total=$total]';
@@ -40,7 +40,11 @@ class ChronicStats {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'label'] = this.label;
-    json[r'data'] = this.data;
+    if (this.data != null) {
+      json[r'data'] = this.data;
+    } else {
+      json[r'data'] = null;
+    }
     json[r'total'] = this.total;
     return json;
   }
@@ -65,7 +69,7 @@ class ChronicStats {
 
       return ChronicStats(
         label: mapValueOfType<String>(json, r'label')!,
-        data: mapCastOfType<String, Object>(json, r'data')!,
+        data: mapValueOfType<Object>(json, r'data'),
         total: mapValueOfType<int>(json, r'total')!,
       );
     }
