@@ -1,3 +1,8 @@
+# 1.4.0
+
+- Updated openapi-generator
+- Regenrated API
+
 # 1.3.0
 
 - Updated openapi-generator
