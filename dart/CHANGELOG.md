@@ -1,3 +1,7 @@
+# 1.4.1
+
+- Mini Update
+
 # 1.4.0
 
 - Updated openapi-generator
